@@ -35,7 +35,7 @@ $str .= "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" 
 $str .= "connexion\n";
 $str .= "</a>\n";
 $str .= "<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n";
-$str .= "<a class=\"dropdown-item\" href=\"#\">enregistrer</a>\n";
+$str .= "<a class=\"dropdown-item\" href=\"inscription01.php\">enregistrer</a>\n";
 $str .= "<div class=\"dropdown-divider\"></div>\n";
 $str .= "<a class=\"dropdown-item\" href=\"#\">mon compte </a>\n";
 $str .= "</div>\n";

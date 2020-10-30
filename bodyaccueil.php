@@ -31,13 +31,13 @@ function carousel()
     $str  .= "</ol>";
     $str  .= "<div class=\"carousel-inner\">";
     $str  .= "<div class=\"carousel-item active\">";
-    $str  .= "<img class=\"d-block w-100\" src=\"img/test.jpg\" alt=\"First slide\">";
+    $str  .= "<img class=\"d-block w-100 img-fluid\" src=\"img/test01.jpg\" height=\"500\" alt=\"First slide\">";
     $str  .= "</div>";
     $str  .= "<div class=\"carousel-item\">";
-    $str  .= "<img class=\"d-block w-100\" src=\"img/test2.jpg\" alt=\"Second slide\">";
+    $str  .= "<img class=\"d-block w-100 img-fluid\" src=\"img/test2.jpg\" height=\"500\" alt=\"Second slide\">";
     $str  .= "</div>";
     $str  .= "<div class=\"carousel-item\">";
-    $str  .= "<img class=\"d-block w-100\" src=\"img/test.jpg\" alt=\"Third slide\">";
+    $str  .= "<img class=\"d-block w-100 img-fluid\" src=\"img/test.jpg\" height=\"500\" alt=\"Third slide\">";
     $str  .= "</div>";
     $str  .= "</div>";
     $str  .= "<a class=\"carousel-control-prev\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"prev\">";
