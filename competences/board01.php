@@ -12,7 +12,7 @@ echo "<h3>bonjour $surname_user</h3>\n";
 
 
 
-$req = "SELECT * FROM xavier.skills";
+//$req = "SELECT * FROM xavier.skills";
 $result = executeSQL( $req );
 
 $skills = [];

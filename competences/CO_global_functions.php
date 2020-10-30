@@ -8,9 +8,9 @@ function executeSQL( $req )
 	$result = false;
 	if ( $req != "" )
 	{
-		$servername = "10.115.49.73";
-		$username = "xavier";
-		$password = "xavier";
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
 
 		// Create connection
 		$conn = new mysqli($servername, $username, $password);
