@@ -41,17 +41,15 @@
         $rgpd
     );
 
+    var_dump($matieres);
+
+    $insert = $bdd->prepare('INSERT INTO Resultats(ID_USER, ID_MATIERE, RESULTAT) VALUES (:user, :matiere, :resultat)');
+
     foreach($matieres as $key => $value) {
-        try {
-        $insert = $bdd->prepare('INSERT INTO Resultats(ID_USER, ID_MATIERE, RESULTAT) VALUES (:user, :matiere, :resultat)');
         $insert->bindParam(':user', $user);
         $insert->bindParam(':matiere', $key);
         $insert->bindParam(':resultat', $value);
         $insert->execute();
-        } catch (PDOException $e) {
-            $feedback = $e;
-        }
-        
     }
 
     $feedback = "Votre auto-évaluation a bien été envoyé ! Vous allez maintenant être redirigé vers l'accueil.";
