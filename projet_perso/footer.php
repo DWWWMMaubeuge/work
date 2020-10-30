@@ -76,7 +76,7 @@ $str .= "</div>\n";
     //<!-- Footer Links -->
     //<!-- Copyright -->
 $str .= "<div class=\"text_footer \">\n";
- $str .= "© 2020 BromatiquesTV tous droits réservés\n";
+ $str .= "© 2020 Nicolas Caulier tous droits réservés\n";
 $str .= "</div>\n";
     //<!-- Copyright -->
 $str .= "</footer>\n";
