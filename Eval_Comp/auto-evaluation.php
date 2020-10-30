@@ -14,15 +14,38 @@
 <body class="bg-secondary text-white">
     <?php require_once('navbar.php'); ?>
     <div class="container bg-dark my-5 p-5">
-        <h1>Auto-évalution</h1>
-        <form method="POST" id="evaluation">
+        <h1 class='text-center my-3'>Auto-évalution</h1>
+        <form class="text-center" method="POST" id="evaluation">
             <?php createRange(); ?>
             <input type="hidden" value="<?= $_SESSION['id']; ?>" name="USER" id="USER" readonly>
-            <button id="send-data" class="btn btn-primary mt-3">Confirmer</button>
+            <button id="send-data" class="btn btn-primary mt-3 text-center">Confirmer</button>
             <div id="confirmation"></div>
         </form>
         <div class="alert alert-info my-5 d-none" role="alert" id="notification"></div>
     </div>
+    <script type="text/javascript">
+
+        function showRange(Valueselected) {
+            
+            let range = document.getElementById(Valueselected);
+
+            if(range.className == "form-control-range d-none") {
+                
+                range.className = "form-control-range";
+
+                setTimeout(() => {
+                    
+                    range.className = "form-control-range d-none";
+
+                }, 5000);
+            
+            } else {
+                range.className = "form-control-range d-none"; 
+            }  
+
+        }
+
+    </script>
     <script>
         $('#evaluation').submit(function(e) {
             e.preventDefault();
@@ -53,9 +76,9 @@
             success: function(data) {
                 $('#notification').html(data);
                 $("#notification").removeClass("alert alert-info my-5 d-none").addClass("alert alert-light my-5");
-                // setTimeout( function() {
-                //     window.location.replace("index.php");
-                // }, 5000)
+                setTimeout( function() {
+                    window.location.replace("index.php");
+                }, 5000)
                 
             }
         });

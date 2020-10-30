@@ -41,8 +41,6 @@
         $rgpd
     );
 
-    var_dump($matieres);
-
     $insert = $bdd->prepare('INSERT INTO Resultats(ID_USER, ID_MATIERE, RESULTAT) VALUES (:user, :matiere, :resultat)');
 
     foreach($matieres as $key => $value) {
