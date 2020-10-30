@@ -8,13 +8,16 @@ echo nav();
 ?>
 
 <body>
+<div class="titre">
+<h1>Nicolas CAULIER Développeur Web</h1>
+</div>
 <div class="">
-<?php
 
+<?php
 include_once "bodyaccueil.php";
 echo carousel();
-
 ?>
+
 </div>
 <div class="body">
 <?php
