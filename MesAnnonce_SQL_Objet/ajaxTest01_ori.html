@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    #myDiv
+    {
+        width : 100px; 
+        height : 100px;
+        background-color: black; 
+    }
+</style>
+</head>    
+<body>
+
+<h2 id="t1">PAIC</h2>
+
+<button type="button" onclick="toggle1()">TOGGLE1</button>
+<br>
+<button type="button" onclick="toggle2()">TOGGLE2</button>
+<br>
+<button type="button" onclick="toggleD()">TOGGLE DIV</button>
+
+<p id="p1">mon permier paragra</p>
+<p id="p2">mon deuxieme paragra</p>
+<h3 id="t3">mon titre</h3>
+
+<div id="myDiv"></div>
+
+
+
+
+<h2>XXXXXXXXXXXXXXXXXXXX</h2>
+
+<script>
+    var flag = 0;
+    var flagD = 0;
+    //document.getElementById( "myDiv" ).style.backgroundColor = "black";
+
+    function toggleD()
+    {
+        console.log( document.getElementById( "myDiv" ).style.backgroundColor );
+        console.log( flagD );
+        if ( flagD == 0 )
+        {
+            document.getElementById( "myDiv" ).style.backgroundColor = "red";
+            flagD = 1;
+        }
+        else
+        {
+            document.getElementById( "myDiv" ).style.backgroundColor = "black";
+            flagD = 0;
+        }
+    }
+
+    function toggle1()
+    {
+        if ( document.getElementById( "t1" ).innerHTML == "AJAX" )
+            document.getElementById( "t1" ).innerHTML = "TOTO";
+        else
+            document.getElementById( "t1" ).innerHTML = "AJAX";
+    }
+
+    function toggle2()
+    {
+        if ( flag == 0 )
+        {
+            document.getElementById( "t1" ).innerHTML = "TOTO";
+            flag = 1;
+        }
+        else
+        {
+            document.getElementById( "t1" ).innerHTML = "AJAX";
+            flag = 0;
+        }
+    }
+
+
+
+</script>
+ 
+</body>
+</html>

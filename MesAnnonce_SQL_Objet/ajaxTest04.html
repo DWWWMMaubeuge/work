@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    .myDiv
+    {
+        width : 100px; 
+        height : 100px;
+        background-color: cornflowerblue;
+    }   
+    .container
+    {
+        display: flex;
+        flex-direction: col;    
+    }   
+</style>
+</head>    
+<body>
+    <div class="container">
+        <div class="myDiv" id="div2"></div>
+        <div class="myDiv" id="div3"></div>
+        <div class="myDiv" id="div1"></div>
+        <div class="myDiv" id="div4"></div>
+    </div>
+<script>
+
+getDataAJAX( "div1", "compe10.php" );
+getDataAJAX( "div2", "donneDate.php" );
+getDataAJAX( "div3", "metsAuCarre.php?valeur=9" );
+getDataAJAX( "div4", "metsAuCarre.php?valeur=4" );
+
+
+
+
+    function getDataAJAX( divID, page )
+    {
+        var getData = new XMLHttpRequest();
+        getData.onreadystatechange = function () 
+        {
+            if( this.readyState == 4 && this.status == 200 )
+            {
+                document.getElementById( divID ).innerHTML = this.responseText;
+            }
+        }; 
+        getData.open( "GET", "http://localhost/Maubeuge/MesAnnoncesObjet/SQL/"+page, true  )
+        getData.send();
+
+    }
+
+</script>
+ 
+</body>
+</html>
