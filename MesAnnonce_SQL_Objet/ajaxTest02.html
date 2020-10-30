@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    #myDiv
+    {
+        width : 100px; 
+        height : 100px;
+        background-color: black; 
+    }
+    #myDiv:hover
+    {
+        width : 100px; 
+        height : 100px;
+        background-color: grey;
+        cursor: pointer; 
+    }
+</style>
+</head>    
+<body>
+
+
+    <button type="button" onclick="getDataAJAX()">getDataAJAX</button>
+    <button type="button" onclick="toggle1()">TOGGLE1</button>
+    <button type="button" onclick="changeStyle()">CHANGE DIV</button>
+
+<p id="p1">rien</p>
+<div id="myDiv"onclick="clickDiv()"  ></div>
+<h2>XXXXXXXXXXXXXXXXXXXX</h2>
+
+<script>
+    function getDataAJAX()
+    {
+        var getData = new XMLHttpRequest();
+
+        getData.onreadystatechange = function () 
+        {
+            if( this.readyState == 4 && this.status == 200 )
+            {
+                document.getElementById( "p1" ).innerHTML = this.responseText;
+            }
+        }; 
+
+        getData.open( "GET", "http://localhost/Maubeuge/MesAnnoncesObjet/SQL/pageExtern.php", true  )
+        getData.send();
+
+    }
+
+    function toggle1()
+    {
+        document.getElementById( "p1" ).innerHTML = "Bonjour <b>tout</b> le monde";
+    }
+
+    function clickDiv()
+    {
+        document.getElementById( "p1" ).innerHTML = "j'ai cliké la DIV";
+    }
+
+    function changeStyle()
+    {
+        document.getElementById( "myDiv" ).style.backgroundColor = "blue";
+    }
+</script>
+ 
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <select name="espece" onchange="loadRace(this.value);">
+        <option value="chat">chat</option>
+        <option value="chien">chien</option>
+        <option value="poisson">poisson</option>
+        <option value="iguane">iguane</option>
+        <option value="oiseaux">oiseaux</option>
+    </select>
+    <input type="button" value="+">
+    <br>
+    <select name="race" id="selectRace" >
+    </select><br>
+
+
+<script>
+function loadRace ( espece ) 
+{
+    console.log( "espece: "+espece )
+
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function() 
+  {
+    if (this.readyState == 4 && this.status == 200 ) 
+    {
+      document.getElementById("selectRace").innerHTML = this.responseText;
+    }
+  };
+
+  xhttp.open("GET", "http://localhost/Maubeuge/MesAnnoncesObjet/SQL/getRace.php?espece="+espece, true);
+  xhttp.send();
+}
+</script>
+ 
+</body>
+</html>

@@ -1,0 +1,11 @@
+.myDiv
+{
+    width : 100px; 
+    height : 100px;
+    background-color: cornflowerblue;
+}   
+.container
+{
+    display: flex;
+    flex-direction: col;    
+}   
