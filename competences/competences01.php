@@ -1,5 +1,5 @@
 <?php
-
+require_once( "parametres.php" );
 include_once(  "CO_global_functions.php"  );
 
 
@@ -10,7 +10,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail']
     $mail       = $_POST['mail'];
     $password   = $_POST['password'];
 
-    $req = "INSERT INTO xavier.users ( name, surname, mail, password ) VALUES ( '$name', '$surname', '$mail', '$password' )";
+    $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password ) VALUES ( '$name', '$surname', '$mail', '$password' )";
     executeSQL( $req );
     header( "location: accueil.php");
 }
