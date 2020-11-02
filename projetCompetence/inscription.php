@@ -12,7 +12,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
 
     // attention aux doublons des mail
 
-    $req = "INSERT INTO fatima.users ( name, surname, email, password ) VALUES ( '$name', '$surname', '$email', '$password' )";
+    $req = "INSERT INTO skills.users ( name, surname, email, password ) VALUES ( '$name', '$surname', '$email', '$password' )";
     executeSQL( $req );
     header( "location: acceuil.php");
 }
@@ -25,7 +25,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
 <div class="bg-image"></div>
 <div  class="textbox">
             <i class="fa fa-user" aria-hidden="true"></i>
-<input type="text" placeholder="Username" name="surname" >
+<input type="text" placeholder="Surname" name="surname" >
 </div>
 <div  class="textbox">
             <i class="fa fa-user" aria-hidden="true"></i>
@@ -39,6 +39,6 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
         <i class="fa fa-lock" aria-hidden="true"></i>
         <input type="password" placeholder="Password" name="password" value="">
     </div>
-<INPUT class="btn" type='button' value='Sign in'>
+<INPUT class="btn" type='submit' value='Sign in'>
 </div>
 </FORM>
