@@ -26,7 +26,10 @@ function setAllWidgetValue( $skills  )
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 session_start();
 $ID_user = $_SESSION[ 'ID_user' ];
 $name_user = $_SESSION[ 'name' ];
