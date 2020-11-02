@@ -33,6 +33,7 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password'] != "" )
 
 ?>
 <FORM  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">
+<p>Bonjour </p>
 <INPUT type='text' name='mail' placeholder="votre mail">
 <br>
 <INPUT type='text' name='password' placeholder="votre mot de passe">
