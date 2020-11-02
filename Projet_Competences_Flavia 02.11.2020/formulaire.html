@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Formulaire de compétences</title>
+<link rel="stylesheet" href=form.css>
+</head>
+
+<body>
+<header></header>
+<h1>Formulaire</h1>
+<fieldset id="main">
+
+<form action="accueil.php" method="post">
+<label>Nom:</label>
+<input type="text" name="nom" placeholder="Votre nom"><br><br>
+<label>Prénom:</label>
+<input type="text" name="prenom" placeholder="Votre prénom" ><br>
+<br><br>
+<label>E-mail:</label><input type="email" name="email" placeholder="Votre e-mail">
+<br><br>
+<legend>évaluez vos compétences:</legend>
+<br><br>
+<label>HTML:</label>
+<input type="range" name="html" value="" max="10" min="0" ></input>
+<br>
+<label>CSS:</label>
+<input type="range" name="css" value="" max="10" min="0" ></input>
+<br>
+<label>JS:</label>
+<input type="range" name="js" value="" max="10" min="0" step="1"></input>
+<br>
+<label>PHP:</label>
+<input type="range" name="php" value="" max="10" min="0" step="1"></input>
+<br>
+<label>AJAX:</label>
+<input type="range" name="ajax" value="" max="10" min="0" step="1"></input>
+<br>
+<label>JQUERY:</label>
+<input type="range" name="jquery" value="" max="10" min="0" step="1"></input>
+<br>
+<label>RESPONSIVE:</label>
+<input type="range" name="responsive" value="" max="10" min="0" step="1"></input>
+<br>
+<label>COMPOSER:</label>
+<input type="range" name="composer" value="" max="10" min="0" step="1"></input>
+<br>
+<label>SYMFONY:</label>
+<input type="range" name="symfony" value="" max="10" min="0" step="1"></input>
+<br>
+<label>DOCTRINE:</label>
+<input type="range" name="doctrine" value="" max="10" min="0" step="1"></input>
+<br>
+<label>TWIG:</label>
+<input type="range" name="twig" value="" max="10" min="0" step="1"></input>
+<br>
+<label>AGILE:</label>
+<input type="range" name="agile" value="" max="10" min="0" step="1"></input>
+<br>
+<label>GIT:</label>
+<input type="range" name="git" value="" max="10" min="0" step="1"></input>
+<br>
+<label>PYTHON:</label>
+<input type="range" name="python" value="" max="10" min="0" step="1"></input>
+<br>
+<label>SEO:</label>
+<input type="range" name="seo" value="" max="10" min="0" step="1"></input>
+<br>
+<label>RGPD:</label>
+<input type="range" name="rgpd" value="" max="10" min="0" step="1"></input>
+<br>
+
+<br><br>
+<input type="submit" name="valider" value=" Envoyer "> 
+<input type="reset" value="Annuler">
+</form>
+</fieldset>
+<br>
+<footer> Formulaire compétences  @2020</footer>
+
+</body>
+
+</html>
