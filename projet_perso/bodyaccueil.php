@@ -20,7 +20,7 @@ return $str;
 
 
 
- function carousel()
+function carousel()
 {
 
     $str   = "<div id=\"carouselExampleIndicators\" class=\"carousel slide\" data-ride=\"carousel\">";
@@ -52,19 +52,8 @@ return $str;
 
     return $str;
 
-} 
+}
 
-/* function carousel()
-{
-    $str = <<<RTY
-    <div class="w3-content w3-section" style="max-width:100%">
-    <img class="mySlides" src="test01.jpg" style="width:100%">
-    <img class="mySlides" src="test02.jpg" style="width:100%">
-    <img class="mySlides" src="test03.jpg" style="width:100%">
-    <div>
-    RTY;
-    return $str;
-} */
 
 
 

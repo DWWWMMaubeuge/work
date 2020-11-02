@@ -1,11 +1,13 @@
 <?php
+
 include "header.php";
 echo entete();
-?>
-<body>
-<?php include "navbar.php";
+include "navbar.php";
 echo nav();
+
 ?>
+
+<body>
 <div class="titre">
 <h1>Nicolas CAULIER Développeur Web</h1>
 </div>
@@ -28,7 +30,6 @@ echo accueilbody();
 
 Include "footer.php";
 echo footer();
-
 
 ?>
 
