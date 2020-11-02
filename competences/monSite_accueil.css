@@ -1,0 +1,32 @@
+h1{
+    text-align: center;
+    text-decoration: underline;
+}
+h2{
+    text-decoration: underline;
+    
+}
+h3{
+    text-decoration: underline;
+    
+}
+body{
+    background-color: gray;
+}
+
+body{
+	margin:10;
+	padding:0;
+}
+
+#gauche{
+	width:50%;
+	float:left;
+	margin:0;
+}
+
+#droite{
+	float:right;
+	width:50%;
+	margin:0;
+}
