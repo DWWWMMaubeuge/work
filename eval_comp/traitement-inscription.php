@@ -10,11 +10,17 @@ if(isset($_POST['nom'])) {
 
             if(!empty($_POST['mdp'])) {
 
-                $nom = htmlspecialchars($_POST['nom']);
-                $prenom = htmlspecialchars($_POST['prenom']);
-                $mdp = htmlspecialchars($_POST['mdp']);
-                $email = htmlspecialchars($_POST['email']);
-                $status = 'Membre';
+                $pseudo = $_POST['pseudo'];
+                $nom = $_POST['nom'];
+                $prenom = $_POST['prenom'];
+                $mdp = $_POST['mdp'];
+                $email = $_POST['email'];
+                $admin = 0;
+                $telfixe = $_POST['telfixe'];
+                $telmobile = $_POST['telmobile'];
+                $git = $_POST['pseudogit'];
+                $site = $_POST['liensite'];
+
 
                 $nomlength = strlen($nom);
                 $prenomlength = strlen($prenom);
@@ -26,14 +32,20 @@ if(isset($_POST['nom'])) {
 
                         if($mdplength > 5) {
 
-                             $sql = $bdd->prepare('INSERT INTO Membres(Nom, Prenom, Email, MDP, Status) VALUES(:Nom, :Prenom, :Email, :MDP, :Status)');
+                             $sql = $bdd->prepare('INSERT INTO Membres(Pseudo, Nom, Prenom, Email, MDP, Admin, Fixe, Mobile, Github, Site) VALUES(:Pseudo, :Nom, :Prenom, :Email, :MDP, :Admin, :Fixe, :Mobile, :Github, :Site)');
+                             $sql->bindParam(':Pseudo', $pseudo);
                              $sql->bindParam(':Nom', $nom);
                              $sql->bindParam(':Prenom', $prenom);
                              $sql->bindParam(':Email', $email);
                              $sql->bindParam(':MDP', $mdp);
-                             $sql->bindParam(':Status', $status);
+                             $sql->bindParam(':Admin', $admin, PDO::PARAM_BOOL);
+                             $sql->bindParam(':Fixe', $telfixe);
+                             $sql->bindParam(':Mobile', $telmobile);
+                             $sql->bindParam(':Github', $git);
+                             $sql->bindParam(':Site', $site);
                              $sql->execute();
-                             $feedback = "Votre compte a bien été créé !";
+
+                             $feedback = "Votre compte a bien été créé ! Vous pouvez désormais vous <a href='connexion.php'>connecter</a> !";
 
                         } else {
 
