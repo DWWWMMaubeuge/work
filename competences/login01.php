@@ -1,5 +1,5 @@
 <?php
-
+require_once( "parametres.php" );
 include_once(  "CO_global_functions.php"  );
 
 session_start();
@@ -14,19 +14,19 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password'] != "" )
 
     // attention aux doublons des mail
 
-    $req = "SELECT count(*) as nb FROM xavier.users WHERE mail='$mail' AND password='$password'";
+    $req = "SELECT count(*) as nb FROM $DB_dbname.users WHERE mail='$mail' AND password='$password'";
     $result = executeSQL( $req );
     $data = $result->fetch_assoc();
     if ( $data[ 'nb' ] == 1 )
     {
-        $req = "SELECT * FROM xavier.users WHERE mail='$mail' AND password='$password'";
+        $req = "SELECT * FROM $DB_dbname.users WHERE mail='$mail' AND password='$password'";
         $result = executeSQL( $req );
         $data = $result->fetch_assoc();
         $_SESSION[ 'ID_user' ]  = $data[ 'id' ];
         $_SESSION[ 'name' ]  = $data[ 'name' ];
         $_SESSION[ 'surname' ]  = $data[ 'surname' ];
     
-        header( "location: accueil01.php");
+        header( "location: accueil02_multiple.php");
     }
     echo "<h3>login incorrect</h3>";
 }
