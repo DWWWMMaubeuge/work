@@ -1,5 +1,6 @@
 <?php
 
+
 function nav()
 {
 $str  = "<nav class=\"navbar navbar-expand-lg navbar-white bg-dark\">\n";
@@ -59,5 +60,5 @@ $str .= "<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/boo
 
 return $str;
 
-}
-?>
+} 
+

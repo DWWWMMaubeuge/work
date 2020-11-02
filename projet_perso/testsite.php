@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
 * {
   box-sizing: border-box;
 }
@@ -97,47 +102,50 @@ body {
     height: auto;
   }
 }
+</style>
+</head>
+<body>
 
+<div class="navbar">
+  <a href="#home">Home</a>
+  <a href="#news">News</a>
+  <div class="dropdown">
+    <button class="dropbtn">Dropdown 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <div class="header">
+        <h2>Mega Menu</h2>
+      </div>   
+      <div class="row">
+        <div class="column">
+          <h3>Category 1</h3>
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+        <div class="column">
+          <h3>Category 2</h3>
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+        <div class="column">
+          <h3>Category 3</h3>
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>
 
-footer {
-  background: #101219;
-  color: white;
-}
+<div style="padding:16px">
+  <h3>Responsive Mega Menu (Full-width dropdown in navbar)</h3>
+  <p>Hover over the "Dropdown" link to see the mega menu.</p>
+  <p>Resize the browser window to see the responsive effect.</p>
+</div>
 
-.footer {
-    padding: 15px 0;
-}
-
-a {
-  color: #787878;
-}
-
-a:hover {
-  color: #00aeff;
-  text-decoration: none;
-}
-
-
-
-.footer__title {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-}
-
-.text_footer {
-  text-align: center;
-  font-size: 14px;
-  color: #787878;
-}
-
-
-.titre h1{
-  font-size: 50px;
-  text-align: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  background-color: black;
-  color: white;
-}
-
-.mySlides {display:none}
+</body>
+</html>
