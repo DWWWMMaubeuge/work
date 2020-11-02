@@ -64,17 +64,18 @@ function executeSQL( $req )
     <!DOCTYPE html>
 <html lang="fr">
 <head>
+
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+	<link rel="stylesheet" href="formulaire_notes.css" />
     <title>Formulaire</title>
 </head>
 <body>
 </body>
 </html>
-<h1 style=text-align:center>Utilisateur </h1>
+<h1 >Utilisateur </h1>
 <h2 style=text-align:center >Compétences</h2>
-<p style=text-align:center>Chosiisez votre langage</p>
+<p style=text-align:center>Choisissez votre langage</p>
 <?php
 $req = "SELECT * FROM maxime.competences;"; 
 		$result = executeSQL( $req );
