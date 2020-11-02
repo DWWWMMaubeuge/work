@@ -18,7 +18,15 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
 }
 
 ?>
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
 <div class="login-box">
 <FORM  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">

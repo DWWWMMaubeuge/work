@@ -8,6 +8,10 @@ body{
     background-size: cover;
 }
 
+label {
+   float: left;
+}
+
 .login-box{
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
@@ -26,6 +30,15 @@ body{
 
 .login-box h1{
     float: left;
+    font-size: 40px;
+    border-bottom: 6px solid #C19A6B;
+    margin-bottom: 50px;
+    padding: 13px 0;
+
+}
+
+.login-box h2{
+    float: top;
     font-size: 40px;
     border-bottom: 6px solid #C19A6B;
     margin-bottom: 50px;
@@ -60,6 +73,18 @@ body{
     float: left;
     margin: 0 10px;
 }
+
+.textskill input{
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 18px;
+    width: 100%;
+    float: right;
+    margin: 0 20px;
+}
+
 
 .btn {
 
