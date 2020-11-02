@@ -1,5 +1,5 @@
 <?php
-
+require_once( "parametres.php" );
 include_once(  "CO_global_functions.php"  );
 
 
@@ -12,7 +12,7 @@ echo "<h3>bonjour $surname_user</h3>\n";
 
 
 
-$req = "SELECT * FROM xavier.skills";
+$req = "SELECT * FROM $DB_dbname.skills";
 $result = executeSQL( $req );
 
 $skills = [];
