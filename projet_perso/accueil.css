@@ -56,8 +56,10 @@ a:hover {
 .titre h1{
   font-size: 50px;
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: black;
+  color: white;
 }
 .body {
  
