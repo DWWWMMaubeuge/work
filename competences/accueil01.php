@@ -36,11 +36,12 @@ function setWidgetValue2( )
     return $widget;
 }
 
-function setWidgetValue( )
+function setWidgetValue( $idSkill )
 {
-    $widget = "<input type='range'  value='0' class='form-control-range' min='0' step='1' max='100' id='' name='valSkill'>\n";
+    $widget = "<input type='range'  value='0' class='form-control-range' min='0' step='1' max='100' id='' name='valSkill' onchange=\"MAJ_Value( $idSkill, this.value )\" >\n";
     return $widget;
 }
+
 
 
 session_start();
@@ -51,8 +52,7 @@ $surname_user = $_SESSION[ 'surname' ];
 echo "<h3>bonjour $surname_user</h3>\n";
 
 
-
-$req = "SELECT * FROM xavier.skills";
+$req = "SELECT * FROM DWWM_Maubeuge.skills";
 $result = executeSQL( $req );
 
 $skills = [];
@@ -71,7 +71,7 @@ if( $_POST && $_POST['selSkill'] != "" && $_POST['valSkill'] != "" )
     $valSkill       = $_POST['valSkill'];
 
     
-    $req = "INSERT INTO xavier.results ( id_user, id_skill, result ) VALUES ( ".$ID_user.", ".$selSkill.", ".$valSkill." );";
+    $req = "INSERT INTO DWWM_Maubeuge.results ( id_user, id_skill, result ) VALUES ( ".$ID_user.", ".$selSkill.", ".$valSkill." );";
     $result = executeSQL( $req );
     echo "<h3>skill à jour</h3>";
 }
@@ -80,7 +80,7 @@ if( $_POST && $_POST['selSkill'] != "" && $_POST['valSkill'] != "" )
 <FORM  method='POST' name="formSkill" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <?php echo setWidgetSkills( $skills  ); ?>
 <br>
-<?php echo setWidgetValue(); ?>
+<?php echo setWidgetValue( 1 ); ?>
 <br>
 <INPUT type='submit' value='OK'>
 </FORM>

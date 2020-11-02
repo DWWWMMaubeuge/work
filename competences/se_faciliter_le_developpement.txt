@@ -1,0 +1,25 @@
+se faciliter le développement :
+
+	Dans les formulaires :
+		- mettez toujours le type des input en "text", ça évite de devoir saisir des truc compliqués comme les mails
+		- n'imposez pas une longueur de PW
+		- utilisez toujours le même PW pour tous les essais. genre 123 ou toto
+		
+
+
+	Dans l'organisation des fichiers
+		- ayez un fichier qui regroupe les variables essentielles :
+																	PW
+																	URL
+																	Messages
+																	...
+			et que vous mettrez  
+				- systématiqueme en require_once dans tous vos fichiers
+				- dans le fichier .gitignore afin qu'il ne soit pas mis en public par GIT
+
+		- ne créez pas de fichier "index" sinon ça rend compliqué de browser les fichiers du répertoire
+
+
+
+
+
