@@ -92,5 +92,4 @@ if(!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["password
   </main>
 
 </body>
-
 </html>
