@@ -26,7 +26,7 @@
             </div>
             <button id="send-data" class="btn btn-primary mt-3">Connexion</button>
         </form>
-        <?php if(isset($feedback)) { ?> <div class="alert alert-info my-5" role="alert" id="notification"><?= $feedback; ?></div><?php } ?>
-        <div class="bg-dark text-white my-5 p-2 border border-white">Vous n'avez pas encore de compte ? <a href="inscription.php">Créer un compte</a></div>
+        <?php if(isset($feedback)) { ?> <div class="alert alert-info my-5 text-center" role="alert" id="notification"><?= $feedback; ?></div><?php } ?>
+        <div class="bg-dark text-white my-5 p-2 border border-white text-center">Vous n'avez pas encore de compte ? <a href="inscription.php">Créer un compte</a></div>
     </div>
 <?php require_once('footer.php'); ?>

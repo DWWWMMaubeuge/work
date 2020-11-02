@@ -1,6 +1,6 @@
 <?php
 
-include ('pdo-connect.php');
+include('pdo-connect.php');
 
 if(isset($_POST['nom'])) {
 
@@ -14,6 +14,7 @@ if(isset($_POST['nom'])) {
                 $prenom = htmlspecialchars($_POST['prenom']);
                 $mdp = htmlspecialchars($_POST['mdp']);
                 $email = htmlspecialchars($_POST['email']);
+                $status = 'Membre';
 
                 $nomlength = strlen($nom);
                 $prenomlength = strlen($prenom);
@@ -25,11 +26,12 @@ if(isset($_POST['nom'])) {
 
                         if($mdplength > 5) {
 
-                             $sql = $bdd->prepare('INSERT INTO Membres(Nom, Prenom, Email, MDP) VALUES(:Nom, :Prenom, :Email, :MDP)');
+                             $sql = $bdd->prepare('INSERT INTO Membres(Nom, Prenom, Email, MDP, Status) VALUES(:Nom, :Prenom, :Email, :MDP, :Status)');
                              $sql->bindParam(':Nom', $nom);
                              $sql->bindParam(':Prenom', $prenom);
                              $sql->bindParam(':Email', $email);
                              $sql->bindParam(':MDP', $mdp);
+                             $sql->bindParam(':Status', $status);
                              $sql->execute();
                              $feedback = "Votre compte a bien été créé !";
 

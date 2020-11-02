@@ -24,7 +24,7 @@ if(isset($_POST['email'])) {
 
             } else {
 
-                $feedback = "Cette combinaison ne correspond à aucun compte !";
+                $feedback = "Login incorrect !";
 
             }
 

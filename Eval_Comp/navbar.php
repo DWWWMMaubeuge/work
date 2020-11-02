@@ -33,6 +33,9 @@
             <li class='nav-item'>
               <a class='nav-link' href='utilisateurs.php'>Utilisateurs</a>
             </li>
+            <li class='nav-item'>
+              <a class='nav-link' href='deconnexion.php'>Déconnexion</a>
+            </li>
           </ul>
       </div>
   </nav>

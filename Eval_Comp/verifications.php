@@ -2,23 +2,48 @@
 
 function userIsLogged() {
 
-if(!isset($_SESSION['id'])) {
+  if(!isset($_SESSION['id'])) {
 
-  header('location: index.php');
-  exit();
+    header('location: index.php');
+    exit();
 
-}
+  }
 
 }
 
 function userIsNotLogged() {
 
-if(isset($_SESSION['id'])) {
+  if(isset($_SESSION['id'])) {
 
-  header('location: index.php');
-  exit();
+    header('location: index.php');
+    exit();
+
+  }
 
 }
+
+function userIsAdmin() {
+
+  GLOBAL $infos;
+
+  if($infos['Status'] !== 'Admin') {
+
+    header('Location: index.php');
+    exit();
+
+  }
+
+}
+
+function checkAdminForComps() {
+
+  GLOBAL $infos;
+
+  if($infos['Status'] == 'Admin') {
+
+    return "<div class='alert alert-primary w-50 text-center mx-auto' role='alert'><a class='nav-link' href='edit-evaluation.php'>Editer l'évaluation</a></div>";
+
+  }
 
 }
 

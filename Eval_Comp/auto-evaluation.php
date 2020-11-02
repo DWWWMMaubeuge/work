@@ -1,7 +1,7 @@
 <?php require_once('pdo-connect.php'); ?>
 <?php require_once('verifications.php'); ?>
 <?php userIsLogged(); ?>
-<?php include('createrange.php'); ?>
+<?php include('matieres.php'); ?>
 <!DOCTYPE html>
 <html lang='fr'>
 <head>
@@ -14,17 +14,18 @@
 <body class="bg-secondary text-white">
     <?php require_once('navbar.php'); ?>
     <div class="container bg-dark my-5 p-5">
-        <h1 class='text-center my-3'>Auto-évalution</h1>
+        <h1 class='text-center my-4'>Auto-évaluation</h1>
         <form class="text-center" method="POST" id="evaluation">
             <?php createRange(); ?>
             <input type="hidden" value="<?= $_SESSION['id']; ?>" name="USER" id="USER" readonly>
             <button id="send-data" class="btn btn-primary mt-3 text-center">Confirmer</button>
             <div id="confirmation"></div>
         </form>
-        <div class="alert alert-info my-5 d-none" role="alert" id="notification"></div>
+        <div class="alert alert-info my-5 d-none text-center" role="alert" id="notification"></div>
     </div>
+    <?= checkAdminForComps(); ?>
     <script type="text/javascript">
-
+    
         function showRange(Valueselected) {
             
             let range = document.getElementById(Valueselected);
@@ -36,11 +37,14 @@
                 setTimeout(() => {
                     
                     range.className = "form-control-range d-none";
+                    document.getElementById('matiere').value = '';
 
-                }, 5000);
+                }, 3500);
             
             } else {
+
                 range.className = "form-control-range d-none"; 
+
             }  
 
         }
@@ -48,8 +52,11 @@
     </script>
     <script>
         $('#evaluation').submit(function(e) {
+
             e.preventDefault();
+
         $.ajax({
+
             type: 'POST',
             url: 'traitement-evaluation.php',
             data: {
@@ -74,6 +81,7 @@
             },
             dataType: 'html',
             success: function(data) {
+
                 $('#notification').html(data);
                 $("#notification").removeClass("alert alert-info my-5 d-none").addClass("alert alert-light my-5");
                 setTimeout( function() {
@@ -81,7 +89,10 @@
                 }, 5000)
                 
             }
+
         });
+
         });
+
     </script>
     <?php require_once('footer.php'); ?>

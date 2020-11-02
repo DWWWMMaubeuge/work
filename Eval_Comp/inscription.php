@@ -33,8 +33,8 @@
             </div>
             <button id="send-data" class="btn btn-primary mt-3">Inscription</button>
         </form>
-        <div class="alert alert-info my-5 d-none" role="alert" id="notification"></div>
-        <div class="bg-dark text-white my-5 p-2 border border-white">Vous avez déjà un compte ? <a href="connexion.php">Se connecter</a></div>
+        <div class="alert alert-info my-5 d-none text-center" role="alert" id="notification"></div>
+        <div class="bg-dark text-white my-5 p-2 border border-white text-center">Vous avez déjà un compte ? <a href="connexion.php">Se connecter</a></div>
     </div>
 <script>
         $('#inscription').submit(function(e) {
