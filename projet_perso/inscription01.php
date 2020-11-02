@@ -1,9 +1,5 @@
 <?php
 
-$adresse         = "localhost";
-$utilisateur     = "root";
-$password         = "";
-
 include_once ("connexion.php");
 
 //include_once(  "CO_global_functions.php"  );
