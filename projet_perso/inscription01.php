@@ -1,8 +1,35 @@
 <?php
 
-include_once ("connexion.php");
+function executeSQL( $req )
+{
+	GLOBAL $DB_URL, $DB_user, $DB_PW;
 
-//include_once(  "CO_global_functions.php"  );
+	$result = false;
+	if ( $req != "" )
+	{
+
+		//echo "new mysqli($DB_URL, $DB_user, $DB_PW);<br>";
+		// Create connection
+		$conn = new mysqli('localhost','root','');
+
+		// Check connection
+		if ($conn->connect_error) 
+		{
+		  die("Connection failed: " . $conn->connect_error);
+		}
+
+
+		echo $req."<br>";
+		$result = $conn->query( $req );
+		if ($conn->error) 
+		{
+		  die("erreur insert: " . $conn->error);
+		}
+
+		$conn->close();
+	}
+	return $result;
+}
 
 
 if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail'] != "" && $_POST['password'] != "" ) 
@@ -14,7 +41,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail']
 
     // attention aux doublons des mail
 
-    $req = "INSERT INTO users ( name, surname, mail, password ) VALUES ( '$name', '$surname', '$mail', '$password' )";
+    $req = "INSERT INTO utilisateur.users ( name, surname, mail, password ) VALUES ( '$name', '$surname', '$mail', '$password' )";
     executeSQL( $req );
     header( "location:accueil.php");
 }
