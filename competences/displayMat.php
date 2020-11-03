@@ -16,7 +16,7 @@ function displayEval($matieres) {
           <div class='input-group-prepend'>
             <label class='input-group-text text-white bg-primary' for=" . $matiere['id'] . " style='width: 6rem'>" . $matiere['mat'] . "</label>
           </div>
-          <select class='custom-select' id=\"" . $matiere['id'] . "\")'>";
+          <select class='custom-select' id=\"" . $matiere['id'] . "\">";
             selectNote();
   echo "  </select></div>";
   }
