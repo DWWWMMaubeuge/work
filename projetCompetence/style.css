@@ -4,6 +4,10 @@ body{
     margin : 0;
     padding : 0;
     font-family: sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: url(bg3.jpg) no-repeat;
     background-size: cover;
 }
@@ -97,3 +101,49 @@ label {
     cursor: pointer;
     margin: 12px 0;
 }
+
+/*SKILLS PAGE*/
+
+.skills{
+   
+    column-count: 3;
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-gap: 80px;
+    -moz-column-gap: 80px;
+    -webkit-column-gap: 80px;
+}
+    
+
+
+  .skill-name{
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 20px 0;
+  }
+  
+  .skill-bar{
+    height: 10px;
+  }
+  
+  .skill-bar input{
+    height: 20px;
+    background-color: #C19A6B;
+    border-radius: 8px;
+    transition: 1s linear;
+    position: relative;
+  }
+  /*
+  .skill-bar::before{
+    content: attr(max);
+    position: absolute;
+    padding: 4px 6px;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+    top: -35px;
+    right: 0;
+    transform: translateX(50%);
+  }*/

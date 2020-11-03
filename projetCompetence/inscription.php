@@ -19,11 +19,11 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
+    <title>Register Form</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,6 +31,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
 <div class="login-box">
 <FORM  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <div class="bg-image"></div>
+<h1>Register Form</h1>
 <div  class="textbox">
             <i class="fa fa-user" aria-hidden="true"></i>
 <input type="text" placeholder="Surname" name="surname" >
