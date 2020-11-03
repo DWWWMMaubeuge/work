@@ -63,3 +63,43 @@ Les données
 
 
 
+        nom             espece          age         poid
+
+        medor           chien             7         24
+        felix           chat              6         1
+
+
+
+        CREATE DATABASE MyDataBase;
+        
+        DROP DATABASE MyDataBase;
+
+        use MyDataBase;
+
+
+        CREATE TABLE animaux (  nom VARCHAR( 255 ), espece  VARCHAR( 64 ), age INT, poid INT );
+
+        INSERT INTO animaux ( nom, espece, age, poid ) VALUES ( "titi", "chat", 3, 2  );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
