@@ -1,6 +1,5 @@
 <?php
 include 'idBDD.php';
-
 session_start();
 
 try {

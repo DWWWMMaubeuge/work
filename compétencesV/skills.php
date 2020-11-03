@@ -14,33 +14,43 @@ include 'fonctionAffichages.php';
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
         <title>Document</title>
     </head>
+    <style>
+        #tabSkills{
+            top:0;
+            background-color: black;
+        }
+        #letableau, #tabSkills {
+            padding: 5px;
+            text-align: center;
+            border: solid 1px #c3c3c3;
+            position:fixed;
+            width:100%;
+            color:white;
+        }
+
+        #letableau{
+            background-color: white;
+            padding: 50px;
+            display: none;
+            top:38px;
+        }
+    </style>
     <body class="bg-dark">
     <?php
     echo "<div class='container bg-light mt-5 border border-primary p-5 rounded'>";
     echo "<h1 class='text-center'>Bonjour ". $_SESSION['nom']." ". $_SESSION['prenom'];
     echo "</div>";
-
     echo "<div class='container bg-light mt-5 border border-primary p-5 rounded'>";
     echo "<form method=\"post\">";
     formMat($skills);
     echo "</form>";
+    echo "<div class='text-center'><a href='disconnect.php' class='btn btn-primary text-decoration-none' >Deconnexon</a></div>";
     echo "</div>";
     ?>
+    <div id="tabSkills">Tableau de note</div>
+    <div id="letableau"></div>
 
-    <script>
-        $(document).ready(function(){
-            $("input").blur(function(){
-                //id_mat=$(this).attr('id')
-                //eval=$(this).val()
-                //$.get('insertResult.php?id_mat='+id_mat+'&eval='+eval)
-                $.post('insertResult.php',
-                    {
-                        id_mat: $(this).attr('id'),
-                        eval: $(this).val()
-
-                    })
-            })
-        })
-    </script>
+    <script src = 'sendResult.js'></script>
+    <script src = 'AffichageDirect.js'></script>
    </body>
     </html>
