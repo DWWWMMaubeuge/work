@@ -4,8 +4,8 @@
 function executeSQL( $req, $message="insertion de données" )
 {
 	$adresse 		= "localhost";
-	$utilisateur 	= "student";
-	$password 		= "student";
+	$utilisateur 	= "root";
+	$password 		= "";
 
 	$connexion = new mysqli( $adresse, $utilisateur, $password );
 
