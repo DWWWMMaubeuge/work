@@ -7,6 +7,10 @@ function setWidgetValue2( $skill  )
   return $widget;
 }
 
+/* echo "<div class='skills'>";
+$widget = "<div class='skill-name'>".$skill[1]."</div>"."<div class='skill-bar'>"."<input id='number' type='number' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )"."</div>\n";
+return $widget;
+echo "</div>";*/
 
 function setAllWidgetValue( $skills  )
 {
