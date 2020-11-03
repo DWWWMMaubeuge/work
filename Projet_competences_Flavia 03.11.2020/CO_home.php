@@ -1,26 +1,26 @@
+﻿<?php
+	// Initialiser la session
+	session_start();
+	// Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
+	if(!isset($_SESSION["user"])){
+		header("Location: CO_login.php");
+		exit(); 
+	}
+?>
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="utf-8" />
-<title>Formulaire de compétences</title>
-<link rel="stylesheet" href=form.css>
-</head>
+<html>
+	<head>
+	<link rel="stylesheet" href="CO_style.css" />
+	</head>
+	<body>
+		<div class="sucess">
+		<h1>Bienvenue <?php echo $_SESSION['user']; ?>!</h1>
+		<p>Evaluez vos compétences</p>
+		</div>
 
-<body>
-<header></header>
-<h1>Formulaire</h1>
-<fieldset id="main">
-
-<form action="accueil.php" method="post">
-<label>Nom:</label>
-<input type="text" name="nom" placeholder="Votre nom"><br><br>
-<label>Prénom:</label>
-<input type="text" name="prenom" placeholder="Votre prénom" ><br>
 <br><br>
-<label>E-mail:</label><input type="email" name="email" placeholder="Votre e-mail">
-<br><br>
-<legend>évaluez vos compétences:</legend>
-<br><br>
+<form action="CO_resultSkills.php" method="post">
+<div class="skill">
 <label>HTML:</label>
 <input type="range" name="html" value="" max="10" min="0" ></input>
 <br>
@@ -69,15 +69,14 @@
 <label>RGPD:</label>
 <input type="range" name="rgpd" value="" max="10" min="0" step="1"></input>
 <br>
-
+</div>
 <br><br>
-<input type="submit" name="valider" value=" Envoyer "> 
-<input type="reset" value="Annuler">
-</form>
-</fieldset>
-<br>
-<footer> Formulaire compétences  @2020</footer>
+<input type="submit" name="valider" value=" Valider "> 
+<a href="CO_logout.php">Déconnexion</a>
 
-</body>
+		</div>
 
+		<footer> Formulaire de compétences  @2020</footer>
+
+	</body>
 </html>
