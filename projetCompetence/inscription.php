@@ -12,7 +12,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
 
     // attention aux doublons des mail
 
-    $req = "INSERT INTO skills.users ( name, surname, email, password ) VALUES ( '$name', '$surname', '$email', '$password' )";
+    $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password ) VALUES ( '$name', '$surname', '$email', '$password' )";
     executeSQL( $req );
     header( "location: acceuil.php");
 }

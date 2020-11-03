@@ -30,7 +30,7 @@ $surname_user = $_SESSION[ 'surname' ];
 echo "<h3>Welcome $surname_user</h3>\n";
 
 
-$req = "SELECT * FROM skills.skills";
+$req = "SELECT * FROM $DB_dbname.skills";
 $result = executeSQL( $req );
 
 $skills = [];
