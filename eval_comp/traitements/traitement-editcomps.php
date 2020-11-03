@@ -1,6 +1,6 @@
 <?php
 
-include('pdo-connect.php');
+include('../config/pdo-connect.php');
 
 if(isset($_POST['ON'])) {
 

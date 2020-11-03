@@ -19,7 +19,7 @@ if(isset($_POST['email'])) {
 
                 $_SESSION = [];
                 $_SESSION['id'] = $infos['ID'];
-                header('location: index.php');
+                header('location: accueil.php');
                 exit();
 
             } else {
