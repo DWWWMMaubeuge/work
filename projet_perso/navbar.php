@@ -36,7 +36,7 @@ Nicolas
 connexion
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<a class="dropdown-item" href="inscription01.php">enregistrer</a>
+<a class="dropdown-item" href="connexion.php">enregistrer</a>
 <div class="dropdown-divider"></div>
 <a class="dropdown-item" href="#">mon compte </a>
 </div>
