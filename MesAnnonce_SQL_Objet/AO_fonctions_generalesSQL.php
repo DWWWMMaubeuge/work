@@ -420,6 +420,10 @@ function executeSQL( $req )
 		$username = "xavier";
 		$password = "xavier";
 
+		$servername = "localhost";
+		$username = "student";
+		$password = "student";
+
 		// Create connection
 		$conn = new mysqli($servername, $username, $password);
 
