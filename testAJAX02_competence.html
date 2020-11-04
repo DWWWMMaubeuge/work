@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>mes competences</h2>
+
+<FORM method="POST" action="" >
+  <INPUT typt="text" id="champ1" name="champ1" value="" placeholder="HTML"  onchange="writeInDB( 1, this.value )"><br>
+  <INPUT typt="text" id="champ2" name="champ2" value="" placeholder="CSS"   onchange="writeInDB( 2, this.value )"><br>
+  <INPUT typt="text" id="champ3" name="champ3" value="" placeholder="JS"    onchange="writeInDB( 3, this.value )"><br>
+  <INPUT typt="text" id="champ4" name="champ4" value="" placeholder="PHP"   onchange="writeInDB( 4, this.value )"><br>
+</FORM>
+
+
+
+<script>
+
+/*
+    objectXHTTP.onreadystatechange = function() 
+    {
+        if ( this.readyState == 4 && this.status == 200 ) 
+        {
+            document.getElementById("monMessage3").innerHTML = this.responseText;
+        }
+    };
+*/  
+
+function writeInDB( id, result ) 
+{
+    var objectXHTTP = new XMLHttpRequest();
+          
+    objectXHTTP.open("GET", "serverPageAJAX05_writeCompetence.php?id="+id+"&value="+result, true);
+    objectXHTTP.send();
+}
+
+
+</script>
+
+</body>
+</html>
