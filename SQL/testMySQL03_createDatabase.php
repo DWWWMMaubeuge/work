@@ -27,5 +27,4 @@ executeSQL( "INSERT INTO zoo.animaux ( nom, espece, age, poid ) VALUES ( 'felix'
 executeSQL( "INSERT INTO zoo.animaux ( nom, espece, age, poid ) VALUES ( 'bubulle'	, 'poisson'	, 12	, 178  	); ");
 executeSQL( "INSERT INTO zoo.animaux ( nom, espece, age, poid ) VALUES ( 'flipper'	, 'poisson'	, 42	, 300  	); ");
 
-
 ?>
