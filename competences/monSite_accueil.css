@@ -28,8 +28,17 @@ body{
 	width:50%;
 	margin:0;
 }
-.img{
-width: 50px;
+img{
+width: 100px;
 background-color: gray;
 
+}
+p1{
+	text-align: left;
+}
+p2{
+	text-align: center;
+}
+p3{
+	text-align: right;
 }
