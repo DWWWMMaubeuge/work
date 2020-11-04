@@ -4,24 +4,26 @@
 <?php include('config/head.php'); ?>
 <?= myHeader('Inscription'); ?>
 <?php require_once('config/navbar.php'); ?>
-<div class="container bg-dark my-5 p-5">
-    <h1>Créer un compte</h1>
-    <form method="POST" id="inscription">
-        <div class="form-group">
-            <label for="pseudo">Pseudo</label>
-            <input type="text" class="form-control" name="pseudo" id="pseudo" aria-describedby="prenomHelp" required>
-        </div>
-        <div class="form-group">
-        <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" required>
-        </div>
-        <div class="form-group">
-            <label for="mdp">Mot de passe</label>
-            <input type="password" class="form-control" name="mdp" id="mdp" required>
-        </div>
-        <button id="send-data" class="btn btn-primary mt-3">Inscription</button>
-    </form>
-    <div class="alert alert-info my-5 d-none text-center" role="alert" id="notification"></div>    
+<div class="container-fluid p-5 banner3short">
+    <div>
+        <form class="mx-5" method="POST" id="inscription">
+            <h1>Créer un compte</h1>
+            <div class="form-group">
+                <label for="pseudo">Pseudo</label>
+                <input type="text" class="form-control" name="pseudo" id="pseudo" aria-describedby="prenomHelp" required>
+            </div>
+            <div class="form-group">
+            <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" required>
+            </div>
+            <div class="form-group">
+                <label for="mdp">Mot de passe</label>
+                <input type="password" class="form-control" name="mdp" id="mdp" required>
+            </div>
+            <button id="send-data" class="btn btn-primary mt-3">Inscription</button>
+        </form>
+        <div class="alert alert-info my-5 d-none text-center" role="alert" id="notification"></div>    
+    </div>
 </div>
 <script>
         $('#inscription').submit(function(e) {

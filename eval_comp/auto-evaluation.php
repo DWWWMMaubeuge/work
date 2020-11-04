@@ -41,12 +41,14 @@ while( $data = $req->fetch()) {
     }   
 </script>
 <?php require_once('config/navbar.php'); ?>
-<div class="container bg-dark my-5 p-5">
-    <h1 class='text-center my-4'>Auto-évaluation</h1>
-    <form class="text-center" method="POST" id="evaluation">
-        <?= setAllWidgetValue( $skills ); ?>
-        <div class="alert alert-info my-5 d-none text-center" role="alert" id="confirmation"></div>
-    </form>
-    <?= checkAdminForComps(); ?>
+<div class="container-fluid p-5 banner3">
+    <div class="container bg-dark my-5 p-5 opacity-4">
+        <form class="text-center m-5" method="POST" id="evaluation">
+            <h1 class='text-center my-4'>Auto-évaluation</h1>
+            <?= setAllWidgetValue( $skills ); ?>
+            <div class="alert alert-info my-5 d-none text-center" role="alert" id="confirmation"></div>
+        </form>
+        <?= checkAdminForComps(); ?>
+    </div>
 </div>
 <?php require_once('config/footer.php'); ?>

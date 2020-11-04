@@ -13,7 +13,7 @@ function myHeader($title) {
             <script src='https://kit.fontawesome.com/747acc35b5.js' crossorigin='anonymous'></script>
             <title>Formation DWM / $title </title>
         </head>
-        <body class='bg-secondary text-white'>"
+        <body class='bg-dark text-white'>"
     ;
 
 }

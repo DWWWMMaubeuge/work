@@ -16,7 +16,7 @@ $result = $query->fetch();
 
 $nbUsers = (int) $result['nb_users'];
 
-$parPage = 10;
+$parPage = 5;
 
 $pages = ceil($nbUsers / $parPage);
 
@@ -32,30 +32,28 @@ $users = $q->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <?= myHeader('Utilisateur'); ?>
 <?php require_once('config/navbar.php'); ?>
-<div class="container my-5">
+<div class="container-fluid p-5 banner3short">
     <h1 class="text-center my-5">Liste des utilisateurs</h1>
-    <table class="table table-hover table-dark mx-auto">
+    <table class="table table-hover table-dark w-50 m-auto">
         <thead>
             <tr>
             <th scope="col">ID</th>
+            <th scope="col">Avatar</th>
             <th scope="col">Pseudo</th>
-            <th scope="col">Prenom</th>
-            <th scope="col">Nom</th>
             </tr>
         </thead>
         <tbody>
         <?php foreach($users as $user) { ?>
             <tr>
             <td scope="row"><?= $user['ID']; ?></td>
-            <td scope="row"><a href="utilisateur.php?pseudo=<?= $user['Pseudo']; ?>"><?= $user['Pseudo']; ?></a></td>
-            <td scope="row"><?= $user['Prenom']; ?></td>
-            <td scope="row"><?= $user['Nom']; ?></td>
+            <td scope="row"><img src="images/avatars/<?= $infos['Avatar']; ?>" alt="avatar" class="rounded-circle" width="35"></td>
+            <td scope="row"><a class="text-white m-auto" href="utilisateur.php?pseudo=<?= $user['Pseudo']; ?>"><?= $user['Pseudo']; ?></a></td>
             </tr>
         <?php } ?>
         </tbody>
     </table>
     <nav class="my-5">
-        <ul class="pagination">
+        <ul class="pagination justify-content-center">
             <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
             <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
                 <a href="utilisateurs.php?page=<?= $currentPage - 1 ?>" class="page-link">Précédente</a>

@@ -14,6 +14,7 @@ $resultats = $q->fetchAll();
 ?>
 <?= myHeader('Profil'); ?>
 <?php require_once('config/navbar.php'); ?>
+<div class="container-fluid p-5 banner3">
 <div class="m-5">
     <div class="main-body">
         <div class="row gutters-sm">
@@ -21,7 +22,7 @@ $resultats = $q->fetchAll();
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex text-dark flex-column align-items-center text-center">
-                            <img src="avatars/<?= $infos['Avatar']; ?>" alt="avatar" class="rounded-circle" width="150">
+                            <img src="images/avatars/<?= $infos['Avatar']; ?>" alt="avatar" class="rounded-circle" width="150">
                             <div class="mt-3 col-sm-12">
                                 <h2 id="monPseudo"><?= $infos['Pseudo']?></h2> <i class="fas fa-wrench text-warning editmode" id="Pseudo" onclick="goEdit(this.id)" title="Modifier mon pseudo"></i>
                             </div>
@@ -29,15 +30,15 @@ $resultats = $q->fetchAll();
                     </div>
                 </div>
                 <div class="card mt-3">
-                    <ul class="bg-dark list-group list-group-flush">
-                        <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <ul class="bg-secondary list-group list-group-flush">
+                        <li class="bg-secondary list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <?php if(!empty($infos['Github'])) { ?>
                                 <i class="fab fa-github" title="Lien Github"></i><a class="text-white" id="monGithub" href="https://github.com/<?= $infos['Github']; ?>"><?= $infos['Github']; ?></a><i class="fas fa-wrench text-warning editmode" id="Github" onclick="goEdit(this.id)" title="Modifier mon pseudo Github"></i>
                             <?php } else { ?>
                                 <i class="fab fa-github" title="Lien Github"></i> <span id="monGithub">Non renseigné !</span><i class="fas fa-wrench text-warning editmode" id="Github" onclick="goEdit(this.id)" title="Ajouter mon pseudo Github"></i>
                             <?php } ?>
                         </li>
-                        <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                        <li class="bg-secondary list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <?php if(!empty($infos['Site'])) { ?>
                                 <i class="fas fa-link" title="Lien site personnel"></i><a class="text-white" id="monSite" href="<?= $infos['Site']; ?>" target="_blank">Site personnel</a><i class="fas fa-wrench text-warning editmode" id="Site" onclick="goEdit(this.id)" title="Modifier l'adresse de mon site"></i>
                             <?php } else { ?>
@@ -65,7 +66,7 @@ $resultats = $q->fetchAll();
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Nom <?= $user['HIDDEN']; ?></h6>
+                                <h6 class="mb-0">Nom</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <?php if(!empty($infos['Nom'])) { ?>
@@ -163,6 +164,8 @@ $resultats = $q->fetchAll();
             </div>
         </div>
     </div>
+</div>
+
 </div>
 <script type="text/javascript">
 

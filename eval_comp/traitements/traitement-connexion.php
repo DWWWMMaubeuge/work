@@ -21,7 +21,6 @@ if(isset($_POST['email'])) {
                 $infos = $account->fetch();
                 $_SESSION = [];
                 $_SESSION['id'] = $infos['ID'];
-                $feedback = "Connexion réussie !";
 
             } else {
 

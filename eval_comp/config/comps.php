@@ -58,10 +58,10 @@ function getDisabledComps($id) {
     $front_comps = $bdd->prepare('SELECT * FROM Matieres WHERE Categorie = ? AND Active = FALSE ORDER BY Nom');
     $front_comps->execute(['Front']);
 
-    $back_comps = $bdd->prepare('SELECT * FROM Matieres WHERE Categorie = ? Active = FALSE ORDER BY Nom');
+    $back_comps = $bdd->prepare('SELECT * FROM Matieres WHERE Categorie = ? AND Active = FALSE ORDER BY Nom');
     $back_comps->execute(['Back']);
 
-    $other_comps = $bdd->prepare('SELECT * FROM Matieres WHERE Categorie = ? Active = FALSE ORDER BY Nom');
+    $other_comps = $bdd->prepare('SELECT * FROM Matieres WHERE Categorie = ? AND Active = FALSE ORDER BY Nom');
     $other_comps->execute(['Autres']);
     
     echo "<div class='form-group'>";
