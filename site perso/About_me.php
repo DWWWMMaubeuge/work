@@ -1,6 +1,6 @@
 <?php
-include "php/php1.php";
-HEAD("Page d'accueil");
+include "php/Entete.php";
+HEAD("About me");
 ?>
 
   
@@ -8,6 +8,7 @@ HEAD("Page d'accueil");
 <body>
 
 <?php
+include "php/NavB.php";
 NAVB();
 ?>
 

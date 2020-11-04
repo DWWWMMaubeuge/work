@@ -7,8 +7,6 @@ nav{
     background: transparent;
     height: 80px;
     width: 100%;
-    
-    position: fixed;
     z-index: 100;
 }
 
@@ -22,10 +20,6 @@ nav{
     font-size: 20px;
     text-shadow: white 0.1em 0.1em 0.2em, -1px 0 white, 0 1px white,
     1px 0 white, 0 -1px white;
-}
-
-.down{
-  margin-top: 50px;
 }
 
 nav ul{
@@ -107,6 +101,32 @@ a.active,a:hover{
     left: 0;
   }
 }  
+
+.stream 
+{
+  box-shadow:
+  0 0 0.1vw  0.1vw #fff7f7,   
+  0 0 0.1vw  0.1vw #cea322, 
+  0 0   0.5vw  0.1vw#cea322,
+  inset 0 0 1.5vw  0.1vw #cea322,
+  inset 0 0 0.4vw  0.1vw#cea322,
+  inset 0 0 0.5vw  0.1vw #fff7f7;
+  z-index: 1;
+}
+ 
+iframe
+{
+  z-index: 2;
+  padding: 4px;
+  width: 500px;
+  height: 500px;
+}
+
+.container-fluid
+{
+    padding-left: 0;
+    width: 100%;
+}
 
 .fa-bars:before {
 color: #292107;
@@ -332,3 +352,4 @@ font-weight: 400   ;
 .margin-top {
   margin-top: 10%;
 }
+

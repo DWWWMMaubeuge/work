@@ -13,12 +13,15 @@
 ?>
 
 <?php
-include "php/php1.php";
-HEAD("Page d'accueil");
+include "php/Entete.php";
+HEAD("Dessin");
 ?>
 
-<body >
+  
+
+<body>
 
 <?php
+include "php/NavB.php";
 NAVB();
 ?>

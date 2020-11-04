@@ -13,20 +13,31 @@
 ?>
 
 <?php
-include "php/php1.php";
+include "php/EnteteStream.php";
 HEAD("Stream");
 ?>
 
 <body >
 
+<style>
+        .container-fluid
+        {
+            width: 90%;    
+        }
+        body {
+            padding:0;
+        }
+</style>
+
 <nav>
 <?php
+include "php/NavB.php";
 NAVB();
 ?>
 </nav>
 
     <!-- container -->
-    <div class="container-fluid" >
+    <div class="container-fluid " >
 
         <!-- row-->
         <div class="row p-3">
