@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once(  "CO_global_functions.php"  );
 
 
@@ -44,7 +44,7 @@ function setWidgetValue( $idSkill )
 
 
 
-session_start();
+
 $ID_user = $_SESSION[ 'ID_user' ];
 $name_user = $_SESSION[ 'name' ];
 $surname_user = $_SESSION[ 'surname' ];
@@ -52,7 +52,7 @@ $surname_user = $_SESSION[ 'surname' ];
 echo "<h3>bonjour $surname_user</h3>\n";
 
 
-$req = "SELECT * FROM DWWM_Maubeuge.skills";
+$req = "SELECT * FROM fouad.skills";
 $result = executeSQL( $req );
 
 $skills = [];
@@ -71,7 +71,7 @@ if( $_POST && $_POST['selSkill'] != "" && $_POST['valSkill'] != "" )
     $valSkill       = $_POST['valSkill'];
 
     
-    $req = "INSERT INTO DWWM_Maubeuge.results ( id_user, id_skill, result ) VALUES ( ".$ID_user.", ".$selSkill.", ".$valSkill." );";
+    $req = "INSERT INTO fouad.results ( id_user, id_skill, result ) VALUES ( ".$ID_user.", ".$selSkill.", ".$valSkill." );";
     $result = executeSQL( $req );
     echo "<h3>skill à jour</h3>";
 }
