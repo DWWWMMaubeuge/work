@@ -1,15 +1,17 @@
 <?php
-  require 'src/connexion.php';
+require 'src/connexion.php';
 
-  $req = $bdd->prepare("SELECT r.id_matiere, r.id_user, m.mat, r.note, MAX(r.datex)
+$id_user = $_SESSION["id_user"];
+
+$req = $bdd->prepare("SELECT r.id_matiere, m.mat, r.note
                         FROM matieres as m
                         INNER JOIN resultats as r
                         ON m.id = r.id_matiere
-                      ");
-  $req->execute();
+                          AND r.id_user = :id_user
+                        GROUP BY r.id_matiere");
+$req->execute(array(
+  "id_user" => $id_user
+));
 
-  $result = [];
-  while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
-    array_push($result, $data);
-  }
+$array = $req->fetchAll(PDO::FETCH_ASSOC);
 ?>

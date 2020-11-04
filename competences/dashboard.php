@@ -1,21 +1,12 @@
 <?php
 session_start();
-include 'displayMat.php';
-include 'getNote.php';
+require 'displayMat.php';
+require 'getNote.php';
 
 if (!isset($_SESSION["fname"])) {
   header("location: ./");
   exit();
 }
-
-$req = $bdd->prepare("SELECT r.id_matiere, m.mat, r.note, r.datex
-                        FROM matieres as m
-                        INNER JOIN resultats as r
-                        ON m.id = r.id_matiere
-                        GROUP BY r.id_matiere");
-$req->execute();
-
-$array = $req->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -32,22 +23,21 @@ $array = $req->fetchAll(PDO::FETCH_ASSOC);
   <main class="container">
     <h1>Bonjour <?= $_SESSION["fname"] ?> !</h1>
     <p>Ceci est votre tableau de bord</p>
-    <form action="#" method="POST">
 
-      <?php
-      displayEval($matieres);
-      ?>
+      <div class="row">
 
-    </form>
+        <?php
+        displayEval($matieres, $array, 0);
+        ?>
 
-    <input type="hidden" id=varToPass value=<?= json_encode($array); ?>>
+      </div>
 
     <p><a href="deconnexion.php">Déconnexion</a></p>
 
   </main>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="script.js" type="text/javascript"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

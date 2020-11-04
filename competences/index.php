@@ -73,7 +73,7 @@ if(!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["password
     <?php endif; ?>
   
 
-    <form action="" method="POST">
+    <form action="#" method="POST">
       <div class="form-group">
         <input type="text" class="form-control" name="fname" placeholder="Prénom de l'utilisateur" required>
       </div>

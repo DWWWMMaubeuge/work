@@ -72,7 +72,7 @@ if ((!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["passwo
       <div class="form-group">
         <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
       </div>
-      <button typr="submit" class="btn btn-primary">Se connecter</button>
+      <button type="submit" class="btn btn-primary">Se connecter</button>
     </form>
   </main>
 </body>
