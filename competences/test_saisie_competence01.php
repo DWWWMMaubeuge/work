@@ -29,7 +29,7 @@ function MAJValue( id_skill, value  )
 
 
 
-}
+
 
 
 

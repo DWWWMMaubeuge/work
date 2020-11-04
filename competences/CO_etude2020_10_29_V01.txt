@@ -33,7 +33,7 @@ Les données
         ID_skill
         resultat
 
-        CREATE TABLE  results ( id INT AUTO_INCREMENT PRIMARY KEY NOT NULL, datex DATETIME DEFAULT(NOW()),  id_user INT, id_skill INT, result INT );
+        CREATE TABLE  results ( id INT AUTO_INCREMENT PRIMARY KEY NOT NULL, datex DATETIME DEFAUL NOW(),  id_user INT, id_skill INT, result INT );
 
 
 
@@ -43,8 +43,21 @@ Les données
         
         INSERT INTO skills ( name ) VALUES ( "HTML" );
         INSERT INTO skills ( name ) VALUES ( "CSS" );
-        INSERT INTO skills ( name ) VALUES ( "AJAX" );
         INSERT INTO skills ( name ) VALUES ( "JavaScript" );
+        INSERT INTO skills ( name ) VALUES ( "PHP" );
+        INSERT INTO skills ( name ) VALUES ( "AJAX" );
+        INSERT INTO skills ( name ) VALUES ( "Jquery" );
+        INSERT INTO skills ( name ) VALUES ( "RESPONS" );
+        INSERT INTO skills ( name ) VALUES ( "SQL" );
+        INSERT INTO skills ( name ) VALUES ( "Composer" );
+        INSERT INTO skills ( name ) VALUES ( "Symfony" );
+        INSERT INTO skills ( name ) VALUES ( "Doctrine" );
+        INSERT INTO skills ( name ) VALUES ( "Twig" );
+        INSERT INTO skills ( name ) VALUES ( "Agile" );
+        INSERT INTO skills ( name ) VALUES ( "GIT" );
+        INSERT INTO skills ( name ) VALUES ( "SEO" );
+        INSERT INTO skills ( name ) VALUES ( "RGPD" );
+
 
         INSERT INTO users ( name, surname, mail, password ) VALUES ( "ligonnes",  "xavier",    "xligo@gmail.com", "123" );
         INSERT INTO users ( name, surname, mail, password ) VALUES ( "henry",     "bernard",   "bhl@gmail.com", "123" );
