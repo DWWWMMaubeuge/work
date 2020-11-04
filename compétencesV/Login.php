@@ -2,12 +2,6 @@
 include 'idBDD.php';
 session_start();
 
-try {
-    $bdd = new PDO('mysql:host='.$host.';dbname='.$dbname.';charset=UTF8', $user, $pass);
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die($e->getMessage());
-}
 $query1=$bdd->prepare("SELECT count(*) AS nb FROM users WHERE email=:email AND password=:mdp");
 $query2=$bdd->prepare("SELECT * FROM users WHERE email=:email AND password=:mdp");
 

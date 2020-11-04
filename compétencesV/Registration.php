@@ -1,11 +1,5 @@
 <?php
 include 'idBDD.php';
-try {
-    $bdd = new PDO('mysql:host='.$host.';dbname='.$dbname.';charset=UTF8', $user, $pass);
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die($e->getMessage());
-}
 
 $query1 = $bdd->prepare("INSERT INTO users(name,firstname,email,password) VALUES(:name , :firstname , :email , :password)");
 $query2 = $bdd->prepare("SELECT count(*) AS nb FROM users WHERE email=:email");

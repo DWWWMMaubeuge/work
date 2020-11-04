@@ -36,19 +36,19 @@ include 'fonctionAffichages.php';
         }
     </style>
     <body class="bg-dark">
+    <div id="tabSkills">Tableau de note</div>
+    <div id="letableau"></div>
     <?php
     echo "<div class='container bg-light mt-5 border border-primary p-5 rounded'>";
     echo "<h1 class='text-center'>Bonjour ". $_SESSION['nom']." ". $_SESSION['prenom'];
     echo "</div>";
-    echo "<div class='container bg-light mt-5 border border-primary p-5 rounded'>";
+    echo "<div class='container bg-light mt-5 mb-5 border border-primary p-5 rounded'>";
     echo "<form method=\"post\">";
-    formMat($skills);
+    formMat($skills,0,$array2);
     echo "</form>";
     echo "<div class='text-center'><a href='disconnect.php' class='btn btn-primary text-decoration-none' >Deconnexon</a></div>";
     echo "</div>";
     ?>
-    <div id="tabSkills">Tableau de note</div>
-    <div id="letableau"></div>
 
     <script src = 'sendResult.js'></script>
     <script src = 'AffichageDirect.js'></script>

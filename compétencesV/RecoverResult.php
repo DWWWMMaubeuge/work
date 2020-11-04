@@ -2,18 +2,12 @@
 include "idBDD.php";
 session_start();
 
-try {
-    $bdd = new PDO('mysql:host='.$host.';dbname='.$dbname.';charset=UTF8', $user, $pass);
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die($e->getMessage());
-}
-$query=$bdd->prepare("SELECT r.id_mat,r.eval,r.date,m.matiere FROM resultat as r INNER JOIN matieres as m ON r.id_mat = m.id WHERE r.id_user=".$_SESSION['idUser']." GROUP BY r.id_mat ORDER BY r.date DESC");
+$query=$bdd->prepare("SELECT r.id_mat,r.eval,r.date,m.matiere FROM resultat as r INNER JOIN matieres as m ON r.id_mat = m.id WHERE r.id_user=".$_SESSION['idUser']." GROUP BY r.id_mat ");
 
 $query->execute();
 
 $array=$query->fetchAll(PDO::FETCH_ASSOC);
-asort($array);
+sort($array);
 //var_dump($array);
 
 function affTable($array){
@@ -38,5 +32,6 @@ function affTable($array){
     echo "</table>";
 }
 affTable($array);
+
 ?>
 
