@@ -38,7 +38,7 @@ if(!empty($_POST['Pseudo'])) {
                             $sql->bindParam('hidden', $hidden, PDO::PARAM_BOOL);
                             $sql->execute();
 
-                            $feedback = "Votre compte a bien été créé ! Vous pouvez désormais vous <a href='connexion.php'>connecter</a> !";
+                            $feedback = "Votre compte a bien été créé ! Vous pouvez désormais vous connecter !";
 
                         } else {
 

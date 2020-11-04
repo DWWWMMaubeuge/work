@@ -1,5 +1,7 @@
 <?php
 
+include('../config/pdo-connect.php');
+
 if(isset($_POST['email'])) {
 
     if(!empty($_POST['email'])) {
@@ -14,13 +16,12 @@ if(isset($_POST['email'])) {
             $account->bindParam(':mdp', $mdp);
             $account->execute();
             $count = $account->rowCount();
-            $infos = $account->fetch();
             if($count != 0) {
 
+                $infos = $account->fetch();
                 $_SESSION = [];
                 $_SESSION['id'] = $infos['ID'];
-                header('location: accueil.php');
-                exit();
+                $feedback = "Connexion réussie !";
 
             } else {
 
@@ -39,6 +40,12 @@ if(isset($_POST['email'])) {
         $feedback = "Veuillez insérer votre nom !";
 
     }
+
+}
+
+if(isset($feedback)) {
+
+    echo $feedback;
 
 }
 
