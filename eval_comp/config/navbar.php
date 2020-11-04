@@ -19,8 +19,8 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <form class="mx-2 text-center" method="POST" id="connexion">
                 <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" name="email" id="email" class="form-control" placeholder="Adresse e-mail" aria-describedby="helpId">
+                  <label for="connexionemail">Email</label>
+                  <input type="email" name="connexionemail" id="connexionemail" class="form-control" placeholder="Adresse e-mail" aria-describedby="helpId">
                 </div>
                 <div class="form-group">
                   <label for="password">Mot de passe</label>
@@ -77,7 +77,7 @@
         type: 'POST',
         url: 'traitements/traitement-connexion.php',
         data: {
-            'email': $('#email').val(),
+            'email': $('#connexionemail').val(),
             'mdp': $('#password').val()
         },
         dataType: 'html',
