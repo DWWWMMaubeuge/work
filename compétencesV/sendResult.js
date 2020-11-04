@@ -7,7 +7,6 @@ $(function(){
             {
                 id_mat: $(this).attr('id'),
                 eval: $(this).val()
-
             })
     })
 })

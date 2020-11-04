@@ -18,14 +18,18 @@ sort($array2);
 function formMat($skills,$i,$note){
     foreach( $skills as $array) {
         //var_dump($array);
-        echo "<div class='form-group'>";
-        echo "<label for=" . $array['id'] . ">" . $array['matiere'] . "</label>";
-        if (!isset($note[$i])) {
-            echo "<input  class='form-control' type=\"number\" step=\"1\" id=" . $array['id'] . " name=" . $array['matiere'] . " min='0' max='10'>";
-        } else {
-            echo "<input  class='form-control' type=\"number\" step=\"1\" id=" . $array['id'] . " name=" . $array['matiere'] . " value=" . $note[$i]['eval'] . " min='0' max='10'>";
-        }
-        $i++;
+        echo "<div class='col-4'>";
+            echo "<div class='input-group mb-3'>";
+            echo "<div class='input-group-prepend'>";
+            echo "<label class='input-group-text bg-primary' style='width:6rem' for=" . $array['id'] . ">" . $array['matiere'] . "</label>";
+            echo "</div>";
+            if (!isset($note[$i])) {
+                echo "<input  class='form-control border border-primary' type=\"number\" step=\"1\" id=" . $array['id'] . " name=" . $array['matiere'] . " min='0' max='10'>";
+            } else {
+                echo "<input  class='form-control border border-primary' type=\"number\" step=\"1\" id=" . $array['id'] . " name=" . $array['matiere'] . " value=" . $note[$i]['eval'] . " min='0' max='10'>";
+            }
+            $i++;
+            echo "</div>";
         echo "</div>";
     }
 }
