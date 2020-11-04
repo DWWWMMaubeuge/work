@@ -14,12 +14,20 @@ if( $_POST && $_POST['email'] != "" && $_POST['password'] != ""  )
 
     // attention aux doublons des mail
 
+<<<<<<< HEAD
     $req = "SELECT count(*) as nb FROM $DB_dbname.users WHERE mail='$email' AND password='$password'";
+=======
+    $req = "SELECT count(*) as nb FROM $DB_dbname.users WHERE email='$email' AND password='$password'";
+>>>>>>> bfcd6faddea4a74667107085de82ce6db9c86a30
     $result = executeSQL( $req );
     $data = $result->fetch_assoc();
     if ( $data[ 'nb' ] == 1 )
     {
+<<<<<<< HEAD
         $req = "SELECT * FROM $DB_dbname.users WHERE mail='$email' AND password='$password'";
+=======
+        $req = "SELECT * FROM $DB_dbname.users WHERE email='$email' AND password='$password'";
+>>>>>>> bfcd6faddea4a74667107085de82ce6db9c86a30
         $result = executeSQL( $req );
         $data = $result->fetch_assoc();
         $_SESSION[ 'ID_user' ]  = $data[ 'id' ];
@@ -35,7 +43,6 @@ if( $_POST && $_POST['email'] != "" && $_POST['password'] != ""  )
     $name       = $_POST['name'];
     $surname    = $_POST['surname'];
     $password   = $_POST['password'];
-
 if(empty( $name ) || empty($surname) || empty($password ) ){
     echo "Please Complet all data";
 } else {
@@ -47,19 +54,15 @@ if(empty( $name ) || empty($surname) || empty($password ) ){
         echo "Welcome".$row["name"]."in your Account";
     }else{
         echo "Incorrect Data";
-
     }
 }
 }
-
 /*if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['password'] != "" ) 
 {
     $name       = $_POST['name'];
     $surname    = $_POST['surname'];
     $password   = $_POST['password'];
-
     // attention aux doublons des mail
-
     $req = "INSERT INTO skills.users ( name, surname, password ) VALUES ( '$name', '$surname', '$password' )";
     executeSQL( $req );
     header( "location: skills.php");

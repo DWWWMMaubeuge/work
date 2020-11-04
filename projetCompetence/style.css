@@ -105,13 +105,14 @@ label {
 /*SKILLS PAGE*/
 
 .skills{
-   
+
+  
     column-count: 3;
     -moz-column-count: 3;
     -webkit-column-count: 3;
-    column-gap: 80px;
-    -moz-column-gap: 80px;
-    -webkit-column-gap: 80px;
+    column-gap: 30px;
+    -moz-column-gap: 30px;
+    -webkit-column-gap: 30px;
 }
     
 
@@ -120,19 +121,20 @@ label {
     font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
-    margin: 20px 0;
+    /*margin: 20px 0;*/
   }
   
   .skill-bar{
     height: 10px;
   }
   
-  .skill-bar input{
-    height: 20px;
-    background-color: #C19A6B;
-    border-radius: 8px;
-    transition: 1s linear;
-    position: relative;
+ 
+
+  h3 {
+    text-align: left;
+    font-size: 30px;
+    border-bottom: 6px solid #C19A6B;
+    padding: 13px 0;
   }
   /*
   .skill-bar::before{
