@@ -13,10 +13,10 @@
         </div>
     </div>
 </div>
-<div class="container-fluid banner2 mt-5 d-none" id="learnmore">
+<div class="container-fluid banner2 d-none" id="learnmore">
     <div class="row" id="description">
-        <div class="col-md-8 text-center offset-md-2 bg-dark opacity-4 rounded info2">
-            <div class="my-5">
+        <div class="col-md-8 col-sm-8 text-center offset-md-2 offset-sm-2 bg-dark opacity-4 rounded info2">
+            <div class="my-5 my-5-sm">
                 <h2>Qui sommes nous ?</h2>
                 <p>Nous sommes les apprenants de la formation développeur web de l'AFPA de Rousies et nous sommes actuellement en train de passer notre titre professionnel de développeur web.</p>
             </div>
@@ -36,7 +36,7 @@
 
         let content = document.getElementById('learnmore');
         
-        content.className = "container-fluid banner2 mt-5";
+        content.className = "container-fluid banner2";
         $('html, body').animate({
             scrollTop: $("#description").offset().top
         }, 2000);
@@ -49,7 +49,7 @@
         $('html, body').animate({
             scrollTop: $("#top").offset().top
         }, 2000);
-        setTimeout(function(){ content.className = "container-fluid banner2 my-5 d-none"; }, 2000);
+        setTimeout(function(){ content.className = "container-fluid banner2 d-none"; }, 2000);
 
     }
 

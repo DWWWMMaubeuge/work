@@ -25,20 +25,46 @@ if(!empty($_POST['Pseudo'])) {
 
                         if($mdplength > 5) {
 
-                            $sql = $bdd->prepare('INSERT INTO Membres(Pseudo, Email, MDP, Admin) VALUES(:Pseudo, :Email, :MDP, :Admin)');
-                            $sql->bindParam(':Pseudo', $pseudo, PDO::PARAM_STR);
-                            $sql->bindParam(':Email', $email, PDO::PARAM_STR);
-                            $sql->bindParam(':MDP', $mdp, PDO::PARAM_STR);
-                            $sql->bindParam(':Admin', $admin, PDO::PARAM_BOOL);
-                            $sql->execute();
+                            $q = $bdd->prepare('SELECT * FROM Membres WHERE Pseudo = :pseudo');
+                            $q->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+                            $q->execute();
+                            $verif1 = $q->rowCount();
 
-                            $hidden = 0;
+                            if($verif1 == 0) {
 
-                            $sql = $bdd->prepare('INSERT INTO Visibilitée(HIDDEN) VALUES(:hidden)');
-                            $sql->bindParam('hidden', $hidden, PDO::PARAM_BOOL);
-                            $sql->execute();
+                                $q = $bdd->prepare('SELECT * FROM Membres WHERE Email = :email');
+                                $q->bindParam(':email', $email, PDO::PARAM_STR);
+                                $q->execute();
+                                $verif2 = $q->rowCount();
 
-                            $feedback = "Votre compte a bien été créé ! Vous pouvez désormais vous connecter !";
+                                if($verif2 == 0) {
+
+                                    $sql = $bdd->prepare('INSERT INTO Membres(Pseudo, Email, MDP, Admin) VALUES(:Pseudo, :Email, :MDP, :Admin)');
+                                    $sql->bindParam(':Pseudo', $pseudo, PDO::PARAM_STR);
+                                    $sql->bindParam(':Email', $email, PDO::PARAM_STR);
+                                    $sql->bindParam(':MDP', $mdp, PDO::PARAM_STR);
+                                    $sql->bindParam(':Admin', $admin, PDO::PARAM_BOOL);
+                                    $sql->execute();
+
+                                    $hidden = 0;
+
+                                    $sql = $bdd->prepare('INSERT INTO Visibilitée(HIDDEN) VALUES(:hidden)');
+                                    $sql->bindParam('hidden', $hidden, PDO::PARAM_BOOL);
+                                    $sql->execute();
+
+                                    $feedback = "Votre compte a bien été créé ! Vous pouvez désormais vous connecter !";
+                            
+                                } else {
+
+                                    $feedback = "Cette adresse e-mail est déjà utilisée !";
+
+                                }
+
+                            } else {
+
+                                $feedback = "Ce pseudo est déjà pris !";
+
+                            }
 
                         } else {
 

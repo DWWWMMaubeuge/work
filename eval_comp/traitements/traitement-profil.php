@@ -10,12 +10,25 @@ if(isset($_POST['Pseudo'])) {
 
         if($pseudolength <= 20) {
 
-            $q = $bdd->prepare('UPDATE Membres SET Pseudo = :pseudo WHERE ID = :userid');
+            $q = $bdd->prepare('SELECT * FROM Membres WHERE Pseudo = :pseudo');
             $q->bindParam(':pseudo', $_POST['Pseudo'], PDO::PARAM_STR);
-            $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
             $q->execute();
+            $verif1 = $q->rowCount();
 
-            $feedback = "Operation réussie !";
+            if($verif1 == 0) {
+
+                $q = $bdd->prepare('UPDATE Membres SET Pseudo = :pseudo WHERE ID = :userid');
+                $q->bindParam(':pseudo', $_POST['Pseudo'], PDO::PARAM_STR);
+                $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
+                $q->execute();
+
+                $feedback = "Operation réussie !";
+
+            } else {
+
+                $feedback = "Ce pseudo est déjà pris !";
+
+            }
         
         } else {
 
@@ -193,12 +206,25 @@ if(isset($_POST['Email'])) {
 
     if(filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL)) {
 
-        $q = $bdd->prepare('UPDATE Membres SET Email = :email WHERE ID = :userid');
+        $q = $bdd->prepare('SELECT * FROM Membres WHERE Email = :email');
         $q->bindParam(':email', $_POST['Email'], PDO::PARAM_STR);
-        $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
         $q->execute();
+        $verif2 = $q->rowCount();
 
-        $feedback = "Operation réussie !";
+        if($verif2 == 0) {
+
+            $q = $bdd->prepare('UPDATE Membres SET Email = :email WHERE ID = :userid');
+            $q->bindParam(':email', $_POST['Email'], PDO::PARAM_STR);
+            $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
+            $q->execute();
+
+            $feedback = "Operation réussie !";
+        
+        } else {
+
+            $feedback = "Cette adresse e-mail est déjà utilisé !";
+
+        }
 
     } else {
 
