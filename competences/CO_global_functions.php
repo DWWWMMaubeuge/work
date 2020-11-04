@@ -1,19 +1,20 @@
 <?php
 // global functions
 
+require_once ( "parametres.php" );
 
 
 function executeSQL( $req )
 {
+	GLOBAL $DB_URL, $DB_user, $DB_PW;
+
 	$result = false;
 	if ( $req != "" )
 	{
-		$servername = "10.115.49.73";
-		$username = "xavier";
-		$password = "xavier";
 
+		//echo "new mysqli($DB_URL, $DB_user, $DB_PW);<br>";
 		// Create connection
-		$conn = new mysqli($servername, $username, $password);
+		$conn = new mysqli($DB_URL, $DB_user, $DB_PW);
 
 		// Check connection
 		if ($conn->connect_error) 
