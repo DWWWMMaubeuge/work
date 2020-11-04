@@ -3,13 +3,16 @@
 <?php userIsLogged(); ?>
 <?php
 
-$req = $bdd->query("SELECT * FROM Matieres LEFT JOIN Resultats ON Matieres.id = Resultats.ID_MATIERE WHERE Active = TRUE");
+$req = $bdd->prepare('SELECT * FROM Matieres LEFT JOIN Resultats ON Matieres.id = Resultats.ID_MATIERE AND Resultats.ID_USER = :ID_USER WHERE Active = TRUE');
+$req->bindParam(':ID_USER', $_SESSION['id'], PDO::PARAM_INT);
+$req->execute();
 
 $skills = [];
 
-while( $data = $req->fetch())
-{
+while( $data = $req->fetch()) {
+
     array_push( $skills, [ $data['id'], $data['Nom'], $data['RESULTAT'] ] );
+
 }
 
 ?>

@@ -47,7 +47,7 @@ $users = $q->fetchAll(PDO::FETCH_ASSOC);
         <?php foreach($users as $user) { ?>
             <tr>
             <td scope="row"><?= $user['ID']; ?></td>
-            <td scope="row"><?= $user['Pseudo']; ?></td>
+            <td scope="row"><a href="utilisateur.php?pseudo=<?= $user['Pseudo']; ?>"><?= $user['Pseudo']; ?></a></td>
             <td scope="row"><?= $user['Prenom']; ?></td>
             <td scope="row"><?= $user['Nom']; ?></td>
             </tr>

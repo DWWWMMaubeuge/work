@@ -4,7 +4,7 @@ function userIsLogged() {
 
   if(!isset($_SESSION['id'])) {
 
-    header('location: index.php');
+    header('location: accueil.php');
     exit();
 
   }
@@ -15,7 +15,7 @@ function userIsNotLogged() {
 
   if(isset($_SESSION['id'])) {
 
-    header('location: index.php');
+    header('location: accueil.php');
     exit();
 
   }

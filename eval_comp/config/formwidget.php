@@ -1,7 +1,7 @@
 <?php 
 
-function setWidgetValue( $skill )
-{
+function setWidgetValue( $skill ) {
+    
     if(is_null($skill[2])) {
         $value = 0;
     } else {
@@ -14,13 +14,14 @@ function setWidgetValue( $skill )
 }
 
 
-function setAllWidgetValue( $skills  )
-{
+function setAllWidgetValue( $skills  ) {
+
     $widget = "<div id='valSkills' >\n";
     foreach( $skills as $skill )
         $widget .= setWidgetValue( $skill );
     $widget .= "</div>";
     return $widget;
+
 }
 
 ?>
