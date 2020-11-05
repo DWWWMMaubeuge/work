@@ -13,6 +13,22 @@ function setWidgetValue( $skill ) {
 
 }
 
+function setWidgetValue2( $skill  ) {
+    
+    if(is_null($skill[2])) {
+        
+        $value = 0;
+        
+    } else {
+        
+        $value = $skill[2];
+        
+    }
+    
+    $widget = "<div class='m-5'><p>".$skill[1]."</p><input id='number' type='number' value='" . $value ."' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value, " . $_SESSION['id'] . " )\"></div>";
+    return $widget;
+}
+
 
 function setAllWidgetValue( $skills  ) {
 

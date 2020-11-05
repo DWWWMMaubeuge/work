@@ -32,7 +32,7 @@ $users = $q->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <?= myHeader('Utilisateur'); ?>
 <?php require_once('config/navbar.php'); ?>
-<div class="container-fluid p-5 banner3short">
+<div class="container-fluid p-5 banner3">
     <h1 class="text-center my-5">Liste des utilisateurs</h1>
     <table class="table table-hover table-dark w-50 m-auto">
         <thead>

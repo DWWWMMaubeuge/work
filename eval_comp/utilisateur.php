@@ -36,7 +36,7 @@ $resultats = $q->fetchAll();
 <?php include('config/formwidget.php'); ?>
 <?= myHeader('Profil de ' . $user['Pseudo']); ?>
 <?php require_once('config/navbar.php'); ?>
-<div class="container-fluid p-5 banner3short">
+<div class="container-fluid p-5 banner3">
     <div class="m-5">
         <div class="main-body">
             <div class="row gutters-sm">

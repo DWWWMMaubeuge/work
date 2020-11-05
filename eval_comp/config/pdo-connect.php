@@ -3,15 +3,15 @@
 session_start();
 
 $servername = "localhost";
-$username = "root";
-$password = "admin";
+$username = "id15316558_theevilfox";
+$password = "@59199Hergnies";
 
 GLOBAL $bdd;
 GLOBAL $infos;
 
 try {
 
-  $bdd = new PDO("mysql:host=$servername;dbname=DWM_Maubeuge", $username, $password);
+  $bdd = new PDO("mysql:host=$servername;dbname=id15316558_dwm_maubeuge", $username, $password);
   $bdd->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
   $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
