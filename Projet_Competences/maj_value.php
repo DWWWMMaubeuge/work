@@ -1,7 +1,7 @@
 <?php
 
-require_once( "parametres.php" );
-include_once(  "CO_global_functions.php"  );
+
+include_once(  "Connect.php"  );
 
 session_start();
 $ID_user = $_SESSION[ 'ID_user' ];
