@@ -28,7 +28,7 @@ sort($array);
 //var_dump($array);
 
 function affTable($array){
-    echo "<table class='table'>";
+    echo "<table class='table table-striped'>";
     echo "<thead class='thead-dark'>";
     echo "<tr >";
     foreach($array as $note){
@@ -43,7 +43,9 @@ function affTable($array){
     echo "</tr>";
     echo "<tr >";
     foreach($array as $note){
-        echo "<td>".$note['date']."</td>";
+        $arr=explode(' ', $note['date']);
+
+        echo "<td>".$arr[0]."</td>";
     }
     echo "</tr>";
     echo "</table>";

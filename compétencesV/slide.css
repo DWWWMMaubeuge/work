@@ -1,11 +1,11 @@
 #tabSkills{
     top:0;
-    background-color: black;
+    background-color: #091539;
 }
 #letableau, #tabSkills {
     padding: 5px;
     text-align: center;
-    border: solid 1px #c3c3c3;
+    border: solid 3px #000000;
     position:fixed;
     width:100%;
     color:white;
@@ -13,8 +13,9 @@
 }
 
 #letableau{
-    background-color: white;
+    background-color: whitesmoke;
     padding: 50px;
     display: none;
     top:38px;
+
 }

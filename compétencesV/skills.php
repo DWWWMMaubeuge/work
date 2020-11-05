@@ -13,20 +13,21 @@ include 'fonctionAffichages.php';
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="slide.css">
+        <link rel="stylesheet" href="skills.css">
         <title>Document</title>
     </head>
     <body class="bg-dark">
     <div id="tabSkills">Tableau de note</div>
     <div id="letableau"></div>
     <?php
-    echo "<div class='container bg-light mt-5 border border-primary p-5 rounded'>";
-    echo "<h1 class='text-center'>Bonjour ". $_SESSION['prenom']." ". $_SESSION['nom'];
+    echo "<div class='container mt-5 border border-primary p-5 rounded background'>";
+    echo "<h1 class='text-center text-white'>Bonjour ". $_SESSION['prenom']." ". $_SESSION['nom'];
     echo "</div>";
-    echo "<div class='container bg-light mt-5 mb-5 border border-primary p-5 rounded'>";
+    echo "<div class='container background mt-5 mb-5 border border-primary p-5 rounded'>";
     echo "<div class='row'>";
     formMat($skills,$array2,0);
     echo "</div>";
-    echo "<div class='text-center'><a href='disconnect.php' class='btn btn-primary text-decoration-none' >Deconnexon</a></div>";
+    echo "<div class='text-center'><a href='disconnect.php' class='btn btn-primary text-decoration-none' >Deconnexion</a></div>";
     echo "</div>";
 
     ?>
