@@ -21,52 +21,68 @@
 <br><br>
 <form action="CO_resultSkills.php" method="post">
 <div class="skill">
-<label>HTML:</label>
-<input type="range" name="html" value="" max="10" min="0" ></input>
+<label>HTML</label>
 <br>
-<label>CSS:</label>
-<input type="range" name="css" value="" max="10" min="0" ></input>
+<input type="range" name="html" value="" max="10" min="0" step="1"></input>
 <br>
-<label>JS:</label>
+<label>CSS</label>
+<br>
+<input type="range" name="css" value="" max="10" min="0" step="1"></input>
+<br>
+<label>JS</label>
+<br>
 <input type="range" name="js" value="" max="10" min="0" step="1"></input>
 <br>
-<label>PHP:</label>
+<label>PHP</label>
+<br>
 <input type="range" name="php" value="" max="10" min="0" step="1"></input>
 <br>
-<label>AJAX:</label>
+<label>AJAX</label>
+<br>
 <input type="range" name="ajax" value="" max="10" min="0" step="1"></input>
 <br>
-<label>JQUERY:</label>
+<label>JQUERY</label>
+<br>
 <input type="range" name="jquery" value="" max="10" min="0" step="1"></input>
 <br>
-<label>RESPONSIVE:</label>
+<label>RESPONSIVE</label>
+<br>
 <input type="range" name="responsive" value="" max="10" min="0" step="1"></input>
 <br>
-<label>COMPOSER:</label>
+<label>COMPOSER</label>
+<br>
 <input type="range" name="composer" value="" max="10" min="0" step="1"></input>
 <br>
-<label>SYMFONY:</label>
+<label>SYMFONY</label>
+<br>
 <input type="range" name="symfony" value="" max="10" min="0" step="1"></input>
 <br>
-<label>DOCTRINE:</label>
+<label>DOCTRINE</label>
+<br>
 <input type="range" name="doctrine" value="" max="10" min="0" step="1"></input>
 <br>
-<label>TWIG:</label>
+<label>TWIG</label>
+<br>
 <input type="range" name="twig" value="" max="10" min="0" step="1"></input>
 <br>
-<label>AGILE:</label>
+<label>AGILE</label>
+<br>
 <input type="range" name="agile" value="" max="10" min="0" step="1"></input>
 <br>
-<label>GIT:</label>
+<label>GIT</label>
+<br>
 <input type="range" name="git" value="" max="10" min="0" step="1"></input>
 <br>
-<label>PYTHON:</label>
+<label>PYTHON</label>
+<br>
 <input type="range" name="python" value="" max="10" min="0" step="1"></input>
 <br>
-<label>SEO:</label>
+<label>SEO</label>
+<br>
 <input type="range" name="seo" value="" max="10" min="0" step="1"></input>
 <br>
-<label>RGPD:</label>
+<label>RGPD</label>
+<br>
 <input type="range" name="rgpd" value="" max="10" min="0" step="1"></input>
 <br>
 </div>
