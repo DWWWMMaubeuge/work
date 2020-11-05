@@ -1,24 +1,4 @@
-<?php
 
-include_once("functionConnect.php");
-
-
-
-if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'] != "" && $_POST['password'] != "" ) 
-{
-    $name       = $_POST['name'];
-    $surname    = $_POST['surname'];
-    $email       = $_POST['email'];
-    $password   = $_POST['password'];
-
-    // attention aux doublons des mail
-
-    $req = "INSERT INTO $DB_dbname.users ( name, surname, email, password ) VALUES ( '$name', '$surname', '$email', '$password' )";
-    executeSQL( $req );
-    header( "location: acceuil.php");
-}
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -52,3 +32,24 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
 <INPUT class="btn" type='submit' value='Sign in'>
 </div>
 </FORM>
+<?php
+
+include_once("functionConnect.php");
+
+
+
+if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'] != "" && $_POST['password'] != "" ) 
+{
+    $name       = $_POST['name'];
+    $surname    = $_POST['surname'];
+    $email       = $_POST['email'];
+    $password   = $_POST['password'];
+
+    // attention aux doublons des mail
+
+    $req = "INSERT INTO $DB_dbname.users ( name, surname, email, password ) VALUES ( '$name', '$surname', '$email', '$password' )";
+    executeSQL( $req );
+    header( "location: acceuil.php");
+}
+
+?>

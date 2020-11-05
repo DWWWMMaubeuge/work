@@ -154,16 +154,18 @@ label {
     border-bottom: 3px solid #C19A6B;
    
   }
-  /*
-  .skill-bar::before{
-    content: attr(max);
-    position: absolute;
-    padding: 4px 6px;
-    background-color: #000;
-    color: #fff;
-    font-size: 12px;
-    border-radius: 4px;
-    top: -35px;
-    right: 0;
-    transform: translateX(50%);
-  }*/
+  
+
+  a {
+
+    width: 100%;
+    background: none;
+    border: 2px solid #C19A6B;
+    color: white;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 12px 0;
+    text-decoration: none;
+    
+}
