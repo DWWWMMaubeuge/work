@@ -61,6 +61,6 @@ a:hover {
   background-color: black;
   color: white;
 }
-.body {
- 
+body{
+  opacity:1;
 }
