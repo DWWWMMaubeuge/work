@@ -1,12 +1,11 @@
+<?php
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Form</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+include_once("functionHeader.php");
+
+setHearder();
+NavBar()
+;
+?>
 <body>
 
 <div class="login-box">
@@ -49,7 +48,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
 
     $req = "INSERT INTO $DB_dbname.users ( name, surname, email, password ) VALUES ( '$name', '$surname', '$email', '$password' )";
     executeSQL( $req );
-    header( "location: acceuil.php");
+    header( "location: logIn.php");
 }
 
 ?>

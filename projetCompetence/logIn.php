@@ -78,7 +78,7 @@ if(empty( $name ) || empty($surname) || empty($password ) ){
         <div class="bg-image">
         </div>
         
-        <h1>Login</h1>
+        <h1>LogIn</h1>
         
         <div  class="textbox">
              <i class="fas fa-envelope"></i>
