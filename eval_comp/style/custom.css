@@ -1,0 +1,99 @@
+.opacity-0 {
+    opacity: 0;
+}
+
+.opacity-1 {
+    opacity: 0.2;
+}
+
+.opacity-2 {
+    opacity: 0.4;
+}
+
+.opacity-3 {
+    opacity: 0.6;
+}
+
+.opacity-4 {
+    opacity: 0.8;
+}
+
+.opacity-5 {
+    opacity: 1;
+}
+
+.border-1 {
+    border-width:3px !important;
+}
+
+.border-2 {
+    border-width:6px !important;
+}
+
+.border-3 {
+    border-width: 9px !important;
+}
+
+.editmode {
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.banner, .banner2 {
+    height: 100vh;
+	width: 100%;
+	background: url('../images/overlay.png'),url('../images/background.jpg');
+	background-position: top;
+    background-size:cover;
+	/*background-attachment: fixed;*/
+	background-repeat: no-repeat;
+}
+
+.banner2 {
+    background: url('../images/overlay.png'),url('../images/background2.jpg');
+
+}
+
+.banner3 {
+    background: url('../images/overlay.png'),url('../images/background3.jpg');
+    background-position: center !important;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+     background-size: cover !important;
+     background-repeat: repeat !important;
+     min-height: 100vh !important;
+}
+
+.banner .info, .banner2 .info2{
+	margin-top:15%;
+	transform: translateY(-15%);
+}
+
+.banner .info h1{
+	font-size: 2.5em;
+	font-weight: 700;
+	color: #fff;
+	letter-spacing: 2px;
+}
+
+.banner .info p{
+	font-size: 2em;
+	font-weight: 500;
+	color: #aaa;
+	letter-spacing: 2px;
+}
+
+.banner .info button {
+	margin-left:50%;
+	transform: translateX(-50%);
+	color: #fff;
+	background: #e91d43;
+	padding:10px 20px; 
+	font-size: 2em;
+	font-weight: 600;
+}
+
+.banner .info button:hover {
+	background: #e91e63;
+}
