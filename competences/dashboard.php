@@ -1,7 +1,6 @@
 <?php
 session_start();
 require 'displayMat.php';
-require 'getNote.php';
 
 if (!isset($_SESSION["fname"])) {
   header("location: ./");
@@ -27,7 +26,7 @@ if (!isset($_SESSION["fname"])) {
       <div class="row">
 
         <?php
-        displayEval($matieres, $array, 0);
+          displayEval($matieres, $array);
         ?>
 
       </div>

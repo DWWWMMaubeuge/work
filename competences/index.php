@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require 'src/connexion.php';
 
 if(!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["password"]) && !empty($_POST["password_confirm"]) ) {
@@ -39,9 +39,34 @@ if(!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["password
     "password" => $password,
   ));
 
+  // ON RECUPERE L'ID DE L'SER
+  $req = $bdd->prepare("SELECT * FROM users WHERE fname = :fname AND lname = :lname");
+  $req->execute(array(
+    "lname" => $lname,
+    "fname" => $fname
+  ));
+
+  while ($users = $req->fetch()) {
+    if ($password == $users["password"]) {
+      $_SESSION["id_user"] = $users["id"];
+    }
+  }
+
+  //ON INITIALISE lES NOTES A 0
+  for ($i = 1; $i <= 16; $i++) {
+    $req = $bdd->prepare("INSERT INTO resultats(id_user, id_matiere, note) VALUES(:id_user, :id_matiere, :note)");
+    $req->execute(array(
+      "id_user" => $_SESSION["id_user"],
+      "id_matiere" => $i,
+      "note" => 0
+    ));
+    $req->closeCursor();
+  }
+
   header('location: ./connexion.php?success=1');
   exit();
 }
+
 ?>
 
 <!DOCTYPE html>
