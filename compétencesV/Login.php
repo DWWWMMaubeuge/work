@@ -7,9 +7,7 @@ $query2=$bdd->prepare("SELECT * FROM users WHERE email=:email AND password=:mdp"
 
 
 if (isset($_POST['submit'])){
-    if (isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['firstname']) && !empty($_POST['firstname']) && isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['pwd']) && !empty($_POST['pwd'])){
-        $nom=$_POST['name'];
-        $prenom=$_POST['firstname'];
+    if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['pwd']) && !empty($_POST['pwd'])){
         $email=$_POST['email'];
         $mdp=$_POST['pwd'];
         $query1->bindParam(':mdp',$mdp,PDO::PARAM_STR);

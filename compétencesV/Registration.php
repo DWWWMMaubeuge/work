@@ -3,7 +3,8 @@ include 'idBDD.php';
 
 $query1 = $bdd->prepare("INSERT INTO users(name,firstname,email,password) VALUES(:name , :firstname , :email , :password)");
 $query2 = $bdd->prepare("SELECT count(*) AS nb FROM users WHERE email=:email");
-
+$query3 = $bdd->prepare( "SELECT id FROM users WHERE email=:email");
+$query4 = $bdd->prepare("INSERT INTO resultat(id_user,eval,id_mat) VALUES(:id_user,0,:id_mat)");
 if (isset($_POST["submit"])) {
     if (isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['firstname']) && !empty($_POST['firstname']) && isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['pwd']) && !empty($_POST['pwd']))
         {
@@ -16,6 +17,16 @@ if (isset($_POST["submit"])) {
                 $query1->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
                 $query1->bindParam(':password', $_POST['pwd'], PDO::PARAM_STR);
                 $query1->execute();
+                $query3->bindParam(':email',$_POST['email']);
+                $query3->execute();
+                $array2=$query3->fetch(PDO::FETCH_ASSOC);
+                for ($i=1;$i<17;$i++){
+                    $query4->bindParam(':id_user',$array2['id']);
+                    $query4->bindParam(':id_mat',$i);
+                    $query4->execute();
+                }
+
+
                 header('Location: connnexion.php');
             } else {
                 echo "cet utilisateur existe déja";

@@ -20,11 +20,11 @@ include 'fonctionAffichages.php';
     <div id="letableau"></div>
     <?php
     echo "<div class='container bg-light mt-5 border border-primary p-5 rounded'>";
-    echo "<h1 class='text-center'>Bonjour ". $_SESSION['nom']." ". $_SESSION['prenom'];
+    echo "<h1 class='text-center'>Bonjour ". $_SESSION['prenom']." ". $_SESSION['nom'];
     echo "</div>";
     echo "<div class='container bg-light mt-5 mb-5 border border-primary p-5 rounded'>";
     echo "<div class='row'>";
-    formMat($skills,0,$array2);
+    formMat($skills,$array2,0);
     echo "</div>";
     echo "<div class='text-center'><a href='disconnect.php' class='btn btn-primary text-decoration-none' >Deconnexon</a></div>";
     echo "</div>";

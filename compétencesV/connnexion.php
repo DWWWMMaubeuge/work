@@ -16,14 +16,6 @@ include 'Login.php'
         <h1>Connectez-vous</h1>
         <form method="post">
             <div class="form-group">
-                <label for="exampleInputEmail2">Nom</label>
-                <input type="text" class="form-control" id="exampleInputEmail2" name="name" aria-describedby="emailHelp">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Prenom</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="firstname" aria-describedby="emailHelp">
-            </div>
-            <div class="form-group">
                 <label for="exampleInputEmail3">adresse Email</label>
                 <input type="email" class="form-control" id="exampleInputEmail3" name="email" aria-describedby="emailHelp">
             </div>
