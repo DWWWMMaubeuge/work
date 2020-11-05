@@ -2,11 +2,54 @@
 require_once( "parametres.php" );
 include_once(  "CO_global_functions.php"  );
 
-function setWidgetValue2( $skill  )
+/* function setWidgetValue2( $skill  )
 {
-    $widget = "<div class ='col-4 mb-3'><p>".$skill[1]."</p><input id='number' type='number' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\"></div>\n";
+    $widget = "<p>".$skill[1]."</p><input id='number' type='number' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
     return $widget;
 }
+ */
+
+
+
+
+function setWidgetValue2( $skill  )
+{
+    $widget = "<p>".$skill[1]."</p>
+    
+    
+    
+    <input type='select'  id='number'  value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\"></input>\n";
+
+
+
+
+    return $widget;
+}
+
+
+
+
+
+
+/* 
+
+<input type="select">
+   <nom>langue</nom>
+   <libellé>Quelle est votre langue marternelle ?</libellé>
+   <option valeur="fr">Français</option>
+   <option valeur="nl">Néerlandais</option>
+   <option valeur="en">Anglais</option>
+   <option valeur="other">Autre</option>
+</input> */
+
+
+
+
+
+
+
+
+
 
 
 
