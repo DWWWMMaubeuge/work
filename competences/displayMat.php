@@ -1,6 +1,6 @@
 <?php
 require 'src/connexion.php';
-include 'getNote.php';
+include 'sql/getNote.php';
 
 $result = $bdd->prepare("SELECT * FROM matieres");
 $result->execute();
@@ -14,7 +14,7 @@ function displayEval($matieres, $array) {
   foreach($matieres as $matiere) {
 
   echo "
-        <div class='col-xs-12 col-sm-4 col-3'>
+        <div class='col-xs-12 col-sm-4 col-md-3'>
           <div class='input-group mb-3 item'>
             <div class='input-group-prepend'>
               <label class='input-group-text text-white button-form' for=" . $matiere['id'] . " style='width: 6rem'>" . $matiere['mat'] . "</label>

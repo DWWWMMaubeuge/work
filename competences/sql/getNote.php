@@ -1,5 +1,5 @@
 <?php
-require 'src/connexion.php';
+require './src/connexion.php';
 
 $id_user = $_SESSION["id_user"];
 

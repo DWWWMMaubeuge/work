@@ -5,5 +5,4 @@ $(function() {
       note: $(this).val()
     });
   });
-
 });

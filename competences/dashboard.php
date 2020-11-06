@@ -15,7 +15,7 @@ if (!isset($_SESSION["fname"])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <link rel="stylesheet" href="CSS/dashboard.css">
+  <link rel="stylesheet" href="css/dashboard.css">
   <title>Evaluation</title>
 </head>
 
@@ -25,7 +25,7 @@ if (!isset($_SESSION["fname"])) {
     <div class="row board">
 
       <div class="col-12 board-title">
-        <h5>Bonjour <?= $_SESSION["fname"] ?> !</h5>
+        <h5>Bonjour <?= ucfirst($_SESSION["fname"]) ?> !</h5>
         <p>Ceci est votre tableau d'évaluation</p>
       </div>
 
@@ -40,7 +40,7 @@ if (!isset($_SESSION["fname"])) {
   </main>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>
