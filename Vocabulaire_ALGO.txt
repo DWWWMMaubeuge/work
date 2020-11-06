@@ -1,0 +1,92 @@
+Vocabulaire
+
+- Incrémenter   -> augmenter de 1
+- sqrt 			-> square root
+
+
+
+1er solution -> tester tous les nombre de 1 jusqu'a la valeur; 			tester les valeur 		    de 1 à 821  		-> 821 division à faire
+	nombre de calcul à faire est proportionnel au nombre   					Ca = n X Nbr
+
+2em solution -> tester le nbr impair   de 3 jusqu'a la valeur; 			tester les valeurs impaires de 3 à 821  		-> 410 division à faire
+	nombre de calcul à faire est proportionnel à la moitié du nombre  		Ca = n X Nbr / 2
+
+3em solution -> tester le nbr impair   de 3 jusqu'a la sqrt(valeur); 	tester les valeurs impaires de 3 à sqrt(821)  	->  29 division à faire
+	nombre de calcul à faire est proportionnel à la racine carré du nombre  Ca = n X sqrt(Nbr) 
+
+
+
+
+
+vérifier si 37 est premier
+
+37 /   2   2 X 18 -> 36 reste 1 
+37 /   3   3 X 12 -> 36 reste 2
+37 /   5   5 X  7 -> 35 reste 2
+
+37 / sqrt(37)    sqrt(37) X sqrt(37) -> 37   
+
+
+37 /   7   7 X  5 -> 35 reste 2
+
+
+37 /   9   9 X  4 -> 35 reste 1
+
+
+37 /  11  11 X  3 -> 33 reste 4
+...
+37 /  15  15 X  2 -> 30 reste 7
+
+
+
+VÉRIFIER 821
+
+
+
+
+
+
+
+821 / 2
+821 / 3     
+821 / 5     
+821 / 7     
+821 / 11
+821 / 13
+821 / 17
+821 / 19
+821 / 23
+821 / 29
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
