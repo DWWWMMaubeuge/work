@@ -3,13 +3,6 @@
 <?php userIsLogged(); ?>
 <?php
 
-if($infos['ID_FORMATION'] == 0) {
-
-    header('location: index.php');
-    exit();
-
-}
-
 $req = $bdd->prepare('SELECT *
 FROM Matieres m LEFT JOIN
      (SELECT r.*,
@@ -68,7 +61,3 @@ while( $data = $req->fetch()) {
     </div>
 </div>
 <?php require_once('config/footer.php'); ?>
-<?php print_r($skills); ?>
-<br>
-<br>
-<?php print_r($infos); ?>
