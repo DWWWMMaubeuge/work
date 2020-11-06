@@ -24,8 +24,18 @@ if($check = 0) {
 
 $user = $q->fetch();
 
-$q = $bdd->prepare('SELECT * FROM Resultats JOIN Matieres ON Resultats.ID_MATIERE = Matieres.id WHERE ID_USER = :user ORDER BY Matieres.id');
+$q = $bdd->prepare('SELECT *
+FROM Matieres m LEFT JOIN
+     (SELECT r.*,
+             ROW_NUMBER() OVER (PARTITION BY id_Matiere, id_user ORDER BY TIME_OF_INSERTION DESC) as seqnum
+      FROM Resultats r
+      WHERE r.ID_USER = :user 
+     ) r
+     ON m.id = r.ID_MATIERE AND
+        seqnum = 1
+WHERE Active = TRUE AND ID_Formation = :formation;');
 $q->bindParam(':user', $user['ID'], PDO::PARAM_INT);
+$q->bindParam(':formation', $user['ID_FORMATION'], PDO::PARAM_INT);
 $q->execute();
 $count = $q->rowCount();
 
