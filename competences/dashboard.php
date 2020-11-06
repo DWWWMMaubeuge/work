@@ -15,23 +15,27 @@ if (!isset($_SESSION["fname"])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" href="CSS/dashboard.css">
   <title>Evaluation</title>
 </head>
 
 <body>
   <main class="container">
-    <h1>Bonjour <?= $_SESSION["fname"] ?> !</h1>
-    <p>Ceci est votre tableau de bord</p>
 
-      <div class="row">
+    <div class="row board">
 
-        <?php
-          displayEval($matieres, $array);
-        ?>
-
+      <div class="col-12 board-title">
+        <h5>Bonjour <?= $_SESSION["fname"] ?> !</h5>
+        <p>Ceci est votre tableau d'évaluation</p>
       </div>
 
-    <p><a href="deconnexion.php">Déconnexion</a></p>
+      <?php
+      displayEval($matieres, $array);
+      ?>
+      <p class="col-12 text-right"><a href="deconnexion.php">Déconnexion</a></p>
+    </div>
+
+
 
   </main>
 

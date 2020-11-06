@@ -2,7 +2,7 @@
 session_start();
 require 'src/connexion.php';
 
-if(!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["password"]) && !empty($_POST["password_confirm"]) ) {
+if (!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["password"]) && !empty($_POST["password_confirm"])) {
   $fname = $_POST["fname"];
   $lname = $_POST["lname"];
   $password = $_POST["password"];
@@ -21,8 +21,8 @@ if(!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["password
     "fname" => $fname
   ));
 
-  while($name_verification = $req->fetch()) {
-    if($name_verification["numberName"] != 0) {
+  while ($name_verification = $req->fetch()) {
+    if ($name_verification["numberName"] != 0) {
       header("location: ./?error=1&name=1");
       exit();
     }
@@ -76,45 +76,47 @@ if(!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["password
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <title>Accueil</title>
+  <link rel="stylesheet" href="CSS/style.css">
+  <title>Inscription</title>
 </head>
 
 <body>
   <main class="container">
-    <h1>Inscription</h1>
-
-    <p>Bienvenue ! Pour en voir plus, inscrivez-vous, sinon <a href="connexion.php">connectez-vous</a>.</p>
-
-    <?php if(isset($_GET["error"])): ?>
-      <?php if(isset($_GET["pass"])): ?>
-          <div class="alert alert-danger">
-            Les mots de passes sont différents
-          </div>
-      <?php elseif(isset($_GET["name"])): ?>
-          <div class="alert alert-danger">
-            Un homonyme existe déjà
-          </div>
+    <?php if (isset($_GET["error"])) : ?>
+      <?php if (isset($_GET["pass"])) : ?>
+        <div class="alert alert-danger">
+          Les mots de passes sont différents
+        </div>
+      <?php elseif (isset($_GET["name"])) : ?>
+        <div class="alert alert-danger">
+          Un homonyme existe déjà
+        </div>
       <?php endif; ?>
     <?php endif; ?>
-  
 
-    <form action="#" method="POST">
-      <div class="form-group">
-        <input type="text" class="form-control" name="fname" placeholder="Prénom de l'utilisateur" required>
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" name="lname" placeholder="Nom de l'utilisateur" required>
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control" name="password_confirm" placeholder="Confirmer Mot de passe" required>
-      </div>
-      <button type="submit" class="btn btn-primary">S'inscrire</button>
-    </form>
+    <div class="registration-form">
+      <form action="#" method="POST">
+        <div class="form-title">
+          <h5>Inscrivez-vous. Déjà membre ? <a href="connexion.php">Connectez-vous</a>.</h5>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control item" name="fname" placeholder="Prénom" required>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control item" name="lname" placeholder="Nom" required>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control item" name="password" placeholder="Mot de passe" required>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control item" name="password_confirm" placeholder="Confirmer le mot de passe" required>
+        </div>
+        <button type="submit" class="btn btn-block btn-primary button-form">S'inscrire</button>
+      </form>
+    </div>
 
   </main>
 
 </body>
+
 </html>

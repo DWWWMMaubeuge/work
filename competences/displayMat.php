@@ -14,10 +14,10 @@ function displayEval($matieres, $array) {
   foreach($matieres as $matiere) {
 
   echo "
-        <div class='col-3'>
-          <div class='input-group mb-3'>
+        <div class='col-xs-12 col-sm-4 col-3'>
+          <div class='input-group mb-3 item'>
             <div class='input-group-prepend'>
-              <label class='input-group-text text-white bg-primary' for=" . $matiere['id'] . " style='width: 6rem'>" . $matiere['mat'] . "</label>
+              <label class='input-group-text text-white button-form' for=" . $matiere['id'] . " style='width: 6rem'>" . $matiere['mat'] . "</label>
             </div>
             <select class='custom-select' id=\"" . $matiere['id'] . "\">";
                 optionNote($array, $matiere['id']);
