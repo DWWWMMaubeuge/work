@@ -3,8 +3,8 @@
 include_once("functionHeader.php");
 
 setHearder();
-NavBar()
-;
+NavBar();
+
 ?>
 <body>
 
@@ -48,7 +48,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
 
     $req = "INSERT INTO $DB_dbname.users ( name, surname, email, password ) VALUES ( '$name', '$surname', '$email', '$password' )";
     executeSQL( $req );
-    header( "location: logIn.php");
+    header( "location: login.php");
 }
 
 ?>

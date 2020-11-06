@@ -10,13 +10,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
-    <a href="logOut.php">Log Out</a>
+
   </body>
 </html>
   
 <?php
 
 include_once("functionConnect.php");
+include_once("functionHeader.php");
+NavBar2();
 
 function setWidgetValue2( $skill  )
 {
