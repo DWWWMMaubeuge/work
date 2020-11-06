@@ -203,9 +203,10 @@ $formations = $q->fetchAll();
     function setInfo(id, idelem2) {
 
         let myElement = document.getElementById(idelem2).outerHTML;
-        let test = document.getElementById(idelem2);
-        let tag = test.tagName;
-        test.outerHTML = "<input id='"+idelem2+"' type='text' autocomplete='off'>";
+        let baseValue = document.getElementById(idelem2).innerText;
+        let element2 = document.getElementById(idelem2);
+        let tag = element2.tagName;
+        element2.outerHTML = "<input id='"+idelem2+"' type='text' autocomplete='off'>";
         let myInput = document.getElementById(idelem2);
         document.getElementById(idelem2).focus();
 
@@ -222,31 +223,131 @@ $formations = $q->fetchAll();
             return text.replace(/[&<>"']/g, function(m) { return map[m]; });
         }
 
+        document.addEventListener('mousedown', function(event) {
+
+            myInput.outerHTML = myElement;
+            return false;
+
+        })
+
         myInput.addEventListener('keyup', function(event) {
 
-                if(event.keyCode === 13) {
+            if(event.keyCode === 13) {
 
-                    let newvalue = escapeHTML(myInput.value);
+                let newvalue = escapeHTML(myInput.value);
 
-                    $(document).ready(function() {
+                $(document).ready(function() {
 
-                        let post = {};
-                        post[id] = newvalue;
+                    let post = {};
+                    post[id] = newvalue;
 
-                        $.ajax({
+                    $.ajax({
 
-                            type: 'POST',
-                            url: 'traitements/traitement-profil.php',
-                            data: post,
-                            dataType: 'text',
+                        type: 'POST',
+                        url: 'traitements/traitement-profil.php',
+                        data: post,
+                        dataType: 'text',
 
-                            success: function(data) {
+                        success: function(data) {
 
-                                if(data != "Operation réussie !") {
+                            if(data != "Operation réussie !") {
 
+                                let errorWindow = document.getElementById('erreur');
+
+                                errorWindow.className = "alert alert-danger my-5 text-center";
+                                errorWindow.innerHTML = data;
+
+                                setTimeout(() => {
+
+                                    errorWindow.className = "alert alert-danger my-5 text-center d-none";
+
+                                }, 4500);
+
+                            }
+
+                            if(data == "Operation réussie !") {
+
+                                if(idelem2 == "monSite") {
+
+                                    if(newvalue == "") {
+
+                                        myInput.outerHTML = "<"+tag+" id="+idelem2+">"+"Non renseigné !</"+tag+">";
+                                        let errorWindow = document.getElementById('erreur');
+                                        errorWindow.className = "alert alert-success my-5 text-center";
+                                        errorWindow.innerText = data;
+                                        setTimeout(() => {
+
+                                            errorWindow.className = "alert alert-danger my-5 text-center d-none";
+
+                                        }, 4500);
+                                        
+                                        return;
+
+                                    }
+
+                                    myInput.outerHTML = "<a class='text-white' id="+idelem2+" href='"+newvalue+"' target='_blank' >Site personnel</a>";
                                     let errorWindow = document.getElementById('erreur');
+                                    errorWindow.className = "alert alert-success my-5 text-center";
+                                    errorWindow.innerText = data;
+                                    setTimeout(() => {
 
-                                    errorWindow.className = "alert alert-danger my-5 text-center";
+                                        errorWindow.className = "alert alert-danger my-5 text-center d-none";
+
+                                    }, 4500);
+
+                                    return;
+
+                                }
+
+                                if(idelem2 == "monGithub") {
+
+                                    if(newvalue == "") {
+
+                                        myInput.outerHTML = "<"+tag+" id="+idelem2+">"+"Non renseigné !</"+tag+">";
+                                        let errorWindow = document.getElementById('erreur');
+                                        errorWindow.className = "alert alert-success my-5 text-center";
+                                        errorWindow.innerText = data;
+                                        setTimeout(() => {
+
+                                            errorWindow.className = "alert alert-danger my-5 text-center d-none";
+
+                                        }, 4500);
+
+                                        return;
+
+                                    }
+
+                                    myInput.outerHTML = "<a class='text-white' id="+idelem2+" href='https://github.com/"+newvalue+"' target='_blank' >"+newvalue+"</a>";
+                                    let errorWindow = document.getElementById('erreur');
+                                    errorWindow.className = "alert alert-success my-5 text-center";
+                                    errorWindow.innerText = data;
+                                    setTimeout(() => {
+
+                                        errorWindow.className = "alert alert-danger my-5 text-center d-none";
+
+                                    }, 4500);
+
+                                    return;
+
+                                }
+
+                                if(newvalue == "") {
+
+                                    myInput.outerHTML = "<"+tag+" id="+idelem2+">"+"Non renseigné !</"+tag+">";
+                                    let errorWindow = document.getElementById('erreur');
+                                    errorWindow.className = "alert alert-success my-5 text-center";
+                                    errorWindow.innerHTML = data;
+                                    setTimeout(() => {
+
+                                        errorWindow.className = "alert alert-danger my-5 text-center d-none";
+
+                                    }, 4500);
+
+                                } else {
+
+                                    myInput.outerHTML = "<"+tag+" id="+idelem2+">"+newvalue+"</"+tag+">";
+                                    let errorWindow = document.getElementById('erreur');
+                                    errorWindow.className = "alert alert-success my-5 text-center";
                                     errorWindow.innerHTML = data;
 
                                     setTimeout(() => {
@@ -254,113 +355,20 @@ $formations = $q->fetchAll();
                                         errorWindow.className = "alert alert-danger my-5 text-center d-none";
 
                                     }, 4500);
-
+                                
                                 }
+                                
+                            } else {
 
-                                if(data == "Operation réussie !") {
-
-                                    if(idelem2 == "monSite") {
-
-                                        if(newvalue == "") {
-
-                                            myInput.outerHTML = "<"+tag+" id="+idelem2+">"+"Non renseigné !</"+tag+">";
-                                            let errorWindow = document.getElementById('erreur');
-                                            errorWindow.className = "alert alert-success my-5 text-center";
-                                            errorWindow.innerText = data;
-                                            setTimeout(() => {
-
-                                                errorWindow.className = "alert alert-danger my-5 text-center d-none";
-
-                                            }, 4500);
-                                            
-                                            return;
-
-                                        }
-
-                                        myInput.outerHTML = "<a class='text-white' id="+idelem2+" href='"+newvalue+"' target='_blank' >Site personnel</a>";
-                                        let errorWindow = document.getElementById('erreur');
-                                        errorWindow.className = "alert alert-success my-5 text-center";
-                                        errorWindow.innerText = data;
-                                        setTimeout(() => {
-
-                                            errorWindow.className = "alert alert-danger my-5 text-center d-none";
-
-                                        }, 4500);
-
-                                        return;
-
-                                    }
-
-                                    if(idelem2 == "monGithub") {
-
-                                        if(newvalue == "") {
-
-                                            myInput.outerHTML = "<"+tag+" id="+idelem2+">"+"Non renseigné !</"+tag+">";
-                                            let errorWindow = document.getElementById('erreur');
-                                            errorWindow.className = "alert alert-success my-5 text-center";
-                                            errorWindow.innerText = data;
-                                            setTimeout(() => {
-
-                                                errorWindow.className = "alert alert-danger my-5 text-center d-none";
-
-                                            }, 4500);
-
-                                            return;
-
-                                        }
-
-                                        myInput.outerHTML = "<a class='text-white' id="+idelem2+" href='https://github.com/"+newvalue+"' target='_blank' >"+newvalue+"</a>";
-                                        let errorWindow = document.getElementById('erreur');
-                                        errorWindow.className = "alert alert-success my-5 text-center";
-                                        errorWindow.innerText = data;
-                                        setTimeout(() => {
-
-                                            errorWindow.className = "alert alert-danger my-5 text-center d-none";
-
-                                        }, 4500);
-
-                                        return;
-
-                                    }
-
-                                    if(newvalue == "") {
-
-                                        myInput.outerHTML = "<"+tag+" id="+idelem2+">"+"Non renseigné !</"+tag+">";
-                                        let errorWindow = document.getElementById('erreur');
-                                        errorWindow.className = "alert alert-success my-5 text-center";
-                                        errorWindow.innerHTML = data;
-                                        setTimeout(() => {
-
-                                            errorWindow.className = "alert alert-danger my-5 text-center d-none";
-
-                                        }, 4500);
-
-                                    } else {
-
-                                        myInput.outerHTML = "<"+tag+" id="+idelem2+">"+newvalue+"</"+tag+">";
-                                        let errorWindow = document.getElementById('erreur');
-                                        errorWindow.className = "alert alert-success my-5 text-center";
-                                        errorWindow.innerHTML = data;
-
-                                        setTimeout(() => {
-
-                                            errorWindow.className = "alert alert-danger my-5 text-center d-none";
-
-                                        }, 4500);
-                                    
-                                    }
-                                    
-                                } else {
-
-                                    myInput.outerHTML = myElement;
-
-                                }
+                                myInput.outerHTML = myElement;
 
                             }
 
-                        });
+                        }
 
                     });
+
+                });
 
             } else if(event.keyCode === 27) {
 
@@ -370,7 +378,7 @@ $formations = $q->fetchAll();
             }
 
         })
-        
+
     }
 
 
@@ -440,6 +448,13 @@ $formations = $q->fetchAll();
         let myInput = document.getElementById(id);
 
         myInput.focus();
+
+        document.addEventListener('mousedown', function(event) {
+
+            myInput.outerHTML = myElement;
+            return false;
+
+        })
 
         myInput.addEventListener('keyup', function(event) {
             
