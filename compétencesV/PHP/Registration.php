@@ -16,12 +16,16 @@ if (isset($_POST["submit"])) {
             $query2->execute();
             $array = $query2->fetch(PDO::FETCH_ASSOC);
             if ($array['nb'] == 0) {
-                $query1->bindParam(':name', $_POST['name'], PDO::PARAM_STR);
-                $query1->bindParam(':firstname', $_POST['firstname'], PDO::PARAM_STR);
-                $query1->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
-                $query1->bindParam(':password', $_POST['pwd'], PDO::PARAM_STR);
+                $name = htmlspecialchars($_POST['name']);
+                $firstname = htmlspecialchars($_POST['firstname']);
+                $email = htmlspecialchars($_POST['email']);
+                $pwd = hash('sha256',$_POST['pwd']);
+                $query1->bindParam(':name', $name, PDO::PARAM_STR);
+                $query1->bindParam(':firstname', $firstname, PDO::PARAM_STR);
+                $query1->bindParam(':email', $email, PDO::PARAM_STR);
+                $query1->bindParam(':password', $pwd, PDO::PARAM_STR);
                 $query1->execute();
-                $query3->bindParam(':email',$_POST['email']);
+                $query3->bindParam(':email',$email);
                 $query3->execute();
                 $array2=$query3->fetch(PDO::FETCH_ASSOC);
                 for ($i=1;$i<=intval($nbMat['nb2']);$i++){
@@ -29,9 +33,7 @@ if (isset($_POST["submit"])) {
                     $query4->bindParam(':id_mat',$i);
                     $query4->execute();
                 }
-
-
-                header('Location: connnexion.php');
+                header('Location: connnexion.php?success=true');
             } else {
                 echo "<div class='alert alert-danger'>cet utilisateur existe déja</div>";
             }

@@ -11,8 +11,13 @@ include 'Login.php'
     <link rel="stylesheet" href="../CSS/main.css">
     <title>Document</title>
 </head>
-<body class="bg-dark">
 
+<body class="bg-dark">
+    <?php
+        if(isset($_GET['success']) && $_GET['success']){
+            echo "<div class=\"alert alert-success\">Compte créé avec succés</div>";
+        }
+    ?>
     <div class="container background border border-primary p-5 rounded" style="margin:200px auto auto auto;">
         <h1>Connectez-vous <span class="h6">Pas encore inscrit?<a href="inscription.php"> Inscrivez-vous</a></span></h1>
         <form method="post">

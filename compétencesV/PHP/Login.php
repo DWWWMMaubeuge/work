@@ -8,8 +8,8 @@ $query2=$bdd->prepare("SELECT * FROM users WHERE email=:email AND password=:mdp"
 
 if (isset($_POST['submit'])){
     if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['pwd']) && !empty($_POST['pwd'])){
-        $email=$_POST['email'];
-        $mdp=$_POST['pwd'];
+        $email=htmlspecialchars($_POST['email']);
+        $mdp=hash('sha256',$_POST['pwd']);
         $query1->bindParam(':mdp',$mdp,PDO::PARAM_STR);
         $query1->bindParam(':email',$email,PDO::PARAM_STR);
         $query2->bindParam(':mdp',$mdp,PDO::PARAM_STR);
@@ -26,9 +26,12 @@ if (isset($_POST['submit'])){
             header("Location:skills.php");
         }
         else{
-            echo "<div class=\"alert alert-danger\">cet utilisateurs n'existe pas</div>";
+            echo "<div class=\"alert alert-danger\">Cet utilisateur n'existe pas</div>";
         }
 
+    }
+    else{
+        echo "<div class=\"alert alert-danger\">Veuillez remplir tout les champs</div>";
     }
 }
 ?>
