@@ -155,7 +155,7 @@ $resultats = $q->fetchAll();
                                     <h6 class="d-flex w-100 align-items-center mb-3"><i class="material-icons text-info mr-2">Compétences</i></h6>
                                         <?php foreach($resultats as $resultat) { ?>
                                             <?php if($resultat['Active'] == TRUE) { ?>
-                                                <small><?= $resultat['Nom']; ?> : <?= $resultat['RESULTAT']; ?></small>
+                                                <small><?= $resultat['Nom']; ?></small>
                                                 <div class="progress mb-3" style="height: 5px">
                                                 <div class="progress-bar" role="progressbar" style="width: <?= ($resultat['RESULTAT']); ?>0%" aria-valuemin="0" aria-valuemax="10"></div>
                                                 </div>
