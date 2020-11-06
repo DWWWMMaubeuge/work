@@ -87,7 +87,7 @@ $formations = $q->fetchAll();
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                 <select class="mx-auto" name="formation" id="Formation" onchange="setFormation(this.value)">
-                                    <option value=""><?php if($infos['FORMATION'] !== 0) { echo $infos['FORMATION']; } ?></option>
+                                    <option value=""><?php if($infos['ID_FORMATION'] !== 0) { echo $infos['FORMATION']; } ?></option>
                                     <?php foreach($formations as $formation) { ?>
                                         <?php if($formation['ID_FORMATION'] != $infos['ID_FORMATION']) {?> <option value="<?= $formation['ID_FORMATION']; ?>"><?= $formation['FORMATION']; ?></option><?php } ?>
                                     <?php } ?>

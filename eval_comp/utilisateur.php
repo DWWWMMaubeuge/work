@@ -10,7 +10,7 @@ if(!isset($_GET['pseudo']) OR empty($_GET['pseudo'])) {
 
 }
 
-$q = $bdd->prepare('SELECT * FROM Membres JOIN Options ON Membres.ID = Options.ID WHERE Membres.Pseudo = :pseudo');
+$q = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Formations ON Options.FORMATION = Formations.ID_FORMATION  WHERE Membres.Pseudo = :pseudo');
 $q->bindParam(':pseudo', $_GET['pseudo'], PDO::PARAM_STR);
 $q->execute();
 $check = $q->rowCount();
@@ -69,57 +69,70 @@ $resultats = $q->fetchAll();
                     <?php } ?>
                 </div>
                 <div class="col-md-8">
-                    <?php if($user['HIDDEN'] == FALSE) { ?>
-                        <?php if(!empty($user['Prenom']) OR !empty($user['Nom']) OR !empty($user['Fixe'] OR !empty($user['Mobile']) )) { ?>
-                            <div class="card mb-3">
-                                <div class="card-body text-dark">
-                                    <?php if(!empty($user['Prenom'])) { ?>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Prénom</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                <?= $infos['Prenom']?>
-                                            </div>
-                                        </div>  
-                                    <hr>
-                                    <?php } ?>
-                                    <?php if(!empty($user['Nom'])) { ?>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Nom</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                <?= $user['Nom']?>
-                                            </div>
+                    <div class="card mb-3">
+                        <div class="card-body text-dark">
+                            <?php if($user['HIDDEN'] == FALSE) { ?>
+                                <?php if(!empty($user['Prenom'])) { ?>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Prénom</h6>
                                         </div>
-                                    <hr>
-                                    <?php } ?>
-                                    <?php if(!empty($user['Fixe'])) { ?>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Téléphone fixe</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                <?= $user['Fixe']; ?>
-                                            </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <?= $infos['Prenom']?>
                                         </div>
-                                    <hr>
-                                    <?php } ?>
-                                    <?php if(!empty($user['Mobile'])) { ?>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Téléphone mobile</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                    <?= $user['Mobile']; ?>
-                                            </div>
-                                        </div>
+                                    </div>  
+                                <hr>
                                 <?php } ?>
+                            <?php } ?>
+                            <?php if($user['HIDDEN'] == FALSE) { ?>
+                                <?php if(!empty($user['Nom'])) { ?>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Nom</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <?= $user['Nom']?>
+                                        </div>
+                                    </div>
+                                <hr>
+                                <?php } ?>
+                            <?php } ?>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Formation</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                <?php if($user['ID_FORMATION'] == 0) { echo "Non renseigné !"; } else { echo $user['FORMATION']; } ?>
                                 </div>
                             </div>
-                        <?php } ?>
-                    <?php } ?>
+                            <hr>
+                            <?php if($user['HIDDEN'] == FALSE) { ?>
+                                <?php if(!empty($user['Fixe'])) { ?>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Téléphone fixe</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <?= $user['Fixe']; ?>
+                                        </div>
+                                    </div>
+                                <hr>
+                                <?php } ?>
+                            <?php } ?>
+                            <?php if($user['HIDDEN'] == FALSE) { ?>
+                                <?php if(!empty($user['Mobile'])) { ?>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Téléphone mobile</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                                <?= $user['Mobile']; ?>
+                                        </div>
+                                    </div>
+                                 <?php } ?>
+                            <?php } ?>
+                        </div>
+                    </div>
                     <div class="row gutters-sm">
                         <div class="col-sm-12 mb-3">
                             <div class="card h-100">
@@ -148,4 +161,5 @@ $resultats = $q->fetchAll();
         </div>
     </div>
 </div>
+<?php print_r($user); ?>
 <?php require_once('config/footer.php'); ?>
