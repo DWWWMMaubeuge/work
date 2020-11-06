@@ -161,5 +161,4 @@ $resultats = $q->fetchAll();
         </div>
     </div>
 </div>
-<?php print_r($user); ?>
 <?php require_once('config/footer.php'); ?>
