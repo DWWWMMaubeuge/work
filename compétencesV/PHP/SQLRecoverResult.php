@@ -13,7 +13,7 @@ $query=$bdd->prepare("SELECT r.id_mat,r.eval,r.date,M.matiere
                                                 GROUP BY idMat ) m
                                                     on r.id_mat=m.idMat 
                                                     AND r.date=m.evalDate"
-                                                    );
+);
 
 
 /*$query=$bdd->prepare("SELECT r.id_mat,r.eval,r.date,m.matiere
@@ -26,31 +26,3 @@ $query->execute();
 $array=$query->fetchAll(PDO::FETCH_ASSOC);
 sort($array);
 //var_dump($array);
-
-function affTable($array){
-    echo "<table class='table table-striped'>";
-    echo "<thead class='thead-dark'>";
-    echo "<tr >";
-    foreach($array as $note){
-        echo "<th>".$note['matiere']."</th>";
-    }
-    echo "</tr>";
-    echo "</thead>";
-    echo "<tr>";
-    foreach($array as $note){
-        echo "<td>".$note['eval']."</td>";
-    }
-    echo "</tr>";
-    echo "<tr >";
-    foreach($array as $note){
-        $arr=explode(' ', $note['date']);
-
-        echo "<td>".$arr[0]."</td>";
-    }
-    echo "</tr>";
-    echo "</table>";
-}
-affTable($array);
-
-?>
-

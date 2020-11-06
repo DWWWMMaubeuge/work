@@ -1,0 +1,11 @@
+body{
+    background:transparent url('../images/interface-3614766.png') no-repeat;
+}
+
+.background{
+    background: rgba(23, 45, 99, 0.6);
+    border-radius: 20px;
+}
+.c1{
+    margin-top:100px
+}

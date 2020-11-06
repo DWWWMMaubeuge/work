@@ -30,20 +30,3 @@ $query2->execute();
 $array2=$query2->fetchAll(PDO::FETCH_ASSOC);
 sort($array2);
 //var_dump($array2);
-function formMat($skills,$note,$i){
-
-    foreach( $skills as $array) {
-        //var_dump($array);
-        echo "<div class='col-3'>";
-            echo "<div class='input-group mb-3'>";
-            echo "<div class='input-group-prepend'>";
-            echo "<label class='input-group-text bg-primary text-white' style='width:6rem' for=" . $array['id'] . ">" . $array['matiere'] . "</label>";
-            echo "</div>";
-            echo "<input class='form-control border border-primary' type='number' step='1' id=" . $array['id'] . " name=" . $array['matiere'] . " min='0' max='10' value=" . $note[$i]['eval'] . ">";
-            echo "</div>";
-        echo "</div>";
-        $i++;
-    }
-}
-
-?>

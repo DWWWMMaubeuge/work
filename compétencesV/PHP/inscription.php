@@ -8,13 +8,13 @@ include 'Registration.php';
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="skills.css">
+    <link rel="stylesheet" href="../CSS/main.css">
     <title>Document</title>
 </head>
 <body class="bg-dark">
 
-    <div class="container background mt-5 border border-primary p-5 rounded">
-        <h1>Inscrivez-vous</h1>
+    <div class="container background border border-primary p-5 rounded" style="margin:100px auto auto auto;">
+        <h1>Inscrivez-vous <span class="h6">Déja inscrit? <a href="connnexion.php">Connectez-vous</a></span></h1>
         <form method="post">
             <div class="form-group">
                 <label for="exampleInputEmail2">Nom</label>
@@ -32,9 +32,8 @@ include 'Registration.php';
                 <label for="exampleInputPassword1">mot de passe</label>
                 <input type="password" class="form-control" name="pwd" id="exampleInputPassword1">
             </div>
-            <input type="submit" class="btn btn-primary" name="submit" value="Enregistrez">
+            <input type="submit" class="btn btn-primary" name="submit" value="Valider">
         </form>
-        <a href="connnexion.php" class="btn btn-primary mt-2">Connectez-vous</a>
     </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

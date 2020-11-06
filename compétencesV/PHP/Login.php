@@ -26,7 +26,7 @@ if (isset($_POST['submit'])){
             header("Location:skills.php");
         }
         else{
-            echo "cet utilisateurs n'existe pas";
+            echo "<div class=\"alert alert-danger\">cet utilisateurs n'existe pas</div>";
         }
 
     }
