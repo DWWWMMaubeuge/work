@@ -26,6 +26,7 @@ function setAllWidgetValue( $skills  )
 
 
 
+
 session_start();
 $ID_user = $_SESSION[ 'ID_user' ];
 $name_user = $_SESSION[ 'name' ];

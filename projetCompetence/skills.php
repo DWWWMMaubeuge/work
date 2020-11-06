@@ -9,7 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
-  
+  <body>
+    <a href="logOut.php">Log Out</a>
+  </body>
+</html>
   
 <?php
 
@@ -36,6 +39,7 @@ function setAllWidgetValue( $skills  )
 
 // Undefined index 'name' et 'surname'
 session_start();
+
 $ID_user = $_SESSION[ 'ID_user' ];
 $name_user = $_SESSION[ 'name' ];
 $surname_user = $_SESSION[ 'surname' ];
@@ -79,17 +83,7 @@ echo "</div>";
  ?>
 </FORM>
 
-arrête nico!
-vas jouer
-en tout cas merci les garçons!!!!
-bon je dois y aller.
-arrêtez!!
-bon je te rep et j'y vais
-non j'ai modifié plusieurs fois, c'est des anciennes class
-yep
-Bon merci beauuuuuucoup
-bonne soirée, ne faites pas trop de bêtises
-mais oui
+
 
 
 
