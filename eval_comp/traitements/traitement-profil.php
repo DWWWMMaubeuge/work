@@ -315,7 +315,6 @@ if(isset($_POST['MDP'])) {
     } else {
 
         $feedback = "Votre mot de passe est trop court !";
-        var_dump($_POST);
 
     }
 
@@ -325,7 +324,7 @@ if(isset($_POST['Hidden'])) {
 
     $visibility = 1;
 
-    $q = $bdd->prepare('UPDATE Visibilitée SET HIDDEN = :hidden WHERE ID = :userid');
+    $q = $bdd->prepare('UPDATE Options SET HIDDEN = :hidden WHERE ID = :userid');
     $q->bindParam(':hidden', $visibility, PDO::PARAM_BOOL);
     $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
     $q->execute();
@@ -337,8 +336,21 @@ if(isset($_POST['Visible'])) {
 
     $visibility = 0;
 
-    $q = $bdd->prepare('UPDATE Visibilitée SET HIDDEN = :visible WHERE ID = :userid');
+    $q = $bdd->prepare('UPDATE Options SET HIDDEN = :visible WHERE ID = :userid');
     $q->bindParam(':visible', $visibility, PDO::PARAM_BOOL);
+    $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
+    $q->execute();
+    $feedback = "Operation réussie !";
+
+}
+
+if(isset($_POST['Formation'])) {
+
+    $formation = intval($_POST['Formation']);
+
+
+    $q = $bdd->prepare('UPDATE Options SET FORMATION = :formation WHERE ID = :userid');
+    $q->bindParam(':formation', $formation, PDO::PARAM_INT);
     $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
     $q->execute();
     $feedback = "Operation réussie !";

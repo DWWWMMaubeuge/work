@@ -4,7 +4,7 @@
 <?php include('config/head.php'); ?>
 <?= myHeader('Inscription'); ?>
 <?php require_once('config/navbar.php'); ?>
-<div class="container-fluid p-5 banner3short">
+<div class="container-fluid p-5 banner3 mt-5">
     <div>
         <form class="mx-5" method="POST" id="inscription">
             <h1>Créer un compte</h1>

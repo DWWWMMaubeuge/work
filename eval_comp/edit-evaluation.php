@@ -5,7 +5,7 @@
 <?php include('config/head.php'); ?>
 <?= myHeader('Edition de compétences'); ?>
 <?php require_once('config/navbar.php'); ?>
-<div class="container-fluid p-5 banner3">
+<div class="container-fluid p-5 mt-5 banner3">
     <div class="container bg-dark my-5 p-5 opacity-4">
         <h2 class="text-center my-5">Modifications des compétences</h2>
         <form class="text-center" method="POST" id="activerComp">

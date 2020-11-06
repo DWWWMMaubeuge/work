@@ -48,8 +48,9 @@ if(!empty($_POST['Pseudo'])) {
 
                                     $hidden = 0;
 
-                                    $sql = $bdd->prepare('INSERT INTO Visibilitée(HIDDEN) VALUES(:hidden)');
-                                    $sql->bindParam('hidden', $hidden, PDO::PARAM_BOOL);
+                                    $sql = $bdd->prepare('INSERT INTO Options(HIDDEN, FORMATION) VALUES(:hidden, :formation)');
+                                    $sql->bindParam(':hidden', $hidden, PDO::PARAM_BOOL);
+                                    $sql->bindValue(':formation', 0, PDO::PARAM_INT);
                                     $sql->execute();
 
                                     $feedback = "Votre compte a bien été créé ! Vous pouvez désormais vous connecter !";

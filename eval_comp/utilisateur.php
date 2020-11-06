@@ -10,7 +10,7 @@ if(!isset($_GET['pseudo']) OR empty($_GET['pseudo'])) {
 
 }
 
-$q = $bdd->prepare('SELECT * FROM Membres JOIN Visibilitée ON Membres.ID = Visibilitée.ID WHERE Membres.Pseudo = :pseudo');
+$q = $bdd->prepare('SELECT * FROM Membres JOIN Options ON Membres.ID = Options.ID WHERE Membres.Pseudo = :pseudo');
 $q->bindParam(':pseudo', $_GET['pseudo'], PDO::PARAM_STR);
 $q->execute();
 $check = $q->rowCount();
@@ -36,7 +36,7 @@ $resultats = $q->fetchAll();
 <?php include('config/formwidget.php'); ?>
 <?= myHeader('Profil de ' . $user['Pseudo']); ?>
 <?php require_once('config/navbar.php'); ?>
-<div class="container-fluid p-5 banner3">
+<div class="container-fluid p-5 mt-5 banner3">
     <div class="m-5">
         <div class="main-body">
             <div class="row gutters-sm">
@@ -53,14 +53,14 @@ $resultats = $q->fetchAll();
                     </div>
                     <?php if(!empty($user['Github']) OR !empty($user['Site'])) { ?>
                         <div class="card mt-3">
-                            <ul class="bg-secondary list-group list-group-flush">
+                            <ul class="bg-dark list-group list-group-flush">
                                 <?php if(!empty($user['Github'])) { ?>
-                                    <li class="bg-secondary list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                         <i class="fab fa-github" title="Lien Github"></i><a class="text-white"href="https://github.com/<?= $user['Github']; ?>"><?= $infos['Github']; ?></a>
                                     </li>
                                 <?php } ?>
                                 <?php if(!empty($user['Site'])) { ?>
-                                    <li class="bg-secondary list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                         <i class="fas fa-link" title="Lien site personnel"></i><a class="text-white" href="<?= $user['Site']; ?>" target="_blank">Site personnel</a>
                                     </li>
                                 <?php } ?>

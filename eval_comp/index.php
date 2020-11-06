@@ -2,7 +2,7 @@
 <?php include('config/head.php'); ?>
 <?= myHeader('Accueil'); ?>
 <?php require_once('config/navbar.php'); ?>
-<div class="container-fluid banner" id="top">
+<div class="container-fluid banner mt-5 p-5" id="top">
     <div class="row">
         <div class="col-md-8 offset-md-2 info">
             <h1 class="text-center">DWM Rousies</h1>
