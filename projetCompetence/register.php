@@ -37,8 +37,8 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
 </head>
 =======
 setHearder();
-NavBar()
-;
+NavBar();
+
 ?>
 >>>>>>> 665dadfea4c816f184ca46d4bb10f1f6be18f726:projetCompetence/register.php
 <body>
@@ -83,7 +83,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
 
     $req = "INSERT INTO $DB_dbname.users ( name, surname, email, password ) VALUES ( '$name', '$surname', '$email', '$password' )";
     executeSQL( $req );
-    header( "location: logIn.php");
+    header( "location: login.php");
 }
 
 ?>

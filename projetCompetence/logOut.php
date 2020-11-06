@@ -11,6 +11,6 @@
 
 session_start();
 unset($_SESSION[ 'surname' ]);
-header("location:acceuil.php")
+header("location:login.php")
 
 ?>
