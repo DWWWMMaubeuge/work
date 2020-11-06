@@ -12,16 +12,16 @@ if( $_GET['idSkill'] != "" && $_GET['valSkill'] != "") {
     
     $q = $bdd->prepare('SELECT RESULTAT FROM Resultats WHERE ID_USER = ? AND ID_MATIERE = ?');
     $q->execute([$_SESSION['id'], $idSkill]);
-    $count = $q->rowCount();
-    if($count == 0) {
+    // $count = $q->rowCount();
+    // if($count == 0) {
 
     $insert = $bdd->prepare('INSERT INTO Resultats ( ID_USER, ID_MATIERE, RESULTAT ) VALUES (:iduser, :idskill, :resultat)');
 
-    } else {
+    // } else {
 
-        $insert = $bdd->prepare('UPDATE Resultats SET RESULTAT = :resultat WHERE ID_USER = :iduser AND ID_MATIERE = :idskill');
+    //     $insert = $bdd->prepare('UPDATE Resultats SET RESULTAT = :resultat WHERE ID_USER = :iduser AND ID_MATIERE = :idskill');
 
-    }
+    // }  Décommenter tout ça pour ne faire que des update dans la db :)
 
     $insert->bindParam(':iduser', $ID_user, PDO::PARAM_INT);
     $insert->bindParam(':idskill', $idSkill, PDO::PARAM_INT);

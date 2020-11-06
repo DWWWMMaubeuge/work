@@ -4,8 +4,18 @@
 <?php include('config/head.php'); ?>
 <?php
 
-$q = $bdd->prepare('SELECT * FROM Resultats JOIN Matieres ON Resultats.ID_MATIERE = Matieres.id WHERE ID_USER = :user ORDER BY Matieres.id');
+$q = $bdd->prepare('SELECT *
+FROM Matieres m LEFT JOIN
+     (SELECT r.*,
+             ROW_NUMBER() OVER (PARTITION BY id_Matiere, id_user ORDER BY TIME_OF_INSERTION DESC) as seqnum
+      FROM Resultats r
+      WHERE r.ID_USER = :user 
+     ) r
+     ON m.id = r.ID_MATIERE AND
+        seqnum = 1
+WHERE Active = TRUE AND ID_Formation = :formation;');
 $q->bindParam(':user', $_SESSION['id'], PDO::PARAM_INT);
+$q->bindParam(':formation', $infos['ID_FORMATION'], PDO::PARAM_INT);
 $q->execute();
 $count = $q->rowCount();
 
@@ -194,6 +204,13 @@ $formations = $q->fetchAll();
         test.outerHTML = "<input id='"+idelem2+"' type='text'>";
         let myInput = document.getElementById(idelem2);
         document.getElementById(idelem2).focus();
+
+        myInput.addEventListener("blur", function(event) {
+
+            myInput.outerHTML = myElement;
+            return;
+
+        })
 
         myInput.addEventListener('keyup', function(event) {
 
@@ -387,14 +404,7 @@ $formations = $q->fetchAll();
 
             success: function(data) {
 
-                let errorWindow = document.getElementById('erreur');
-                errorWindow.className = "alert alert-success my-5 text-center";
-                errorWindow.innerHTML = data;
-                setTimeout(() => {
-
-                    errorWindow.className = "alert alert-danger my-5 text-center d-none";
-
-                }, 4500);
+                window.location.replace('profil.php');
 
             }
 
@@ -413,6 +423,13 @@ $formations = $q->fetchAll();
         let myInput = document.getElementById(id);
 
         myInput.focus();
+
+        myInput.addEventListener("blur", function(event) {
+
+            myInput.outerHTML = buttonBase;
+            return;
+
+        })
 
         myInput.addEventListener('keyup', function(event) {
             

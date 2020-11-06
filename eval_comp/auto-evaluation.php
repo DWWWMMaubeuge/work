@@ -3,8 +3,25 @@
 <?php userIsLogged(); ?>
 <?php
 
-$req = $bdd->prepare('SELECT * FROM Matieres LEFT JOIN Resultats ON Matieres.id = Resultats.ID_MATIERE AND Resultats.ID_USER = :ID_USER WHERE Active = TRUE');
+if($infos['ID_FORMATION'] == 0) {
+
+    header('location: index.php');
+    exit();
+
+}
+
+$req = $bdd->prepare('SELECT *
+FROM Matieres m LEFT JOIN
+     (SELECT r.*,
+             ROW_NUMBER() OVER (PARTITION BY id_Matiere, id_user ORDER BY TIME_OF_INSERTION DESC) as seqnum
+      FROM Resultats r
+      WHERE r.ID_USER = :ID_USER 
+     ) r
+     ON m.id = r.ID_MATIERE AND
+        seqnum = 1
+WHERE Active = TRUE AND ID_Formation = :formation;');
 $req->bindParam(':ID_USER', $_SESSION['id'], PDO::PARAM_INT);
+$req->bindParam(':formation', $infos['ID_FORMATION'], PDO::PARAM_INT);
 $req->execute();
 
 $skills = [];
@@ -14,7 +31,6 @@ while( $data = $req->fetch()) {
     array_push( $skills, [ $data['id'], $data['Nom'], $data['RESULTAT'] ] );
 
 }
-
 ?>
 <?php include('config/head.php'); ?>
 <?php include('config/formwidget.php'); ?>
@@ -52,3 +68,7 @@ while( $data = $req->fetch()) {
     </div>
 </div>
 <?php require_once('config/footer.php'); ?>
+<?php print_r($skills); ?>
+<br>
+<br>
+<?php print_r($infos); ?>
