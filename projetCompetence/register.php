@@ -1,4 +1,8 @@
+<?php
 
+include_once("functionHeader.php");
+
+<<<<<<< HEAD:projetCompetence/inscription.php
 <<<<<<< HEAD
 
 
@@ -31,6 +35,12 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
     <title>Register Form</title>
     <link rel="stylesheet" href="style.css">
 </head>
+=======
+setHearder();
+NavBar()
+;
+?>
+>>>>>>> 665dadfea4c816f184ca46d4bb10f1f6be18f726:projetCompetence/register.php
 <body>
 
 <div class="login-box">
@@ -73,7 +83,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
 
     $req = "INSERT INTO $DB_dbname.users ( name, surname, email, password ) VALUES ( '$name', '$surname', '$email', '$password' )";
     executeSQL( $req );
-    header( "location: acceuil.php");
+    header( "location: logIn.php");
 }
 
 ?>
