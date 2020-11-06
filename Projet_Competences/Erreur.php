@@ -1,5 +1,13 @@
-<?php
+<?php  if (count($errors) > 0) : ?>
+  <div class="error">
+  	<?php foreach ($errors as $error) : ?>
+  	  <p><?php echo $error ?></p>
+  	<?php endforeach ?>
+  </div>
+<?php  endif ?>
 
+<?php
+/*
 if( $_POST && $_POST['mail'] != "" && $_POST['password'] != ""  ) 
 {
     $mail       = $_POST['mail'];
@@ -23,6 +31,5 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password'] != ""  )
     }
     echo "<h3>login incorrect</h3>";
 }
-
-
+*/
 ?>

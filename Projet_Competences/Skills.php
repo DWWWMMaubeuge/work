@@ -1,7 +1,20 @@
+<?php 
+  session_start(); 
+
+  if (!isset($_SESSION['surname'])) {
+  	$_SESSION['msg'] = "You must log in first";
+  	header('location: PageLogin.php');
+  }
+  if (isset($_GET['logout'])) {
+  	session_destroy();
+  	unset($_SESSION['surname']);
+  	header("location: PageLogin.php");
+  }
+?>
+
 <?php
 include "Entete.php";
 HEAD("Page compétences");
-include_once(  "Connect.php"  );
 require "FunctionWidget.php"
 ?>
 
@@ -26,13 +39,13 @@ function MAJValue( id_skill, value  )
 </script>	
 
 <?php
-session_start();
+/*session_start();
 
 $ID_user = $_SESSION[ 'ID_user' ];
 $name_user = $_SESSION[ 'name' ];
 $surname_user = $_SESSION[ 'surname' ];
 
-echo "<h3>Welcome $surname_user</h3>\n";
+echo "<h3>Welcome $surname_user</h3>\n";*/
 
 
 $req = "SELECT * FROM $DB_dbname.skills";

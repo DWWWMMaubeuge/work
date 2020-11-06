@@ -1,10 +1,11 @@
 <?php
+include "Serveur.php";
 include "Entete.php";
 HEAD("Page d'inscription");
-include_once(  "Connect.php"  );
 
 
-if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail'] != "" && $_POST['password'] != "" ) 
+
+/*if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail'] != "" && $_POST['password'] != "" ) 
 {
     $name       = $_POST['name'];
     $surname    = $_POST['surname'];
@@ -15,36 +16,46 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail']
 
     $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password ) VALUES ( '$name', '$surname', '$mail', '$password' )";
     executeSQL( $req );
-    header( "location: Accueil.php");
-}
+    header( "location: Skills.php");
+}*/
 
 ?>
 <body>
 
 <div class="login-box">
-<FORM  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">
-<div class="bg-image"></div>
-<h1>Register Form</h1>
-<div  class="textbox">
+    <FORM  method='POST' action="PageInscription.php">
+        <?php include "Erreur.php"; ?>
+        <div class="bg-image"></div>
+        <h1>Inscription</h1>
+        <div  class="input-group">
             <i class="fa fa-user" aria-hidden="true"></i>
-<input type="text" placeholder="surname" name="surname" >
-</div>
-<div  class="textbox">
+            <input type="text" placeholder="Ton nom" name="surname" value="<?php echo $surname; ?>">
+        </div>
+        <div  class="input-group">
             <i class="fa fa-user" aria-hidden="true"></i>
-<input type="text" placeholder="name" name="name" >
+        <input type="text" placeholder="Ton prénom" name="name" >
+        </div>
+        <div  class="input-group">
+            <i class="fas fa-envelope"></i>
+        <input type="text" placeholder="Ton mail" name="mail" value="<?php echo $mail; ?>">
+        </div>
+        <div  class="input-group">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+            <input type="password" placeholder="Ton password" name="password_1" value="">
+        </div>
+        <div  class="input-group">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+            <input type="password" placeholder="Confirme password" name="password_2" value="">
+        </div>
+        <div class="input-group">
+            <button class="btn" type="submit" name="reg_user">Inscrit toi!</button>
+        </div>
+        <p>
+            Déjà membre? <a href="PageLogin.php">Connecte toi!</a>
+        </p>
+        </div>
+    </FORM>
 </div>
-<div  class="textbox">
-<i class="fas fa-envelope"></i>
-<input type="text" placeholder="mail" name="mail">
-</div>
-<div  class="textbox">
-        <i class="fa fa-lock" aria-hidden="true"></i>
-        <input type="password" placeholder="password" name="password" value="">
-    </div>
-<INPUT class="btn" type='submit' value='Sign in'>
-</div>
-</FORM>
-
 </body>
 </html>
 

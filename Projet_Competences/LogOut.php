@@ -4,6 +4,6 @@ HEAD("Logout");
 
 session_start();
 unset($_SESSION[ 'surname' ]);
-header("location:Acceuil.php");
+header("location: PageLogin.php");
 
 ?>
