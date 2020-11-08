@@ -116,7 +116,7 @@ $formations = $q->fetchAll();
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Email <i class="fas fa-question-circle text-warning editmode" title="Votre adresse e-mail est uniquement utilisée à des fins d'administration sur le site et ne sera jamais affiché ailleurs que sur votre profil. Elle sera également toujours caché des visiteurs."></i></h6>
+                                    <h6 class="mb-0">Email <i class="fas fa-question-circle text-warning editmode" title="Votre adresse e-mail est uniquement utilisée à des fins d'administration sur le site et ne sera jamais affiché ailleurs que sur votre profil. Elle sera également toujours cachée des visiteurs."></i></h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <span id="monEmail"><?= $infos['Email']; ?></span> <i class="fas fa-wrench text-warning editmode" id="Email" onclick="setInfo(this.id, 'monEmail')" title="Modifier mon adresse e-mail"></i>
@@ -180,7 +180,7 @@ $formations = $q->fetchAll();
                             <div class="col-sm-12 mb-3">
                                 <div class="card h-100">
                                     <div class="card-body text-dark">
-                                        <h6 class="d-flex w-100 align-items-center mb-3"><i class="material-icons text-info mr-2">Compétences du mois de <?= strtolower($mois); ?></i></h6>
+                                        <h6 class="d-flex w-100 align-items-center mb-3"><i class="material-icons text-info mr-2">Auto-évaluation du mois de <?= strtolower($mois); ?></i></h6>
                                             <?php foreach($resultats as $resultat) { ?>
                                                 <?php if($resultat['Active'] == TRUE) { ?>
                                                     <small><?= $resultat['Nom']; ?></small>
@@ -189,7 +189,7 @@ $formations = $q->fetchAll();
                                                     </div>
                                                 <?php } ?>
                                             <?php } ?>
-                                        <div><a href="moyennes.php">Voir mes moyennes</a></div>
+                                            <div class="text-center my-5"><h4><a href="moyennes.php">Voir ma moyenne</a></h4></div>
                                     </div>
                                 </div>
                             </div>
