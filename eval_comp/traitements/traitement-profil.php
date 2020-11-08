@@ -22,7 +22,7 @@ if(isset($_POST['Pseudo'])) {
                 $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
                 $q->execute();
 
-                $feedback = "Operation réussie !";
+                $feedback = "Opération réussie !";
 
             } else {
 
@@ -55,7 +55,7 @@ if(isset($_POST['Site'])) {
                 $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
                 $q->execute();
 
-                $feedback = "Operation réussie !";
+                $feedback = "Opération réussie !";
 
         } else {
 
@@ -70,7 +70,7 @@ if(isset($_POST['Site'])) {
         $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
         $q->execute();
 
-        $feedback = "Operation réussie !";
+        $feedback = "Opération réussie !";
 
     }
 
@@ -91,7 +91,7 @@ if(isset($_POST['Github'])) {
                 $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
                 $q->execute();
 
-                $feedback = "Operation réussie !";
+                $feedback = "Opération réussie !";
             
             } else {
 
@@ -112,7 +112,7 @@ if(isset($_POST['Github'])) {
         $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
         $q->execute();
 
-        $feedback = "Operation réussie !";
+        $feedback = "Opération réussie !";
 
     }
 
@@ -133,7 +133,7 @@ if(isset($_POST['Prenom'])) {
                 $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
                 $q->execute();
 
-                $feedback = "Operation réussie !";
+                $feedback = "Opération réussie !";
 
             } else {
 
@@ -154,7 +154,7 @@ if(isset($_POST['Prenom'])) {
         $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
         $q->execute();
 
-        $feedback = "Operation réussie !";
+        $feedback = "Opération réussie !";
 
     }
 
@@ -175,7 +175,7 @@ if(isset($_POST['Nom'])) {
                 $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
                 $q->execute();
 
-                $feedback = "Operation réussie !";
+                $feedback = "Opération réussie !";
 
             } else {
 
@@ -196,7 +196,7 @@ if(isset($_POST['Nom'])) {
         $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
         $q->execute();
 
-        $feedback = "Operation réussie !";
+        $feedback = "Opération réussie !";
 
     }
 
@@ -218,7 +218,7 @@ if(isset($_POST['Email'])) {
             $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
             $q->execute();
 
-            $feedback = "Operation réussie !";
+            $feedback = "Opération réussie !";
         
         } else {
 
@@ -246,7 +246,7 @@ if(isset($_POST['Fixe'])) {
             $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
             $q->execute();
 
-            $feedback = "Operation réussie !";
+            $feedback = "Opération réussie !";
 
         } else {
 
@@ -261,7 +261,7 @@ if(isset($_POST['Fixe'])) {
         $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
         $q->execute();
 
-        $feedback = "Operation réussie !";
+        $feedback = "Opération réussie !";
 
     }
 
@@ -278,7 +278,7 @@ if(isset($_POST['Mobile'])) {
             $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
             $q->execute();
 
-            $feedback = "Operation réussie !";
+            $feedback = "Opération réussie !";
 
         } else {
         
@@ -293,7 +293,7 @@ if(isset($_POST['Mobile'])) {
         $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
         $q->execute();
 
-        $feedback = "Operation réussie !";
+        $feedback = "Opération réussie !";
 
     }
 
@@ -310,7 +310,7 @@ if(isset($_POST['MDP'])) {
         $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
         $q->execute();
 
-        $feedback = "Operation réussie !";
+        $feedback = "Opération réussie !";
 
     } else {
 
@@ -328,7 +328,7 @@ if(isset($_POST['Hidden'])) {
     $q->bindParam(':hidden', $visibility, PDO::PARAM_BOOL);
     $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
     $q->execute();
-    $feedback = "Operation réussie !";
+    $feedback = "Opération réussie !";
 
 }
 
@@ -340,7 +340,7 @@ if(isset($_POST['Visible'])) {
     $q->bindParam(':visible', $visibility, PDO::PARAM_BOOL);
     $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
     $q->execute();
-    $feedback = "Operation réussie !";
+    $feedback = "Opération réussie !";
 
 }
 
@@ -353,7 +353,7 @@ if(isset($_POST['Formation'])) {
     $q->bindParam(':formation', $formation, PDO::PARAM_INT);
     $q->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
     $q->execute();
-    $feedback = "Operation réussie !";
+    $feedback = "Opération réussie !";
 
 }
 

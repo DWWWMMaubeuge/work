@@ -4,40 +4,74 @@ include('../config/pdo-connect.php');
 
 if(isset($_POST['ON'])) {
 
-    $q = $bdd->prepare('UPDATE Matieres SET Active = TRUE WHERE Nom = ?');
-    $q->execute(array($_POST['ON']));
-    $feedback = "Compétence mise à jour !";
+    if(!empty($_POST['ON'])) {
+
+        $nom = $_POST['ON'];
+        $active = 1;
+
+        $q = $bdd->prepare('UPDATE Matieres SET Active = :active WHERE Nom = :nom');
+        $q->bindParam(':nom', $nom, PDO::PARAM_STR);
+        $q->bindParam(':active', $active, PDO::PARAM_BOOL);
+        $q->execute();
+        $feedback = "Compétence mise à jour !";
+
+    } else {
+
+        $feedback = "Aucune compétence à activer";
+
+    }
 
 }
 
 if(isset($_POST['OFF'])) {
 
-    $q = $bdd->prepare('UPDATE Matieres SET Active = FALSE WHERE Nom = ?');
-    $q->execute(array($_POST['OFF']));
-    $feedback = "Compétence mise à jour !";
+    if(!empty($_POST['OFF'])) {
+
+        $nom = $_POST['OFF'];
+        $active = 0;
+
+        $q = $bdd->prepare('UPDATE Matieres SET Active = :active WHERE Nom = :nom');
+        $q->bindParam(':nom', $nom, PDO::PARAM_STR);
+        $q->bindParam(':active', $active, PDO::PARAM_BOOL);
+        print_r($_POST);
+        $q->execute();
+        $feedback = "Compétence mise à jour !";
+
+    } else {
+
+        $feedback = "Aucune compétence à désactiver !";
+
+    }
 
 }
 
 if(isset($_POST['ADD'])) {
 
     $nom = htmlspecialchars($_POST['ADD']);
-    $categorie = htmlspecialchars($_POST['CATEGORIE']);
-    $q = $bdd->prepare('INSERT INTO Matieres(Nom, Categorie, Active) VALUES(:nom, :categorie, :active)');
-    $q->bindParam(':nom', $nom, PDO::PARAM_STR);
-    $q->bindParam(':categorie', $categorie, PDO::PARAM_STR);
-    if($_POST['ACTIVE'] == 'Oui') {
+    $formation = htmlspecialchars($_POST['FORMATION']);
+    if(!empty($formation)) {
+        $q = $bdd->prepare('INSERT INTO Matieres(Nom, Active, ID_Formation) VALUES(:nom, :active, :formation)');
+        $q->bindParam(':nom', $nom, PDO::PARAM_STR);
+        $q->bindParam(':formation', $formation, PDO::PARAM_STR);
+        if($_POST['ACTIVE'] == 'Oui') {
 
-        $active = 1;
+            $active = 1;
 
+        } else {
+
+            $active = 0;
+
+        }
+
+        $q->bindParam(':active', $active, PDO::PARAM_BOOL);
+        $q->execute();
+        $feedback = "Compétence ajoutée !";
+        
     } else {
-
-        $active = 0;
-
+        
+        $feedback = "Veuillez choisir la formation lié à cette compétence !";
+        
     }
-
-    $q->bindParam(':active', $active, PDO::PARAM_BOOL);
-    $q->execute();
-    $feedback = "Compétence ajoutée !";
 
 }
 

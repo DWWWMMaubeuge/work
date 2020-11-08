@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `Matieres`;
 CREATE TABLE `Matieres` (
   `id` int NOT NULL AUTO_INCREMENT,
   `Nom` varchar(255) NOT NULL,
-  `Categorie` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Categorie` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `Active` bit(1) NOT NULL,
   `ID_Formation` int NOT NULL,
   PRIMARY KEY (`id`)
@@ -47,12 +47,6 @@ CREATE TABLE `Membres` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `Membres` (`ID`, `Pseudo`, `Prenom`, `Nom`, `Email`, `MDP`, `Admin`, `Fixe`, `Mobile`, `Github`, `Site`, `Avatar`, `Date_of_registration`) VALUES
-(52,	'The-Evil-Fox',	NULL,	NULL,	'stevenhonor@live.fr',	'@59199Hergnies',	CONV('0', 2, 10) + 0,	NULL,	NULL,	NULL,	NULL,	'default.png',	'2020-11-08 04:31:27'),
-(53,	'Testeurfou',	NULL,	NULL,	'test@test.com',	'mdpalacon',	CONV('0', 2, 10) + 0,	NULL,	NULL,	NULL,	NULL,	'default.png',	'2020-11-08 04:58:06'),
-(54,	'Testeur-Fou',	NULL,	NULL,	'test2@test.com',	'mdpalacon',	CONV('0', 2, 10) + 0,	NULL,	NULL,	NULL,	NULL,	'default.png',	'2020-11-08 05:00:40'),
-(55,	'jeanjacquesflsdfsdk',	NULL,	NULL,	'test3@test.com',	'@59199Hergnies',	CONV('0', 2, 10) + 0,	NULL,	NULL,	NULL,	NULL,	'default.png',	'2020-11-08 05:13:01'),
-(56,	'The-Evil-Foxsdfsdf',	NULL,	NULL,	'test4@test.com',	'@59199Hergnies',	CONV('0', 2, 10) + 0,	NULL,	NULL,	NULL,	NULL,	'default.png',	'2020-11-08 05:18:06');
 
 DROP TABLE IF EXISTS `Options`;
 CREATE TABLE `Options` (
@@ -75,4 +69,4 @@ CREATE TABLE `Resultats` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
--- 2020-11-08 04:44:03
+-- 2020-11-08 18:30:31

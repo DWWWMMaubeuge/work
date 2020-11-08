@@ -2,6 +2,12 @@
 <?php require_once('config/verifications.php'); ?>
 <?php userIsLogged(); ?>
 <?php userIsAdmin(); ?>
+<?php
+
+$req = $bdd->query('SELECT * FROM Formations');
+
+?>
+
 <?php include('config/head.php'); ?>
 <?= myHeader('Edition de compétences'); ?>
 <?php require_once('config/navbar.php'); ?>
@@ -10,13 +16,13 @@
         <h2 class="text-center my-5">Modifications des compétences</h2>
         <form class="text-center" method="POST" id="activerComp">
             <h3 class='text-center my-4'>Activation d'une compétence</h3>
-            <?= getDisabledComps('ONcomp'); ?>
+            <?= getDisabledComps($infos['ID_FORMATION']); ?>
             <button id="send-data" class="btn btn-primary mt-2 mb-3 text-center">Activer</button>
             <div id="confirmation"></div>
         </form>
         <form class="text-center" method="POST" id="desactiverComp">
             <h3 class='text-center my-4'>Desactivation d'une compétence</h3>
-            <?= getEnabledComps('OFFcomp'); ?>
+            <?= getEnabledComps($infos['ID_FORMATION']); ?>
             <button id="send-data" class="btn btn-primary mt-2 mb-3 text-center">Désactiver</button>
             <div id="confirmation"></div>
         </form>
@@ -26,10 +32,7 @@
                 <label for="add">Nom de la compétence</label>
                 <input type="text" class="form-control w-25 mx-auto" name="nomcompetence" id="add" aria-describedby="nomHelp">
             </div>
-            <div class="form-group my-3">
-                <label for="categorie">Catégorie</label>
-                <input type="text" class="form-control w-25 mx-auto" name="categoriecompetence" id="categorie" aria-describedby="nomHelp">
-            </div>
+            <input type="hidden" readonly name="formation" id="formation" value="<?= $infos['ID_FORMATION']; ?>">
             <div class="form-group my-3">
                 <label for="isactivated">La compétence doit-elle être activé ?</label>
                 <select name="isactivated" id="is-activated">
@@ -50,7 +53,7 @@
         type: 'POST',
         url: 'traitements/traitement-editcomps.php',
         data: {
-            'ON': $('#ONcomp').val()
+            'ON': $('#enableComp').val()
         },
         dataType: 'text',
         success: function(data) {
@@ -70,7 +73,7 @@
         type: 'POST',
         url: 'traitements/traitement-editcomps.php',
         data: {
-            'OFF': $('#OFFcomp').val()
+            'OFF': $('#disableComp').val()
         },
         dataType: 'text',
         success: function(data) {
@@ -91,8 +94,8 @@
         url: 'traitements/traitement-editcomps.php',
         data: {
             'ADD': $('#add').val(),
-            'CATEGORIE': $('#categorie').val(),
-            'ACTIVE': $('#is-activated').val()
+            'ACTIVE': $('#is-activated').val(),
+            'FORMATION': $('#formation').val()
         },
         dataType: 'text',
         success: function(data) {

@@ -252,7 +252,7 @@ $formations = $q->fetchAll();
 
                         success: function(data) {
 
-                            if(data != "Operation réussie !") {
+                            if(data != "Opération réussie !") {
 
                                 let errorWindow = document.getElementById('erreur');
 
@@ -263,11 +263,11 @@ $formations = $q->fetchAll();
 
                                     errorWindow.className = "alert alert-danger my-5 text-center d-none";
 
-                                }, 4500);
+                                }, 2000);
 
                             }
 
-                            if(data == "Operation réussie !") {
+                            if(data == "Opération réussie !") {
 
                                 if(idelem2 == "monSite") {
 
@@ -281,7 +281,7 @@ $formations = $q->fetchAll();
 
                                             errorWindow.className = "alert alert-danger my-5 text-center d-none";
 
-                                        }, 4500);
+                                        }, 2000);
                                         
                                         return;
 
@@ -295,7 +295,7 @@ $formations = $q->fetchAll();
 
                                         errorWindow.className = "alert alert-danger my-5 text-center d-none";
 
-                                    }, 4500);
+                                    }, 2000);
 
                                     return;
 
@@ -313,7 +313,7 @@ $formations = $q->fetchAll();
 
                                             errorWindow.className = "alert alert-danger my-5 text-center d-none";
 
-                                        }, 4500);
+                                        }, 2000);
 
                                         return;
 
@@ -327,7 +327,7 @@ $formations = $q->fetchAll();
 
                                         errorWindow.className = "alert alert-danger my-5 text-center d-none";
 
-                                    }, 4500);
+                                    }, 2000);
 
                                     return;
 
@@ -343,7 +343,7 @@ $formations = $q->fetchAll();
 
                                         errorWindow.className = "alert alert-danger my-5 text-center d-none";
 
-                                    }, 4500);
+                                    }, 2000);
 
                                 } else {
 
@@ -356,7 +356,7 @@ $formations = $q->fetchAll();
 
                                         errorWindow.className = "alert alert-danger my-5 text-center d-none";
 
-                                    }, 4500);
+                                    }, 2000);
                                 
                                 }
                                 
@@ -478,7 +478,7 @@ $formations = $q->fetchAll();
 
                         success: function(data) {
 
-                            if(data != "Operation réussie !") {
+                            if(data != "Opération réussie !") {
 
                                 let errorWindow = document.getElementById('erreur');
                                 errorWindow.className = "alert alert-danger my-5 text-center";
