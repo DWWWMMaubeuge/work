@@ -175,30 +175,26 @@ $formations = $q->fetchAll();
                             </div>
                         </div>
                     </div>
-                    <div class="row gutters-sm">
-                        <div class="col-sm-12 mb-3">
-                            <div class="card h-100">
-                                <div class="card-body text-dark">
-                                    <?php if($count == 0) { ?>
-                                        <div class="alert alert-danger text-center my-2" role="alert">
-                                            Vous ne vous êtes pas encore évalué pour ce mois ci !
-                                        </div>
-                                    <?php } else { ?>
-                                    <h6 class="d-flex w-100 align-items-center mb-3"><i class="material-icons text-info mr-2">Compétences</i></h6>
-                                        <?php foreach($resultats as $resultat) { ?>
-                                            <?php if($resultat['Active'] == TRUE) { ?>
-                                                <small><?= $resultat['Nom']; ?></small>
-                                                <div class="progress mb-3" style="height: 5px">
-                                                <div class="progress-bar" role="progressbar" style="width: <?= ($resultat['RESULTAT']); ?>0%" aria-valuemin="0" aria-valuemax="10"></div>
-                                                </div>
+                    <?php if($infos['ID_FORMATION'] != 0) { ?>
+                        <div class="row gutters-sm">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body text-dark">
+                                        <h6 class="d-flex w-100 align-items-center mb-3"><i class="material-icons text-info mr-2">Compétences</i></h6>
+                                            <?php foreach($resultats as $resultat) { ?>
+                                                <?php if($resultat['Active'] == TRUE) { ?>
+                                                    <small><?= $resultat['Nom']; ?></small>
+                                                    <div class="progress mb-3" style="height: 5px">
+                                                    <div class="progress-bar" role="progressbar" style="width: <?= ($resultat['RESULTAT']); ?>0%" aria-valuemin="0" aria-valuemax="10"></div>
+                                                    </div>
+                                                <?php } ?>
                                             <?php } ?>
-                                        <?php } ?>
                                         <div><a href="moyennes.php">Voir mes moyennes</a></div>
-                                    <?php } ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -527,4 +523,4 @@ $formations = $q->fetchAll();
     }
 
 </script>
-<?php require_once('config/footer.php'); ?>
+<?php require_once('config/footer.php');
