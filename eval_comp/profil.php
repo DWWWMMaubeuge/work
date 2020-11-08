@@ -4,18 +4,23 @@
 <?php include('config/head.php'); ?>
 <?php
 
+setlocale (LC_TIME, 'fr_FR.utf8','fra'); 
+$mois = strtoupper(strftime('%B', time()));
+
 $q = $bdd->prepare('SELECT *
 FROM Matieres m LEFT JOIN
      (SELECT r.*,
              ROW_NUMBER() OVER (PARTITION BY id_Matiere, id_user ORDER BY TIME_OF_INSERTION DESC) as seqnum
       FROM Resultats r
-      WHERE r.ID_USER = :user 
+      WHERE r.ID_USER = :user
+      AND MOIS = :mois
      ) r
      ON m.id = r.ID_MATIERE AND
         seqnum = 1
 WHERE Active = TRUE AND ID_Formation = :formation;');
 $q->bindParam(':user', $_SESSION['id'], PDO::PARAM_INT);
 $q->bindParam(':formation', $infos['ID_FORMATION'], PDO::PARAM_INT);
+$q->bindParam(':mois', $mois, PDO::PARAM_STR);
 $q->execute();
 $count = $q->rowCount();
 
@@ -176,7 +181,7 @@ $formations = $q->fetchAll();
                                 <div class="card-body text-dark">
                                     <?php if($count == 0) { ?>
                                         <div class="alert alert-danger text-center my-2" role="alert">
-                                            Aucune compétences évaluées pour le moment !
+                                            Vous ne vous êtes pas encore évalué pour ce mois ci !
                                         </div>
                                     <?php } else { ?>
                                     <h6 class="d-flex w-100 align-items-center mb-3"><i class="material-icons text-info mr-2">Compétences</i></h6>
@@ -188,6 +193,7 @@ $formations = $q->fetchAll();
                                                 </div>
                                             <?php } ?>
                                         <?php } ?>
+                                        <div><a href="moyennes.php">Voir mes moyennes</a></div>
                                     <?php } ?>
                                 </div>
                             </div>
