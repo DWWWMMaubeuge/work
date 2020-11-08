@@ -180,7 +180,7 @@ $formations = $q->fetchAll();
                             <div class="col-sm-12 mb-3">
                                 <div class="card h-100">
                                     <div class="card-body text-dark">
-                                        <h6 class="d-flex w-100 align-items-center mb-3"><i class="material-icons text-info mr-2">Compétences</i></h6>
+                                        <h6 class="d-flex w-100 align-items-center mb-3"><i class="material-icons text-info mr-2">Compétences du mois de <?= strtolower($mois); ?></i></h6>
                                             <?php foreach($resultats as $resultat) { ?>
                                                 <?php if($resultat['Active'] == TRUE) { ?>
                                                     <small><?= $resultat['Nom']; ?></small>
