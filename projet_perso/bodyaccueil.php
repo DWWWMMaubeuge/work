@@ -55,8 +55,22 @@ function carousel()
     }
 
 
-
-
+    function langues()
+    {
+        $str= <<< AZE
+        <div class="container">
+    <div class="row">
+        <div class="col-sm-1"><img src="img/html.jpg></div>
+        <div class="col-sm-1"><img src="img/html.jpg></div>
+        <div class="col-sm-1"><img src="img/html.jpg></div>
+        <div class="col-sm-1"><img src="img/html.jpg></div>
+        <div class="col-sm-1"><img src="img/html.jpg></div>
+    </div>
+    </div>
+    AZE;
+    return $str;
+    }
+ 
 
 
 ?>

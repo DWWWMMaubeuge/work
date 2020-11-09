@@ -29,6 +29,13 @@ echo accueilbody();
 
 ?>
 </div>
+
+<div>
+<!-- <?php
+echo langues();
+?> -->
+</div>
+
 <?php
 
 Include "footer.php";

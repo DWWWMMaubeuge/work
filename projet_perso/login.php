@@ -4,7 +4,8 @@ session_start();
 $_SESSION[ 'ID_user' ]  = 0;
 
 include_once("function_connect.php");
-
+include_once("header.php");
+echo entete2("login");
 
 
 if( $_POST && $_POST['mail'] != "" && $_POST['password'] != ""  ) 
@@ -34,33 +35,24 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password'] != ""  )
 
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
-    <link rel="stylesheet" href="login.css">
-</head>
-<body>
-    
-<div class="login-box">
-    <FORM  method='POST' action="<?=$_SERVER['PHP_SELF']; ?>">
-        <div class=""></div> 
-        <h1>Login</h1>
-        <div  class="textbox">
-             <i class="fas fa-envelope"></i>
-             <INPUT type='text' name='mail' placeholder="Your mail">
-        </div>
-
-        <div  class="textbox">
-            <i class="fa fa-lock" aria-hidden="true"></i>
-            <input type="password" placeholder="Password" name="password" value="">
-        </div>
-        
-        <input class="btn" type="submit" name="btn" value="Log in">
-    </FORM>
-</div>
+<body>    
+    <div class="formulaire container">
+        <FORM  method='POST' action="<?=$_SERVER['PHP_SELF']; ?>">
+            <div class=""></div> 
+            <h1>Login</h1>
+            <div>
+                <div>
+                    <INPUT type='text' name='mail' placeholder="Your mail">
+                </div>
+                <div>
+                    <input type="text" placeholder="Password" name="password" value="">
+                </div>
+                <div class="enter">
+                    <input type="submit"  value="Log-in">
+                </div>
+            </div>      
+        </FORM>
+    </div>
 </body>
 </html>
 

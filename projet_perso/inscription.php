@@ -1,5 +1,8 @@
 <?php
 include_once("function_connect.php");
+include_once("header.php");
+echo entete3("inscription");
+
  if( $_POST && isset($_POST['name']) && isset($_POST['surname'])  && isset($_POST['mail'])  && isset($_POST['password'])  ) 
   {
         $name       = $_POST['name'];
@@ -19,63 +22,31 @@ include_once("function_connect.php");
 
   }
 
-
-
 ?>
 
-<div class="formulaire">
-<FORM  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">
-<div class=""></div>
-<h1>Inscription</h1>
-<INPUT type='text' name='name' placeholder="saisir votre nom ici">
-<br>
-<INPUT type='text' name='surname' placeholder=" saisir votre prenom">
-<br>
-<INPUT type='text' name='mail' placeholder="saisir votre mail">
-<br>
-<INPUT type='text' name='password' placeholder="saisir votre mot de passe">
-<br>
-<INPUT type='submit' value='Entrer'>
-</FORM>
-</div>
+<body>
+    <div class="formulaire container" >
+      <FORM  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <div class=""></div>
+        <h1>Inscription</h1>
+        <div>
+            <div>
+              <INPUT type='text' name='name' placeholder="saisir votre nom ici">
+            </div>
+            <div>
+              <INPUT type='text' name='surname' placeholder=" saisir votre prenom">
+            </div>
+            <div>
+              <INPUT type='text' name='mail' placeholder="saisir votre mail">
+            </div>
+            <div>
+              <INPUT type='text' name='password' placeholder="saisir votre mot de passe">
+            </div>
+            <div class="enter">
+              <INPUT type='submit' value='Entrer'>
+            </div>
+          </div>
+      </FORM>
+    </div>
+</body>
 
-
-
-
-
-
-
-
-
-
-
-
-<style>
-input[type=text] {
-  width: 50%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-input{
-  margin-top: auto;
-  margin-left: auto;
-}
-
-.formulaire {
-  border-radius: 5px;
-  background-color: #313137 ;
-  padding: 20px;
-  text-align: center;
-  margin-top: 20vh;
- 
- 
-}
-body {
-  background: url(img/bg.jpg) no-repeat;
-  background-size: cover;
-
-}
-</style>
