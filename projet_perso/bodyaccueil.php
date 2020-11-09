@@ -58,13 +58,15 @@ function carousel()
     function langues()
     {
         $str= <<< AZE
+        <div class="langue">
         <div class="container">
     <div class="row">
-        <div class="col-sm-1"><img src="img/html.jpg></div>
-        <div class="col-sm-1"><img src="img/html.jpg></div>
-        <div class="col-sm-1"><img src="img/html.jpg></div>
-        <div class="col-sm-1"><img src="img/html.jpg></div>
-        <div class="col-sm-1"><img src="img/html.jpg></div>
+        <div class="col-sm "><img src="img/html.jpg"width=75%;></div>
+        <div class="col-sm "><img src="img/html.jpg"width=75%;></div>
+        <div class="col-sm "><img src="img/html.jpg"width=75%;></div>
+        <div class="col-sm "><img src="img/html.jpg"width=75%;></div>
+        <div class="col-sm "><img src="img/html.jpg"width=75%;></div>
+    </div>
     </div>
     </div>
     AZE;

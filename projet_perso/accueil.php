@@ -31,9 +31,9 @@ echo accueilbody();
 </div>
 
 <div>
-<!-- <?php
+ <?php
 echo langues();
-?> -->
+?> 
 </div>
 
 <?php
