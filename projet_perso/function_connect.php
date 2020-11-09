@@ -8,21 +8,10 @@ try
   {
     die("Erreur: " . $e->getMessage());
   }
-
-  if( $_POST && isset($_POST['name']) && isset($_POST['surname'])  && isset($_POST['mail'])  && isset($_POST['password'])  ) 
+  function executeSQL( $req )
   {
-        $name       = $_POST['name'];
-        $surname    = $_POST['surname'];
-        $mail       = $_POST['mail'];
-        $password   = $_POST['password'];
-        $query = $bdd->prepare("INSERT INTO users(name,surname,mail,password ) VALUES( :name, :surname, :mail, :password )");
-        $query->execute(array(
-        "name"=>$_POST["name"],
-        "surname"=>$_POST["surname"],
-        "mail"=>$_POST["mail"],
-        "password"=>$_POST["password"]
-        ));
-
-        $bdd = null;
-        header( "location:login.php");
+    GLOBAL $bdd;
+    echo "$req<br>";
+    return $bdd->query( $req );
   }
+ 

@@ -1,5 +1,26 @@
 <?php
 include_once("function_connect.php");
+ if( $_POST && isset($_POST['name']) && isset($_POST['surname'])  && isset($_POST['mail'])  && isset($_POST['password'])  ) 
+  {
+        $name       = $_POST['name'];
+        $surname    = $_POST['surname'];
+        $mail       = $_POST['mail'];
+        $password   = $_POST['password'];
+        $query = $bdd->prepare("INSERT INTO users(name,surname,mail,password ) VALUES( :name, :surname, :mail, :password )");
+        $query->execute(array(
+        "name"=>$_POST["name"],
+        "surname"=>$_POST["surname"],
+        "mail"=>$_POST["mail"],
+        "password"=>$_POST["password"]
+        ));
+
+        $bdd = null;
+        header( "location:login.php"); 
+
+  }
+
+
+
 ?>
 
 <div class="formulaire">
@@ -17,6 +38,17 @@ include_once("function_connect.php");
 <INPUT type='submit' value='Entrer'>
 </FORM>
 </div>
+
+
+
+
+
+
+
+
+
+
+
 
 <style>
 input[type=text] {
