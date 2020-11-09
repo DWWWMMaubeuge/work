@@ -18,10 +18,10 @@ $DB_dbname 			= "DWWM_Maubeuge";
 
 //variables de connextion Fatima
 
-$DB_servername 	= "localhost:3306";
-$DB_username 		= "root";
-$DB_password 		= "" ;
-$DB_dbname 		= "skills";
+//$DB_servername 	= "localhost:3306";
+//$DB_username 		= "root";
+//$DB_password 		= "" ;
+//$DB_dbname 		= "skills";
 
 // variables de connextion Xavier
 /*$DB_servername 		= "localhost";

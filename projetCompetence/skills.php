@@ -20,21 +20,32 @@ include_once("functionConnect.php");
 include_once("functionHeader.php");
 NavBar2();
 
-function setWidgetValue2( $skill  )
+function setWidgetValue1( $skill  )   // ID    name 
 {
+  $widget  = "";
+  $widget .= "<div class=\"skills\" >\n";
+  $widget .= "<p>".$skill[1]."</p>\n";
+  $widget .= "<input id='number' type='number' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
+  $widget .= "</div>\n";
+  return $widget; 
+}
 
-
-
-  $widget = "<p>".$skill[1]."</p><input id='number' type='number' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
-  return $widget;
-  
-  
+function setWidgetValue2( $skill  )   // ID    name 
+{
+  $widget  = "";
+  $widget .= "<div class=\"skills\" >\n";
+  $widget .= "<p>".$skill[1]."</p>\n";
+  $widget .= "<input id='number' type='range' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
+  $widget .= "<p id=\"displaySkill".$skill[0]."\"></p>\n";
+  $widget .= "</div>\n"; 
+  return $widget; 
 }
 
 
 function setAllWidgetValue( $skills  )
 {
-    $widget = "<div id='valSkills' >\n";
+    $widget  = "";
+    $widget .= "<div id='valSkills' >\n";
     foreach( $skills as $skill )
         $widget .= setWidgetValue2( $skill );
     $widget .= "</div>\n";
@@ -55,15 +66,19 @@ $req = "SELECT * FROM $DB_dbname.skills";
 $result = executeSQL( $req );
 
 $skills = [];
-while( $data = $result->fetch_assoc())
+while( $ligne = $result->fetch_assoc())
 {
-    array_push( $skills, [ $data['id'], $data[ 'skill']   ] );
+    array_push( $skills, [ $ligne['id'], $ligne[ 'name' ]   ] );
 }
 ?>
 
 <script>
     function MAJ_Value( id_skill, value  )
     {
+                                     
+      document.getElementById("displaySkill"+id_skill).innerHTML = ""+value;
+
+
       var xhttp = new XMLHttpRequest();
       
       xhttp.onreadystatechange = function() {
@@ -81,9 +96,7 @@ while( $data = $result->fetch_assoc())
 
 <FORM  method='POST' name="formSkill" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <?php 
-echo "<div class='skills'>";
 echo setAllWidgetValue( $skills );
-echo "</div>";
  ?>
 </FORM>
 
