@@ -2,7 +2,20 @@
 require_once( "parametres.php" );
 include_once(  "CO_global_functions.php"  );
 
+
+//https://www.jqueryscript.net/other/slot-machine-picker-drum.html
+//https://www.jqueryscript.net/tags.php?/select/
 function setWidgetValue2( $skill  )
+{
+    $widget ="<p>".$skill[1]."</p><select name=\"valSkill\" onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
+    //$widget .="<option value=\"\">--Please choose an option--</option>\n";
+    for( $a=1 ; $a<11 ; $a++ )
+        $widget .="<option value=\"$a\">$a</option>\n";
+    $widget .="</select><br>\n";
+    return $widget;
+}
+
+function setWidgetValue2x( $skill  )
 {
     $widget = "<p>".$skill[1]."</p><input id='number' type='number' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
     return $widget;
