@@ -35,8 +35,6 @@ if (!isset($_SESSION["fname"])) {
       <p class="col-12 text-right"><a href="deconnexion.php">Déconnexion</a></p>
     </div>
 
-
-
   </main>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

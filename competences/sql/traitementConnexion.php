@@ -2,17 +2,15 @@
 require './src/connexion.php';
 
 
-if ((!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["password"]))) {
-  $fname = $_POST["fname"];
-  $lname = $_POST["lname"];
+if ((!empty($_POST["email"]) && !empty($_POST["password"]))) {
+  $email = $_POST["email"];
   $password = hash('sha256', $_POST["password"]);
   $error = 1;
 
 
-  $req = $bdd->prepare("SELECT * from users WHERE fname = :fname AND lname = :lname");
+  $req = $bdd->prepare("SELECT * from users WHERE email = :email");
   $req->execute(array(
-    "lname" => $lname,
-    "fname" => $fname
+    "email" => $email
   ));
 
   while ($users = $req->fetch()) {
@@ -20,6 +18,7 @@ if ((!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["passwo
       $error = 0;
       $_SESSION["fname"] = $users["fname"];
       $_SESSION["lname"] = $users["lname"];
+      $_SESSION["email"] = $users["email"];
       $_SESSION["id_user"] = $users["id"];
       $_SESSION["note"] = 0;
 

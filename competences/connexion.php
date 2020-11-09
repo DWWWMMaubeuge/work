@@ -34,10 +34,7 @@ require 'sql/traitementConnexion.php';
           <h5>Connectez-vous. Pas encore inscrit ? <a href="./">inscrivez-vous</a>.</h5>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control item" name="fname" placeholder="Prénom de l'utilisateur" required>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control item" name="lname" placeholder="Nom de l'utilisateur" required>
+          <input type="email" class="form-control item" name="email" placeholder="Email" required>
         </div>
         <div class="form-group">
           <input type="password" class="form-control item" name="password" placeholder="Mot de passe" required>

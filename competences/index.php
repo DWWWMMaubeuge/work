@@ -24,9 +24,9 @@ require 'sql/traitementInscription.php';
           <div class="alert alert-danger item mx-auto">
             Les mots de passes sont différents
           </div>
-        <?php elseif (isset($_GET["name"])) : ?>
+        <?php elseif (isset($_GET["email"])) : ?>
           <div class="alert alert-danger item mx-auto">
-            Un homonyme existe déjà
+            Ce email est déjà pris
           </div>
         <?php endif; ?>
       <?php endif; ?>
@@ -40,6 +40,9 @@ require 'sql/traitementInscription.php';
         </div>
         <div class="form-group">
           <input type="text" class="form-control item" name="lname" placeholder="Nom" required>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control item" name="email" placeholder="Email" required>
         </div>
         <div class="form-group">
           <input type="password" class="form-control item" name="password" placeholder="Mot de passe" required>
