@@ -15,7 +15,8 @@
 <?php
 include "Entete.php";
 HEAD("Page compétences");
-require "FunctionWidget.php"
+require "FunctionWidget.php";
+include "maj_value.php"
 ?>
 
 <script>

@@ -1,12 +1,9 @@
 <?php
 
 
-include_once(  "Connect.php"  );
+include_once(  "Serveur.php"  );
 
-session_start();
-$ID_user = $_SESSION[ 'ID_user' ];
-$name_user = $_SESSION[ 'name' ];
-$surname_user = $_SESSION[ 'surname' ];
+
 
 
 if( $_GET['idSkill'] != "" && $_GET['valSkill'] != "" ) 
