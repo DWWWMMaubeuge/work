@@ -28,27 +28,7 @@ while( $data = $req->fetch()) {
 <?php include('config/head.php'); ?>
 <?php include('config/formwidget.php'); ?>
 <?= myHeader('Auto-evaluation'); ?>
-<script>
-    
-    function MAJ_Value( id_skill, value, iduser )
-    {
-      var xhttp = new XMLHttpRequest();
-      
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) 
-        {
-            let confirmation = document.getElementById('confirmation');
-
-            confirmation.className = "alert alert-info my-5 text-center"
-            confirmation.innerHTML = "Note modifié avec succès !";
-        }
-      };
-
-      xhttp.open("GET", "traitements/traitement-evaluation.php?idSkill="+id_skill+"&valSkill="+value+"&iduser="+iduser, true);
-      xhttp.send();
-
-    }   
-</script>
+<script src="scripts/autoeval.js"></script>
 <?php require_once('config/navbar.php'); ?>
 <div class="container-fluid p-5 mt-5 banner3">
     <div class="container bg-dark my-5 p-5 opacity-4">
