@@ -16,10 +16,28 @@ include 'fonctionAffichages.php';
         <link rel="stylesheet" href="../CSS/slide.css">
         <link rel="stylesheet" href="../CSS/main.css">
         <link rel="stylesheet" href="../CSS/door.css">
-        <title>Document</title>
+        <title>Vos Compétences</title>
     </head>
-    <body class="bg-dark">
-    <div id="tabSkills">Tableau de note</div>
+    <body>
+    <nav class="navbar navbar-light bg-light shadow fixed-top">
+        <a class="navbar-brand h1" href="../index1.php"><i class="fas fa-laptop-house"></i>  Compétences</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../index1.php"><i class="fas fa-concierge-bell"></i>  Acceuil</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="skills.php"><i class="far fa-clipboard"></i>  Auto-Evaluation</a>
+                </li>
+            </ul>
+
+    </nav>
+    <div id="tabSkills">Tableau de notes</div>
     <div id="letableau"></div>
     <?php
     formMat($skills,$array2,0);

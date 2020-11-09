@@ -12,29 +12,38 @@ include 'Login.php'
     <title>Document</title>
 </head>
 
-<body class="bg-dark">
+<body>
+
+<!--    <nav class="navbar navbar-light bg-light shadow">
+        <a class="navbar-brand h1" href="../index1.php">Compétences</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../index1.php">Acceuil</a>
+                </li>
+            </ul>
+    </nav>-->
     <?php
         if(isset($_GET['success']) && $_GET['success']){
             echo "<div class=\"alert alert-success\">Compte créé avec succés</div>";
         }
     ?>
-    <div class="container background border border-primary p-5 rounded" style="margin:200px auto auto auto;">
-        <h1>Connectez-vous <span class="h6">Pas encore inscrit?<a href="inscription.php"> Inscrivez-vous</a></span></h1>
+    <!--<div class="container background border border-primary p-5 rounded" style="margin:200px auto auto auto;">-->
+        <h1>Connectez-vous <!--<span class="h6">Pas encore inscrit?<a href="inscription.php"> Inscrivez-vous</a></span>--></h1>
         <form method="post">
             <div class="form-group">
                 <label for="exampleInputEmail3">adresse Email</label>
                 <input type="email" class="form-control" id="exampleInputEmail3" name="email" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">mot de passe</label>
-                <input type="password" class="form-control" name="pwd" id="exampleInputPassword1">
+                <label for="exampleInputPassword3">mot de passe</label>
+                <input type="password" class="form-control" name="pwd" id="exampleInputPassword1=2">
             </div>
-            <input type="submit" class="btn btn-primary" name="submit" value="Connectez-vous">
+            <input type="submit" class="btn btn-primary" name="submitCon" value="Connectez-vous">
         </form>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <!--</div>-->
 </body>
 </html>

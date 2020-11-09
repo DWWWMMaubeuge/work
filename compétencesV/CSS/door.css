@@ -28,6 +28,6 @@
     left:5px;
 }
 
-*responsiveTitle{
+.responsiveTitle{
     display: inline-flex;
 }

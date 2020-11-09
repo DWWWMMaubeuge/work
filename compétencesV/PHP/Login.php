@@ -6,7 +6,7 @@ $query1=$bdd->prepare("SELECT count(*) AS nb FROM users WHERE email=:email AND p
 $query2=$bdd->prepare("SELECT * FROM users WHERE email=:email AND password=:mdp");
 
 
-if (isset($_POST['submit'])){
+if (isset($_POST['submitCon'])){
     if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['pwd']) && !empty($_POST['pwd'])){
         $email=htmlspecialchars($_POST['email']);
         $mdp=hash('sha256',$_POST['pwd']);
@@ -23,7 +23,7 @@ if (isset($_POST['submit'])){
             $_SESSION['nom']=$array['name'];
             $_SESSION['prenom']=$array['firstname'];
             $_SESSION['idUser']=$array['id'];
-            header("Location:skills.php");
+            header("Location:./index1.php");
         }
         else{
             echo "<div class=\"alert alert-danger\">Cet utilisateur n'existe pas</div>";

@@ -2,5 +2,5 @@
 session_start();
 session_unset();
 session_destroy();
-header('Location:connnexion.php');
+header('Location:../index1.php');
 ?>

@@ -1,21 +1,20 @@
 #tabSkills{
-    top:0;
-    background-color: #091539;
+    top:65px;
+    background-color: rgba(23, 45, 99, 0.6);
 }
 #letableau, #tabSkills {
     padding: 5px;
     text-align: center;
-    border: solid 3px #000000;
     position:fixed;
     width:100%;
     color:white;
-    z-index:1000;
+    z-index:100;
 }
 
 #letableau{
     background-color: whitesmoke;
     padding: 50px;
     display: none;
-    top:38px;
+    top:100px;
 
 }

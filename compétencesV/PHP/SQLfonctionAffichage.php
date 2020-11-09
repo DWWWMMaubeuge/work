@@ -7,6 +7,7 @@ $skills=[];
 while ($array = $query1->fetch(PDO::FETCH_ASSOC)) {
     array_push($skills, $array);
 }
+
 $idUser=$_SESSION['idUser'];
 $query2=$bdd->prepare("SELECT r.id_mat,r.eval
                                 FROM resultat AS r
