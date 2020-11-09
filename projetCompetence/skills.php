@@ -23,8 +23,8 @@ NavBar2();
 function setWidgetValue2( $skill  )
 {
 
-
-
+  $widget ="";
+  $widget .= "<div class =skills>";
   $widget = "<p>".$skill[1]."</p><input id='number' type='number' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
   return $widget;
   
