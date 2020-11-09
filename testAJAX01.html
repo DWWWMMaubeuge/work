@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+
+<p id="monMessage0">Message 0</p>
+<p id="monMessage1">Message 1</p>
+<p id="monMessage2">Message 2</p>
+<p id="monMessage3">Message 3</p>
+
+<FORM method="POST" action="" >
+  <INPUT typt="text" id="champ1" name="champ1" value="" placeholder="ecrivez votre message" onchange="sendMessage( this.value )">
+  <INPUT typt="text" id="champ2" name="champ2" value="" placeholder="a enregistrer" onchange="writeInDB( this.value )">
+</FORM>
+
+
+<button type="button" onclick="sendData()">send data</button>
+<button type="button" onclick="changeMessage()">Change message</button>
+
+
+
+
+<script>
+function changeMessage() 
+{     
+	document.getElementById("monMessage0").innerHTML = "coucou TATA";
+}
+
+
+function loadPage() 
+{
+  	var objectXHTTP = new XMLHttpRequest();
+
+	//objectXHTTP.onreadystatechange = new array(); 
+	//objectXHTTP.onreadystatechange = function() {  print "toto";  }; 
+
+	objectXHTTP.onreadystatechange = function() 
+    {
+    	if ( this.readyState == 4 && this.status == 200 ) 
+        {
+          document.getElementById("monMessage1").innerHTML = this.responseText;
+          document.getElementById("champ1").value = this.responseText;
+    	}
+	};
+  
+  objectXHTTP.open("GET", "serverPageAJAX01.php", true);
+  objectXHTTP.send();
+}
+
+function sendData() 
+{
+    var objectXHTTP = new XMLHttpRequest();
+      
+    objectXHTTP.onreadystatechange = function() 
+    {
+        if ( this.readyState == 4 && this.status == 200 ) 
+        {
+            document.getElementById("monMessage2").innerHTML = this.responseText;
+        }
+    };
+    
+    objectXHTTP.open("GET", "serverPageAJAX02_getData.php?data1=toto&data2=tata", true);
+    objectXHTTP.send();
+}
+
+function sendMessage( message ) 
+{
+    var objectXHTTP = new XMLHttpRequest();
+      
+    objectXHTTP.onreadystatechange = function() 
+    {
+        if ( this.readyState == 4 && this.status == 200 ) 
+        {
+            document.getElementById("monMessage3").innerHTML = this.responseText;
+        }
+    };
+    
+    objectXHTTP.open("GET", "serverPageAJAX03_setUpper.php?data="+message, true);
+    objectXHTTP.send();
+}
+
+function writeInDB( message ) 
+{
+    var objectXHTTP = new XMLHttpRequest();
+          
+    objectXHTTP.open("GET", "serverPageAJAX04_writeInDB.php?data="+message, true);
+    objectXHTTP.send();
+}
+
+
+</script>
+
+</body>
+</html>
