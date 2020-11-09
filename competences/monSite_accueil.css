@@ -1,44 +1,56 @@
 h1{
     text-align: center;
-    text-decoration: underline;
+	text-decoration: underline;
+	color:rgb(43, 160, 180);
 }
 h2{
 	text-decoration: underline;
-	
+	color:rgb(43, 160, 180);
     
 }
 h3{
     text-decoration: underline;
-    
+    color:rgb(43, 160, 180);
 }
 body{
     background-color: rgb(43, 160, 180);
-	margin:10;
-	padding:0;
+	margin:20px;
+	padding:10;
+	background-image:url(https://dzone.com/storage/temp/12721356-pic-html-on-page.jpg) ;
+	background-size: cover;
 }
 
 #gauche{
 	width:50%;
 	float:left;
-	margin:0;
+	margin:auto;
 }
 
 #droite{
 	float:right;
 	width:50%;
-	margin:0;
+	margin:auto;
 }
 img{
 width: 100px;
-background-color: rgb(43, 160, 180));
-
+background-color: rgb(43, 160, 180);
 }
+p{
+	color:rgb(43, 160, 180);
+}
+
 p1{
 	text-align: left;
+	color:rgb(43, 160, 180);
 }
 p2{
 	text-align: center;
+	color:rgb(43, 160, 180);
 }
 p3{
 	text-align: right;
+	color:rgb(43, 160, 180);
+}
+.navbar{
+	background-color: rgb(43,160,180);
 }
