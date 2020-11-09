@@ -16,7 +16,7 @@
 include "Entete.php";
 HEAD("Page compétences");
 require "FunctionWidget.php";
-include "maj_value.php"
+include "Connect.php";
 ?>
 
 <script>
@@ -49,14 +49,15 @@ $surname_user = $_SESSION[ 'surname' ];
 echo "<h3>Welcome $surname_user</h3>\n";*/
 
 
-$req = "SELECT * FROM $DB_dbname.skills";
+$req = "SELECT * FROM skills";
 $result = executeSQL( $req );
 
 $skills = [];
 while( $data = $result->fetch_assoc())
 {
-    array_push( $skills, [ $data['id'], $data[ 'skill']   ] );
+    array_push( $skills, [ $data['id'], $data[ 'name'] ] );
 }
+//var_dump($skills);
 ?>
 
 <FORM  method='POST' name="formSkill" action="<?php echo $_SERVER['PHP_SELF']; ?>">

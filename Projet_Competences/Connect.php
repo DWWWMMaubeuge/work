@@ -12,7 +12,7 @@
 
     function executeSQL( $req )
     {
-        GLOBAL $DB_URL, $DB_user, $DB_PW;
+        GLOBAL $DB_URL, $DB_user, $DB_PW, $DB_dbname;
     
         $result = false;
         if ( $req != "" )
@@ -20,7 +20,7 @@
     
             //echo "new mysqli($DB_URL, $DB_user, $DB_PW);<br>";
             // Create connection
-            $conn = new mysqli($DB_URL, $DB_user, $DB_PW);
+            $conn = new mysqli($DB_URL, $DB_user, $DB_PW, $DB_dbname);
     
             // Check connection
             if ($conn->connect_error) 
