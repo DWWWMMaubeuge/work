@@ -25,14 +25,25 @@ if( $_POST && $_POST['email'] != "" && $_POST['password'] != ""  )
         $req = "SELECT * FROM $DB_dbname.users WHERE email='$email' AND password='$password'";
         $result = executeSQL( $req );
         $data = $result->fetch_assoc();
+        
         $_SESSION[ 'ID_user' ]  = $data[ 'id' ];
         $_SESSION[ 'name' ]     = $data[ 'name' ];
         $_SESSION[ 'surname' ]  = $data[ 'surname' ];
-    
-        header( "location: skills.php");
+        // vérifier si l'utilisateur est un administrateur ou un utilisateur
+        if ($data['type'] == 'admin') 
+        {
+            header('location: admin/home.php');      
+        }
+        else
+        {
+            header('location: skills.php');
+        }
     }
-    echo "<h3>login incorrect</h3>";
+    else{
+        $message = "incorrect password or email.";
+    }
 }
+
 
 ?>
 

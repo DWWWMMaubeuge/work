@@ -9,7 +9,7 @@ function setHearder($title="skills"){
     echo "<meta charset=\"UTF-8\">";
     echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=\1.0\">";
     echo  "<title>$title</title>";
-    echo "<link rel=\"stylesheet\" href=\"stylesheet.css\">";
+    echo "<link rel=\"stylesheet\" href=\"style.css\">";
     echo "</head>";
 }
 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
@@ -20,12 +20,20 @@ include_once("functionConnect.php");
 include_once("functionHeader.php");
 NavBar2();
 
+
+
 function setWidgetValue2( $skill  )   // ID    name 
 {
   $widget  = "";
+  $widget .= "<div class=\"container\" >\n";
+  $widget .= "<div class=\"row\" >\n";
+  $widget .= "<div class=\"col-sm-2\" >\n";
   $widget .= "<div class=\"skills\" >\n";
   $widget .= "<p>".$skill[1]."</p>\n";
   $widget .= "<input id='number' type='number' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
+  $widget .= "</div>\n";
+  $widget .= "</div>\n";
+  $widget .= "</div>\n";
   $widget .= "</div>\n";
   return $widget; 
 }
@@ -37,7 +45,6 @@ function setWidgetValue1( $skill  )   // ID    name
   $widget .= "<p>".$skill[1]."</p>\n";
   $widget .= "<input id='number' type='range' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
   $widget .= "<p id=\"displaySkill".$skill[0]."\"></p>\n";
-  $widget .= "</div>\n"; 
   return $widget; 
 }
 
@@ -96,7 +103,9 @@ while( $ligne = $result->fetch_assoc())
 
 <FORM  method='POST' name="formSkill" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <?php 
+
 echo setAllWidgetValue( $skills );
+
  ?>
 </FORM>
 
