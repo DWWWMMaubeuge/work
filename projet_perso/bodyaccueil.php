@@ -18,7 +18,17 @@ RTY;
 return $str;
 }
 
-
+function bordereau()
+    {
+    $str= <<<AZE
+    
+        <div class="">
+        <img src="img/bg.jpg">
+        </div>
+    
+    AZE;
+    return $str;
+    }
 
 function carousel()
 {

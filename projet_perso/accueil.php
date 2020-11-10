@@ -6,6 +6,7 @@ if(isset($_SESSION[ 'ID_user' ]))
 include "header.php";
 echo entete();
 include "navbar.php";
+include_once "bodyaccueil.php";
 echo nav($id);
 
 ?>
@@ -14,10 +15,12 @@ echo nav($id);
 <div class="titre">
 <h1>Nicolas CAULIER Développeur Web</h1>
 </div>
+
+</div>
 <div class="">
 
 <?php
-include_once "bodyaccueil.php";
+
 echo carousel();
 ?>
 
