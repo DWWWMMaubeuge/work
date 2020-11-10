@@ -54,3 +54,8 @@ p3{
 .navbar{
 	background-color: rgb(43,160,180);
 }
+.card-footer{
+	background-image:url(https://dzone.com/storage/temp/12721356-pic-html-on-page.jpg) ;
+	background-size: cover;
+	text-align: right;
+}
