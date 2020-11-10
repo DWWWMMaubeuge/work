@@ -8,7 +8,7 @@ if(isset($_POST['captcha'])) {
       echo "Captcha invalide...";
    }
 }
- 
+ ............
 ?>
 <form method="POST">
    <img src="captcha.php" />
