@@ -46,7 +46,7 @@ Mon Compte
 
 <a href="#" class="fa fa-user"></a>   
 <a href="#" class="fa fa-twitter"></a>
-<a href="#" class="fa fa-youtube"></a>
+<a href="https://www.youtube.com/channel/UC7UyFqncumbBrV0Oa063KnQ?view_as=subscriber" class="fa fa-youtube"></a>
 <a href="logOut.php" class="fa fa-sign-out"></a>
 
 </ul>

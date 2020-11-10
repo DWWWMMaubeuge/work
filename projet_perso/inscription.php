@@ -3,18 +3,20 @@ include_once("function_connect.php");
 include_once("header.php");
 echo entete3("inscription");
 
- if( $_POST && isset($_POST['name']) && isset($_POST['surname'])  && isset($_POST['mail'])  && isset($_POST['password'])  ) 
+ if( $_POST && isset($_POST['name']) && isset($_POST['surname'])  && isset($_POST['mail'])  && isset($_POST['password']) && isset($_POST['password2'])  ) 
   {
         $name       = $_POST['name'];
         $surname    = $_POST['surname'];
         $mail       = $_POST['mail'];
         $password   = $_POST['password'];
-        $query = $bdd->prepare("INSERT INTO users(name,surname,mail,password ) VALUES( :name, :surname, :mail, :password )");
+        $password2   = $_POST['password2'];
+        $query = $bdd->prepare("INSERT INTO users(name,surname,mail,password,password2 ) VALUES( :name, :surname, :mail, :password, :password )");
         $query->execute(array(
         "name"=>$_POST["name"],
         "surname"=>$_POST["surname"],
         "mail"=>$_POST["mail"],
-        "password"=>$_POST["password"]
+        "password"=>$_POST["password"],
+        "password2"=>$_POST["password2"]
         ));
 
         $bdd = null;
@@ -41,6 +43,9 @@ echo entete3("inscription");
             </div>
             <div>
               <INPUT type='text' name='password' placeholder="saisir votre mot de passe">
+            </div>
+            <div>
+              <INPUT type='text' name='password2' placeholder="veuillez confirmer passe">
             </div>
             <div class="enter">
               <INPUT type='submit' value='Entrer'>
