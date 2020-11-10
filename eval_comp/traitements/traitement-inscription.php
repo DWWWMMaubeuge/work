@@ -3,109 +3,60 @@
 include('../config/pdo-connect.php');
 
 
-if(!empty($_POST['Pseudo'])) {
 
-    if(!empty($_POST['Email'])) {
+if(!empty($_POST['Email'])) {
 
-        if(!empty($_POST['MDP'])) {
+    $email = $_POST['Email'];
+    $key = random_int(1147483647, 2147483647);
 
-            $pseudo = $_POST['Pseudo'];
-            $email = $_POST['Email'];
-            $mdp = $_POST['MDP'];
-            $admin = 0;
+    $pseudolength = strlen($pseudo);
+    $mdplength = strlen($mdp);
 
-            $pseudolength = strlen($pseudo);
-            $mdplength = strlen($mdp);
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-            if($pseudolength >= 4) {
 
-                if($pseudolength <= 20) {
+            $q = $bdd->prepare('SELECT * FROM Membres WHERE Email = :email');
+            $q->bindParam(':email', $email, PDO::PARAM_STR);
+            $q->execute();
+            $verif = $q->rowCount();
 
-                    if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            if($verif == 0) {
 
-                        if($mdplength > 5) {
+                $q = $bdd->prepare('SELECT * FROM Inscriptions WHERE EMAIL = :email');
+                $q->bindParam(':email', $email, PDO::PARAM_STR);
+                $q->execute();
+                $verif2 = $q->rowCount();
 
-                            $q = $bdd->prepare('SELECT * FROM Membres WHERE Pseudo = :pseudo');
-                            $q->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
-                            $q->execute();
-                            $verif1 = $q->rowCount();
+                if($verif2 == 0) {
 
-                            if($verif1 == 0) {
+                    $sql = $bdd->prepare('INSERT INTO Inscriptions(EMAIL, SECURE_KEY) VALUES(:Email, :Secure_key)');
+                    $sql->bindParam(':Email', $email, PDO::PARAM_STR);
+                    $sql->bindParam(':Secure_key', $key, PDO::PARAM_INT);
+                    $sql->execute();
 
-                                $q = $bdd->prepare('SELECT * FROM Membres WHERE Email = :email');
-                                $q->bindParam(':email', $email, PDO::PARAM_STR);
-                                $q->execute();
-                                $verif2 = $q->rowCount();
-
-                                if($verif2 == 0) {
-
-                                    $sql = $bdd->prepare('INSERT INTO Membres(Pseudo, Email, MDP, Admin) VALUES(:Pseudo, :Email, :MDP, :Admin)');
-                                    $sql->bindParam(':Pseudo', $pseudo, PDO::PARAM_STR);
-                                    $sql->bindParam(':Email', $email, PDO::PARAM_STR);
-                                    $sql->bindParam(':MDP', $mdp, PDO::PARAM_STR);
-                                    $sql->bindParam(':Admin', $admin, PDO::PARAM_BOOL);
-                                    $sql->execute();
-
-                                    $hidden = 0;
-
-                                    $sql = $bdd->prepare('INSERT INTO Options(HIDDEN, FORMATION) VALUES(:hidden, :formation)');
-                                    $sql->bindParam(':hidden', $hidden, PDO::PARAM_BOOL);
-                                    $sql->bindValue(':formation', 0, PDO::PARAM_INT);
-                                    $sql->execute();
-
-                                    $feedback = "Votre compte a bien été créé ! Vous pouvez désormais vous connecter !";
-                            
-                                } else {
-
-                                    $feedback = "Cette adresse e-mail est déjà utilisée !";
-
-                                }
-
-                            } else {
-
-                                $feedback = "Ce pseudo est déjà pris !";
-
-                            }
-
-                        } else {
-
-                            $feedback = "Votre mot de passe doit être constitué d'au moins 5 caractères !";
-
-                        }
-
-                    } else {
-
-                        $feedback = "Veuillez insérer une adresse e-mail valide !";
-
-                    }
+                    $feedback = "L'invitation a bien été envoyée !";
                 
                 } else {
 
-                    $feedback = "Votre pseudo ne doit pas dépasser 20 caractères !";
+                    $feedback = "Une invitation a déjà été envoyé à cette adresse e-mail !";
 
                 }
 
             } else {
 
-                $feedback = "Votre pseudo doit être constitué d'au moins 4 caractères !";
+                $feedback = "Cette adresse e-mail est déjà associé à un compte !";
 
             }
 
         } else {
 
-            $feedback = "Veuillez renseigner votre mot de passe !";
+            $feedback = "Veuillez insérer une adresse e-mail valide !";
 
         }
 
-    } else {
-
-        $feedback = "Veuillez renseigner votre adresse e-mail !";
-
-    }
-
 } else {
-    
-    $feedback = "Veuillez renseigner votre pseudo !";
+
+    $feedback = "Veuillez renseigner votre adresse e-mail !";
 
 }
 

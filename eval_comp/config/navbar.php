@@ -9,9 +9,6 @@
             <li class='nav-item'>
               <a class='nav-link' href='index.php'><i class="fas fa-home"></i> Accueil<span class='sr-only'>(current)</span></a>
             </li>
-            <li class='nav-item'>
-              <a class='nav-link' href='inscription.php'><i class="fas fa-feather-alt"></i> Inscription<span class='sr-only'>(current)</span></a>
-            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sign-in-alt"></i> Connexion</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -51,6 +48,11 @@
             <li class='nav-item'>
               <a class='nav-link' href='utilisateurs.php'><i class="fas fa-users"></i> Utilisateurs</a>
             </li>
+            <?php if($infos['Admin'] == TRUE) { ?>
+              <li class='nav-item'>
+                <a class='nav-link' href='inscription.php'><i class="fas fa-feather-alt"></i> Inscription<span class='sr-only'>(current)</span></a>
+              </li>
+            <?php } ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-user-circle"></i> Mon compte
