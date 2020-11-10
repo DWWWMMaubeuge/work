@@ -50,6 +50,12 @@ echo entete3("inscription");
             <div class="enter">
               <INPUT type='submit' value='Entrer'>
             </div>
+            <div class="a">
+              <a href="login.php">déja un compte? Connectez-vous ici !</a>
+            </div>
+            <div class="a">
+              <a href="accueil.php">pas maintenant? retour au menu</a>
+            </div>
           </div>
       </FORM>
     </div>

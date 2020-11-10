@@ -18,18 +18,18 @@ RTY;
 return $str;
 }
 
-function bordereau()
+/* function bordereau()
     {
     $str= <<<AZE
     
         <div class="">
-        <img src="img/bg.jpg">
+        <img src="img/bg3.jpg">
         </div>
     
     AZE;
     return $str;
     }
-
+ */
 function carousel()
 {
 

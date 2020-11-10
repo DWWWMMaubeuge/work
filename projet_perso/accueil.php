@@ -7,9 +7,14 @@ include "header.php";
 echo entete();
 include "navbar.php";
 include_once "bodyaccueil.php";
-echo nav($id);
-
 ?>
+
+<div>
+<?php
+echo nav($id);
+?>
+</div>
+
 
 <body>
 <div class="titre">

@@ -57,6 +57,9 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password'] != "" && $_POST['passwo
                 <div class="a">
                     <a href="inscription.php">pas encore de compte? cliquez ici !</a>
                 </div>
+                <div class="a">
+                    <a href="accueil.php">pas maintenant, retour au menu !</a>
+                </div>
             </div>      
         </FORM>
     </div>
@@ -67,4 +70,3 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password'] != "" && $_POST['passwo
 
 faire un champ date : alter ... 
 date  :::  defaut now ; chercher code 
-faire la page de fin de session ou avec une function js
