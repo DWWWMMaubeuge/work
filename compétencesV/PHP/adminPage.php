@@ -1,6 +1,9 @@
 <?php
 session_start();
 include 'fonctionAffichages.php';
+include 'DesactivationMat.php';
+include 'ActivationMat.php';
+include 'InsertionMat.php';
 ?>
 <!doctype html>
 <html lang=fr>
@@ -28,10 +31,9 @@ include 'fonctionAffichages.php';
                 <a class="nav-link" href="../index1.php"><i class="fas fa-concierge-bell"></i>  Acceuil</a>
             </li>
         </ul>
-        <?php if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) : ?>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="PHP/skills"><i class="far fa-clipboard"></i>  Auto-Evaluation</a>
+                    <a class="nav-link" href="skills"><i class="far fa-clipboard"></i>  Auto-Evaluation</a>
                 </li>
             </ul>
             <ul class="navbar-nav mr-auto">
@@ -39,25 +41,27 @@ include 'fonctionAffichages.php';
                     <a class="nav-link" href="disconnect.php"><i class="fas fa-sign-out-alt"></i>  Deconnexion</a>
                 </li>
             </ul>
-        <?php else : ?>
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" id="connect" ><i class="fas fa-sign-in-alt"></i>  Connexion</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" id="disconnect"><i class="fas fa-file-signature"></i>  Inscription</a>
-                </li>
-            </ul>
-        <?php endif ; ?>
+
 </nav>
 <div class="container my-5 border border-primary p-5 background text-center text-white">
-    <?php
-    formationChoice();
-    supMatSelect($skills);
-    addMatSelect();
-    ?>
+    <form method="post" class="form-group">
+        <?php
+        deactivateMat($skills);
+        ?>
+        <input class="btn btn-primary" type="submit" name="deactivate" value="Desactiver" >
+    </form>
+    <form method="post" class="form-group">
+        <?php
+        activateMat($skills2);
+        ?>
+        <input class="btn btn-primary" type="submit" name="activate" value="Activer" >
+    </form>
+    <form method="post" class="form-group">
+        <?php
+        InsertMat();
+        ?>
+        <input class="btn btn-primary" type="submit" name="insert" value="Inserer" >
+    </form>
 </div>
 </body>
 </html>

@@ -35,7 +35,6 @@ include 'fonctionAffichages.php';
                     <a class="nav-link" href="skills.php"><i class="far fa-clipboard"></i>  Auto-Evaluation</a>
                 </li>
             </ul>
-
     </nav>
     <div id="tabSkills">Tableau de notes</div>
     <div id="letableau"></div>

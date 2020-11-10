@@ -52,7 +52,7 @@ include('./PHP/Registration.php');
                     </li>
                 </ul>
             <?php endif ; ?>
-            <?php if (isset ($_SESSION['idUser']) && intval($_SESSION['idUser']) == 17) : ?>
+            <?php if (isset ($_SESSION['admin']) && intval($_SESSION['admin']) == 1) : ?>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="PHP/adminPage.php"><i class="fas fa-user-cog"></i>  Zone Admin</a>

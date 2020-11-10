@@ -20,9 +20,12 @@ if (isset($_POST['submitCon'])){
         //var_dump($array1);
         if ($array1['nb'] != 0){
             $array=$query2->fetch(PDO::FETCH_ASSOC);
+            //var_dump($array);
             $_SESSION['nom']=$array['name'];
             $_SESSION['prenom']=$array['firstname'];
             $_SESSION['idUser']=$array['id'];
+            $_SESSION['admin']=$array['adminRight'];
+            $_SESSION['formation']=$array['id_form'];
             header("Location:./index1.php");
         }
         else{

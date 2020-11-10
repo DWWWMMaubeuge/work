@@ -13,8 +13,8 @@ function formLabel($skills,$note,$i){
                 echo "<div class='input-group-prepend'>";
                 echo "<label class='input-group-text bg-primary text-white' style='width:6rem' for=" . $array['id'] . ">" . $array['matiere'] . "</label>";
                 echo "</div>";
-                echo "<input class='form-control border border-primary' type='number' step='1' id=" . $array['id'] . " name=" . $array['matiere'] . " min='0' max='10' value=" . $note[$i]['eval'] . ">";
-            echo "</div>";
+                    echo "<input class='form-control border border-primary' type='number' step='1' id=" . $array['id'] . " name=" . $array['matiere'] . " min='0' max='10' value=" . $note[$i]['eval'] . ">";
+                echo "</div>";
         echo "</div>";
         $i++;
     }
@@ -34,18 +34,7 @@ function formMat($skills,$note,$i){
 }
 
 
-
-function formationChoice(){
-    echo "<div>Choisissez ici la formation à modifier</div>";
-    echo "<select name='formation' id='formation'> ";
-    echo "<option value=''>--formation de travail--</option>";
-    echo "<option value='1'>Developpeur</option>";
-    echo "<option value='2'>Formateur</option>";
-    echo "<option value='3'>Ingénieur</option>";
-    echo "<option value='4'>Pilote</option>";
-    echo "</select>";
-}
-function supMatSelect($skills){
+function deactivateMat($skills){
 
     echo "<div class='mt-5'>Choisissez ici une ou des matieres à desactiver</div>";
     echo "<select name='mat1' id='mat1'>";
@@ -55,16 +44,31 @@ function supMatSelect($skills){
     }
     echo "</select>";
 }
-function addMatSelect(){
+
+function activateMat($skills){
     echo "<div class='mt-5'>Choisissez ici une ou des matieres à activer</div>";
     echo "<select name='mat2' id='mat2'>";
     echo "<option value=''>--Matieres à activer--</option>";
-    echo "<option value='1'>React</option>";
-    echo "<option value='2'>VueJS</option>";
-    echo "<option value='3'>Node</option>";
-    echo "<option value='4'>Wordpress</option>";
+    foreach ($skills as $array) {
+        echo "<option value=" . $array['id'] . ">" . $array['matiere'] . "</option>";
+    }
     echo "</select>";
 
 }
 
+function InsertMat(){
+    echo "<div class='mt-5'>Choisissez ici une ou des matieres à ajouter</div>";
+    echo "<input type=text name='mat3' placeholder='Entrez la matiere à ajouter'>";
+}
+
+
+function SelectForm($formation){
+    echo "<label for='exampleFormControlSelect1'>Formation</label>";
+    echo "<select class='form-control' id='exampleFormControlSelect1' name='formation'>";
+    echo "<option value=\"\">--Choisissez votre formation--</option>";
+    foreach ($formation as $array){
+        echo "<option value=".$array['id'].">".$array['name']."</option>";
+    }
+    echo "</select>";
+}
 ?>

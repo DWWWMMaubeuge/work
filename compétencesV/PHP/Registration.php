@@ -1,13 +1,11 @@
 <?php
 include 'idBDD.php';
 
-$query1 = $bdd->prepare("INSERT INTO users(name,firstname,email,password,formation) VALUES(:name , :firstname , :email , :password , :formation)");
+$query1 = $bdd->prepare("INSERT INTO users(name,firstname,email,password,id_Form) VALUES(:name , :firstname , :email , :password , :id_Form)");
 $query2 = $bdd->prepare("SELECT count(*) AS nb FROM users WHERE email=:email");
 $query3 = $bdd->prepare("SELECT id FROM users WHERE email=:email");
-$query4 = $bdd->prepare("INSERT INTO resultat(id_user,eval,id_mat) VALUES(:id_user,0,:id_mat)");
-$query5 = $bdd->prepare("SELECT count(*) as nb2 FROM matieres");
-$query5->execute();
-$nbMat=$query5->fetch(PDO::FETCH_ASSOC);
+$query4 = $bdd->prepare("INSERT INTO resultat(id_user,eval,id_mat,id_form) VALUES(:id_user,0,:id_mat,:id_form)");
+$query5 = $bdd->prepare("SELECT count(*) as nb2 FROM matieres WHERE id_form=:id_form");
 //var_dump($nbMat);
 if (isset($_POST["submitIns"])) {
     if (isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['firstname']) && !empty($_POST['firstname']) && isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['pwd1']) && !empty($_POST['pwd1']) && isset($_POST['pwd2']) && !empty($_POST['pwd2']) && isset($_POST['formation']) && !empty($_POST['formation']))
@@ -29,14 +27,18 @@ if (isset($_POST["submitIns"])) {
                 $query1->bindParam(':firstname', $firstname, PDO::PARAM_STR);
                 $query1->bindParam(':email', $email, PDO::PARAM_STR);
                 $query1->bindParam(':password', $pwd1, PDO::PARAM_STR);
-                $query1->bindParam(':formation', $formation, PDO::PARAM_STR);
+                $query1->bindParam(':id_Form', $formation, PDO::PARAM_STR);
                 $query1->execute();
                 $query3->bindParam(':email', $email);
                 $query3->execute();
                 $array2 = $query3->fetch(PDO::FETCH_ASSOC);
+                $query5->bindParam(':id_form',$_POST['formation']);
+                $query5->execute();
+                $nbMat=$query5->fetch(PDO::FETCH_ASSOC);
                 for ($i = 1; $i <= intval($nbMat['nb2']); $i++) {
                     $query4->bindParam(':id_user', $array2['id']);
                     $query4->bindParam(':id_mat', $i);
+                    $query4->bindParam(':id_form',$formation);
                     $query4->execute();
                 }
                 header('Location: index1.php?success=true');

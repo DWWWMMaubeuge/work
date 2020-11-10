@@ -1,5 +1,6 @@
 <?php
 include 'Registration.php';
+include 'fonctionAffichages.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -36,27 +37,19 @@ include 'Registration.php';
                 <input type="text" class="form-control" id="exampleInputFirstname1" name="firstname" aria-describedby="emailHelp" required>
             </div>
             <div class="form-group">
-                <label for="exampleInputEmai1">adresse Email</label>
+                <label for="exampleInputEmai1">Adresse Email</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" required>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">mot de passe</label>
+                <label for="exampleInputPassword1">Mot de passe</label>
                 <input type="password" class="form-control" name="pwd1" id="exampleInputPassword1" required>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword2">mot de passe</label>
+                <label for="exampleInputPassword2">Confirmez mot de passe</label>
                 <input type="password" class="form-control" name="pwd2" id="exampleInputPassword2" required>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Formation</label>
-                <select class="form-control" id="exampleFormControlSelect1" name="formation">
-                    <option value="">--Choisissez votre formation--</option>
-                    <option value="Developpeur">Developpeur</option>
-                    <option value="Formateur">Formateur</option>
-                    <option value="Ingénieur">Ingénieur</option>
-                    <option value="Pilote">Pilote</option>
-
-                </select>
+                <?php SelectForm($array3);?>
             </div>
 
             <input type="submit" class="btn btn-primary" name="submitIns" value="Valider">
