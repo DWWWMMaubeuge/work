@@ -33,7 +33,7 @@ while( $data = $req->fetch()) {
 <div class="container-fluid p-5 mt-5 banner3">
     <div class="container bg-dark my-5 p-5 opacity-4">
         <form class="text-center m-5" method="POST" id="evaluation">
-            <h1 class='text-center my-4'>Auto-évaluation</h1>
+            <h1 class='text-center my-5'>Auto-évaluation du mois de <?= ucfirst(strtolower($mois)); ?></h1>
             <?= setAllWidgetValue( $skills ); ?>
             <div class="alert alert-info my-5 d-none text-center" role="alert" id="confirmation"></div>
         </form>

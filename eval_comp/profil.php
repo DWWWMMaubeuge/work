@@ -4,9 +4,6 @@
 <?php include('config/head.php'); ?>
 <?php
 
-setlocale (LC_TIME, 'fr_FR.utf8','fra'); 
-$mois = strtoupper(strftime('%B', time()));
-
 $q = $bdd->prepare('SELECT *
 FROM Matieres m LEFT JOIN
      (SELECT r.*,
