@@ -4,7 +4,7 @@ $.ajax({
     type: 'POST',
     url: 'traitements/traitement-invitations.php',
     data: {
-        'Email': $('#email').val()
+        'Emails': $('#emails').val()
     },
     dataType: 'html',
     success: function(data) {

@@ -4,10 +4,13 @@ include('../config/pdo-connect.php');
 
 
 
-if(!empty($_POST['Email'])) {
-
-    $email = $_POST['Email'];
-    $key = random_int(1147483647, 2147483647);
+if(!empty($_POST['Emails'])) {
+    
+    $emails = explode(" ", $_POST['Emails']);
+    
+    foreach($emails as $email) {
+        
+         $key = random_int(1147483647, 2147483647);
 
         if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
@@ -34,29 +37,33 @@ if(!empty($_POST['Email'])) {
                     $header = "From: noreply@AFPA-formations.com";
                     mail($email, "Activation de votre compte AFPA-Formations", $msg, $header);
 
-                    $feedback = "L'invitation a bien été envoyée !";
+                    $feedback = "La (les) invitation(s) a (ont) bien été envoyée(s) !";
                 
                 } else {
 
-                    $feedback = "Une invitation a déjà été envoyé à cette adresse e-mail !";
+                    echo "Une invitation a déjà été envoyé à cette adresse e-mail => $email !";
+                    return;
 
                 }
 
             } else {
 
-                $feedback = "Cette adresse e-mail est déjà associé à un compte !";
+                echo "Un compte est déjà associé à cette adresse e-mail => $email !";
+                return;
 
             }
 
         } else {
 
-            $feedback = "Veuillez insérer une adresse e-mail valide !";
+            echo "Cette adresse e-mail n'est pas valide => $email !";
+            return;
 
         }
+    }
 
 } else {
 
-    $feedback = "Veuillez renseigner votre adresse e-mail !";
+    $feedback = "Veuillez renseigner une ou des adresse(s) e-mail !";
 
 }
 
@@ -65,6 +72,5 @@ if(isset($feedback) and !empty($feedback)) {
     echo $feedback;
 
 }
-
 
 ?>

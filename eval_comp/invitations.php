@@ -9,8 +9,9 @@
     <h1 class="text-center m-5">Envoyer une invitation</h1>
     <form class="mx-auto" method="POST" id="invitations">
         <div class="form-group w-50 mx-auto text-center">
-            <label for="email">Email</label>
-            <input type="email" placeholder="example@example.com" class="form-control" name="email" id="email" aria-describedby="emailHelp" required>
+            <div><label for="email">Insérer la(les) adresse(s) email à inviter sur le site</label></div>
+            <div><small>Si vous insérer plusieurs adresses, veuillez les séparer d'un espace.</small></div>
+            <div class="mt-5"><textarea class="form-control" id="emails" name="emails" rows="10" cols="100"></textarea></div>
             <button id="send-data" class="btn btn-primary mx-auto my-5 text-center">Inscription</button>
         </div>
     </form>
