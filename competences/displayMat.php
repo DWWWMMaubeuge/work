@@ -14,7 +14,7 @@ function displayEval($matieres, $array) {
   foreach($matieres as $matiere) {
 
   echo "
-        <div class='col-xs-12 col-sm-4 col-md-3'>
+        <div class='col-xs-12 col-sm-4 col-md-4 col-lg-3'>
           <div class='input-group mb-3 item'>
             <div class='input-group-prepend'>
               <label class='input-group-text text-white button-form' for=" . $matiere['id'] . " style='width: 6rem'>" . $matiere['mat'] . "</label>
@@ -36,14 +36,6 @@ function optionNote($array, $id_mat) {
   for($i = 0; $i < 11; $i++) {
     $x = selectNote($array, $id_mat ,$i);
     echo '<option value="'. $i .'" '. $x .'>' . $i . '</option>';
-  }
-}
-
-function optionNote2()
-{
-  echo '<option selected>Auto-évaluation...</option>';
-  for ($i = 0; $i < 11; $i++) {
-    echo '<option value="' . $i . '">' . $i . '</option>';
   }
 }
 ?>
