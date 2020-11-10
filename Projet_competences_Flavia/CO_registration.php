@@ -37,6 +37,42 @@ if (isset($_REQUEST['user'], $_REQUEST['email'], $_REQUEST['password'])){
     <input type="submit" name="submit" value="S'inscrire" class="box-button" />
     <p class="box-register">Déjà inscrit? <a href="CO_login.php">Connectez-vous ici</a></p>
     <div class="p-5">
+    <form id="contact-form" method="post" action="contact.php">
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<div class="form-row align-items-center">
+								<div class="col mb-3">
+                  <input type="text" class="form-control" name="token" id="token" placeholder="Inserez le code à 4 caractères" style="min-width: 150px;">
+				
+									<img src="captcha/image.php?12325" alt="CAPTCHA" id="image-captcha">
+									<a href="#" id="refresh-captcha" class="align-middle" title="refresh"><i class="material-icons align-middle">refresh</i></a>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+
+					<button type="submit" class="btn btn-primary" name="submit" id="submit">GO!</button>
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		var refreshButton = document.getElementById("refresh-captcha");
+		var captchaImage = document.getElementById("image-captcha");
+
+		refreshButton.onclick = function(event) {
+			event.preventDefault();
+			captchaImage.src = 'captcha/image.php?' + Date.now();
+		}
+	</script>
+
+    
+
 
 
 </body>
