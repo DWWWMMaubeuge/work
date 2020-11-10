@@ -5,7 +5,7 @@ function nav($connect)
     if ($connect){            
 $str  =  <<<TRY
 <nav class="navbar navbar-expand-lg navbar-white bg-dark">
-<a class="navbar-brand" href="#"><img src="Images/Images_Charte_Graphique/logo_ozinor_propo_SIMPLE_v2.PNG"width="50px;"></a>
+<a class="navbar-brand" href="#"><img src=""width="50px;"></a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
 </button>
@@ -34,12 +34,12 @@ Nicolas
 </li>    
 <li class="nav-item dropdown">
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-connexion
+Mon Compte
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<a class="dropdown-item" href="inscription.php">inscription</a>
+<a class="dropdown-item" href="#">profile</a>
 <div class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">mon compte </a>
+<a class="dropdown-item" href="logOut.php">déconnection</a>
 </div>
 </li>  
 </ul> 
@@ -47,7 +47,7 @@ connexion
 <a href="#" class="fa fa-user"></a>   
 <a href="#" class="fa fa-twitter"></a>
 <a href="#" class="fa fa-youtube"></a>
-<a href="#" class="fa fa-sign-out"></a>
+<a href="logOut.php" class="fa fa-sign-out"></a>
 
 </ul>
 </div>
@@ -98,13 +98,12 @@ connexion
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 <a class="dropdown-item" href="inscription.php">inscription</a>
 <div class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">mon compte </a>
+<a class="dropdown-item" href="login.php">mon compte </a>
 </div>
 </li>  
 </ul> 
 <a href="#" class="far fa-sign-in-alt"></a>
-<a href="#" class="fa fa-user"></a>
-   
+<a href="#" class="fa fa-user"></a>  
 <a href="#" class="fa fa-twitch"></a>
 <a href="#" class="fa fa-twitter"></a>
 <a href="#" class="fa fa-youtube"></a>

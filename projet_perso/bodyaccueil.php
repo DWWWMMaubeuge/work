@@ -61,11 +61,11 @@ function carousel()
         <div class="langue">
         <div class="container">
     <div class="row">
-        <div class="col-sm "><img src="img/html.jpg"width=75%;></div>
-        <div class="col-sm "><img src="img/html.jpg"width=75%;></div>
-        <div class="col-sm "><img src="img/html.jpg"width=75%;></div>
-        <div class="col-sm "><img src="img/html.jpg"width=75%;></div>
-        <div class="col-sm "><img src="img/html.jpg"width=75%;></div>
+        <div class="col-sm "><img src="img/html.jpg"width=60%;></div>
+        <div class="col-sm "><img src="img/css3.jpg"width=60%;></div>
+        <div class="col-sm "><img src="img/html.jpg"width=60%;></div>
+        <div class="col-sm "><img src="img/html.jpg"width=60%;></div>
+        <div class="col-sm "><img src="img/html.jpg"width=60%;></div>
     </div>
     </div>
     </div>
