@@ -38,7 +38,7 @@
       <div class='collapse navbar-collapse' id='navbarNav'>
           <ul class='navbar-nav'>
             <li class='nav-item'>
-            <a class='nav-link' href='index.php'><i class="fas fa-home"></i> Accueil<span class='sr-only'>(current)</span></a>
+            <a class='nav-link' href='index.php'><i class="fas fa-home"></i> Accueil</a>
             </li>
             <?php if($infos['ID_FORMATION'] != 0) { ?>
               <li class='nav-item'>
@@ -50,7 +50,7 @@
             </li>
             <?php if($infos['Admin'] == TRUE) { ?>
               <li class='nav-item'>
-                <a class='nav-link' href='inscription.php'><i class="fas fa-feather-alt"></i> Inscription<span class='sr-only'>(current)</span></a>
+                <a class='nav-link' href='invitations.php'><i class="fas fa-feather-alt"></i> Invitations</a>
               </li>
             <?php } ?>
             <li class="nav-item dropdown">

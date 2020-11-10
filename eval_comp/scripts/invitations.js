@@ -1,8 +1,8 @@
-$('#inscription').submit(function(e) {
+$('#invitations').submit(function(e) {
     e.preventDefault();
 $.ajax({
     type: 'POST',
-    url: 'traitements/traitement-inscription.php',
+    url: 'traitements/traitement-invitations.php',
     data: {
         'Email': $('#email').val()
     },

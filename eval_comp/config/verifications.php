@@ -47,7 +47,7 @@ function checkAdminForComps() {
 
 }
 
-function checkForActivation() {
+function checkActivationParams() {
 
   GLOBAL $bdd;
 
@@ -70,7 +70,6 @@ function checkForActivation() {
     exit();
 
   }
-
 
 }
 
