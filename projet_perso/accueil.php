@@ -17,19 +17,16 @@ echo nav($id);
 </div>
 
 </div>
-<div class="">
 
+<div class="carou">
 <?php
-
 echo carousel();
 ?>
-
 </div>
+
 <div class="body">
 <?php
-
 echo accueilbody();
-
 ?>
 </div>
 
