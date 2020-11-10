@@ -2,6 +2,7 @@
 <?php require_once('config/verifications.php'); ?>
 <?php userIsNotLogged(); ?>
 <?php checkActivationParams(); ?>
+<?php include('config/captcha.php'); ?>
 <?php
 
 $q = $bdd->prepare('SELECT EMAIL FROM Inscriptions WHERE SECURE_KEY = :key');
@@ -23,8 +24,15 @@ $account = $q->fetch();
                 <input type="text" placeholder="example@example.com" class="form-control" name="pseudo" id="pseudo" autocomplete="off" aria-describedby="pseudoHelp" required>
             </div>
             <div class="m-5">
-                <label for="password">Mot de passe</label>
-                <input type="password" class="form-control" name="password" id="password" autocomplete="off" aria-describedby="passwordHelp" required>
+                <label for="mdp">Mot de passe</label>
+                <input type="password" class="form-control" name="mdp" id="mdp" autocomplete="off" aria-describedby="mdpHelp" required>
+            </div>
+            <div class="m-5">
+                <div>
+                    <img class="m-5" src="captcha.png" />
+                </div>
+                <label for="captcha">Veuillez recopier le code ci-dessus</label>
+                <input type="text" class="form-control" name="captcha" id="captcha" autocomplete="off" aria-describedby="captchaHelp" required>
             </div>
             <input type="hidden" value="<?= $account['EMAIL']; ?>" name="email" id="email" readonly required>
             <button id="send-data" class="btn btn-primary mx-auto text-center">Activer mon compte</button>

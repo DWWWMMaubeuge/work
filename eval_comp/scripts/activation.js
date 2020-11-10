@@ -5,8 +5,9 @@ $.ajax({
     url: 'traitements/traitement-activation.php',
     data: {
         'Pseudo': $('#pseudo').val(),
-        'Password': $('#password').val(),
-        'Email': $('#email').val()
+        'Password': $('#mdp').val(),
+        'Email': $('#email').val(),
+        'Captcha': $('#captcha').val()
     },
     dataType: 'html',
     success: function(data) {
