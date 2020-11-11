@@ -1,6 +1,5 @@
 <?php
 session_start();
-require 'displayMat.php';
 require 'navBar.php';
 
 if (!isset($_SESSION["fname"])) {
@@ -21,7 +20,7 @@ if (!isset($_SESSION["fname"])) {
 </head>
 
 <body>
-
+  
   <?= $nav = navBar(); ?>
 
   <main class="container">
@@ -33,12 +32,7 @@ if (!isset($_SESSION["fname"])) {
         <p>Ceci est votre tableau d'évaluation</p>
       </div>
 
-      <?php
-      displayEval($matieres, $array);
-      ?>
-
-      <p class="col-12 text-right"><a href="deconnexion.php">Déconnexion</a></p>
-
+      <p class="col-12 text-right"><a href="../deconnexion.php">Déconnexion</a></p>
     </div>
 
   </main>
@@ -47,4 +41,5 @@ if (!isset($_SESSION["fname"])) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   <script src="js/script.js"></script>
 </body>
+
 </html>

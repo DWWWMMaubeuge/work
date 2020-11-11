@@ -20,10 +20,19 @@ if ((!empty($_POST["email"]) && !empty($_POST["password"]))) {
       $_SESSION["lname"] = $users["lname"];
       $_SESSION["email"] = $users["email"];
       $_SESSION["id_user"] = $users["id"];
+      $_SESSION["id_formation"] = $users["id_formation"];
+      $_SESSION["role"] = $users["role"];
+
       $_SESSION["note"] = 0;
 
-      header('Location: ./dashboard.php');
-      exit();
+      if($_SESSION["role"] == "stagiaire") {
+        header('Location: ./dashboard.php');
+        exit();
+      } elseif($_SESSION["role"] == "superuser") {
+        header('Location: ./dashboardSU.php');
+        exit();
+      }
+      
     }
   }
 

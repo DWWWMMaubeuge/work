@@ -8,13 +8,13 @@ if (!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["email"]
   $password = $_POST["password"];
   $password_confirm = $_POST["password_confirm"];
 
-  // On test le password
+  // ON TEST LE PASSWORD EST LE MEME
   if ($password != $password_confirm) {
     header("location: ./?error=1&pass=1");
     exit();
   }
 
-  // On test si le prénom et nom sont déjà utilisés
+  // ON TEST SI L'EMAIL EST DEJA UTILISE
   $req = $bdd->prepare("SELECT COUNT(*) as numberEmail FROM users WHERE email = :email");
   $req->execute(array(
   "email" => $email
@@ -30,13 +30,14 @@ if (!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["email"]
   // CRYPTAGE DU PASSWORD
   $password = hash('sha256', $password);
 
-  // Envoie de la requête
-  $req = $bdd->prepare("INSERT INTO users(fname, lname, email, password) VALUES(:fname, :lname, :email, :password)");
+  // ON INSERT L'USER DANS LA BDD
+  $req = $bdd->prepare("INSERT INTO users(fname, lname, email, password, role) VALUES(:fname, :lname, :email, :password, :role)");
   $req->execute(array(
   "lname" => $lname,
   "fname" => $fname,
   "email" => $email,
   "password" => $password,
+  "role" => "stagiaire",
   ));
 
   // ON RECUPERE L'ID DE L'USER

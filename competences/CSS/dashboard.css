@@ -2,13 +2,14 @@ html, body{
     height: 100%;
 }
 
-body {
+.body {
   background-color: #dee9ff;
   display: -ms-flexbox;
   -ms-flex-align: center;
   display: flex;
-  
   align-items: center;
+
+  border: 1px solid black;
 }
 
 .board {
