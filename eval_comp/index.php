@@ -55,3 +55,5 @@
 
 </script>
 <?php require_once('config/footer.php'); ?>
+
+<!-- Ajout d'un commentaire juste pour push (: -->
