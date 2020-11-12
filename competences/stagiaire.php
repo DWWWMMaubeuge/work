@@ -45,7 +45,7 @@ function setAllWidgetValue( $skills  )
 {
     $widget = "<div id='valSkills' >\n";
     foreach( $skills as $skill )
-        $widget .= setWidgetValue2( $skill );
+        $widget .= setWidgetValue2y( $skill );
     $widget .= "</div>\n";
     //return setWidgetValue2( $skills[0] );
     return $widget;

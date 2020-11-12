@@ -23,18 +23,18 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password'] != "" )
         $result = executeSQL( $req );
         $data = $result->fetch_assoc();
 
-        $role = $_SESSION[ 'role' ]  = $data[ 'role' ];
+        $role = $_SESSION[ 'role' ]  = $data[ 'roles' ];
         
         $_SESSION[ 'id_formation' ]  = $data[ 'id_formation' ];
         $_SESSION[ 'ID_user' ]       = $data[ 'id' ];
         $_SESSION[ 'name' ]          = $data[ 'name' ];
         $_SESSION[ 'surname' ]       = $data[ 'surname' ];
     
-        if ( $role == 'ADM' )
+        if ( $role == 'adm' )
             header( "location: admin.php");
-        else if( $role == 'FOR' )
+        else if( $role == 'for' )
             header( "location: formateur.php");
-        else if ( $role == 'STA' )
+        else if ( $role == 'sta' )
             header( "location: stagiaire.php");
         else
             header( "location: error.php");
