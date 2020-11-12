@@ -74,11 +74,21 @@ if (isset($_POST['login_user'])) {
         $password = md5($password);
         $query = "SELECT * FROM users WHERE surname='$surname' AND password='".hash('sha256', $password)."'";
         $results = mysqli_query($db, $query);
-        if (mysqli_num_rows($results) == 1) {
+        if (mysqli_num_rows($results) == 1) 
+        {
           $_SESSION['surname'] = $surname;
           $_SESSION['success'] = "You are now logged in";
-          header('location: Skills.php');
-        }else {
+          if ($data['type'] == 'admin')
+          {
+            header ('location: admin_home.php');
+          }
+          else
+          {
+            header('location: Skills.php');
+          }
+        }
+        else 
+        {
             array_push($errors, "Wrong surname/password combination");
         }
     }

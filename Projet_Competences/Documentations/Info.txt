@@ -1,2 +1,7 @@
 catcha: httpswaytolearnx.com201907formulaire-avec-captcha-en-php.html
 bulk: https://loopstools.com/PHP/Formulaires-PHP
+
+
+- la saisie bulk des mails des stagiares  (indice : regexp)
+- la configuration de WAMP pour qu'il puisse envoyer des mail (indice : SMTP)
+- expedier un mail contenant un lien permettant à un user de compléter son inscription
