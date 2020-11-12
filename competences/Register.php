@@ -1,10 +1,32 @@
 <?php
 
 
-
+require_once('recaptcha/autoload.php');
 require_once( "parametres.php" );
 include_once(  "CO_global_functions.php"  );
+if(isset($_POST['submitpost']))
+{ 
+            if(isset($_POST['g-Recaptcha-Response'])) 
 
+            { 
+                        $recaptcha = new \ReCaptcha\ReCaptcha('6LfHIuIZAAAAAImcpkuK6yZ-UBKcQycnVak8eGUZ ');
+                        $resp = $recaptcha ->verify($_POST['g-Recaptcha-Response'] ) ;
+                                        if ($resp->isSuccess()) 
+                                        {
+                                            echo" ('Captcha Valide')";
+                                                        // Verified!
+                                        } 
+                                    elseif($resp->getErrorCodes())
+                                        {
+                                        
+                                            echo"('Captcha Invalide')";
+                                        } 
+                                        else 
+                                        {
+                                          var_dump ('captcha non rempli');
+                                        }
+            } 
+        } 
 
 
 if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail'] != "" && $_POST['password'] != "" ) 
@@ -47,8 +69,10 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail']
         <br>
         <INPUT type='text' name='password' placeholder="votre mot de passe">
         <br>
-        <INPUT type='submit' value='OK'
-
+        <!-- <INPUT type='submit' value='OK' -->
+        <div class="g-recaptcha" data-sitekey="6LfHIuIZAAAAANFucggGUn8r_r5i9zvgiYoUHDQq"></div> 
+        <br> 
+        <input type="submit" value="Valider" name="submitpost'"> 
     </FORM>
 
 
