@@ -45,7 +45,7 @@ function carousel()
                 <img class=" d-block w-75 img-fluid" src="img/test01.jpg" alt="First slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-75 img-fluid" src="img/test02.jpg"  alt="Second slide">
+                <img class="d-block w-75 img-fluid" src="img/bg32.jpg"  alt="Second slide">
             </div>
             <div class="carousel-item">
                 <img class=" d-block w-75 img-fluid" src="img/test03.jpg"  alt="Third slide">
