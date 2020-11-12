@@ -5,7 +5,7 @@ include_once(  "CO_global_functions.php"  );
 
 //https://www.jqueryscript.net/other/slot-machine-picker-drum.html
 //https://www.jqueryscript.net/tags.php?/select/
-function setWidgetValue2( $skill  )
+function setWidgetValue2z( $skill  )
 {
     $widget ="<select class=\"valSkillSelector\">\n";
     for( $a=1 ; $a<11 ; $a++ )
@@ -34,7 +34,7 @@ function setWidgetValue2x( $skill  )
     return $widget;
 }
 
-function setWidgetValue( $skill )
+function setWidgetValue2( $skill )
 {
     $widget = "<p>".$skill[1]."</p><input type='range'  value='0' class='form-control-range' min='0' step='1' max='10' id='".$skill[0]."' name='valSkill' onchange=\"MAJ_Value( ".$skill[0].", this.value )\" >\n";
     return $widget;
@@ -47,22 +47,32 @@ function setAllWidgetValue( $skills  )
     foreach( $skills as $skill )
         $widget .= setWidgetValue2( $skill );
     $widget .= "</div>\n";
-    return setWidgetValue2( $skills[0] );
-    //return $widget;
+    //return setWidgetValue2( $skills[0] );
+    return $widget;
 
 }
 
 
 
 session_start();
-$ID_user = $_SESSION[ 'ID_user' ];
-$name_user = $_SESSION[ 'name' ];
-$surname_user = $_SESSION[ 'surname' ];
+$ID_formation   = $_SESSION[ 'id_formation' ];
+$ID_user        = $_SESSION[ 'ID_user' ];
+$name_user      = $_SESSION[ 'name' ];
+$surname_user   = $_SESSION[ 'surname' ];
 
 echo "<h3>bonjour $surname_user</h3>\n";
 
+$req = "SELECT * FROM $DB_dbname.formations where id=$ID_formation";
+$result = executeSQL( $req );
+$data = $result->fetch_assoc();
+$Formation_name = $data[ 'name'];
 
-$req = "SELECT * FROM $DB_dbname.skills";
+echo "<h3>formation : $Formation_name</h3>\n";
+
+
+
+
+$req = "SELECT * FROM $DB_dbname.skills where id_formation=$ID_formation";
 $result = executeSQL( $req );
 
 $skills = [];
@@ -73,82 +83,7 @@ while( $data = $result->fetch_assoc())
 
 //print_r( $skills );
 
-
 ?>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<style>
-.drum-viewport {
-  position: relative;
-  height: 8em;
-  background: hsl(0, 0%, 90%);
-  border: 5px solid hsl(0, 0%, 90%);
-  cursor: pointer;
-}
-
-.drum-viewport:focus {
-  outline: none;
-  background: hsl(0, 0%, 85%);
-  border-color: hsl(0, 0%, 85%);
-}
-
-.drum-viewport::before,
-.drum-viewport::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  height: 3em;
-}
-
-.drum-viewport::before {
-  top: 0;
-  background: linear-gradient(to bottom,
-    hsla(0, 0%, 90%, 1),
-    hsla(0, 0%, 90%, 0));
-}
-
-.drum-viewport::after {
-  bottom: 0;
-  background: linear-gradient(to bottom,
-    hsla(0, 0%, 90%, 0),
-    hsla(0, 0%, 90%, 1));
-}
-
-.drum-viewport:focus::before {
-  background: linear-gradient(to bottom,
-    hsla(0, 0%, 85%, 1),
-    hsla(0, 0%, 85%, 0));
-}
-
-.drum-viewport:focus::after {
-  background: linear-gradient(to bottom,
-    hsla(0, 0%, 85%, 0),
-    hsla(0, 0%, 85%, 1));
-}
-
-.drum-item {
-  padding: 0.4em;
-  background: white;
-  color: hsl(210, 90%, 37%);
-  text-align: center;
-  font-weight: bold;
-}
-
-.drum-item:not(:last-child) {
-  border-bottom: 1px solid hsl(30, 90%, 55%);
-}
-</style>
-
-<script src="jquery.drum.min.js">
-  
-</script>
-
-
-
-<script>
-  $('.valSkillSelector').drum();
-</script>
 
 <script>
     function MAJ_Value( id_skill, value  )
