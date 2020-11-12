@@ -28,11 +28,13 @@
 <?php
 require_once( "parametres.php" );
 include_once(  "CO_global_functions.php"  );
+
+
 session_start();
 
 
 if(!isset($_SESSION["surname"])){
-    header("Location: login01.php");
+    header("Location: Login.php");
     exit(); 
 }
 /* function setWidgetValuex( $skill  )
@@ -46,7 +48,7 @@ function setWidgetValue2( $skill  )
 
     $widget = "<div class =\" styled\"  >\n";
     $widget .="<p>".$skill[1]."</p><select id= \"lol\" name=\"valSkill\" onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
-    $widget .="<option value=\"\"> Select a number</option>\n";
+    $widget .="<option value=\"\"> Select  number</option>\n";
         for( $a=1 ; $a<11 ; $a++ )
     $widget .="<option value=\"$a\">$a</option>\n";
     $widget .="</select><br>\n";
@@ -81,7 +83,7 @@ function setWidgetValue2( $skill  )   // ID    name
 
 function setAllWidgetValue( $skills  )
 {
-    $widget = "<div id='skill' col-12>\n";
+    $widget = "<div id='skill' >\n";
     foreach( $skills as $skill )
         $widget .= setWidgetValue2( $skill );
     $widget .= "</div>\n";
@@ -95,7 +97,7 @@ $ID_user = $_SESSION[ 'ID_user' ];
 $name_user = $_SESSION[ 'name' ];
 $surname_user = $_SESSION[ 'surname' ];
 
-echo "<h1>welcome  $surname_user</h1>\n";
+echo "<h1>Welcome  $surname_user to AFPA</h1>\n";
 
 
 $req = "SELECT* FROM $DB_dbname.skills";

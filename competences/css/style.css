@@ -1,74 +1,82 @@
 body{
    
     font-family:' Verdana';
-    min-height: 1vh;
-	background: url("../img/code6.png") no-repeat ;
-	background-size: cover;
+    min-height: 50vh;
+	background: url("../img/tel.webp") no-repeat ;
+    background-size: cover;
+    background-color: transparent;
+    image-rendering: auto;
+   
+
+
  
 }
 
 .styled
 {
-	
-    margin-top: 30px;
-	padding: 10px;
-    border: 3px solid #ffffff;
-    margin-left: 25px;
-    margin-right:75px;
-    float: left;
-	width: 160px;
-	background:rgb(255,248,220);
-	opacity: 0.9;
-	height: 100px;
-	
-
-	
+            margin-top: 7px;
+            padding:15px;
+        
+            margin-left: 25px;
+            margin-right:70px;
+            float: left;
+            width: 160px;
+            background:rgb(255,248,220);
+            opacity: 0.9;
+            height: 70px;
 }
 
 .styled p{
-	font-family: 'Giorgia';
-    font-size: 20px;
-    font-weight: 20;
-    text-transform: uppercase;
-    color:	#000000;
-	text-align: center;
-	text-shadow: 2px 2px 2px;
-	height: 15px;
+            font-family: 'Giorgia';
+            font-size: 15px;
+            font-weight: 10;
+            text-transform: uppercase;
+            color:	#000000;
+            text-align: center;
+            text-shadow: 2px 2px 2px ;
+            height: 15px;
 }
 
-h1{
-    text-align: center;
-    color:rgb(0, 0, 0);
-    font-size: 30px;
-	border-bottom: 6px solid #ffffff;
-	text-decoration: none;
+h1
+{
+            text-align: center;
+            color:rgb(255, 255, 255);
+            font-size: 30px;
+            border-bottom: 6px solid #ffffff;
+            text-decoration: none;
 }
 
-h4{
-text-align: right;
-margin-left:25px;
+h4
+{
+          text-align: right;
+          margin-left:25px;
 
 }
-
 
 #skill
-
 {
-color : red;
-
+        color : red;
+        margin-left:25px;
+        
 }
-.container{
-
-    margin-right: 10%;
-    
+.container
+{
+      margin-right: 10%;  
 }
 
-#lol{
 
-	display:block;
-	
-	color:chocolate;
-   font-family: 'Giorgia';
+#lol
+{
+        display:block;
+        color:chocolate;
+        font-family: 'Giorgia';
+        margin-right: 10%;
+         align-items: center;
+       justify-content: center;
+       text-align: center;
 }
-    /*align-items: center;
-    justify-content: center;*/
+   
+
+    /* -----------------------------------------------Formulaire------------------------------------------------------------------- */
+
+
