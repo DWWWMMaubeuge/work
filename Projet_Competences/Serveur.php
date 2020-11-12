@@ -6,6 +6,7 @@ $surname = "";
 $mail    = "";
 $errors = array(); 
 $_SESSION['success'] = "";
+$type = "";
 
 // connect to the database
 $db = mysqli_connect('localhost', 'root', '', 'dwwm_maubeuge');
@@ -62,7 +63,7 @@ if (isset($_POST['reg_user'])) {
 if (isset($_POST['login_user'])) {
     $surname = mysqli_real_escape_string($db, $_POST['surname']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
-  
+    
     if (empty($surname)) {
         array_push($errors, "surname is required");
     }
@@ -78,7 +79,10 @@ if (isset($_POST['login_user'])) {
         {
           $_SESSION['surname'] = $surname;
           $_SESSION['success'] = "You are now logged in";
-          if ($data['type'] == 'admin')
+          $user_check_query = "SELECT * FROM users WHERE surname=".$_SESSION['surname'];
+          $result = mysqli_query($db, $user_check_query);
+          $user = mysqli_fetch_assoc($result);
+          if ($user['type'] == 'admin')
           {
             header ('location: admin_home.php');
           }

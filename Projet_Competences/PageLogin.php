@@ -18,6 +18,7 @@ echo "<h3>bonjour $surname_user</h3>\n";
 ?>
 
 <body>
+
 <?php if(isset($messageerreur)) { ?>
 <div class="erreur"><?= $messageerreur; ?></div>
 <?php } ?>
