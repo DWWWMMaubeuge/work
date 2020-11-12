@@ -3,21 +3,6 @@ html, body{
     background-color: #dee9ff;
 }
 
-/*body {
-  background-color: #dee9ff;
-  display: -ms-flexbox;
-  -ms-flex-align: center;
-  display: flex;
-  align-items: center;
-}*/
-
-
-/* INSCRIPTION */
-
-.registration-form{
-  padding: 50px;
-}
-
 .registration-form form{
   margin: 0 auto;
   background-color: #fff;
@@ -34,19 +19,14 @@ html, body{
   max-width: 600px;
 }
 
-.registration-form .button-form {
+.registration-form .btn-success {
   border-radius: 30px;
   padding: 10px 20px;
   font-size: 18px;
   font-weight: bold;
-  background-color: #5791ff;
   border: none;
 }
 
-.registration-form .form-title {
-  padding-bottom: 20px;
-  margin-bottom: 50px;
-  text-align: center;
-  color: #9fadca;
-  border-bottom: 1px solid #dee9ff;
+.button-form {
+  background-color: #5791ff;
 }

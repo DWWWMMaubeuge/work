@@ -20,7 +20,6 @@ function navBar() {
         </ul>
       </div>
     </nav>
-
 EOL;
 }
 ?>

@@ -17,7 +17,7 @@ function displayEval($matieres, $array) {
         <div class='col-xs-12 col-sm-4 col-md-4 col-lg-3'>
           <div class='input-group mb-3 item'>
             <div class='input-group-prepend'>
-              <label class='input-group-text text-white button-form' for=" . $matiere['id'] . " style='width: 6rem'>" . $matiere['mat'] . "</label>
+              <label class='input-group-text text-white button-form' for=" . $matiere['id'] . " style='width: 8rem'>" . $matiere['mat'] . "</label>
             </div>
             <select class='custom-select' id=\"" . $matiere['id'] . "\">";
                 optionNote($array, $matiere['id']);

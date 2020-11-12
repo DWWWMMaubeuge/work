@@ -1,9 +1,9 @@
 <?php
-require '../src/connexion.php';
+require_once 'src/connexion.php';
 
-if (!empty($_POST["formation"]) && isset($_POST["nbSkills"])) {
-  $nbSkills = $_POST["nbSkills"];
-  $formation = $_POST["formation"];
+/*if (!empty($_GET["formation"]) && isset($_GET["nbSkills"])) {
+  $nbSkills = $_GET["nbSkills"];
+  $formation = $_GET["formation"];*/
 
   if ($nbSkills == 0) {
     // ON TESTE SI LA FORMATION EXISTE DEJA
@@ -27,13 +27,13 @@ if (!empty($_POST["formation"]) && isset($_POST["nbSkills"])) {
     ));
     $req->closeCursor();
 
-    header('location: ./?succes=1'); // A MODIFIER
+    header('location: ../dashboardSU.php?succes=1'); // A MODIFIER
     exit();
 
   } else {
-    header('Location: ../admin/insertSkills.php?formation=' . $formation . '&nbSkills=' . $nbSkills);
+    header('Location: admin/insertSkills.php?formation=' . $formation . '&nbSkills=' . $nbSkills);
     exit();
   }
   
-}
+//}
 ?>

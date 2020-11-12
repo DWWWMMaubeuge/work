@@ -2,7 +2,6 @@
 session_start();
 require '../src/connexion.php';
 require '../superUser/DisplaySkillsInput.php';
-require '../superUser/traitementInsertFormation.php';
 require 'traitementInsertSkills.php';
 
 ?>
@@ -29,28 +28,29 @@ require 'traitementInsertSkills.php';
           <div class="alert alert-danger item mx-auto">
             La compétence "<?= $_GET["skills"] ?>" existe déjà
           </div>
-        <?php elseif (isset($_GET["test"])): ?>
+        <?php elseif (isset($_GET["test"])) : ?>
           <div class="alert alert-danger item mx-auto">
             Problème dans le for
           </div>
         <?php endif; ?>
       <?php endif; ?>
 
-      <form action="#" method="POST">
+      <form action="#" method="POST" id="formInsertSkils">
         <div class="form-title">
           <h5>Ajouter une ou des compétences</h5>
         </div>
 
-        <?php 
-          displaySkillsInput($nbSkills);
+        <?php
+        displaySkillsInput($nbSkills);
         ?>
 
         <button href="#" type="submit" class="btn btn-success"><i class="far fa-edit"></i> Ajouter</button>
-        <a href="index.php" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Retour</a>
+        <a href="../dashboardSU.php" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Retour</a>
       </form>
     </div>
 
   </main>
 
 </body>
+
 </html>
