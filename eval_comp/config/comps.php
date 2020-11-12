@@ -1,6 +1,6 @@
 <?php
 
-include('config/pdo-connect.php');
+include('../config/pdo-connect.php');
 
 function getEnabledComps($idformation) {
 

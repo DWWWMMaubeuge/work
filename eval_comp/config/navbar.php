@@ -7,7 +7,7 @@
       <div class='collapse navbar-collapse' id='navbarNav'>
           <ul class='navbar-nav'>
             <li class='nav-item'>
-              <a class='nav-link' href='index.php'><i class="fas fa-home"></i> Accueil<span class='sr-only'>(current)</span></a>
+              <a class='nav-link' href='../index.php'><i class="fas fa-home"></i> Accueil<span class='sr-only'>(current)</span></a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sign-in-alt"></i> Connexion</a>
@@ -27,9 +27,22 @@
           </ul>
       </div>
   </nav>
-  <script src="./scripts/connexion.js"></script>
+  <script src="../scripts/connexion.js"></script>
 
 <?php } else { ?>
+
+<?php
+
+  $sql = $bdd->prepare('SELECT * FROM Invitations WHERE Email = :email');
+  $sql->bindParam(':email', $infos['Email'], PDO::PARAM_STR);
+  $sql->execute();
+  $countinvit = $sql->rowCount();
+  
+  if($countinvit != 0) {
+    $invit = $sql->fetch();
+  }
+  
+?>
 
   <nav class='navbar fixed-top navbar-expand-lg navbar-light bg-light'>
       <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
@@ -38,29 +51,32 @@
       <div class='collapse navbar-collapse' id='navbarNav'>
           <ul class='navbar-nav'>
             <li class='nav-item'>
-            <a class='nav-link' href='index.php'><i class="fas fa-home"></i> Accueil</a>
+            <a class='nav-link' href='../index.php'><i class="fas fa-home"></i> Accueil</a>
             </li>
-            <?php if($infos['ID_FORMATION'] != 0) { ?>
-              <li class='nav-item'>
-                <a class='nav-link' href='auto-evaluation.php'><i class="fas fa-sliders-h"></i> Auto-evaluation</a>
-              </li>
+            <?php if($infos['Admin'] != TRUE) { ?>
+                <li class='nav-item'>
+                    <a class='nav-link' href='../auto-evaluation.php'><i class="fas fa-sliders-h"></i> Auto-evaluation</a>
+                </li>
             <?php } ?>
             <li class='nav-item'>
-              <a class='nav-link' href='utilisateurs.php'><i class="fas fa-users"></i> Utilisateurs</a>
+              <a class='nav-link' href='../utilisateurs.php'><i class="fas fa-users"></i> Utilisateurs</a>
             </li>
             <?php if($infos['Admin'] == TRUE) { ?>
               <li class='nav-item'>
-                <a class='nav-link' href='invitations.php'><i class="fas fa-feather-alt"></i> Invitations</a>
+                <a class='nav-link' href='../administration/accueiladmin.php'><i class="fas fa-fan fa-spin text-danger"></i> Administration</a>
               </li>
             <?php } ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-user-circle"></i> Mon compte
+              <i class="fas fa-user-circle"></i> Mon compte <?php if($countinvit != 0) { echo "<i class='fas fa-exclamation-circle text-warning' title='Vous avez une invitation à rejoindre une formation en attente !'></i>"; } ?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="profil.php"><i class="fas fa-id-card"></i> Mon profil</a>
+                <a class="dropdown-item" href="../profil.php"><i class="fas fa-id-card"></i> Mon profil</a>
+                <?php if($countinvit != 0) { ?>
+                     <a class="dropdown-item" href="../administration/confirmer-invitation.php?account=<?= $invit['SECURE_KEY']; ?>"><i class="fas fa-envelope"></i> Invitation en attente</a>
+                <?php } ?>
                 <div class="dropdown-divider"></div>
-                  <a class='dropdown-item' href='deconnexion.php'><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+                  <a class='dropdown-item' href='../deconnexion.php'><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
               </div>
             </li>
           </ul>

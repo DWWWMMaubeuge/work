@@ -2,7 +2,7 @@
 
 include('../config/pdo-connect.php');
 
-if(isset($_POST['Pseudo']) && isset($_POST['Password']) && isset($_POST['Email']) && isset($_POST['Captcha'])) {
+if(isset($_POST['Pseudo']) && isset($_POST['Password']) && isset($_POST['Email']) && isset($_POST['Captcha']) && isset($_POST['Formation'])) {
     
     $captcha = $_POST['Captcha'];
     
@@ -11,6 +11,7 @@ if(isset($_POST['Pseudo']) && isset($_POST['Password']) && isset($_POST['Email']
         $pseudo = $_POST['Pseudo'];
         $email = $_POST['Email'];
         $password = $_POST['Password'];
+        $formation = $_POST['Formation'];
     
         $pseudolength = strlen($pseudo);
         $mdplength = strlen($password);
@@ -48,7 +49,7 @@ if(isset($_POST['Pseudo']) && isset($_POST['Password']) && isset($_POST['Email']
     
                             $q = $bdd->prepare('INSERT INTO Options(HIDDEN, FORMATION) VALUES(:hidden, :formation)');
                             $q->bindParam(':hidden', $hidden, PDO::PARAM_BOOL);
-                            $q->bindValue(':formation', 0, PDO::PARAM_INT);
+                            $q->bindValue(':formation', $formation, PDO::PARAM_INT);
                             $q->execute();
                             
                             $q = $bdd->prepare('DELETE FROM Inscriptions WHERE EMAIL = :email');

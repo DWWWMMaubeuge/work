@@ -98,16 +98,7 @@ $formations = $q->fetchAll();
                                     <h6 class="mb-0">Formation</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                <?php if($infos['ID_FORMATION'] == 0) { ?>
-                                    <select class="mx-auto" name="formation" id="Formation" onchange="setFormation(this.value)">
-                                        <option value=""></option>
-                                        <?php foreach($formations as $formation) { ?>
-                                            <option value="<?= $formation['ID_FORMATION']; ?>"><?= $formation['FORMATION']; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                <?php } else { ?>
                                     <span id="maFormation"><?= $infos['FORMATION']; ?></span>
-                                <?php } ?>
                                 </div>
                             </div>
                             <hr>

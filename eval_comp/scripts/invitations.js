@@ -2,9 +2,10 @@ $('#invitations').submit(function(e) {
     e.preventDefault();
 $.ajax({
     type: 'POST',
-    url: 'traitements/traitement-invitations.php',
+    url: '../traitements/traitement-invitations.php',
     data: {
-        'Emails': $('#emails').val()
+        'Emails': $('#emails').val(),
+        'Formation': $('#idformation').val()
     },
     dataType: 'html',
     success: function(data) {

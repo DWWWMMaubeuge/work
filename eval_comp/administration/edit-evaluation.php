@@ -1,5 +1,5 @@
-<?php include('config/comps.php'); ?>
-<?php require_once('config/verifications.php'); ?>
+<?php include('../config/comps.php'); ?>
+<?php require_once('../config/verifications.php'); ?>
 <?php userIsLogged(); ?>
 <?php userIsAdmin(); ?>
 <?php
@@ -8,9 +8,9 @@ $req = $bdd->query('SELECT * FROM Formations');
 
 ?>
 
-<?php include('config/head.php'); ?>
+<?php include('../config/head.php'); ?>
 <?= myHeader('Edition de compétences'); ?>
-<?php require_once('config/navbar.php'); ?>
+<?php require_once('../config/navbar.php'); ?>
 <div class="container-fluid p-5 mt-5 banner3">
     <div class="container bg-dark my-5 p-5 opacity-4">
         <h2 class="text-center my-5">Modifications des compétences</h2>
@@ -46,67 +46,5 @@ $req = $bdd->query('SELECT * FROM Formations');
         <div class="alert alert-info my-5 d-none text-center" role="alert" id="notification"></div>
     </div>
 </div>
-<script>
-    $('#activerComp').submit(function(e) {
-        e.preventDefault();
-    $.ajax({
-        type: 'POST',
-        url: 'traitements/traitement-editcomps.php',
-        data: {
-            'ON': $('#enableComp').val()
-        },
-        dataType: 'text',
-        success: function(data) {
-            $('#notification').html(data);
-            $("#notification").removeClass("alert alert-info my-5 d-none").addClass("alert alert-light my-5");
-            // setTimeout( function() {
-            //     window.location.replace("accueil.php");
-            // }, 5000)
-            
-        }
-    });
-    });
-
-    $('#desactiverComp').submit(function(e) {
-        e.preventDefault();
-    $.ajax({
-        type: 'POST',
-        url: 'traitements/traitement-editcomps.php',
-        data: {
-            'OFF': $('#disableComp').val()
-        },
-        dataType: 'text',
-        success: function(data) {
-            $('#notification').html(data);
-            $("#notification").removeClass("alert alert-info my-5 d-none").addClass("alert alert-light my-5");
-            // setTimeout( function() {
-            //     window.location.replace("accueil.php");
-            // }, 5000)
-            
-        }
-    });
-    });
-
-    $('#ajoutComp').submit(function(e) {
-        e.preventDefault();
-    $.ajax({
-        type: 'POST',
-        url: 'traitements/traitement-editcomps.php',
-        data: {
-            'ADD': $('#add').val(),
-            'ACTIVE': $('#is-activated').val(),
-            'FORMATION': $('#formation').val()
-        },
-        dataType: 'text',
-        success: function(data) {
-            $('#notification').html(data);
-            $("#notification").removeClass("alert alert-info my-5 d-none").addClass("alert alert-light my-5");
-            // setTimeout( function() {
-            //     window.location.replace("accueil.php");
-            // }, 5000)
-            
-        }
-    });
-    });
-</script>
-<?php require_once('config/footer.php'); ?>
+<script src="../scripts/editeval.js"></script>
+<?php require_once('../config/footer.php'); ?>

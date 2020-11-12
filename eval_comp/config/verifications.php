@@ -35,18 +35,6 @@ function userIsAdmin() {
 
 }
 
-function checkAdminForComps() {
-
-  GLOBAL $infos;
-
-  if($infos['Admin'] == TRUE) {
-
-    return "<div class='alert alert-primary w-50 text-center mx-auto' role='alert'><a class='nav-link' href='edit-evaluation.php'>Editer l'évaluation</a></div>";
-
-  }
-
-}
-
 function checkActivationParams() {
 
   GLOBAL $bdd;

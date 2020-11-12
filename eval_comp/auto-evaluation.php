@@ -3,6 +3,13 @@
 <?php userIsLogged(); ?>
 <?php
 
+if($infos['Admin'] == TRUE) {
+    
+    header('Location: ../index.php');
+    exit();
+    
+}
+
 $req = $bdd->prepare('SELECT *
 FROM Matieres m LEFT JOIN
      (SELECT r.*,
@@ -37,7 +44,6 @@ while( $data = $req->fetch()) {
             <?= setAllWidgetValue( $skills ); ?>
             <div class="alert alert-info my-5 d-none text-center" role="alert" id="confirmation"></div>
         </form>
-        <?= checkAdminForComps(); ?>
     </div>
 </div>
 <?php require_once('config/footer.php'); ?>

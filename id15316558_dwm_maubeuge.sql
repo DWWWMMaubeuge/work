@@ -2,8 +2,8 @@
 -- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : mar. 10 nov. 2020 à 16:24
+-- Hôte : localhost
+-- Généré le : jeu. 12 nov. 2020 à 19:01
 -- Version du serveur :  10.3.16-MariaDB
 -- Version de PHP : 7.3.23
 
@@ -38,9 +38,9 @@ CREATE TABLE `Formations` (
 --
 
 INSERT INTO `Formations` (`ID_FORMATION`, `FORMATION`) VALUES
-(1, 'Développeur web'),
-(2, 'Maçon'),
-(3, 'Formateur professionnel');
+(1, 'Développeurs web'),
+(2, 'Maçons'),
+(3, 'Formateurs professionnel');
 
 -- --------------------------------------------------------
 
@@ -51,8 +51,23 @@ INSERT INTO `Formations` (`ID_FORMATION`, `FORMATION`) VALUES
 CREATE TABLE `Inscriptions` (
   `ID` int(11) NOT NULL,
   `EMAIL` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ID_FORMATION` int(255) NOT NULL,
   `SECURE_KEY` int(255) NOT NULL,
   `INVITATION_DATE` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Invitations`
+--
+
+CREATE TABLE `Invitations` (
+  `ID` int(255) NOT NULL,
+  `Email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `FormationID` int(255) NOT NULL,
+  `SECURE_KEY` int(255) NOT NULL,
+  `DATE_OF_INVITATION` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -122,7 +137,24 @@ CREATE TABLE `Membres` (
 --
 
 INSERT INTO `Membres` (`ID`, `Pseudo`, `Prenom`, `Nom`, `Email`, `MDP`, `Admin`, `Fixe`, `Mobile`, `Github`, `Site`, `Avatar`, `Date_of_registration`) VALUES
-(21, 'The-Evil-Fox', 'Steven', 'Durieux', 'stevenhonor@live.fr', '@59199Hergnies', '1', NULL, NULL, 'The-Evil-Fox', 'http://adriaticstuff.000webhostapp.com/index.php', 'default.png', '2020-11-08 04:28:38');
+(21, 'The-Evil-Fox', 'Steven', 'Durieux', 'stevenhonor@live.fr', '@59199Hergnies', '1', NULL, NULL, 'The-Evil-Fox', 'http://adriaticstuff.000webhostapp.com/index.php', 'default.png', '2020-11-08 04:28:38'),
+(31, 'CompteTest', NULL, NULL, 'varovrkignbcnodgww@miucce.online', '@59199Hergnies', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 16:14:38'),
+(32, 'compteTest2', NULL, NULL, 'rpcizrwldhtzhhmqhz@wqcefp.online', '@59199Hergnies', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 17:02:03'),
+(33, 'DEV', NULL, NULL, 'test@test.com', 'dsfsdfds', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 17:52:42'),
+(34, 'DEV', NULL, NULL, 'test@test.com', 'dsfsdfds', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 17:52:55'),
+(35, 'DEV', NULL, NULL, 'test@test.com', 'dsfsdfds', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 17:52:58'),
+(36, 'DEV', NULL, NULL, 'test@test.com', 'dsfsdfds', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 17:52:58'),
+(37, 'DEV', NULL, NULL, 'test@test.com', 'dsfsdfds', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 17:52:58'),
+(38, 'Maçon', NULL, NULL, 'macon@macon.com', '6545454', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 18:45:05'),
+(39, 'Maçon2', NULL, NULL, 'macon@macon.com', '6545454', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 18:45:08'),
+(40, 'Maçon3', NULL, NULL, 'macon@macon.com', '6545454', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 18:45:08'),
+(41, 'Maçon4', NULL, NULL, 'macon@macon.com', '6545454', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 18:45:08'),
+(42, 'Maçon5', NULL, NULL, 'macon@macon.com', '6545454', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 18:45:08'),
+(43, 'formateurpro1', NULL, NULL, 'macon@macon.com', '6545454', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 18:46:32'),
+(44, 'formateurpro2', NULL, NULL, 'macon@macon.com', '6545454', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 18:46:36'),
+(45, 'formateurpro3', NULL, NULL, 'macon@macon.com', '6545454', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 18:46:36'),
+(46, 'formateurpro4', NULL, NULL, 'macon@macon.com', '6545454', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 18:46:36'),
+(47, 'formateurpro5', NULL, NULL, 'macon@macon.com', '6545454', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 18:46:36');
 
 -- --------------------------------------------------------
 
@@ -141,7 +173,24 @@ CREATE TABLE `Options` (
 --
 
 INSERT INTO `Options` (`ID`, `HIDDEN`, `FORMATION`) VALUES
-(21, b'1', 1);
+(21, b'1', 1),
+(31, b'0', 2),
+(32, b'0', 3),
+(33, b'1', 1),
+(34, b'1', 1),
+(35, b'1', 1),
+(36, b'1', 1),
+(37, b'1', 1),
+(38, b'1', 2),
+(39, b'1', 2),
+(40, b'1', 2),
+(41, b'1', 2),
+(42, b'1', 2),
+(43, b'1', 3),
+(44, b'1', 3),
+(45, b'1', 3),
+(46, b'1', 3),
+(47, b'1', 3);
 
 -- --------------------------------------------------------
 
@@ -173,13 +222,16 @@ INSERT INTO `Resultats` (`ID`, `TIME_OF_INSERTION`, `ID_USER`, `ID_MATIERE`, `RE
 (179, '2020-11-08 05:03:47', 21, 20, 8, 'NOVEMBRE'),
 (180, '2020-11-08 05:03:48', 21, 19, 10, 'NOVEMBRE'),
 (181, '2020-11-08 05:03:52', 21, 27, 5, 'NOVEMBRE'),
-(182, '2020-11-08 05:03:57', 21, 28, 6, 'NOVEMBRE'),
+(182, '2020-11-08 05:03:57', 21, 28, 5, 'NOVEMBRE'),
 (183, '2020-11-08 05:04:01', 21, 29, 5, 'NOVEMBRE'),
 (184, '2020-11-08 05:04:05', 21, 32, 9, 'NOVEMBRE'),
 (185, '2020-11-08 05:04:07', 21, 31, 2, 'NOVEMBRE'),
 (186, '2020-11-08 05:04:09', 21, 33, 0, 'NOVEMBRE'),
 (187, '2020-11-08 05:04:22', 21, 34, 3, 'NOVEMBRE'),
-(188, '2020-11-08 05:04:23', 21, 35, 1, 'NOVEMBRE');
+(188, '2020-11-08 05:04:23', 21, 35, 1, 'NOVEMBRE'),
+(189, '2020-11-12 16:11:27', 30, 36, 7, 'NOVEMBRE'),
+(190, '2020-11-12 16:11:27', 30, 37, 4, 'NOVEMBRE'),
+(191, '2020-11-12 16:11:28', 30, 38, 4, 'NOVEMBRE');
 
 --
 -- Index pour les tables déchargées
@@ -195,6 +247,12 @@ ALTER TABLE `Formations`
 -- Index pour la table `Inscriptions`
 --
 ALTER TABLE `Inscriptions`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `Invitations`
+--
+ALTER TABLE `Invitations`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -235,7 +293,13 @@ ALTER TABLE `Formations`
 -- AUTO_INCREMENT pour la table `Inscriptions`
 --
 ALTER TABLE `Inscriptions`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT pour la table `Invitations`
+--
+ALTER TABLE `Invitations`
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT pour la table `Matieres`
@@ -247,19 +311,19 @@ ALTER TABLE `Matieres`
 -- AUTO_INCREMENT pour la table `Membres`
 --
 ALTER TABLE `Membres`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT pour la table `Options`
 --
 ALTER TABLE `Options`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT pour la table `Resultats`
 --
 ALTER TABLE `Resultats`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

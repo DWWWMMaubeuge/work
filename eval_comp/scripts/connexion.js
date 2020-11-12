@@ -6,7 +6,7 @@
     $.ajax({
 
         type: 'POST',
-        url: 'traitements/traitement-connexion.php',
+        url: '../traitements/traitement-connexion.php',
         data: {
             'email': $('#connexionemail').val(),
             'mdp': $('#password').val()
@@ -17,7 +17,7 @@
 
           if(data == "") {
 
-              window.location.replace('profil.php');
+              window.location.replace('../profil.php');
 
           } else {
 
