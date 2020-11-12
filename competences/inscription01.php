@@ -14,7 +14,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail']
 
     $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password ) VALUES ( '$name', '$surname', '$mail', '$password' )";
     executeSQL( $req );
-    header( "location: accueil02_multiple.php");
+    header( "location: login01.php");
 }
 
 ?>
