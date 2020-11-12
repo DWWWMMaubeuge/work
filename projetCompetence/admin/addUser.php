@@ -41,6 +41,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
       <select name="type" id="type" >
         <option value="" disabled selected>Type</option>
         <option value="admin">Admin</option>
+        <option value="teacher">Teacher</option>
         <option value="user">User</option>
       </select>
   </div>

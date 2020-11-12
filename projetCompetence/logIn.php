@@ -34,6 +34,10 @@ if( $_POST && $_POST['email'] != "" && $_POST['password'] != ""  )
         {
             header('location: admin/home.php');      
         }
+        elseif ($data['type'] == 'teacher')
+        {
+            header('location: admin/home2.php' );
+        }
         else
         {
             header('location: skills.php');

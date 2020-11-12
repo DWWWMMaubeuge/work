@@ -17,10 +17,11 @@
     <h1>Welcome <?php echo $_SESSION['surname']; ?>!</h1>
     <p>Admin panel</p>
     <div class="admin">
-    <a href="addUser.php" >Add user</a> |
-    <a href="#" >Add training</a> | 
-    <a href="#" >Update user</a> | 
-    <a href="#" >Delete user</a> | 
+    <a href="addUser.php" >Add trainee</a> |
+    <a href="#" >Display trainees</a> | 
+    <a href="#" >Display results trainees</a> | 
+    <a href="#" >Update trainee</a> | 
+    <a href="#" >Delete trainee</a> | 
     <a href="../logOut.php" >Logout</a>
     </div>
     </div>
