@@ -28,8 +28,9 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password'] != "" )
     
         header( "location: Home.php");
     }
-    echo "<h3>login incorrect</h3>";
-}
+    echo "<h3>login incorrect</h3>"  
+
+
 
 ?>
 <!DOCTYPE html>
@@ -57,9 +58,10 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password'] != "" )
 
 <div id="bg"></div>
 
-        <form  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>"
-            
-                    <label for=""><h2>CONNEXION</h2></label>
+        <form  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                     
+                     <img src="img/logo6.png" alt=""> 
+                     <label for=""><h2>CONNEXION</h2></label>
                     
                     <input type="text" name="mail" id="" placeholder="mail" class="mail"  >
                     
@@ -74,4 +76,3 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password'] != "" )
     </body>
 </html> 
 
-<!-- <span> <i class="fas fa-envelope"></i></span> -->

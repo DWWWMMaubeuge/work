@@ -48,11 +48,12 @@ function setWidgetValue2( $skill  )
 
     $widget = "<div class =\" styled\"  >\n";
     $widget .="<p>".$skill[1]."</p><select id= \"lol\" name=\"valSkill\" onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
-    $widget .="<option value=\"\"> Select  number</option>\n";
+    $widget .="<option value= id='lool'\"\"></option>\n";
         for( $a=1 ; $a<11 ; $a++ )
     $widget .="<option value=\"$a\">$a</option>\n";
     $widget .="</select><br>\n";
     $widget .= "</div>\n";
+    
     return $widget;
 }
 
@@ -97,7 +98,7 @@ $ID_user = $_SESSION[ 'ID_user' ];
 $name_user = $_SESSION[ 'name' ];
 $surname_user = $_SESSION[ 'surname' ];
 
-echo "<h1>Welcome  $surname_user to AFPA</h1>\n";
+echo "<h1> Bienvenue \"$surname_user\" sur le site d'évaluation </h1>\n";
 
 
 $req = "SELECT* FROM $DB_dbname.skills";
@@ -113,8 +114,15 @@ while( $data = $result->fetch_assoc())
 
 
 ?>
+
+
+
 <script>
+
+    
     function MAJ_Value( id_skill, value  )
+
+    document.getElementById("message_validation").innerHTML = "valeur enregistrée";
     {
       var xhttp = new XMLHttpRequest();
       
