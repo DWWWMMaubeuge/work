@@ -9,21 +9,20 @@
             <li class='nav-item'>
               <a class='nav-link' href='../index.php'><i class="fas fa-home"></i> Accueil<span class='sr-only'>(current)</span></a>
             </li>
-            <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sign-in-alt"></i> Connexion</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <form class="mx-2 text-center" method="POST" id="connexion">
-                <div class="form-group">
-                  <label for="connexionemail">Email</label>
-                  <input type="email" name="connexionemail" id="connexionemail" class="form-control" placeholder="Adresse e-mail" aria-describedby="helpId" required>
-                </div>
-                <div class="form-group">
-                  <label for="password">Mot de passe</label>
-                  <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe" aria-describedby="helpId" required>
-                </div>
-                <button class="btn btn-primary m-auto">Login</button>
-              </form>
-            </li>
+                  <form class="mx-2 pt-2 form-inline d-flex" method="POST" id="connexion">
+                    <div class="form-group d-flex-text-center mx-3">
+                      <label class="mr-2" for="connexionemail">Email</label>
+                      <input type="email" name="connexionemail" id="connexionemail" class="form-control" placeholder="Adresse e-mail" aria-describedby="helpId" required>
+                    </div>
+                    <div class="form-group d-flex-text-center mx-3">
+                      <label class="mr-2" for="password">Mot de passe</label>
+                      <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe" aria-describedby="helpId" required>
+                    </div>
+                    <button class="btn btn-primary m-auto">Login</button>
+                  </form>
+             </div>
           </ul>
       </div>
   </nav>
