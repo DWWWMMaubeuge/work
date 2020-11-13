@@ -1,9 +1,18 @@
 h1{
     text-align: center;
     text-decoration: underline;
+    color:rgb(82, 132, 224);
 }
 form{
     text-align: center;
     padding-top: 50px;
     font-size: large;
+    
+}
+body{
+    background-image: url(disque_vinyle.jpg);
+    background-size: cover;
+}
+h2{
+    color:rgb(82, 132, 224);
 }
