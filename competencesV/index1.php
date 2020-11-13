@@ -65,6 +65,7 @@ include('./PHP/Registration.php');
     <?php if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) : ?>
         <div class=" container my-5 border border-primary p-5 background text-center text-white h1">Bienvenue <?= $_SESSION['prenom']." ".$_SESSION['nom'] ?></div>
         <div id="profil" class="mb-2"></div>
+
     <?php else : ?>
         <div id="ladiv" class="container my-5 border border-primary p-5 background text-center text-white"></div>
         <div id="ladiv2" class="container my-5 border border-primary p-5 background text-center text-white"></div>

@@ -15,6 +15,7 @@ include 'SQLProfil.php';
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>-->
     <link rel="stylesheet" href="CSS/profil.css">
     <link rel="stylesheet" href="CSS/main.css">
+    <script src="./JS/graph.js"></script>
 </head>
 <body>
     <div class="container my-5">
@@ -85,12 +86,15 @@ include 'SQLProfil.php';
                     </div>
                 </div>
 
-                <div class="col-md-12">
-                    <h5 class="font-size24 sm-font-size22 xs-font-size20">Compétences</h5>
+                <div class="col-md-6">
 
-                    <div class="sm-no-margin">
-                        <?= compProfil($array); ?>
-                    </div>
+                    <h5 class="font-size24 sm-font-size22 xs-font-size20">Compétences</h5>
+                        <div class="sm-no-margin">
+                            <?= compProfil($array); ?>
+                        </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="" alt="" id="graph" style="border-radius:20px;position:fixed;top:20%">
                 </div>
             </div>
         </div>

@@ -11,11 +11,11 @@ $query2->execute();
 $user=$query2->fetch(PDO::FETCH_ASSOC);
 //var_dump($user);
 
-function CompProfil($skills){
+function compProfil($skills){
     foreach ($skills as $array){
         echo "<div class=\"progress-text\">";
         echo "<div class=\"row\">";
-        echo"<div class='col-7'>".$array['matiere']."</div>";
+        echo "<div class='col-7'>".$array['matiere']."  <a class='graph' id=".$array['id_mat']."><i class=\"fas fa-chart-line\"></i></a></div>";
         echo "<div class='col-5 text-right'>".$array['eval']."/10</div>";
         echo "</div>";
         echo "</div>";

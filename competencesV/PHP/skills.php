@@ -43,7 +43,7 @@ include 'fonctionAffichages.php';
                 </li>
             </ul>
     </nav>
-    <div id="tabSkills">Tableau de notes</div>
+    <div id="tabSkills">Graphique d'évolution</div>
     <div id="letableau"></div>
     <?php
     formMat($skills,$array2,0);
