@@ -5,7 +5,7 @@ $_SESSION[ 'ID_user' ]  = 0;
 
 include_once("functionConnect.php");
 include_once("functionHeader.php");
-setHearder();
+setHeader();
 NavBar();
 
 
@@ -34,7 +34,7 @@ if( $_POST && $_POST['email'] != "" && $_POST['password'] != ""  )
         {
             header('location: admin/home.php');      
         }
-        elseif ($data['type'] == 'teacher')
+        elseif ($data['type'] == 'trainer')
         {
             header('location: admin/home2.php' );
         }

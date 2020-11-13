@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <link rel="stylesheet" href="../admin.css" />
+  <link rel="stylesheet" href="../style/admin.css" />
   </head>
   <body>
   <div class="login-box">
@@ -18,7 +18,8 @@
     <p>Admin panel</p>
     <div class="admin">
     <a href="addUser.php" >Add user</a> |
-    <a href="#" >Add training</a> | 
+    <a href="#" >Add training</a> |
+    <a href="displayUser.php" >Display user</a> | 
     <a href="#" >Update user</a> | 
     <a href="#" >Delete user</a> | 
     <a href="../logOut.php" >Logout</a>

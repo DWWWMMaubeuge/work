@@ -6,7 +6,7 @@ body{
     min-height: 100vh;
     /*align-items: center;
     justify-content: center;*/
-    background: url(bg3.jpg) no-repeat;
+    background: url(img/bg3.jpg) no-repeat;
     background-size: cover;
 }
 

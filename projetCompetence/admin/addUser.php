@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="../addUser.css" />
+<link rel="stylesheet" href="../style/addUser.css" />
 </head>
 <body>
 <?php
@@ -41,8 +41,8 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
       <select name="type" id="type" >
         <option value="" disabled selected>Type</option>
         <option value="admin">Admin</option>
-        <option value="teacher">Teacher</option>
-        <option value="user">User</option>
+        <option value="trainer">Trainer</option>
+        <option value="trainee">Trainee</option>
       </select>
   </div>
   <div class="textbox">
