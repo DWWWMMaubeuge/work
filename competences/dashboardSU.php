@@ -2,7 +2,6 @@
 session_start();
 require 'navBar.php';
 require 'superUser/navSU.php';
-//require 'superUser/traitementInsertFormation.php';
 
 if (!isset($_SESSION["fname"])) {
   header("location: ./");
@@ -25,7 +24,16 @@ if (!isset($_SESSION["fname"])) {
 
   <?= $nav = navBar(); ?>
 
+
+
   <main class="container board">
+
+    <?php if (isset($_GET["success"])) : ?>
+
+      <div class="alert alert-success">
+        Formation ajoutée avec succès
+      </div>
+    <?php endif; ?>
 
     <div class="row">
 
@@ -39,13 +47,13 @@ if (!isset($_SESSION["fname"])) {
 
     <div class="row">
 
-      <div class="col-xs-12 col-md-3 board-title2">
+      <div class="col-xs-12 col-md-5 board-title2">
 
-        <?= accordion(); ?>
+        <?= dashSU(); ?>
 
       </div>
 
-      <div class="col-xs-12 col-md-9" id="display">
+      <div class="col-xs-12 col-md-7 d-flex align-items-center justify-content-center" id="display">
 
       </div>
 
@@ -61,7 +69,7 @@ if (!isset($_SESSION["fname"])) {
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-  <script src="js/addFormation.js"></script>
+  <script src="js/dashSU.js"></script>
 </body>
 
 </html>

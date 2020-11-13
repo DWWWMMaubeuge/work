@@ -72,6 +72,9 @@ if (isset($_GET["nbSkills"]) && !empty($_GET["nbSkills"])) {
         ));
         $req->closeCursor();
       }
+
+      header('location: ../superUser/insertFormation.php?error=1&formation=1');
+      exit();
     }
   }
   

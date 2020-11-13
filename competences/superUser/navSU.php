@@ -1,13 +1,17 @@
 <?php 
 
-function navSU() {
+function dashSU() {
   echo <<<EOL
-    <nav class="nav flex-column">
-      <a class="nav-link active" href="#">Active</a>
-      <a class="nav-link" href="#">Link</a>
-      <a class="nav-link" href="#">Link</a>
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-    </nav>
+    <div class="card" style="width: 18rem;">
+      <div class="card-header button-form text-white">
+        Formations
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a href="superUser/insertFormation.php">Ajouter une formation</a></li>
+        <li class="list-group-item"><a href="#" id="addSkills">Ajouter des compétences</a></li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+    </div>
 EOL;
 }
 
@@ -27,7 +31,7 @@ function accordion()
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
         <ul class="list-group">
-          <li class="list-group-item"><a href="#" class="addFormation">Ajouter une formation</a></li>
+          <li class="list-group-item"><a href="#" id="addFormation">Ajouter une formation</a></li>
           <li class="list-group-item"><a href="#" class="addSkill">Ajouter une compétence</a></li>
 
         </ul>
