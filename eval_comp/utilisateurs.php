@@ -85,20 +85,26 @@ if(!isset($_GET['formation'])) {
        <?php } ?>
         </select>
     </div>
-    <table class="table table-hover table-dark w-50 m-auto">
+    <table class="table table-hover table-dark text-center w-50 m-auto">
         <thead>
             <tr>
             <th scope="col">ID</th>
             <th scope="col">Avatar</th>
             <th scope="col">Pseudo</th>
+            <?php if($infos['Admin'] != 0 && isset($_GET['formation']) && $_GET['formation'] == $infos['ID_FORMATION']) { ?>
+                <th scope="col">Moyennes</th>
+            <?php } ?>
             </tr>
         </thead>
         <tbody>
         <?php foreach($users as $user) { ?>
             <tr>
             <td scope="row"><?= $user['ID']; ?></td>
-            <td scope="row"><img src="images/avatars/<?= $infos['Avatar']; ?>" alt="avatar" class="rounded-circle" width="35"></td>
+            <td scope="row"><img src="images/avatars/<?= $user['Avatar']; ?>" alt="avatar" class="rounded-circle" width="35"></td>
             <td scope="row"><a class="text-white m-auto" href="utilisateur.php?pseudo=<?= $user['Pseudo']; ?>"><?= $user['Pseudo']; ?></a></td>
+            <?php if($infos['Admin'] != 0 && isset($_GET['formation']) && $_GET['formation'] == $infos['ID_FORMATION']) { ?>
+                <td scope="row"><a class="text-white m-auto" href="moyennes.php?pseudo=<?= $user['Pseudo']; ?>"><i class="fas fa-chart-bar"></i></a></td>
+            <?php } ?>
             </tr>
         <?php } ?>
         </tbody>
@@ -122,26 +128,5 @@ if(!isset($_GET['formation'])) {
         </ul>
     </nav>
 </div>
-<script>
-    
-    function selectFormation(value) {
-        
-        if(value != "") {
-        
-            let url = "https://dwm-competences.000webhostapp.com/utilisateurs.php";
-            let formation = value;
-            
-            let newurl = url + "?formation="+formation;
-            window.location.replace(newurl);
-        
-        } else {
-            
-            let url = "https://dwm-competences.000webhostapp.com/utilisateurs.php";
-            window.location.replace(url);
-            
-        }
-        
-    }
-    
-</script>
+<script src="scripts/utilisateurs.js"></script>
 <?php require_once('config/footer.php'); ?>

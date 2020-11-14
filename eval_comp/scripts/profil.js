@@ -1,3 +1,71 @@
+function setAvatar() {
+    
+    let avatar = document.getElementById('Avatar');
+    
+    let useravatar = document.getElementById('Avatar').src;
+    
+    $('#inputAvatar').click();
+    
+    $('#inputAvatar').on('change', function() {
+
+      let userfile = $(this).val();
+      if(userfile) {
+      
+        $('#formAvatar').submit();
+        
+      }
+      
+    });
+    
+    
+    $("#formAvatar").on('submit', function(e) {
+        
+        e.preventDefault();
+        
+        avatar.setAttribute('src', 'images/loading.gif');
+        
+        $.ajax({
+    
+            type: 'POST',
+            url: 'traitements/traitement-profil.php',
+            data:  new FormData(this),
+            contentType: false,
+            cache: false,
+            processData:false,
+    
+            success: function(data) {
+                
+                if(data.includes("Erreur:")) {
+                    
+                    let error = data.replace("Erreur:", "");
+                    
+                    avatar.setAttribute('src', useravatar);
+                    
+                    let errorWindow = document.getElementById('erreur');
+                    errorWindow.className = "alert alert-danger my-5 text-center";
+                    errorWindow.innerHTML = error;
+                    setTimeout(() => {
+    
+                        errorWindow.className = "alert alert-danger my-5 text-center d-none";
+    
+                    }, 4500);
+                    
+                
+                } else {
+                    
+                    avatar.setAttribute('src', data);
+                    
+                }
+    
+            }
+    
+        });
+
+  });
+  
+}
+  
+
 function setInfo(id, idelem2) {
 
     let myElement = document.getElementById(idelem2).outerHTML;
@@ -26,7 +94,7 @@ function setInfo(id, idelem2) {
         myInput.outerHTML = myElement;
         return false;
 
-    })
+    });
 
     myInput.addEventListener('keyup', function(event) {
 
@@ -175,7 +243,7 @@ function setInfo(id, idelem2) {
 
         }
 
-    })
+    });
 
 }
 
@@ -249,10 +317,10 @@ function setPassword(id) {
 
     document.addEventListener('mousedown', function(event) {
 
-        myInput.outerHTML = myElement;
+        myInput.outerHTML = buttonBase;
         return false;
 
-    })
+    });
 
     myInput.addEventListener('keyup', function(event) {
         

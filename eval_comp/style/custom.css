@@ -97,3 +97,12 @@
 .banner .info button:hover {
 	background: #e91e63;
 }
+
+.clickable {
+    cursor: pointer;
+}
+
+#Avatar:hover {
+    opacity: 0.5;
+    transition: 0.3s linear;
+}

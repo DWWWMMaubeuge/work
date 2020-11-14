@@ -357,6 +357,45 @@ if(isset($_POST['Formation'])) {
 
 }
 
+if(isset($_FILES['inputAvatar']) AND !empty($_FILES['inputAvatar']['name'])) {
+    
+    $tailleMax = 2000000;
+    $extensionsValides = array('jpg', 'jpeg', 'gif', 'png');
+    if($_FILES['inputAvatar']['size'] <= $tailleMax) {
+        
+        $extensionUpload = strtolower(substr(strrchr($_FILES['inputAvatar']['name'], '.'), 1));
+        if(in_array($extensionUpload, $extensionsValides)) {
+            
+            $chemin = "../images/avatars/".$_SESSION['id'].".".$extensionUpload;
+            $resultat = move_uploaded_file($_FILES['inputAvatar']['tmp_name'], $chemin);
+            if($resultat) {
+                
+                $avatar = $_SESSION['id'].".".$extensionUpload;
+                $updateavatar = $bdd->prepare('UPDATE Membres SET Avatar = :avatar WHERE ID = :id');
+                $updateavatar->bindParam(':avatar', $avatar, PDO::PARAM_STR);
+                $updateavatar->bindParam(':id', $_SESSION['id'], PDO::PARAM_INT);
+                $updateavatar->execute();
+                $feedback = $chemin;
+                
+            } else {
+                
+                $feedback = "Erreur: Une erreur est survenue durant l'importation de votre nouvelle photo de profil !";
+                
+            }
+            
+        } else {
+            
+            $feedback = "Erreur: Votre nouvelle photo de profil dois être au format JPG, JPEG, GIF ou PNG !";
+            
+        }
+        
+    } else {
+        
+        $feedback = "Erreur: Votre nouvelle photo de profil ne doit pas dépasser 2Mo !";
+    }
+    
+}
+
 if(isset($feedback)) {
 
     echo $feedback;

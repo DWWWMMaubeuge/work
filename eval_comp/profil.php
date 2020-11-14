@@ -4,6 +4,8 @@
 <?php include('config/head.php'); ?>
 <?php
 
+$moisquery = substr($mois, 0, 3);
+
 $q = $bdd->prepare('SELECT *
 FROM Matieres m LEFT JOIN
      (SELECT r.*,
@@ -17,7 +19,7 @@ FROM Matieres m LEFT JOIN
 WHERE Active = TRUE AND ID_Formation = :formation;');
 $q->bindParam(':user', $_SESSION['id'], PDO::PARAM_INT);
 $q->bindParam(':formation', $infos['ID_FORMATION'], PDO::PARAM_INT);
-$q->bindParam(':mois', $mois, PDO::PARAM_STR);
+$q->bindParam(':mois', $moisquery, PDO::PARAM_STR);
 $q->execute();
 $count = $q->rowCount();
 
@@ -38,22 +40,25 @@ $formations = $q->fetchAll();
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex text-dark flex-column align-items-center text-center">
-                                <img src="images/avatars/<?= $infos['Avatar']; ?>" alt="avatar" class="rounded-circle" width="150">
+                                <img src="images/avatars/<?= $infos['Avatar']; ?>" onclick="setAvatar()" alt="avatar" class="rounded-circle clickable" id="Avatar" width="150" title="Cliquez pour changer votre photo de profil">
+                                <form class="d-none" id="formAvatar" method="post" enctype="multipart/form-data"><input class="d-none" type="file" id="inputAvatar" name="inputAvatar" /></form>
                                 <div class="mt-3 col-sm-12">
-                                    <h2 id="monPseudo"><?= $infos['Pseudo']?></h2> <i class="fas fa-wrench text-warning editmode" id="Pseudo" onclick="setInfo(this.id, 'monPseudo')" title="Modifier mon pseudo"></i>
+                                    <?php if($infos['Admin'] != 1) { ?><h2 id="monPseudo" class="text-primary"><?= $infos['Pseudo']?></h2><?php } else { ?> <h2 id="monPseudo" class="text-danger"><?= $infos['Pseudo']?> <?php } ?> <i class="fas fa-wrench text-warning editmode" id="Pseudo" onclick="setInfo(this.id, 'monPseudo')" title="Modifier mon pseudo"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card mt-3">
                         <ul class="bg-dark list-group list-group-flush">
-                            <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                <?php if(!empty($infos['Github'])) { ?>
-                                    <i class="fab fa-github" title="Lien Github"></i><a class="text-white" id="monGithub" href="https://github.com/<?= $infos['Github']; ?>"><?= $infos['Github']; ?></a><i class="fas fa-wrench text-warning editmode" id="Github" onclick="setInfo(this.id, 'monGithub')" title="Modifier mon pseudo Github"></i>
-                                <?php } else { ?>
-                                    <i class="fab fa-github" title="Lien Github"></i> <span id="monGithub">Non renseigné !</span><i class="fas fa-wrench text-warning editmode" id="Github" onclick="setInfo(this.id, 'monGithub')" title="Ajouter mon pseudo Github"></i>
-                                <?php } ?>
-                            </li>
+                            <?php if($infos['ID_FORMATION'] == 1) { ?>
+                                <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <?php if(!empty($infos['Github'])) { ?>
+                                        <i class="fab fa-github" title="Lien Github"></i><a class="text-white" id="monGithub" href="https://github.com/<?= $infos['Github']; ?>"><?= $infos['Github']; ?></a><i class="fas fa-wrench text-warning editmode" id="Github" onclick="setInfo(this.id, 'monGithub')" title="Modifier mon pseudo Github"></i>
+                                    <?php } else { ?>
+                                        <i class="fab fa-github" title="Lien Github"></i> <span id="monGithub">Non renseigné !</span><i class="fas fa-wrench text-warning editmode" id="Github" onclick="setInfo(this.id, 'monGithub')" title="Ajouter mon pseudo Github"></i>
+                                    <?php } ?>
+                                </li>
+                            <?php } ?>
                             <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 <?php if(!empty($infos['Site'])) { ?>
                                     <i class="fas fa-link" title="Lien site personnel"></i><a class="text-white" id="monSite" href="<?= $infos['Site']; ?>" target="_blank">Site personnel</a><i class="fas fa-wrench text-warning editmode" id="Site" onclick="setInfo(this.id, 'monSite')" title="Modifier l'adresse de mon site"></i>
@@ -163,7 +168,7 @@ $formations = $q->fetchAll();
                             </div>
                         </div>
                     </div>
-                    <?php if($infos['ID_FORMATION'] != 0) { ?>
+                    <?php if($infos['Admin'] != 1) { ?>
                         <div class="row gutters-sm">
                             <div class="col-sm-12 mb-3">
                                 <div class="card h-100">
@@ -177,7 +182,6 @@ $formations = $q->fetchAll();
                                                     </div>
                                                 <?php } ?>
                                             <?php } ?>
-                                            <div class="text-center my-5"><h4><a href="moyennes.php">Voir ma moyenne</a></h4></div>
                                     </div>
                                 </div>
                             </div>
@@ -189,4 +193,4 @@ $formations = $q->fetchAll();
     </div>
 </div>
 <script src="scripts/profil.js"></script>
-<?php require_once('config/footer.php');
+<?php require_once('config/footer.php'); ?>

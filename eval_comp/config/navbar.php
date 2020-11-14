@@ -71,6 +71,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="../profil.php"><i class="fas fa-id-card"></i> Mon profil</a>
+                <a class="dropdown-item" href="../moyennes.php"><i class="fas fa-chart-bar"></i> Mes moyennes</a>
                 <?php if($countinvit != 0) { ?>
                      <a class="dropdown-item" href="../administration/confirmer-invitation.php?account=<?= $invit['SECURE_KEY']; ?>"><i class="fas fa-envelope"></i> Invitation en attente</a>
                 <?php } ?>
