@@ -30,7 +30,7 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password']  )
         $bdd = null;
         header( "location:accueil.php");
     }
-    echo "<h3>login incorrect</h3>";
+     $erreur = "<h3>login incorrect veuillez réessayer svp !</h3>";
     $bdd = null;
 }
 
@@ -58,8 +58,15 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password']  )
                 <div class="a">
                     <a href="accueil.php">pas maintenant, retour au menu !</a>
                 </div>
+                <?php
+    if(isset($erreur))
+    {
+        echo $erreur;
+    }
+    ?>  
             </div>
-            </div>      
+            </div> 
+       
         </FORM>
     </div>
 </body>

@@ -1,52 +1,44 @@
 <?php
-/* include_once("function_connect.php");
-*/
+ include_once("function_connect.php");
+
 include_once("header.php");
 echo entete3("inscription");
 
 $bdd = new PDO("mysql:host=localhost;dbname=utilisateur;charset=utf8", "root", "");
 if(isset($_POST['forminscription']))
         {
-            if(!empty($_POST['name']) AND !empty($_POST['surname']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['password']) AND !empty($_POST['password2']) )
+            if(!empty($_POST['name']) AND !empty($_POST['surname']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['password']) AND !empty($_POST['password2']) &&( $_POST && isset($_POST['name']) && isset($_POST['surname'])  && isset($_POST['mail']) && isset($_POST['mail2'])  && isset($_POST['password']) && isset($_POST['password2'])  ) )
+             
             {
-              echo "ok";
-            }
+                    $name       = $_POST['name'];
+                    $surname    = $_POST['surname'];
+                    $mail       = $_POST['mail'];
+                    $mail2       = $_POST['mail2'];
+                    $password   = $_POST['password'];
+                    $password2   = $_POST['password2'];
+                    $query = $bdd->prepare("INSERT INTO users(name,surname,mail,mail2,password,password2 ) VALUES( :name, :surname, :mail, :mail2, :password, :password )");
+                    $query->execute(array(
+                    "name"=>$_POST["name"],
+                    "surname"=>$_POST["surname"],
+                    "mail"=>$_POST["mail"],
+                    "mail2"=>$_POST["mail2"],
+                    "password"=> ($_POST["password"]),
+                    "password2"=> ($_POST["password2"])
+                    ));
+
+                    $bdd = null;
+                    //header( "location:login.php"); 
+                    $good ="<h3>Félicitation vous venez de vous inscrire !<a href='login.php'>cliquez ici pour vous connectez !</a></h3>";
+            } 
             else{
-                $erreur = "Tous les champs doivent etre complétés !";
+                $erreur = "<h3>Tous les champs doivent etre complétés !</h3>";
             }
         }
-        /* if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['mail']) && !empty($_POST['mail2']) && !empty($_POST['password']) && !empty($_POST['password2']) )
-        {
-          echo "ok";
-        } */
 
- /* if( $_POST && isset($_POST['name']) && isset($_POST['surname'])  && isset($_POST['mail']) && isset($_POST['mail2'])  && isset($_POST['password']) && isset($_POST['password2'])  ) 
-  {
-        $name       = $_POST['name'];
-        $surname    = $_POST['surname'];
-        $mail       = $_POST['mail'];
-        $mail2       = $_POST['mail2'];
-        $password   = $_POST['password'];
-        $password2   = $_POST['password2'];
-        $query = $bdd->prepare("INSERT INTO users(name,surname,mail,mail2,password,password2 ) VALUES( :name, :surname, :mail, :mail2, :password, :password )");
-        $query->execute(array(
-        "name"=>$_POST["name"],
-        "surname"=>$_POST["surname"],
-        "mail"=>$_POST["mail"],
-        "mail2"=>$_POST["mail2"],
-        "password"=> ($_POST["password"]),
-        "password2"=> ($_POST["password2"])
-        ));
-
-        $bdd = null;
-        header( "location:login.php"); 
-        echo "ok";
-
-  } */
 
 ?>
 <script>
-   body{
+  h3{
     color: white;
    } 
 </script>
@@ -96,9 +88,14 @@ if(isset($_POST['forminscription']))
       </FORM>
 
     <?php
+
     if(isset($erreur))
     {
         echo $erreur;
+    }
+    if(isset($good))
+    {
+        echo $good;
     }
     ?>
     </div>

@@ -11,7 +11,7 @@ try
   function executeSQL( $req )
   {
     GLOBAL $bdd;
-    echo "$req<br>";
+    //echo "$req<br>";
     return $bdd->query( $req );
   }
  
