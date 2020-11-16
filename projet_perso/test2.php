@@ -1,74 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        input {
-            
-  width: 50%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  text-align: center;
-}
+<?php
+/* include_once("function_connect.php");
+*/
+include_once("header.php");
+echo entete3("inscription");
 
-input{
-  margin-top: auto;
-  margin-left: auto;
-} 
+$bdd = new PDO("mysql:host=localhost;dbname=utilisateur;charset=utf8", "root", "");
+if(isset($_POST['forminscription']))
+        {
+            if(!empty($_POST['name']) AND !empty($_POST['surname']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['password']) AND !empty($_POST['password2']) )
+            {
+              echo "ok";
+            }
+            else{
+                $erreur = "Tous les champs doivent etre complétés !";
+            }
+        }
+        /* if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['mail']) && !empty($_POST['mail2']) && !empty($_POST['password']) && !empty($_POST['password2']) )
+        {
+          echo "ok";
+        } */
 
-.formulaire {
-  border-radius: 5px;
-  background-color: #313137 ;
-  padding: 20px;
-  
-  margin-left: 80px;
-  margin-top: 20vh;
-  border-radius:25px;
-  max-width:600px;
- 
- 
-}
+ /* if( $_POST && isset($_POST['name']) && isset($_POST['surname'])  && isset($_POST['mail']) && isset($_POST['mail2'])  && isset($_POST['password']) && isset($_POST['password2'])  ) 
+  {
+        $name       = $_POST['name'];
+        $surname    = $_POST['surname'];
+        $mail       = $_POST['mail'];
+        $mail2       = $_POST['mail2'];
+        $password   = $_POST['password'];
+        $password2   = $_POST['password2'];
+        $query = $bdd->prepare("INSERT INTO users(name,surname,mail,mail2,password,password2 ) VALUES( :name, :surname, :mail, :mail2, :password, :password )");
+        $query->execute(array(
+        "name"=>$_POST["name"],
+        "surname"=>$_POST["surname"],
+        "mail"=>$_POST["mail"],
+        "mail2"=>$_POST["mail2"],
+        "password"=> ($_POST["password"]),
+        "password2"=> ($_POST["password2"])
+        ));
 
-body {
-  background: url(img/bg.jpg) no-repeat;
-  background-size: cover;
+        $bdd = null;
+        header( "location:login.php"); 
+        echo "ok";
 
-}
- .enter{
-   margin-top: 15px;
-   padding-right: 70px;
-}
+  } */
 
-.a{
-  margin-top: 15px;
-  padding-right: 70px;
-  
-}
-a{
+?>
+<script>
+   body{
     color: white;
-}
-.inscr{
-text-align:right;
-}
-.pad{
-    padding-right: 70px;
-}
-h1{
-    padding-right: 90px;
-    
-}
-label{
-    color: white;
-}
-    </style>
-
-</head>
+   } 
+</script>
 <body>
-    
-<div class="formulaire container" >
+
+    <div class="formulaire container" >
       <FORM  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">
       <div class="">
         <div  class="inscr">
@@ -110,18 +94,13 @@ label{
         </div>
           </div>
       </FORM>
-    </div>
 
+    <?php
+    if(isset($erreur))
+    {
+        echo $erreur;
+    }
+    ?>
+    </div>
 </body>
 </html>
-
-
-
-    <!-- if(isset($_POST['forminscription']))
-        {
-          echo "ok"
-        }
-        if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['mail']) && !empty($_POST['mail2']) && !empty($_POST['password']) && !empty($_POST['password2']) )
-        {
-          echo "ok";
-        } -->
