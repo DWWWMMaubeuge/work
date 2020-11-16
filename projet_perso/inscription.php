@@ -78,7 +78,7 @@ if(isset($_POST['forminscription']))
             <div class="a">
                   <a href="accueil.php">pas maintenant? retour au menu</a>
             </div>
-          </div>
+          
         </div>
       </div>
       </FORM>
