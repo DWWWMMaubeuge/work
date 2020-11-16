@@ -103,7 +103,7 @@ $formations = $q->fetchAll();
                                     <h6 class="mb-0">Formation</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <span id="maFormation"><?= $infos['FORMATION']; ?></span>
+                                    <span id="maFormation"><?= $infos['FORMATION']; ?></span> ( session du <?= dateConvert($infos['DATE_DEBUT']); ?> au <?= dateConvert($infos['DATE_FIN']); ?> )
                                 </div>
                             </div>
                             <hr>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : jeu. 12 nov. 2020 à 19:01
+-- Généré le : lun. 16 nov. 2020 à 12:30
 -- Version du serveur :  10.3.16-MariaDB
 -- Version de PHP : 7.3.23
 
@@ -137,7 +137,7 @@ CREATE TABLE `Membres` (
 --
 
 INSERT INTO `Membres` (`ID`, `Pseudo`, `Prenom`, `Nom`, `Email`, `MDP`, `Admin`, `Fixe`, `Mobile`, `Github`, `Site`, `Avatar`, `Date_of_registration`) VALUES
-(21, 'The-Evil-Fox', 'Steven', 'Durieux', 'stevenhonor@live.fr', '@59199Hergnies', '1', NULL, NULL, 'The-Evil-Fox', 'http://adriaticstuff.000webhostapp.com/index.php', 'default.png', '2020-11-08 04:28:38'),
+(21, 'The-Evil-Fox', 'Steven', 'Durieux', 'stevenhonor@live.fr', '@59199Hergnies', '1', NULL, NULL, 'The-Evil-Fox', 'http://adriaticstuff.000webhostapp.com/profil.php', '21.gif', '2020-11-08 04:28:38'),
 (31, 'CompteTest', NULL, NULL, 'varovrkignbcnodgww@miucce.online', '@59199Hergnies', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 16:14:38'),
 (32, 'compteTest2', NULL, NULL, 'rpcizrwldhtzhhmqhz@wqcefp.online', '@59199Hergnies', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 17:02:03'),
 (33, 'DEV', NULL, NULL, 'test@test.com', 'dsfsdfds', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 17:52:42'),
@@ -154,7 +154,8 @@ INSERT INTO `Membres` (`ID`, `Pseudo`, `Prenom`, `Nom`, `Email`, `MDP`, `Admin`,
 (44, 'formateurpro2', NULL, NULL, 'macon@macon.com', '6545454', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 18:46:36'),
 (45, 'formateurpro3', NULL, NULL, 'macon@macon.com', '6545454', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 18:46:36'),
 (46, 'formateurpro4', NULL, NULL, 'macon@macon.com', '6545454', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 18:46:36'),
-(47, 'formateurpro5', NULL, NULL, 'macon@macon.com', '6545454', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 18:46:36');
+(47, 'formateurpro5', NULL, NULL, 'macon@macon.com', '6545454', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 18:46:36'),
+(48, 'xavierB', NULL, NULL, 'xavier.bourget@gmail.com', 'xavierB', '1', NULL, NULL, NULL, NULL, 'default.png', '2020-11-13 14:58:26');
 
 -- --------------------------------------------------------
 
@@ -190,7 +191,8 @@ INSERT INTO `Options` (`ID`, `HIDDEN`, `FORMATION`) VALUES
 (44, b'1', 3),
 (45, b'1', 3),
 (46, b'1', 3),
-(47, b'1', 3);
+(47, b'1', 3),
+(48, b'0', 1);
 
 -- --------------------------------------------------------
 
@@ -212,26 +214,45 @@ CREATE TABLE `Resultats` (
 --
 
 INSERT INTO `Resultats` (`ID`, `TIME_OF_INSERTION`, `ID_USER`, `ID_MATIERE`, `RESULTAT`, `MOIS`) VALUES
-(172, '2020-11-08 05:03:19', 21, 30, 8, 'NOVEMBRE'),
-(173, '2020-11-08 05:03:34', 21, 25, 9, 'NOVEMBRE'),
-(174, '2020-11-08 05:03:36', 21, 26, 8, 'NOVEMBRE'),
-(175, '2020-11-08 05:03:40', 21, 22, 9, 'NOVEMBRE'),
-(176, '2020-11-08 05:03:41', 21, 23, 6, 'NOVEMBRE'),
-(177, '2020-11-08 05:03:42', 21, 24, 6, 'NOVEMBRE'),
-(178, '2020-11-08 05:03:46', 21, 21, 7, 'NOVEMBRE'),
-(179, '2020-11-08 05:03:47', 21, 20, 8, 'NOVEMBRE'),
-(180, '2020-11-08 05:03:48', 21, 19, 10, 'NOVEMBRE'),
-(181, '2020-11-08 05:03:52', 21, 27, 5, 'NOVEMBRE'),
-(182, '2020-11-08 05:03:57', 21, 28, 5, 'NOVEMBRE'),
-(183, '2020-11-08 05:04:01', 21, 29, 5, 'NOVEMBRE'),
-(184, '2020-11-08 05:04:05', 21, 32, 9, 'NOVEMBRE'),
-(185, '2020-11-08 05:04:07', 21, 31, 2, 'NOVEMBRE'),
-(186, '2020-11-08 05:04:09', 21, 33, 0, 'NOVEMBRE'),
-(187, '2020-11-08 05:04:22', 21, 34, 3, 'NOVEMBRE'),
-(188, '2020-11-08 05:04:23', 21, 35, 1, 'NOVEMBRE'),
-(189, '2020-11-12 16:11:27', 30, 36, 7, 'NOVEMBRE'),
-(190, '2020-11-12 16:11:27', 30, 37, 4, 'NOVEMBRE'),
-(191, '2020-11-12 16:11:28', 30, 38, 4, 'NOVEMBRE');
+(232, '2020-11-13 23:52:42', 21, 19, 9, 'NOV'),
+(233, '2020-11-13 23:52:45', 21, 22, 9, 'NOV'),
+(234, '2020-11-13 23:52:48', 21, 20, 9, 'NOV'),
+(235, '2020-11-13 23:52:50', 21, 21, 8, 'NOV'),
+(236, '2020-11-13 23:52:52', 21, 24, 5, 'NOV'),
+(237, '2020-11-13 23:52:53', 21, 23, 6, 'NOV'),
+(238, '2020-11-13 23:52:57', 21, 25, 7, 'NOV'),
+(239, '2020-11-13 23:52:59', 21, 26, 6, 'NOV'),
+(240, '2020-11-13 23:53:02', 21, 27, 5, 'NOV'),
+(241, '2020-11-13 23:53:03', 21, 30, 8, 'NOV'),
+(242, '2020-11-13 23:53:09', 21, 29, 5, 'NOV'),
+(243, '2020-11-13 23:53:11', 21, 28, 5, 'NOV'),
+(244, '2020-11-13 23:53:13', 21, 31, 2, 'NOV'),
+(245, '2020-11-13 23:53:15', 21, 32, 9, 'NOV'),
+(246, '2020-11-13 23:53:16', 21, 33, 0, 'NOV'),
+(247, '2020-11-13 23:53:23', 21, 34, 2, 'NOV'),
+(248, '2020-11-13 23:53:24', 21, 35, 0, 'NOV');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Sessions`
+--
+
+CREATE TABLE `Sessions` (
+  `ID_SESSION` int(11) NOT NULL,
+  `DATE_DEBUT` date DEFAULT NULL,
+  `DATE_FIN` date DEFAULT NULL,
+  `ID_FORMATION` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `Sessions`
+--
+
+INSERT INTO `Sessions` (`ID_SESSION`, `DATE_DEBUT`, `DATE_FIN`, `ID_FORMATION`) VALUES
+(1, '2020-08-17', '2021-03-30', 1),
+(2, '2020-08-17', '2021-03-30', 2),
+(3, '2020-08-17', '2021-03-30', 3);
 
 --
 -- Index pour les tables déchargées
@@ -280,6 +301,12 @@ ALTER TABLE `Resultats`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Index pour la table `Sessions`
+--
+ALTER TABLE `Sessions`
+  ADD PRIMARY KEY (`ID_SESSION`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -293,7 +320,7 @@ ALTER TABLE `Formations`
 -- AUTO_INCREMENT pour la table `Inscriptions`
 --
 ALTER TABLE `Inscriptions`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT pour la table `Invitations`
@@ -311,19 +338,25 @@ ALTER TABLE `Matieres`
 -- AUTO_INCREMENT pour la table `Membres`
 --
 ALTER TABLE `Membres`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT pour la table `Options`
 --
 ALTER TABLE `Options`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT pour la table `Resultats`
 --
 ALTER TABLE `Resultats`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
+
+--
+-- AUTO_INCREMENT pour la table `Sessions`
+--
+ALTER TABLE `Sessions`
+  MODIFY `ID_SESSION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -10,7 +10,7 @@ if(!isset($_GET['pseudo']) OR empty($_GET['pseudo'])) {
 
 }
 
-$q = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Formations ON Options.FORMATION = Formations.ID_FORMATION  WHERE Membres.Pseudo = :pseudo');
+$q = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Formations ON Options.FORMATION = Formations.ID_FORMATION  LEFT JOIN Sessions ON Options.FORMATION = Sessions.ID_SESSION WHERE Membres.Pseudo = :pseudo');
 $q->bindParam(':pseudo', $_GET['pseudo'], PDO::PARAM_STR);
 $q->execute();
 $check = $q->rowCount();
@@ -116,7 +116,7 @@ $resultats = $q->fetchAll();
                                     <h6 class="mb-0">Formation</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                <?php if($user['ID_FORMATION'] == 0) { echo "Non renseigné !"; } else { echo $user['FORMATION']; } ?>
+                                <?php if($user['ID_FORMATION'] == 0) { echo "Non renseigné !"; } else { echo $user['FORMATION'] . " ( session du " . dateConvert($user['DATE_DEBUT']) . " au " . dateConvert($user['DATE_FIN']) . ")"; } ?>
                                 </div>
                             </div>
                             <hr>
@@ -178,3 +178,4 @@ $resultats = $q->fetchAll();
     </div>
 </div>
 <?php require_once('config/footer.php'); ?>
+<?php print_r($user); ?>
