@@ -101,7 +101,7 @@ if(!isset($_GET['formation'])) {
             <tr>
             <td scope="row"><?= $user['ID']; ?></td>
             <td scope="row"><img src="images/avatars/<?= $user['Avatar']; ?>" alt="avatar" class="rounded-circle" width="35"></td>
-            <td scope="row"><a class="text-white m-auto" href="utilisateur.php?pseudo=<?= $user['Pseudo']; ?>"><?= $user['Pseudo']; ?></a></td>
+            <td scope="row"><a class="<?php if($user['Admin'] == 1) { ?>text-danger<?php } else { ?>text-info<?php } ?> m-auto" href="utilisateur.php?pseudo=<?= $user['Pseudo']; ?>"><?= $user['Pseudo']; ?></a></td>
             <?php if($infos['Admin'] != 0 && isset($_GET['formation']) && $_GET['formation'] == $infos['ID_FORMATION']) { ?>
                 <td scope="row"><a class="text-white m-auto" href="moyennes.php?pseudo=<?= $user['Pseudo']; ?>"><i class="fas fa-chart-bar"></i></a></td>
             <?php } ?>

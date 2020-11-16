@@ -43,7 +43,7 @@ $formations = $q->fetchAll();
                                 <img src="images/avatars/<?= $infos['Avatar']; ?>" onclick="setAvatar()" alt="avatar" class="rounded-circle clickable" id="Avatar" width="150" title="Cliquez pour changer votre photo de profil">
                                 <form class="d-none" id="formAvatar" method="post" enctype="multipart/form-data"><input class="d-none" type="file" id="inputAvatar" name="inputAvatar" /></form>
                                 <div class="mt-3 col-sm-12">
-                                    <?php if($infos['Admin'] != 1) { ?><h2 id="monPseudo" class="text-primary"><?= $infos['Pseudo']?></h2><?php } else { ?> <h2 id="monPseudo" class="text-danger"><?= $infos['Pseudo']?> <?php } ?> <i class="fas fa-wrench text-warning editmode" id="Pseudo" onclick="setInfo(this.id, 'monPseudo')" title="Modifier mon pseudo"></i>
+                                    <?php if($infos['Admin'] != 1) { ?><h2 id="monPseudo" class="text-info"><?= $infos['Pseudo']?></h2><?php } else { ?> <h2 id="monPseudo" class="text-danger"><?= $infos['Pseudo']?> <?php } ?> <i class="fas fa-wrench text-warning editmode" id="Pseudo" onclick="setInfo(this.id, 'monPseudo')" title="Modifier mon pseudo"></i>
                                 </div>
                             </div>
                         </div>

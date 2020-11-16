@@ -60,7 +60,7 @@ $resultats = $q->fetchAll();
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src="images/avatars/<?= $user['Avatar']; ?>" alt="avatar" class="rounded-circle" width="150">
                                 <div class="mt-3 col-sm-12">
-                                    <?php if($user['Admin'] != 1) { ?><h2 class="text-primary"><?= $user['Pseudo']?></h2><?php } else { ?> <h2 class="text-danger"><?= $user['Pseudo']?> <?php } ?>
+                                    <?php if($user['Admin'] != 1) { ?><h2 class="text-info"><?= $user['Pseudo']?></h2><?php } else { ?> <h2 class="text-danger"><?= $user['Pseudo']?> <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -178,4 +178,3 @@ $resultats = $q->fetchAll();
     </div>
 </div>
 <?php require_once('config/footer.php'); ?>
-<?php print_r($user); ?>
