@@ -18,7 +18,7 @@ if (isset($_POST['submit'])){
 
 ?>
 <form class="login-box" action="" method="post">
-    <h1>Add user</h1>
+    <h1>Update user</h1>
     <div class="textbox">
     <i class="fa fa-user" aria-hidden="true"></i>
   <input type="text" name="surname" value="<?php echo $surname; ?>"  placeholder="Surname" required />
@@ -31,19 +31,14 @@ if (isset($_POST['submit'])){
        <i class="fas fa-envelope"></i>
     <input type="text" name="email" value="<?php echo $email; ?>" placeholder="Email" required />
   </div>
-  <div class="textbox">
-      <select name="type" id="type" >
-        <option value="admin">Admin</option>
-        <option value="trainer">Trainer</option>
-        <option value="trainee">Trainee</option>
-      </select>
-  </div>
-  <div class="textbox">
-  <i class="fa fa-lock" aria-hidden="true"></i>
-    <input type="password" name="password"  placeholder="Mot de passe" required />
-  </div>
+  <?php 
+  if ($update == true):?>
+      <input type="submit" name="update" value="Update" class="btn" />
+<?php else: ?>
     <input type="submit" name="submit" value="Add" class="btn" />
+<?php endif ?>
 </form>
+
 
 </body>
 </html>

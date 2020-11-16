@@ -17,22 +17,59 @@
 <?php
 include_once("../functionConnect.php");
 include_once("../functionHeader.php");
+include_once( "addDeleteUpdate.php");
 setHeader("displayUser");
-?>
-<div class=login-box>
-    <table>
+
+if (isset($_SESSION['message'])):?>
+
+ <div class="alert alert-<?=$_SESSION['msgType']?>">
+
 <?php
+
+    echo $_SESSION['message'];
+    unset($_SESSION['message']);
+
+?>
+
+</div>
+<?php endif  ?>
+
+<div class="container">
+<?php
+
 $req = "SELECT * FROM $DB_dbname.users";
 
 $result= executeSQL( $req );
 
+?>
 
-while ($row = $result->fetch_assoc()):?>
+
+<div class="row justify-content-center">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Surname</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+<?php
+
+while ($row = $result->fetch_assoc()):
+
+?>
 
 <tr>
     <td><?php echo $row['surname']; ?></td>
     <td><?php echo $row['name']; ?></td>
     <td><?php echo $row['email']; ?></td>
+    <td>
+        <a href="updateUser.php?edit=<?php echo $row['id'];?>" 
+            class="btn btn-info">Edit</a>
+        <a href="addDeleteUpdate.php?delete=<?php echo $row['id'];?>" 
+            class="btn btn-danger">Delete</a>
+    </td>
 </tr>
 
 
@@ -41,4 +78,5 @@ while ($row = $result->fetch_assoc()):?>
 endwhile ; 
 ?>
     </table>
+</div>
 </div>
