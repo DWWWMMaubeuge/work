@@ -1,9 +1,7 @@
 <?php
 session_start();
 include 'fonctionAffichages.php';
-include 'DesactivationMat.php';
-include 'ActivationMat.php';
-include 'InsertionMat.php';
+
 ?>
 <!doctype html>
 <html lang=fr>
@@ -45,5 +43,6 @@ include 'InsertionMat.php';
         </div>
     </nav>
     <div class="container my-5 border border-primary p-5 background text-center text-white" id="Div1"></div>
+    <div class="container my-5 border border-primary p-5 background text-center text-white" id="liste"></div>
 </body>
 </html>

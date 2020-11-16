@@ -1,4 +1,5 @@
 $(function(){
+
     $(".graph").click(function(){
         var $id_mat=$(this).attr('id');
         //console.log($id_mat)
@@ -6,7 +7,9 @@ $(function(){
         $('#graph').attr("src", src)
         //console.log($("#graph").attr('src'))
     })
+
     $('#graph').click(function(){
         $('#graph').attr('src',' ')
     })
+
 })

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'fonctionAffichages.php';
+include_once 'tabGraphFunction.php';
 ?>
     <!doctype html>
     <html lang="fr">
@@ -43,11 +44,10 @@ include 'fonctionAffichages.php';
                 </li>
             </ul>
     </nav>
-    <div id="tabSkills">Graphique d'évolution</div>
-    <div id="letableau"></div>
-    <?php
-    formMat($skills,$array2,0);
-    ?>
+    <div class="container-fluid" style="margin-top: 65px ;padding: 0">
+    <?php tabGraph($matieres);?>
+    </div>
+    <?php formMat($skills,$array2,0); ?>
     <script src = '../JS/sendResult.js'></script>
     <script src = '../JS/AffichageDirect.js'></script>
     <script src = '../JS/door.js'></script>

@@ -42,6 +42,9 @@ include 'Login.php'
                 <label for="exampleInputPassword3">mot de passe</label>
                 <input type="password" class="form-control" name="pwd" id="exampleInputPassword1=2">
             </div>
+            <div class="form-inline ">
+                <input type="text" name="captcha" id="captcha" class="form-control mr-1 "><img src="PHP/captchaGeneration.php" alt="">
+            </div>
             <input type="submit" class="btn btn-primary" name="submitCon" value="Connectez-vous">
         </form>
     <!--</div>-->

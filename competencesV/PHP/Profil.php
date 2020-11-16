@@ -16,6 +16,7 @@ include 'SQLProfil.php';
     <link rel="stylesheet" href="CSS/profil.css">
     <link rel="stylesheet" href="CSS/main.css">
     <script src="./JS/graph.js"></script>
+    <script src="./JS/changePwd"></script>
 </head>
 <body>
     <div class="container my-5">
@@ -75,7 +76,13 @@ include 'SQLProfil.php';
                                             <strong class="margin-10px-left">Mot de passe</strong>
                                         </div>
                                         <div class="col-md-7 col-7">
-                                            <a id="ChangeMdp" href="#">changer mot de passe</a>
+                                            <a id="changeMdp" class="underline text-white">changer mot de passe</a>
+                                            <div id="hidePwd">
+                                                <form method="post" action="PHP/SQLChangeMdp.php">
+                                                    <input type="password" id="newPwd" name="newPwd" placeholder="entrez votre nouveau mot de passe">
+                                                    <input type="submit" name="submitNewPwd" id="submitNewPwd" value="Confirmez">
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -93,8 +100,8 @@ include 'SQLProfil.php';
                             <?= compProfil($array); ?>
                         </div>
                 </div>
-                <div class="col-md-6">
-                    <img src="" alt="" id="graph" style="border-radius:20px;position:fixed;top:20%">
+                <div class="col-md-6" id="graphContainer">
+                    <img src="" alt="" id="graph" style="border-radius:20px;position:fixed;top:25%;">
                 </div>
             </div>
         </div>

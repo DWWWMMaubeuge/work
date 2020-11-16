@@ -41,9 +41,21 @@ if (isset($_POST["submitIns"])) {
                     $query4->bindParam(':id_form',$formation);
                     $query4->execute();
                 }
-                header('Location: index1.php?success=true');
+                $errors=3;
+                header('Location: index1.php?errors='.$errors);
+            }
+            else{
+                $errors=4;
+                header('Location: index1.php?errors='.$errors);
             }
         }
-
+        else{
+            $errors=5;
+            header('Location: index1.php?errors='.$errors);
+        }
+    }
+    else{
+        $errors=6;
+        header('Location: index1.php?errors='.$errors);
     }
 }

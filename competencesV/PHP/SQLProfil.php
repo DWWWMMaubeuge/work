@@ -11,6 +11,8 @@ $query2->execute();
 $user=$query2->fetch(PDO::FETCH_ASSOC);
 //var_dump($user);
 
+
+
 function compProfil($skills){
     foreach ($skills as $array){
         echo "<div class=\"progress-text\">";
