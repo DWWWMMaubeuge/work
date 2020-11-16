@@ -1,9 +1,6 @@
 <?php 
-
 	session_start();
-
 	if (isset($_POST['submit'])) {
-
 		$message = $_POST['message'];
 		$token = strtolower($_POST['token']);
 
@@ -12,7 +9,6 @@
 
 			//success your code here
 			echo "success";
-
 		} else {
 			echo "error CAPTCHA code";
 		}
