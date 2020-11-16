@@ -39,40 +39,45 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password']  )
 <body>    
     <div class="formulaire container">
         <FORM  method='POST' action="<?=$_SERVER['PHP_SELF']; ?>">
-            <div class="inscr">
-            <h1>Login</h1>
-            <div class="pad">
-                <label class="" for="mail">Mail :</label>
-                    <INPUT type='mail' name='mail' placeholder="Your mail">
+            <div class="">
+                <div class="inscr">
+                <h1>Connexion</h1>
+                    <div class="pad">
+                        <label class="" for="mail">Mail :</label>
+                        <INPUT type='mail' name='mail' placeholder="Your mail">
+                    </div>
+                    <div class="pad">
+                        <label class="" for="password">Mot de Passe :</label>
+                        <input type="password" placeholder="Password" name="password" value="">
+                    </div>
+                    <div class="enter">
+                        <input type="submit"  value="Je me connecte">
+                    </div>
+                    <div class="a">
+                        <a href="inscription.php">pas encore de compte? cliquez ici !</a>
+                    </div>
+                    <div class="a">
+                        <a href="accueil.php">pas maintenant, retour au menu !</a>
+                    </div>    
                 </div>
-                <div class="pad">
-                    <label class="" for="password">Mot de Passe :</label>
-                    <input type="password" placeholder="Password" name="password" value="">
-                </div>
-                <div class="enter">
-                    <input type="submit"  value="Je me connecte">
-                </div>
-                <div class="a">
-                    <a href="inscription.php">pas encore de compte? cliquez ici !</a>
-                </div>
-                <div class="a">
-                    <a href="accueil.php">pas maintenant, retour au menu !</a>
-                </div>
-                <?php
-    if(isset($erreur))
-    {
-        echo $erreur;
-    }
-    ?>  
-            </div>
             </div> 
-       
         </FORM>
+        <?php
+        if(isset($erreur))
+        {
+            echo $erreur;
+        }
+        ?>    
     </div>
+<?php
+
+Include "footer.php";
+echo footer();
+
+?>
+
 </body>
 </html>
 
 
 
-faire un champ date : alter ... 
-date  :::  defaut now ; chercher code 

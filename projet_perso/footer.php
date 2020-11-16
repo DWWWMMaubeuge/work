@@ -4,7 +4,7 @@
 function footer()
 {
 $str  =<<<AZE
- <footer class="footer">;
+ <footer class="footer">
 <div class="container">
 <div class="row">
     <div class="col-md-3 mt-md-0 mt-3">
