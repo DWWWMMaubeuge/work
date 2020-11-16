@@ -8,9 +8,10 @@ if(isset($_SESSION[ 'ID_user' ])){
     $id=$_SESSION[ 'ID_user' ];
     unset($_SESSION[ 'ID_user' ]);
     header("location:accueil.php"); 
+    exit();
 }
-else{
+/* else{
     header("location:inscription.php");
-}
+} */
 
 ?>

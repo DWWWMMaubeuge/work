@@ -1,182 +1,127 @@
-<?php
-
-session_start();
-$id=0;
-if(isset($_SESSION[ 'ID_user' ]))
-    $id=$_SESSION[ 'ID_user' ];
-include "header.php";
-echo entete();
-
-
-function nav($connect)
-{
-    if ($connect){            
-$str  =  <<<TRY
-<nav class="navbar navbar-expand-lg navbar-white bg-secondary">
-<a class="navbar-brand" href="#"><img src=""width="50px;"></a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-<ul class="navbar-nav mr-auto">  
-<li class="nav-item active">
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-Nicolas
-</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<a class="dropdown-item" href="accueil.php">Accueil</a>
-<div class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Loisir</a>
-<div class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Jeux</a>      
-</div>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#">New</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#">Formulaire</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#">CV</a>
-</li>    
-<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-Mon Compte
-</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<a class="dropdown-item" href="#">profile</a>
-<div class="dropdown-divider"></div>
-<a class="dropdown-item" href="logOut.php">déconnection</a>
-</div>
-</li>  
-</ul> 
-
-<a href="#" class="fa fa-user"></a>   
-<a href="#" class="fa fa-twitter"></a>
-<a href="https://www.youtube.com/channel/UC7UyFqncumbBrV0Oa063KnQ?view_as=subscriber" class="fa fa-youtube"></a>
-<a href="logOut.php" class="fa fa-sign-out"></a>
-
-</ul>
-</div>
-</div>
-</nav>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
-TRY;
-return $str;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  text-align: center;
 }
 
+input{
+  margin-top: auto;
+  margin-left: auto;
+} 
+
+.formulaire {
+  border-radius: 5px;
+  background-color: #313137 ;
+  padding: 20px;
+  
+  margin-left: 80px;
+  margin-top: 20vh;
+  border-radius:25px;
+  max-width:600px;
+ 
+ 
+}
+
+body {
+  background: url(img/bg.jpg) no-repeat;
+  background-size: cover;
+
+}
+ .enter{
+   margin-top: 15px;
+   padding-right: 70px;
+}
+
+.a{
+  margin-top: 15px;
+  padding-right: 70px;
+  
+}
+a{
+    color: white;
+}
+.inscr{
+text-align:right;
+}
+.pad{
+    padding-right: 70px;
+}
+h1{
+    padding-right: 90px;
     
-$str  =  <<<TRY
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-<a class="navbar-brand" href="#"><img src="Images/Images_Charte_Graphique/logo_ozinor_propo_SIMPLE_v2.PNG"width="50px;"></a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-<ul class="navbar-nav mr-auto">  
-<li class="nav-item active">
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-Nicolas
-</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<a class="dropdown-item" href="accueil.php">Accueil</a>
-<div class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Loisir</a>
-<div class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Jeux</a>      
-</div>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#">New</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#">Formulaire</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#">CV</a>
-</li>    
-<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-connexion
-</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<a class="dropdown-item" href="inscription.php">inscription</a>
-<div class="dropdown-divider"></div>
-<a class="dropdown-item" href="login.php">mon compte </a>
-</div>
-</li>  
-</ul> 
-<a href="#" class="far fa-sign-in-alt"></a>
-<a href="#" class="fa fa-user"></a>  
-<a href="#" class="fa fa-twitch"></a>
-<a href="#" class="fa fa-twitter"></a>
-<a href="#" class="fa fa-youtube"></a>
-
-</ul>
-</div>
-</div>
-</nav>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
-TRY;
-return $str;
-
 }
+label{
+    color: white;
+}
+    </style>
 
-
-
-
-
-include_once "bodyaccueil.php";
-?>
-
-<div>
-<?php
-echo nav($id);
-?>
-</div>
-
-
+</head>
 <body>
-<div class="titre">
-<h1>Nicolas CAULIER Développeur Web</h1>
-</div>
-
-</div>
-
-<div class="carou">
-<?php
-echo carousel();
-?>
-</div>
-
-<div class="body">
-<?php
-echo accueilbody();
-?>
-</div>
-
-<div>
- <?php
-echo langues();
-?> 
-</div>
-
-<?php
-
-Include "footer.php";
-echo footer();
-
-?>
+    
+<div class="formulaire container" >
+      <FORM  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">
+      <div class="">
+        <div  class="inscr">
+        <h1>Inscription</h1>
+        <div class="pad">
+            
+            <label class="" for="name">Prénom :</label>
+              <INPUT type='text' name='name' placeholder="saisir votre nom ici" id="name">
+            </div>
+            <div class="pad">
+            <label class="" for="surname">Nom :</label>
+              <INPUT type='text' name='surname' placeholder=" saisir votre prenom" id="surname">
+            </div>
+            <div class="pad">
+            <label  class="" for="mail">Email :</label>
+              <INPUT type='email' name='mail' placeholder="saisir votre mail" id="mail">
+            </div>
+            <div class="pad">
+            <label  class="" for="mail2">Email : </label>
+              <INPUT type='email' name='mail2' placeholder="veuillez confirmer votre mail" id="mail2">
+            </div>
+            <div class="pad">
+            <label  class="" for="password">Mot de Passe :</label>
+              <INPUT type='password' name='password' placeholder="saisir votre mot de passe" id="password">
+            </div>
+            <div class="pad">
+            <label  class=""  for="password2">confirmation Mot de Passe :</label>
+              <INPUT type='password' name='password2' placeholder="veuillez confirmer passe" id="password2">
+            </div class="pad">
+            <div class="enter">
+              <INPUT type='submit' name='forminscription' value="Je m'inscris !">
+            </div>
+            <div class="a">
+              <a href="login.php">déja un compte? Connectez-vous ici !</a>
+            </div>
+            <div class="a">
+              <a href="accueil.php">pas maintenant? retour au menu</a>
+            </div>
+        </div>
+          </div>
+      </FORM>
+    </div>
 
 </body>
-
 </html>
 
-?>
+
+
+    <!-- if(isset($_POST['forminscription']))
+        {
+          echo "ok"
+        }
+        if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['mail']) && !empty($_POST['mail2']) && !empty($_POST['password']) && !empty($_POST['password2']) )
+        {
+          echo "ok";
+        } -->

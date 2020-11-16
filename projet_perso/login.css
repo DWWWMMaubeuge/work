@@ -1,4 +1,4 @@
-input[type=text] {
+/*  input[type=text] {
   width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -9,7 +9,7 @@ input[type=text] {
 input{
   margin-top: auto;
   margin-left: auto;
-}
+} 
 
 .formulaire {
   border-radius: 5px;
@@ -21,16 +21,76 @@ input{
  
  
 }
+
 body {
   background: url(img/bg.jpg) no-repeat;
   background-size: cover;
 
 }
-.enter{
+ .enter{
    margin-top: 15px;
 }
 
 .a{
   margin-top: 15px;
+} */
+
+input {
+            
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  text-align: center;
 }
 
+input{
+  margin-top: auto;
+  margin-left: auto;
+} 
+
+.formulaire {
+  border-radius: 5px;
+  background-color: #313137 ;
+  padding: 20px;
+  
+  margin-left: 80px;
+  margin-top: 100px;
+  margin-bottom: 40px;
+  border-radius:25px;
+  max-width:600px;
+ 
+ 
+}
+
+body {
+  background: url(img/bg.jpg) no-repeat;
+  background-size: cover;
+
+}
+ .enter{
+   margin-top: 15px;
+   padding-right: 70px;
+}
+
+.a{
+  margin-top: 15px;
+  padding-right: 70px;
+  
+}
+a{
+    color: white;
+}
+.inscr{
+text-align:right;
+}
+.pad{
+    padding-right: 70px;
+}
+h1{
+    padding-right: 90px;
+    
+}
+label{
+    color: white;
+}

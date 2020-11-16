@@ -8,20 +8,20 @@ include_once("header.php");
 echo entete2("login");
 
 
-if( $_POST && $_POST['mail'] != "" && $_POST['password'] != "" && $_POST['password2'] ) 
+if( $_POST && $_POST['mail'] != "" && $_POST['password']  ) 
 {
     $mail       = $_POST['mail'];
     $password   = $_POST['password'];
-    $password2   = $_POST['password2'];
+    
 
     // attention aux doublons des mail
 
-    $req = "SELECT count(*) as nb FROM $dbname.users WHERE mail='$mail' AND password='$password' AND password2='$password2'";
+    $req = "SELECT count(*) as nb FROM $dbname.users WHERE mail='$mail' AND password='$password' ";
     $result = executeSQL( $req );
     $data = $result->fetch(PDO::FETCH_ASSOC);
     if ( $data[ 'nb' ] == 1 )
     {
-        $req = "SELECT * FROM $dbname.users WHERE mail='$mail' AND password='$password' AND password2='$password2'";
+        $req = "SELECT * FROM $dbname.users WHERE mail='$mail' AND password='$password' ";
         $result = executeSQL( $req );
         $data = $result->fetch(PDO::FETCH_ASSOC);
         $_SESSION[ 'ID_user' ]  = $data[ 'id' ];
@@ -39,20 +39,18 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password'] != "" && $_POST['passwo
 <body>    
     <div class="formulaire container">
         <FORM  method='POST' action="<?=$_SERVER['PHP_SELF']; ?>">
-            <div class=""></div> 
+            <div class="inscr">
             <h1>Login</h1>
-            <div>
-                <div>
-                    <INPUT type='text' name='mail' placeholder="Your mail">
+            <div class="pad">
+                <label class="" for="mail">Mail :</label>
+                    <INPUT type='mail' name='mail' placeholder="Your mail">
                 </div>
-                <div>
-                    <input type="text" placeholder="Password" name="password" value="">
-                </div>
-                <div>
-                    <input type="text" placeholder="Password2" name="password2" value="">
+                <div class="pad">
+                    <label class="" for="password">Mot de Passe :</label>
+                    <input type="password" placeholder="Password" name="password" value="">
                 </div>
                 <div class="enter">
-                    <input type="submit"  value="Log-in">
+                    <input type="submit"  value="Je me connecte">
                 </div>
                 <div class="a">
                     <a href="inscription.php">pas encore de compte? cliquez ici !</a>
@@ -60,6 +58,7 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password'] != "" && $_POST['passwo
                 <div class="a">
                     <a href="accueil.php">pas maintenant, retour au menu !</a>
                 </div>
+            </div>
             </div>      
         </FORM>
     </div>

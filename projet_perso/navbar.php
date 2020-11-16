@@ -37,9 +37,9 @@ Nicolas
 Mon Compte
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<a class="dropdown-item" href="#">profile</a>
+<a class="dropdown-item" href="#">Mon profile</a>
 <div class="dropdown-divider"></div>
-<a class="dropdown-item" href="logOut.php">déconnection</a>
+<a class="dropdown-item" href="logOut.php"> se déconnecter</a>
 </div>
 </li>  
 </ul> 
@@ -90,8 +90,8 @@ Nicolas
 </li>
 <li class="nav-item">
 <a class="nav-link" href="#">CV</a>
-href="http://www.alsacreations.com/astuce/lire/1603-html5-attribut-download.html"
-   download="Article_HTML5_download.txt">Télécharger l'article en TXT</a>
+<!-- href="http://www.alsacreations.com/astuce/lire/1603-html5-attribut-download.html"
+   download="Article_HTML5_download.txt">Télécharger l'article en TXT</a> -->
 </li>    
 <li class="nav-item dropdown">
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -100,7 +100,7 @@ connexion
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 <a class="dropdown-item" href="inscription.php">inscription</a>
 <div class="dropdown-divider"></div>
-<a class="dropdown-item" href="login.php">mon compte </a>
+<a class="dropdown-item" href="login.php"> s'enregistrer </a>
 </div>
 </li>  
 </ul> 
