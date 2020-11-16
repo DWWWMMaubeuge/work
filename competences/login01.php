@@ -23,21 +23,21 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password'] != "" )
         $result = executeSQL( $req );
         $data = $result->fetch_assoc();
 
-        $role = $_SESSION[ 'role' ]  = $data[ 'roles' ];
+        $role = $_SESSION[ 'role' ]  = $data[ 'role' ];
         
         $_SESSION[ 'id_formation' ]  = $data[ 'id_formation' ];
         $_SESSION[ 'ID_user' ]       = $data[ 'id' ];
         $_SESSION[ 'name' ]          = $data[ 'name' ];
         $_SESSION[ 'surname' ]       = $data[ 'surname' ];
     
-        if ( $role == 'adm' )
+        if ( $role == 'ADM' )
             header( "location: admin.php");
-        else if( $role == 'for' )
+        else if( $role == 'FOR' )
             header( "location: formateur.php");
-        else if ( $role == 'sta' )
+        else if ( $role == 'STA' )
             header( "location: stagiaire.php");
-        else
-            header( "location: error.php");
+        //else
+            //header( "location: error.php");
     }
     echo "<h3>login incorrect</h3>";
 }
