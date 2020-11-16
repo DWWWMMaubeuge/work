@@ -65,10 +65,17 @@ if (isset($_POST['login_user'])) {
     $password = mysqli_real_escape_string($db, $_POST['password']);
     
     if (empty($surname)) {
-        array_push($errors, "surname is required");
+        array_push($errors, "L'Username est demandé");
     }
     if (empty($password)) {
-        array_push($errors, "Password is required");
+        array_push($errors, "Le Password est demandé");
+    }
+    if(isset($_POST["captcha"])&&$_POST["captcha"]!=""&&$_SESSION["code"]==$_POST["captcha"])
+    {
+      $status = "<p style='color:#FFFFFF; font-size:20px'>
+      <span style='background-color:#46ab4a;'>Votre code captcha est correct.</span></p>"; 
+    }else{
+    array_push($errors, "Le code captcha entré ne correspond pas! Veuillez réessayer");
     }
   
     if (count($errors) == 0) {
@@ -82,6 +89,7 @@ if (isset($_POST['login_user'])) {
           $user_check_query = "SELECT * FROM users WHERE surname=".$_SESSION['surname'];
           $result = mysqli_query($db, $user_check_query);
           $user = mysqli_fetch_assoc($result);
+          $_SESSION["code"]=$code;
           if ($user['type'] == 'admin')
           {
             header ('location: admin_home.php');

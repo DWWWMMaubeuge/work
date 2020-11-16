@@ -39,7 +39,18 @@ echo "<h3>bonjour $surname_user</h3>\n";
   	<div class="input-group">
         <i class="fa fa-lock" aria-hidden="true"></i>
   		<input type="password" placeholder="Ton password" name="password">
-  	</div>
+	  </div>
+
+	  <table>
+    <tr>
+      <td>
+        <label>Entrer le texte dans l'image</label>
+        <input name="captcha" type="text">
+        <img src="captcha.php" style="vertical-align: middle;"/>
+      </td>
+    </tr>
+    </table>
+
   	<div class="input-group">
   		<button class="btn" type="submit" name="login_user">Log toi!</button>
   	</div>
