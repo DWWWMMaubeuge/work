@@ -1,10 +1,18 @@
 <?php
 
+session_start();
+$id=0;
+if(isset($_SESSION[ 'ID_user' ]))
+    $id=$_SESSION[ 'ID_user' ];
+include "header.php";
+echo entete();
+
+
 function nav($connect)
 {
     if ($connect){            
 $str  =  <<<TRY
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-white bg-secondary">
 <a class="navbar-brand" href="#"><img src=""width="50px;"></a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
@@ -46,7 +54,7 @@ Mon Compte
 
 <a href="#" class="fa fa-user"></a>   
 <a href="#" class="fa fa-twitter"></a>
-<a href="https://www.youtube.com/channel/UC7UyFqncumbBrV0Oa063KnQ?view_as=subscriber"target="_blank" class="fa fa-youtube"></a>
+<a href="https://www.youtube.com/channel/UC7UyFqncumbBrV0Oa063KnQ?view_as=subscriber" class="fa fa-youtube"></a>
 <a href="logOut.php" class="fa fa-sign-out"></a>
 
 </ul>
@@ -90,8 +98,6 @@ Nicolas
 </li>
 <li class="nav-item">
 <a class="nav-link" href="#">CV</a>
-href="http://www.alsacreations.com/astuce/lire/1603-html5-attribut-download.html"
-   download="Article_HTML5_download.txt">Télécharger l'article en TXT</a>
 </li>    
 <li class="nav-item dropdown">
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -108,7 +114,7 @@ connexion
 <a href="#" class="fa fa-user"></a>  
 <a href="#" class="fa fa-twitch"></a>
 <a href="#" class="fa fa-twitter"></a>
-<a href="https://www.youtube.com/channel/UC7UyFqncumbBrV0Oa063KnQ?view_as=subscriber"target="_blank" class="fa fa-youtube"></a>
+<a href="#" class="fa fa-youtube"></a>
 
 </ul>
 </div>
@@ -122,4 +128,55 @@ TRY;
 return $str;
 
 }
+
+
+
+
+
+include_once "bodyaccueil.php";
+?>
+
+<div>
+<?php
+echo nav($id);
+?>
+</div>
+
+
+<body>
+<div class="titre">
+<h1>Nicolas CAULIER Développeur Web</h1>
+</div>
+
+</div>
+
+<div class="carou">
+<?php
+echo carousel();
+?>
+</div>
+
+<div class="body">
+<?php
+echo accueilbody();
+?>
+</div>
+
+<div>
+ <?php
+echo langues();
+?> 
+</div>
+
+<?php
+
+Include "footer.php";
+echo footer();
+
+?>
+
+</body>
+
+</html>
+
 ?>

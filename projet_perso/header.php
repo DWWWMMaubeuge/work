@@ -1,5 +1,5 @@
 <?php
-function entete($title="competence")
+function entete($title="profile")
 {
 $str  = <<<TRY
 <!doctype html>
@@ -20,7 +20,7 @@ return $str;
 }
 
 
-function entete2($title="competence")
+function entete2($title="profile")
 {
 $str  = <<<TRY
 <!doctype html>

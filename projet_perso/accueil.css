@@ -15,7 +15,7 @@
 }
 
 footer {
-  background: #3c3e46;
+  background: #1f2129;
   color: white;
 }
 
@@ -56,10 +56,10 @@ a:hover {
  
 }
 .titre {
-  background-image:url("img/background5.jpg");
+  background-image:url("img/bg32.jpg");
   background-repeat: no-repeat;
   width: 100%;
-  height:750px;
+  height:650px;
   margin-bottom: 0;
   padding-bottom:0;
   
@@ -74,7 +74,8 @@ a:hover {
 }
 body{
   opacity:1;
-  background-color: rgb(180, 154, 112);
+  /*background-color: rgb(180, 154, 112);  */
+  background-color:#1f2129;
 }
 .d-block{
   
@@ -90,9 +91,14 @@ body{
 .body {
   padding-top: 60px;
   padding-bottom:20px;
-  background-color: rgb(207, 142, 99);
+  /*background-color: rgb(207, 142, 99); */
+  background-color:#1f2129;
 }
 .carou {
-  background-color:  rgb(207, 142, 99);
+  /* background-color:  rgb(207, 142, 99); */
+  background-color:#1f2129;
   padding-top: 30px;
+}
+.langue {
+  background-color:#1f2129;
 }
