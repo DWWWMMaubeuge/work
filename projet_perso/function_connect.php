@@ -14,4 +14,6 @@ try
     //echo "$req<br>";
     return $bdd->query( $req );
   }
- 
+  function convertDate($date) {
+    return $timestamp = date('d-m-Y à G:i:s', strtotime($date));
+}
