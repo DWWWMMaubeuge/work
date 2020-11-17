@@ -50,7 +50,7 @@ if (isset($_GET["nbSkills"]) && !empty($_GET["nbSkills"])) {
       // ON TESTE SI LES COMPETENCES EXISTENT DEJA
       for ($i = 0; $i < $nbSkills; $i++) {
 
-        $req = $bdd->prepare("SELECT COUNT(*) as numberSkill FROM matieres WHERE mat = :competence AND id_formation = :idFormation");
+        $req = $bdd->prepare("SELECT COUNT(*) as numberSkill FROM competences WHERE competences = :competence AND id_formation = :idFormation");
         $req->execute(array(
           "competence" => $_POST["skill" . $i],
           "idFormation" => $idFormation
@@ -58,20 +58,23 @@ if (isset($_GET["nbSkills"]) && !empty($_GET["nbSkills"])) {
 
         while ($skill_verification = $req->fetch()) {
           if ($skill_verification["numberSkill"] != 0) {
-            header('location: ./insertSkills.php?error=1&skill=' . $skill_verification["mat"]);
+            header('location: ./insertSkills.php?error=1&skill=' . $skill_verification["competences"]);
             exit();
           }
         }
         $req->closeCursor();
 
-        // ON INSERT LA COMPETENCE DANS LA TABLE MATIERES
-        $req = $bdd->prepare("INSERT INTO matieres(mat, id_formation) VALUES(:competence, :idFormation)");
+        // ON INSERT LA COMPETENCE DANS LA TABLE COMPETENCES
+        $req = $bdd->prepare("INSERT INTO competences(competences, id_formation) VALUES(:competence, :idFormation)");
         $req->execute(array(
           "competence" => $_POST["skill" . $i],
           "idFormation" => $idFormation
         ));
         $req->closeCursor();
       }
+
+      header('location: ../superUser/insertFormation.php?error=1&formation=1');
+      exit();
     }
   }
   

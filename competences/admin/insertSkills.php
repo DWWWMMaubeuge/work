@@ -28,10 +28,6 @@ require 'traitementInsertSkills.php';
           <div class="alert alert-danger item mx-auto">
             La compétence "<?= $_GET["skills"] ?>" existe déjà
           </div>
-        <?php elseif (isset($_GET["test"])) : ?>
-          <div class="alert alert-danger item mx-auto">
-            Problème dans le for
-          </div>
         <?php endif; ?>
       <?php endif; ?>
 

@@ -6,7 +6,7 @@ html, body{
 .board {
   padding-top: 50px;
   padding-bottom: 10px;
-  max-width: 1140px;
+  max-width: 800px;
   margin: auto;
   background-color: #FFF;
   border-radius: 30px;
@@ -40,5 +40,4 @@ a {
   padding-bottom: 20px;
   text-align: center;
   color: #9fadca;
-  border-bottom: 1px solid #dee9ff;
 }

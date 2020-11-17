@@ -23,6 +23,10 @@ require 'sql/traitementConnexion.php';
         <div class="alert alert-danger item mx-auto">
           Utilisateur Inconnu
         </div>
+      <?php elseif (isset($_GET["captcha"])) : ?>
+        <div class="alert alert-danger item item mx-auto">
+          Erreur captcha
+        </div>
       <?php elseif (isset($_GET["success"])) : ?>
         <div class="alert alert-success item item mx-auto">
           Utilisateur ajouté
@@ -38,6 +42,12 @@ require 'sql/traitementConnexion.php';
         </div>
         <div class="form-group">
           <input type="password" class="form-control item" name="password" placeholder="Mot de passe" required>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" name="captcha" id="captcha" placeholder="Recopier le captcha" required>
+          <div class="input-group-append">
+            <img src="captcha.php" class="img-fluid">
+          </div>
         </div>
         <button type="submit" class="btn btn-block btn-primary button-form">Se connecter</button>
       </form>

@@ -3,13 +3,13 @@ html, body{
     background-color: #dee9ff;
 }
 
-/*body {
+body {
   background-color: #dee9ff;
   display: -ms-flexbox;
   -ms-flex-align: center;
   display: flex;
   align-items: center;
-}*/
+}
 
 
 /* INSCRIPTION */
@@ -30,6 +30,13 @@ html, body{
 .registration-form .item{
 	border-radius: 20px;
   margin-bottom: 25px;
+  padding: 10px 20px;
+  max-width: 600px;
+}
+
+.registration-form #captcha{
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
   padding: 10px 20px;
   max-width: 600px;
 }

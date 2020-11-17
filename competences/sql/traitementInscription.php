@@ -52,20 +52,20 @@ if (!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["email"]
     }
   }
 
-  // ON RECUPERE LE NOMBRE DE MATIERES
-  $req = $bdd->prepare("SELECT COUNT(*) as nb FROM matieres");
+  // ON RECUPERE LE NOMBRE DE COMPETNCES
+  $req = $bdd->prepare("SELECT COUNT(*) as nb FROM competences");
   $req->execute();
 
-  $nb_matieres = $req->fetch(pdo::FETCH_ASSOC);
-  $nb_matieres = intval($nb_matieres["nb"]);
+  $nb_competences = $req->fetch(pdo::FETCH_ASSOC);
+  $nb_competences = intval($nb_competences["nb"]);
 
-  //ON INITIALISE lES NOTES A 0
-  for ($i = 1; $i <= $nb_matieres; $i++) { 
-    $req=$bdd->prepare("INSERT INTO resultats(id_user, id_matiere, note) VALUES(:id_user, :id_matiere, :note)");
+  //ON INITIALISE lES EVALUATIONS A 0
+  for ($i = 1; $i <= $nb_competences; $i++) { 
+    $req=$bdd->prepare("INSERT INTO resultats(id_user, id_competence, evaluation) VALUES(:id_user, :id_competence, :evaluation)");
     $req->execute(array(
     "id_user" => $_SESSION["id_user"],
-    "id_matiere" => $i,
-    "note" => 0
+    "id_competence" => $i,
+    "evaluation" => 0
     ));
     $req->closeCursor();
   }

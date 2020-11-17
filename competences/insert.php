@@ -4,18 +4,18 @@ include 'src/connexion.php';
 
   $id_user = $_SESSION["id_user"];
 
-  $id_matiere = (isset($_POST["id_matiere"])) ? $_POST["id_matiere"] : null;
-  $note = (isset($_POST["note"])) ? $_POST["note"] : null;
+  $id_competence = (isset($_POST["id_competence"])) ? $_POST["id_competence"] : null;
+  $evaluation = (isset($_POST["evaluation"])) ? $_POST["evaluation"] : null;
 
-if ($id_matiere && $note > 0) {
-    $req = $bdd->prepare("INSERT INTO resultats(id_user, id_matiere, note) 
-                          VALUES(:id_user, :id_matiere, :note)
+if ($id_competence && $evaluation > 0) {
+    $req = $bdd->prepare("INSERT INTO resultats(id_user, id_competence, evaluation) 
+                          VALUES(:id_user, :id_competence, :evaluation)
                         ");
                         
     $req->execute(array(
       "id_user" => $id_user,
-      "id_matiere" => $id_matiere,
-      "note" => $note
+      "id_competence" => $id_competence,
+      "evaluation" => $evaluation
     ));
 } 
 ?>

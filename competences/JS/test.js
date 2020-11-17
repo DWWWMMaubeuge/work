@@ -1,7 +1,7 @@
-$("#insertFormation").submit(function() {
-
-  $.get("superUser/traitementInsertFormation.php", function(data) {
-    alert("Data : " + data);
-  });
-
+$(function() {
+  $("select").change(function() {
+    $.post("displaySkillsAdmin.php", {
+        id_formation: $(this).attr("id")
+      });
+    });
 });
