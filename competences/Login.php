@@ -20,18 +20,25 @@ if ($_POST && $_POST['mail'] != "" && $_POST['password'] != "")
                 $req = "SELECT * FROM $DB_dbname.users WHERE mail='$mail' AND password='$password'";
                 $result = executeSQL($req);
                 $data = $result->fetch_assoc();
-                $_SESSION['ID_user'] = $data['id'];
-                $_SESSION['id_formation'] = $data['id_formation'];
-                $_SESSION['name'] = $data['name'];
-                $_SESSION['surname'] = $data['surname'];
-                 //print_r ($data);
-                header("location: Home.php");
-                echo "<h3>login incorrect</h3>";
+                $_SESSION['ID_user']        = $data['id'];
+                $_SESSION['id_formation']   = $data['id_formation'];
+                $_SESSION['name']           = $data['name'];
+                $_SESSION['surname']        = $data['surname'];
+                $role = $_SESSION['role']   = $data['role'];
+                print_r ($data);
+                
+                if ( $role == "STA")
+                    header("location: Home.php");
+                else if ( $role == "ADM")
+                    header("location: admin.php");
+                else if ( $role == "FOR")
+                    header("location: formateur.php");
+                else
+                    header("location: login.php");
+                
             }
-            
+            echo "<h3>login incorrect</h3>";            
 }
-
-
 ?>
 <!DOCTYPE html> 
     <html lang="fr">
@@ -56,7 +63,6 @@ if ($_POST && $_POST['mail'] != "" && $_POST['password'] != "")
             <button type="submit">login to your account</button>
 
         </form>
-
 
     </body>
 </html>

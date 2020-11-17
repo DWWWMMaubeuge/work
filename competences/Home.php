@@ -32,8 +32,13 @@ session_start();
 
 if (!isset($_SESSION["surname"])) {
     header("Location: Login.php");
-    exit();
 }
+
+$ID_user      = $_SESSION['ID_user'];
+$id_formation = $_SESSION['id_formation'];
+$name_user    = $_SESSION['name'];
+$surname_user = $_SESSION['surname'];
+
 
 
 /* function setWidgetValuex( $skill  )
@@ -89,7 +94,8 @@ return $widget;
 function setAllWidgetValue($skills)
 {
     $widget = "<div class='skill' >\n";
-    foreach ($skills as $skill) {
+    foreach ($skills as $skill) 
+    {
         $widget .= setWidgetValue2($skill);
     }
 
@@ -97,10 +103,6 @@ function setAllWidgetValue($skills)
     return $widget;
 }
 
-$ID_user = $_SESSION['ID_user'];
-$id_formation = $_SESSION['id_formation'];
-$name_user = $_SESSION['name'];
-$surname_user = $_SESSION['surname'];
 
 
 echo "<h1> Bienvenue \"$surname_user\" sur le site d'évaluation </h1>\n";
@@ -109,19 +111,15 @@ $req = "SELECT* FROM $DB_dbname.skills where id_formation= $id_formation" ;
 $result = executeSQL($req);
 
 $skills = [];
-while ($data = $result->fetch_assoc()) {
-    array_push($skills, [$data['id'], $data['name']]);
+while ($data = $result->fetch_assoc()) 
+{
+    array_push($skills, [ $data['id'], $data['name']]);
 }
 
 //print_r( $skills );
 
 ?>
-
-
-
 <script>
-
-
     function MAJ_Value( id_skill, value  )
     {
       document.getElementById("aff"+id_skill).innerHTML = value;
@@ -141,8 +139,8 @@ while ($data = $result->fetch_assoc()) {
 
 
 <FORM  method='POST' name="formSkill" action="<?php echo $_SERVER['PHP_SELF']; ?>">
- <div class=" container">
-<?php echo setAllWidgetValue($skills); ?>
+<div class=" container">
+<?=setAllWidgetValue($skills)?>
 </div>
 
 </FORM>
