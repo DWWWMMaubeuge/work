@@ -33,7 +33,6 @@ if(isset($_POST['OFF'])) {
         $q = $bdd->prepare('UPDATE Matieres SET Active = :active WHERE Nom = :nom');
         $q->bindParam(':nom', $nom, PDO::PARAM_STR);
         $q->bindParam(':active', $active, PDO::PARAM_BOOL);
-        print_r($_POST);
         $q->execute();
         $feedback = "Compétence mise à jour !";
 
@@ -73,6 +72,17 @@ if(isset($_POST['ADD'])) {
         
     }
 
+}
+
+if(isset($_POST['DEBUT']) && isset($_POST['FIN']) && isset($_POST['FORMATION'])) {
+    
+    $sql = $bdd->prepare('UPDATE Sessions SET DATE_DEBUT = :debut, DATE_FIN = :fin WHERE ID_FORMATION = :formation');
+    $sql->bindParam(':debut', $_POST['DEBUT'], PDO::PARAM_STR);
+    $sql->bindParam(':fin', $_POST['FIN'], PDO::PARAM_STR);
+    $sql->bindParam(':formation', $_POST['FORMATION'], PDO::PARAM_INT);
+    $sql->execute();
+    $feedback = "Les dates ont été mises à jour !";
+    
 }
 
 if(isset($feedback) && !empty($feedback)) {

@@ -43,6 +43,19 @@ $req = $bdd->query('SELECT * FROM Formations');
             <button id="send-data" class="btn btn-primary mt-2 mb-3 text-center">Ajouter</button>
             <div id="confirmation"></div>
         </form>
+        <h2 class='text-center my-5'>Changer la date de la session</h3>
+        <form class="text-center" method="POST" id="dates">
+            <div class="form-group my-3">
+                <label for="add">Date de début</label>
+                <input type="date" class="form-control w-25 mx-auto" name="datedebut" id="datedebut" aria-describedby="nomHelp">
+            </div>
+            <div class="form-group my-3">
+                <label for="add">Date de fin</label>
+                <input type="date" class="form-control w-25 mx-auto" name="datefin" id="datefin" aria-describedby="nomHelp">
+            </div>
+            <button id="send-data" class="btn btn-primary mt-2 mb-3 text-center">Modifier</button>
+            <div id="confirmation"></div>
+        </form>
         <div class="alert alert-info my-5 d-none text-center" role="alert" id="notification"></div>
     </div>
 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : lun. 16 nov. 2020 à 12:30
+-- Généré le : mar. 17 nov. 2020 à 14:03
 -- Version du serveur :  10.3.16-MariaDB
 -- Version de PHP : 7.3.23
 
@@ -137,7 +137,7 @@ CREATE TABLE `Membres` (
 --
 
 INSERT INTO `Membres` (`ID`, `Pseudo`, `Prenom`, `Nom`, `Email`, `MDP`, `Admin`, `Fixe`, `Mobile`, `Github`, `Site`, `Avatar`, `Date_of_registration`) VALUES
-(21, 'The-Evil-Fox', 'Steven', 'Durieux', 'stevenhonor@live.fr', '@59199Hergnies', '1', NULL, NULL, 'The-Evil-Fox', 'http://adriaticstuff.000webhostapp.com/profil.php', '21.gif', '2020-11-08 04:28:38'),
+(21, 'The-Evil-Fox', 'Steven', 'Durieux', 'stevenhonor@live.fr', '@59199Hergnies', '1', NULL, NULL, 'The-Evil-Fox', 'http://adriaticstuff.000webhostapp.com/profil.php', '21.png', '2020-11-08 04:28:38'),
 (31, 'CompteTest', NULL, NULL, 'varovrkignbcnodgww@miucce.online', '@59199Hergnies', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 16:14:38'),
 (32, 'compteTest2', NULL, NULL, 'rpcizrwldhtzhhmqhz@wqcefp.online', '@59199Hergnies', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 17:02:03'),
 (33, 'DEV', NULL, NULL, 'test@test.com', 'dsfsdfds', '0', NULL, NULL, NULL, NULL, 'default.png', '2020-11-12 17:52:42'),
@@ -250,7 +250,7 @@ CREATE TABLE `Sessions` (
 --
 
 INSERT INTO `Sessions` (`ID_SESSION`, `DATE_DEBUT`, `DATE_FIN`, `ID_FORMATION`) VALUES
-(1, '2020-08-17', '2021-03-30', 1),
+(1, '2020-08-17', '2020-03-30', 1),
 (2, '2020-08-17', '2021-03-30', 2),
 (3, '2020-08-17', '2021-03-30', 3);
 
