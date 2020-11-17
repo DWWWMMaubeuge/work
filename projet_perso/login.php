@@ -15,6 +15,7 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password']  )
     
 
     // attention aux doublons des mail
+ 
 
     $req = "SELECT count(*) as nb FROM $dbname.users WHERE mail='$mail' AND password='$password' ";
     $result = executeSQL( $req );
