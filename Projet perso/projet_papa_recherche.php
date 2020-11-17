@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
+    <title>Recherche</title>
     <link rel="stylesheet" href= "projet_papaCSS.css">
 </head>
 <body>
-    <h1 >Formulaire d'inscription</h1>
+    <h1 >Page de recherche</h1>
     
     
     
@@ -28,7 +28,7 @@ if ( isset($_POST) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($
 	else
 	 	echo "connexion réussie<br>";
 
-	$requete 	= "insert into projet.users (nom, prenom, age, email, password ) values ( '".$_POST['nom']."', '".$_POST['prenom']."', ".$_POST['age'].", '".$_POST['email']."', '".$_POST['password']."');";
+	$requete 	= "select projet.users (nom, prenom, age, email, password ) values ( '".$_POST['nom']."', '".$_POST['prenom']."', ".$_POST['age'].", '".$_POST['email']."', '".$_POST['password']."');";
 
 
 	//echo "$requete<br>";
