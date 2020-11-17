@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style/display.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -20,6 +20,8 @@ include_once("../functionHeader.php");
 include_once( "addDeleteUpdate.php");
 setHeader("displayUser");
 
+NavBar2();
+
 if (isset($_SESSION['message'])):?>
 
  <div class="alert alert-<?=$_SESSION['msgType']?>">
@@ -33,7 +35,7 @@ if (isset($_SESSION['message'])):?>
 
 </div>
 <?php endif  ?>
-
+<div class="box-table">
 <div class="container">
 <?php
 
@@ -48,8 +50,10 @@ $result= executeSQL( $req );
     <table class="table">
       <thead>
         <tr>
+          <th>Date</th>
           <th>Surname</th>
           <th>Name</th>
+          <th>Type</th>
           <th>Email</th>
           <th colspan="2">Action</th>
         </tr>
@@ -61,8 +65,10 @@ while ($row = $result->fetch_assoc()):
 ?>
 
 <tr>
+    <td><?php echo $row['date']; ?></td>
     <td><?php echo $row['surname']; ?></td>
     <td><?php echo $row['name']; ?></td>
+    <td><?php echo $row['type']; ?></td>
     <td><?php echo $row['email']; ?></td>
     <td>
         <a href="updateUser.php?edit=<?php echo $row['id'];?>" 
@@ -78,5 +84,6 @@ while ($row = $result->fetch_assoc()):
 endwhile ; 
 ?>
     </table>
+</div>
 </div>
 </div>

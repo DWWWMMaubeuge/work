@@ -35,7 +35,7 @@ if (isset($_POST['submit'])){
       <select name="type" id="type" >
         <option value="admin">Admin</option>
         <option value="trainer">Trainer</option>
-        <option value="trainee">Trainee</option>
+        <option value="learner">Learner</option>
       </select>
   </div>
   <div class="textbox">

@@ -34,6 +34,8 @@ echo "<div class=\"container\">";
                 echo "<div class=\"navbar\">";
                     echo "<nav>";
                         echo "<ul>";
+                            echo "<li><a href=\"home.php\">Home</a></li>";
+                            echo "<li><a href=\"displayUser.php\">Users</a></li>";
                             echo "<li><a href=\"logOut.php\">Logout</a></li>";    
                         echo "</ul>";
                    echo "</nav>";
@@ -41,39 +43,5 @@ echo "<div class=\"container\">";
             }
         
 
-/*
-function setHearder2(){
-$str=<<<BED
 
-   "<!DOCTYPE html>";
-        "<html lang=\"fr\">";
-        "<head>";
-        "<meta charset=\"UTF-8\">";
-        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=\1.0\">";
-        "<title>Register Form</title>";
-        "<link rel=\"stylesheet\" href=\"style.css\">";
-        "</head>";
-
-BED;
-
-}
-
-function NavBar()2{
-$str =<<<EOL
-
- "<div class=\"container\">";
-    "<div class=\"navbar\">";
-     "<nav>";
-      "<ul>";
-       "<li><a href=\"\">Home</a></li>";
-       "<li><a href=\"\">Register</a></li>";
-      "<li><a href=\"\">LogIn</a></li>";
-      "</ul>";
-    "</nav>";
- "</div>";
-    
-EOL;
-    
-}
-*/
 ?>

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -29,10 +29,9 @@ NavBar2();
 function setWidgetValue2( $skill  )   // ID    name 
 {
   $widget  = "";
-  $widget .= "<div class=\"skills\" >\n";
   $widget .= "<p>".$skill[1]."</p>\n";
-  $widget .= "<input id='number' type='number' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
-  $widget .= "</div>\n";
+  $widget .= "<input  id='number' type='number' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
+ 
   return $widget; 
 }
 
@@ -102,9 +101,14 @@ while( $ligne = $result->fetch_assoc())
 <FORM  method='POST' name="formSkill" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <?php 
 
-echo "<div class=\"containerSkills\" >\n";
+echo "<div class=\"container\" >\n";
+echo "<div class=\"row\">";
+echo "<div class=\"col-*-*-4\">";
 echo setAllWidgetValue( $skills );
-echo "</div>";
+echo "</div>\n";
+echo "</div>\n";
+echo "</div>\n";
+
 
  ?>
 </FORM>

@@ -36,7 +36,7 @@ if( $_POST && $_POST['email'] != "" && $_POST['password'] != ""  )
         }
         elseif ($data['type'] == 'trainer')
         {
-            header('location: admin/home2.php' );
+            header('location: trainer/homeTrainer.php' );
         }
         else
         {

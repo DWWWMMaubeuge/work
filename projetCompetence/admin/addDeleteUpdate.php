@@ -1,17 +1,17 @@
 <?php
 
 include_once("../functionConnect.php");
-include_once("../functionHeader.php");
 
-setHeader("deleteUser");
 
 
 session_start();
 // VALEURS PAR DEFAUT
 
+$id = 0 ;
 $update = false;
 $surname = '';
 $name = '';
+$type = '';
 $email = '';
 
 //ADD USER
@@ -53,7 +53,8 @@ if(isset($_GET['delete'])){
 
 // UPDATE USER
 
-if(isset($_GET['edit'])){
+if(isset($_GET['edit']))
+{
     
     $id= $_GET['edit'];
     $update = true;
@@ -61,16 +62,38 @@ if(isset($_GET['edit'])){
     $req= "SELECT * FROM $DB_dbname.users WHERE id=$id";
     $result= executeSQL( $req );
 
-    if ($result){
+    if ($result)
+    {
         
         $row = $result ->fetch_assoc();
 
         $surname = $row['surname'];
         $name = $row['name'];
+        $type = $row['type'];
         $email = $row['email'];
     }
 
 }
+
+if (isset($_POST['update']))
+{
+    $id = $_POST['id'];
+    $surname = $_POST['surname'];
+    $name = $_POST['name'];
+    $type = $_POST['type'];
+    $email = $_POST['email'];
+
+
+    $req="UPDATE  $DB_dbname.users SET surname='$surname', name='$name', type='$type', email='$email' WHERE id=$id";
+    executeSQL( $req );
+
+    $_SESSION['message'] = "Record has been updated!";
+    $_SESSION['msgType'] = "warning";
+    
+    header( "location: displayUser.php");
+
+}
+
 
 
 ?>

@@ -18,6 +18,7 @@ if (isset($_POST['submit'])){
 
 ?>
 <form class="login-box" action="" method="post">
+  <input type="hidden" name="id" value="<?php echo $id; ?>">
     <h1>Update user</h1>
     <div class="textbox">
     <i class="fa fa-user" aria-hidden="true"></i>
@@ -27,6 +28,13 @@ if (isset($_POST['submit'])){
     <i class="fa fa-user" aria-hidden="true"></i>
   <input type="text" name="name" value="<?php echo $name; ?> "  placeholder="Name" required />
     </div>
+    <div class="textbox">
+      <select name="type" id="type" value="<?php echo $type; ?>" >
+        <option value="admin">Admin</option>
+        <option value="trainer">Trainer</option>
+        <option value="learner">Learner</option>
+      </select>
+  </div>
     <div class="textbox">
        <i class="fas fa-envelope"></i>
     <input type="text" name="email" value="<?php echo $email; ?>" placeholder="Email" required />
