@@ -1,8 +1,11 @@
 <?php
 require 'src/connexion.php';
 <<<<<<< HEAD
+<<<<<<< HEAD
 require './navBar.php';
 
+=======
+>>>>>>> 49803271f7874ef09e9d87cc2fe4c1665cdf2784
 =======
 >>>>>>> 49803271f7874ef09e9d87cc2fe4c1665cdf2784
 
@@ -15,6 +18,7 @@ while ($data = $req->fetch()) {
 }
 $req->closeCursor();
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 if (isset($_POST["formationName"]) && isset($_POST["nbSkills"])) {
   $formationName = $formationsArray[$_POST["formationName"]-1][1];
@@ -80,6 +84,8 @@ if (isset($_POST["formationName"]) && isset($_POST["nbSkills"])) {
 </body>
 </html>
 =======
+=======
+>>>>>>> 49803271f7874ef09e9d87cc2fe4c1665cdf2784
 if (isset($_POST["formationName"])) {
   $formationName = $_GET["formationName"];
 
@@ -106,5 +112,9 @@ if (isset($_POST["formationName"])) {
   </div>
   <button type="submit" class="btn btn-block btn-success text-white">OK</button>
 
+<<<<<<< HEAD
+</form>
+>>>>>>> 49803271f7874ef09e9d87cc2fe4c1665cdf2784
+=======
 </form>
 >>>>>>> 49803271f7874ef09e9d87cc2fe4c1665cdf2784
