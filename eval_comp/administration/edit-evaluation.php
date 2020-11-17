@@ -18,13 +18,11 @@ $req = $bdd->query('SELECT * FROM Formations');
             <h3 class='text-center my-4'>Activation d'une compétence</h3>
             <?= getDisabledComps($infos['ID_FORMATION']); ?>
             <button id="send-data" class="btn btn-primary mt-2 mb-3 text-center">Activer</button>
-            <div id="confirmation"></div>
         </form>
         <form class="text-center" method="POST" id="desactiverComp">
             <h3 class='text-center my-4'>Desactivation d'une compétence</h3>
             <?= getEnabledComps($infos['ID_FORMATION']); ?>
-            <button id="send-data" class="btn btn-primary mt-2 mb-3 text-center">Désactiver</button>
-            <div id="confirmation"></div>
+            <button id="send-data" class="btn btn-primary mt-2 mb-3 text-center">Désactiver</button>co
         </form>
         <h2 class="text-center my-5">Ajout d'une compétence</h3>
         <form class="text-center" method="POST" id="ajoutComp">
@@ -41,7 +39,6 @@ $req = $bdd->query('SELECT * FROM Formations');
                 </select>
             </div>
             <button id="send-data" class="btn btn-primary mt-2 mb-3 text-center">Ajouter</button>
-            <div id="confirmation"></div>
         </form>
         <h2 class='text-center my-5'>Changer la date de la session</h3>
         <form class="text-center" method="POST" id="dates">
@@ -54,7 +51,6 @@ $req = $bdd->query('SELECT * FROM Formations');
                 <input type="date" class="form-control w-25 mx-auto" name="datefin" id="datefin" aria-describedby="nomHelp">
             </div>
             <button id="send-data" class="btn btn-primary mt-2 mb-3 text-center">Modifier</button>
-            <div id="confirmation"></div>
         </form>
         <div class="alert alert-info my-5 d-none text-center" role="alert" id="notification"></div>
     </div>

@@ -52,7 +52,12 @@
             <li class='nav-item'>
             <a class='nav-link' href='../index.php'><i class="fas fa-home"></i> Accueil</a>
             </li>
-            <?php if($infos['Admin'] != TRUE) { ?>
+            <?php if($infos['Admin'] == TRUE || $infos['SuperAdmin'] == TRUE) { ?>
+              <li class='nav-item'>
+                <a class='nav-link' href='../administration/accueiladmin.php'><i class="fas fa-fan fa-spin text-danger"></i> Administration</a>
+              </li>
+            <?php } ?>
+            <?php if($infos['Admin'] != TRUE && $infos['SuperAdmin'] != TRUE) { ?>
                 <li class='nav-item'>
                     <a class='nav-link' href='../auto-evaluation.php'><i class="fas fa-sliders-h"></i> Auto-evaluation</a>
                 </li>
@@ -60,11 +65,6 @@
             <li class='nav-item'>
               <a class='nav-link' href='../utilisateurs.php'><i class="fas fa-users"></i> Utilisateurs</a>
             </li>
-            <?php if($infos['Admin'] == TRUE) { ?>
-              <li class='nav-item'>
-                <a class='nav-link' href='../administration/accueiladmin.php'><i class="fas fa-fan fa-spin text-danger"></i> Administration</a>
-              </li>
-            <?php } ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-user-circle"></i> Mon compte <?php if($countinvit != 0) { echo "<i class='fas fa-exclamation-circle text-warning' title='Vous avez une invitation à rejoindre une formation en attente !'></i>"; } ?>
@@ -73,7 +73,7 @@
                 <a class="dropdown-item" href="../profil.php"><i class="fas fa-id-card"></i> Mon profil</a>
                 <a class="dropdown-item" href="../moyennes.php"><i class="fas fa-chart-bar"></i> Mes moyennes</a>
                 <?php if($countinvit != 0) { ?>
-                     <a class="dropdown-item" href="../administration/confirmer-invitation.php?account=<?= $invit['SECURE_KEY']; ?>"><i class="fas fa-envelope"></i> Invitation en attente</a>
+                     <a class="dropdown-item" href="../administration/confirmer-invitation.php"><i class="fas fa-envelope"></i> Invitation en attente</a>
                 <?php } ?>
                 <div class="dropdown-divider"></div>
                   <a class='dropdown-item' href='../deconnexion.php'><i class="fas fa-sign-out-alt"></i> Déconnexion</a>

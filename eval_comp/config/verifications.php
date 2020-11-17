@@ -4,7 +4,7 @@ function userIsLogged() {
 
   if(!isset($_SESSION['id'])) {
 
-    header('location: index.php');
+    header('location: ../index.php');
     exit();
 
   }
@@ -15,7 +15,7 @@ function userIsNotLogged() {
 
   if(isset($_SESSION['id'])) {
 
-    header('location: index.php');
+    header('location: ../index.php');
     exit();
 
   }
@@ -28,11 +28,37 @@ function userIsAdmin() {
 
   if($infos['Admin'] != TRUE) {
 
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 
   }
 
+}
+
+function userIsSuperAdmin() {
+    
+    GLOBAL $infos;
+    
+    if($infos['SuperAdmin'] != TRUE) {
+        
+        header('Location: ../index.php');
+        exit();
+        
+    }
+    
+}
+
+function userIsAdminOrSuperAdmin() {
+    
+    GLOBAL $infos;
+    
+    if($infos['Admin'] != 1 && $infos['SuperAdmin'] != 1){
+        
+        header('Location: ../index.php');
+        exit();
+        
+    }
+    
 }
 
 function checkActivationParams() {
@@ -41,7 +67,7 @@ function checkActivationParams() {
 
   if(!isset($_GET['account']) or empty($_GET['account'])) {
 
-    header('location: index.php');
+    header('location: ../index.php');
     exit();
 
   }
@@ -54,7 +80,7 @@ function checkActivationParams() {
   $count = $q->rowCount();
   if($count == 0) {
 
-    header('location: index.php');
+    header('location: ../index.php');
     exit();
 
   }

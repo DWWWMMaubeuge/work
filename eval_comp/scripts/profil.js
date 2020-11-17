@@ -280,30 +280,6 @@ function setOptions(id) {
 
 }
 
-function setFormation(id) {
-
-    let post = {};
-    let categorie = "Formation";
-    post[categorie] = id;
-
-    $.ajax({
-
-        type: 'POST',
-        url: 'traitements/traitement-profil.php',
-        data: post,
-        dataType: 'text',
-
-        success: function(data) {
-
-            window.location.replace('profil.php');
-
-        }
-
-    });
-
-
-}
-
 function setPassword(id) {
 
     let buttonBase = document.getElementById(id).outerHTML;
@@ -384,4 +360,51 @@ function setPassword(id) {
 
     })
 
+}
+
+function selectFormation(id, span) {
+    
+    let baseElement = document.getElementById(span);
+    let mySelect = document.getElementById('formationselect');
+    
+    
+    mySelect.className = "";
+    baseElement.className = "d-none";
+    
+    mySelect.focus();
+    
+    mySelect.addEventListener("change", changeFormation, false);
+    
+    mySelect.addEventListener('focusout', function(event) {
+        
+        mySelect.className = "d-none";
+        baseElement.className = "";
+        return false;
+
+    });
+    
+    function changeFormation() {
+        
+        let newformation = $('#formationselect').val();
+        
+        let post = {};
+        
+        post[id] = newformation;
+        
+         $.ajax({
+
+            type: 'POST',
+            url: 'traitements/traitement-profil.php',
+            data: post,
+            dataType: 'text',
+
+            success: function(data) {
+
+                window.location.replace('profil.php');
+                
+            }
+
+        });
+        
+    }
 }

@@ -13,11 +13,16 @@ if(isset($_POST['Email']) && !empty($_POST['Email']) && isset($_POST['Confirmati
         $confirmation = $_POST['Confirmation'];
         
         if($_POST['Confirmation'] == "Oui") {
+            
+            $insernewuserformation = $bdd->prepare('INSERT INTO FormationsUtilisateur(USER, IDENTIFIANT_FORMATION) VALUES(:user, :formation)');
+            $insernewuserformation->bindParam(':user', $_SESSION['id'], PDO::PARAM_INT);
+            $insernewuserformation->bindParam(':formation', $idFormation, PDO::PARAM_INT);
+            $insernewuserformation->execute();
         
-            $sql = $bdd->prepare('UPDATE Options SET FORMATION = :Formation WHERE ID in (select m.id from Membres m where m.email = :Email) ');
-            $sql->bindParam(':Formation', $idFormation, PDO::PARAM_INT);
-            $sql->bindParam(':Email', $email, PDO::PARAM_STR);
-            $sql->execute();
+            $setformation = $bdd->prepare('UPDATE Options SET FORMATION = :Formation WHERE ID in (select m.id from Membres m where m.email = :Email) ');
+            $setformation->bindParam(':Formation', $idFormation, PDO::PARAM_INT);
+            $setformation->bindParam(':Email', $email, PDO::PARAM_STR);
+            $setformation->execute();
             
             $deleteinvitation = $bdd->prepare('DELETE FROM Invitations WHERE Email = :email');
             $deleteinvitation->bindParam(':email', $email, PDO::PARAM_STR);

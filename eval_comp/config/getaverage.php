@@ -6,8 +6,9 @@ function getAverage($user, $formation) {
 
     GLOBAL $bdd;
 
-    $sql = $bdd->prepare('SELECT SUM(RESULTAT) FROM Resultats WHERE ID_USER = :user GROUP BY MOIS');
+    $sql = $bdd->prepare('SELECT SUM(RESULTAT) FROM Resultats WHERE ID_USER = :user AND FORMATION = :formation GROUP BY MOIS');
     $sql->bindParam(':user', $user, PDO::PARAM_INT);
+    $sql->bindParam(':formation', $formation, PDO::PARAM_INT);
     $sql->execute();
 
     $req = $bdd->prepare('SELECT COUNT(Active) FROM Matieres WHERE ID_Formation = :userformation');

@@ -10,10 +10,10 @@ if(!isset($_GET['pseudo']) OR empty($_GET['pseudo'])) {
 
 }
 
-$q = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Formations ON Options.FORMATION = Formations.ID_FORMATION  LEFT JOIN Sessions ON Options.FORMATION = Sessions.ID_SESSION WHERE Membres.Pseudo = :pseudo');
-$q->bindParam(':pseudo', $_GET['pseudo'], PDO::PARAM_STR);
-$q->execute();
-$check = $q->rowCount();
+$userinfos = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Formations ON Options.FORMATION = Formations.ID_FORMATION  LEFT JOIN Sessions ON Options.FORMATION = Sessions.ID_SESSION WHERE Membres.Pseudo = :pseudo');
+$userinfos->bindParam(':pseudo', $_GET['pseudo'], PDO::PARAM_STR);
+$userinfos->execute();
+$check = $userinfos->rowCount();
 
 if($check = 0) {
 
@@ -22,11 +22,11 @@ if($check = 0) {
     
 }
 
-$user = $q->fetch();
+$user = $userinfos->fetch();
 
 $moisquery = substr($mois, 0, 3);
 
-$q = $bdd->prepare('SELECT *
+$resultats = $bdd->prepare('SELECT *
 FROM Matieres m LEFT JOIN
      (SELECT r.*,
              ROW_NUMBER() OVER (PARTITION BY id_Matiere, id_user ORDER BY TIME_OF_INSERTION DESC) as seqnum
@@ -37,13 +37,11 @@ FROM Matieres m LEFT JOIN
      ON m.id = r.ID_MATIERE AND
         seqnum = 1
 WHERE Active = TRUE AND ID_Formation = :formation;');
-$q->bindParam(':user', $user['ID'], PDO::PARAM_INT);
-$q->bindParam(':formation', $user['ID_FORMATION'], PDO::PARAM_INT);
-$q->bindParam(':mois', $moisquery, PDO::PARAM_STR);
-$q->execute();
-$count = $q->rowCount();
-
-$resultats = $q->fetchAll();
+$resultats->bindParam(':user', $user['ID'], PDO::PARAM_INT);
+$resultats->bindParam(':formation', $user['ID_FORMATION'], PDO::PARAM_INT);
+$resultats->bindParam(':mois', $moisquery, PDO::PARAM_STR);
+$resultats->execute();
+$count = $resultats->rowCount();
 
 ?>
 <?php include('config/head.php'); ?>
@@ -60,7 +58,7 @@ $resultats = $q->fetchAll();
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src="images/avatars/<?= $user['Avatar']; ?>" alt="avatar" class="rounded-circle" width="150">
                                 <div class="mt-3 col-sm-12">
-                                    <?php if($user['Admin'] != 1) { ?><h2 class="text-info"><?= $user['Pseudo']?></h2><?php } else { ?> <h2 class="text-danger"><?= $user['Pseudo']?> <?php } ?>
+                                    <?php if($user['Admin'] != 1 && $user['SuperAdmin'] != 1) { ?><h2 class="text-info"><?= $user['Pseudo']?></h2><?php } else { ?> <h2 class="text-danger"><?= $user['Pseudo']?> <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -147,7 +145,7 @@ $resultats = $q->fetchAll();
                             <?php } ?>
                         </div>
                     </div>
-                    <?php if($user['Admin'] != 1) { ?>
+                    <?php if($user['Admin'] != 1 && $user['SuperAdmin'] != 1) { ?>
                         <div class="row gutters-sm">
                             <div class="col-sm-12 mb-3">
                                 <div class="card h-100">
@@ -158,7 +156,7 @@ $resultats = $q->fetchAll();
                                             </div>
                                         <?php } else { ?>
                                         <h6 class="d-flex w-100 align-items-center mb-3"><i class="material-icons text-info mr-2">Auto-évaluation du mois de <?= strtolower($mois); ?></i></h6>
-                                            <?php foreach($resultats as $resultat) { ?>
+                                            <?php while($resultat = $resultats->fetch()) { ?>
                                                 <?php if($resultat['Active'] == TRUE) { ?>
                                                     <small><?= $resultat['Nom']; ?></small>
                                                     <div class="progress mb-3" style="height: 5px">

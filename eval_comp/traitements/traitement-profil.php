@@ -396,6 +396,17 @@ if(isset($_FILES['inputAvatar']) AND !empty($_FILES['inputAvatar']['name'])) {
     
 }
 
+if(isset($_POST['Formation'])) {
+    
+    $formationactive = $bdd->prepare('UPDATE Options SET FORMATION = :formation WHERE ID = :user');
+    $formationactive->bindParam(':formation', $_POST['Formation'], PDO::PARAM_INT);
+    $formationactive->bindParam(':user', $_SESSION['id'], PDO::PARAM_INT);
+    $formationactive->execute();
+    
+    $feedback = "Votre formation active a bien été mise à jour !";
+    
+}
+
 if(isset($feedback)) {
 
     echo $feedback;

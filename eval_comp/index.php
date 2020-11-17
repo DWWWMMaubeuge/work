@@ -32,3 +32,4 @@
 </div>
 <script src="scripts/index.js"></script>
 <?php require_once('config/footer.php'); ?>
+<?php print_r($infos); ?>

@@ -1,15 +1,7 @@
 <?php require_once('../config/pdo-connect.php'); ?>
 <?php require_once('../config/verifications.php'); ?>
 <?php userIsLogged(); ?>
-<?php userIsAdmin(); ?>
-<?php
-
-$q = $bdd->prepare('SELECT * FROM Formations WHERE ID_FORMATION = :adminformation');
-$q->bindParam(':adminformation', $infos['ID_FORMATION']);
-$q->execute();
-$formations = $q->fetch();
-
-?>
+<?php userIsAdminOrSuperAdmin(); ?>
 <?php include('../config/head.php'); ?>
 <?= myHeader('Accueil administration'); ?>
 <?php require_once('../config/navbar.php'); ?>
@@ -20,9 +12,13 @@ $formations = $q->fetch();
             <a class="text-light" href="edit-evaluation.php"><i class="fas fa-wrench"></i> Editer les compétences de ma formation</a>
         </div>
         <div class="my-5 p-5 bg-dark opacity-4">
-            <a class="text-light" href="invitations.php"><i class="fas fa-envelope"></i> Inviter des stagiaires dans ma formation</a>
+            <a class="text-light" href="edit-status.php"><i class="fas fa-wrench"></i> Ajouter ou supprimer un administrateur</a>
         </div>
-        
+        <?php if($infos['SuperAdmin'] != 0) { ?>
+            <div class="my-5 p-5 bg-dark opacity-4">
+                <a class="text-light" href="invitations.php"><i class="fas fa-envelope"></i> Inviter des utilisateurs</a>
+            </div>
+        <?php } ?>
     </div>
 </div>
 <?php require_once('../config/footer.php'); ?>

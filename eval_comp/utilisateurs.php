@@ -25,8 +25,7 @@ if(isset($_GET['formation'])) {
     
 }
 
-$sql = $bdd->query('SELECT * FROM Formations');
-$formations = $sql->fetchAll();
+$formations = $bdd->query('SELECT * FROM Formations');
 
 if(!isset($_GET['formation'])) {
     
@@ -42,12 +41,10 @@ if(!isset($_GET['formation'])) {
 
     $premier = ($currentPage * $parPage) - $parPage;
 
-    $q = $bdd->prepare('SELECT * FROM Membres ORDER BY ID ASC LIMIT :premier, :parpage');
-    $q->bindParam(':premier', $premier, PDO::PARAM_INT);
-    $q->bindParam(':parpage', $parPage, PDO::PARAM_INT);
-    $q->execute();
-
-    $users = $q->fetchAll(PDO::FETCH_ASSOC);
+    $allusers= $bdd->prepare('SELECT * FROM Membres ORDER BY ID ASC LIMIT :premier, :parpage');
+    $allusers->bindParam(':premier', $premier, PDO::PARAM_INT);
+    $allusers->bindParam(':parpage', $parPage, PDO::PARAM_INT);
+    $allusers->execute();
     
 } else {
     
@@ -63,24 +60,22 @@ if(!isset($_GET['formation'])) {
 
     $premier = ($currentPage * $parPage) - $parPage;
     
-    $q = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID WHERE Options.FORMATION = ' . $_GET['formation'] . ' ORDER BY Membres.ID ASC LIMIT :premier, :parpage');
-    $q->bindParam(':premier', $premier, PDO::PARAM_INT);
-    $q->bindParam(':parpage', $parPage, PDO::PARAM_INT);
-    $q->execute();
-
-    $users = $q->fetchAll(PDO::FETCH_ASSOC);
+    $allusers = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID WHERE Options.FORMATION = ' . $_GET['formation'] . ' ORDER BY Membres.ID ASC LIMIT :premier, :parpage');
+    $allusers->bindParam(':premier', $premier, PDO::PARAM_INT);
+    $allusers->bindParam(':parpage', $parPage, PDO::PARAM_INT);
+    $allusers->execute();
     
 }
 
 ?>
-<?= myHeader('Utilisateur'); ?>
+<?= myHeader('Utilisateurs'); ?>
 <?php require_once('config/navbar.php'); ?>
 <div class="container-fluid p-5 mt-5 banner3">
     <h1 class="text-center">Liste des utilisateurs</h1>
     <div class="row my-5">
        <select class="text-center mx-auto" name="type" onChange="selectFormation(this.value)">
         <option value="" <?php if($type == "") { echo "selected"; } ?> readonly>Touts les utilisateurs</option>
-        <?php foreach($formations as $formation) { ?>
+        <?php while($formation = $formations->fetch()) { ?>
           <option <?php if($type  == $formation['ID_FORMATION']) { echo "selected"; } ?> value="<?= $formation['ID_FORMATION']; ?>" readonly><?= $formation['FORMATION']; ?></option>
        <?php } ?>
         </select>
@@ -91,18 +86,18 @@ if(!isset($_GET['formation'])) {
             <th scope="col">ID</th>
             <th scope="col">Avatar</th>
             <th scope="col">Pseudo</th>
-            <?php if($infos['Admin'] != 0 && isset($_GET['formation']) && $_GET['formation'] == $infos['ID_FORMATION']) { ?>
+            <?php if($infos['Admin'] != 1 && $infos['SuperAdmin'] != 1 && isset($_GET['formation']) && $_GET['formation'] == $infos['ID_FORMATION']) { ?>
                 <th scope="col">Moyennes</th>
             <?php } ?>
             </tr>
         </thead>
         <tbody>
-        <?php foreach($users as $user) { ?>
+        <?php while($user = $allusers->fetch()) { ?>
             <tr>
             <td scope="row"><?= $user['ID']; ?></td>
             <td scope="row"><img src="images/avatars/<?= $user['Avatar']; ?>" alt="avatar" class="rounded-circle" width="35"></td>
-            <td scope="row"><a class="<?php if($user['Admin'] == 1) { ?>text-danger<?php } else { ?>text-info<?php } ?> m-auto" href="utilisateur.php?pseudo=<?= $user['Pseudo']; ?>"><?= $user['Pseudo']; ?></a></td>
-            <?php if($infos['Admin'] != 0 && isset($_GET['formation']) && $_GET['formation'] == $infos['ID_FORMATION']) { ?>
+            <td scope="row"><a class="<?php if($user['Admin'] == 1 || $user['SuperAdmin'] == 1) { ?>text-danger<?php } else { ?>text-info<?php } ?> m-auto" href="utilisateur.php?pseudo=<?= $user['Pseudo']; ?>"><?= $user['Pseudo']; ?></a></td>
+            <?php if($infos['Admin'] == TRUE && $user['SuperAdmin'] != TRUE && $user['Admin'] != TRUE && $infos['Pseudo'] != $user['Pseudo'] && isset($_GET['formation']) && $_GET['formation'] == $infos['ID_FORMATION'] || $infos['SuperAdmin'] == TRUE && $user['SuperAdmin'] != TRUE && $user['Admin'] != TRUE && $infos['Pseudo'] != $user['Pseudo'] && isset($_GET['formation']) && $_GET['formation'] == $infos['ID_FORMATION'])  { ?>
                 <td scope="row"><a class="text-white m-auto" href="moyennes.php?pseudo=<?= $user['Pseudo']; ?>"><i class="fas fa-chart-bar"></i></a></td>
             <?php } ?>
             </tr>
@@ -130,3 +125,4 @@ if(!isset($_GET['formation'])) {
 </div>
 <script src="scripts/utilisateurs.js"></script>
 <?php require_once('config/footer.php'); ?>
+<?php print_r($infos); ?>

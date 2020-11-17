@@ -6,7 +6,7 @@
 
 $moisquery = substr($mois, 0, 3);
 
-$q = $bdd->prepare('SELECT *
+$detailsresultats = $bdd->prepare('SELECT *
 FROM Matieres m LEFT JOIN
      (SELECT r.*,
              ROW_NUMBER() OVER (PARTITION BY id_Matiere, id_user ORDER BY TIME_OF_INSERTION DESC) as seqnum
@@ -17,16 +17,22 @@ FROM Matieres m LEFT JOIN
      ON m.id = r.ID_MATIERE AND
         seqnum = 1
 WHERE Active = TRUE AND ID_Formation = :formation;');
-$q->bindParam(':user', $_SESSION['id'], PDO::PARAM_INT);
-$q->bindParam(':formation', $infos['ID_FORMATION'], PDO::PARAM_INT);
-$q->bindParam(':mois', $moisquery, PDO::PARAM_STR);
-$q->execute();
-$count = $q->rowCount();
+$detailsresultats->bindParam(':user', $_SESSION['id'], PDO::PARAM_INT);
+$detailsresultats->bindParam(':formation', $infos['ID_FORMATION'], PDO::PARAM_INT);
+$detailsresultats->bindParam(':mois', $moisquery, PDO::PARAM_STR);
+$detailsresultats->execute();
+$count = $detailsresultats->rowCount();
 
-$resultats = $q->fetchAll();
+$resultats = $detailsresultats->fetchAll();
 
-$q = $bdd->query('SELECT * FROM Formations');
-$formations = $q->fetchAll();
+$formationsdetails = $bdd->query('SELECT * FROM Formations');
+$formations = $formationsdetails->fetchAll();
+
+$alluserformations = $bdd->prepare('SELECT * FROM FormationsUtilisateur LEFT JOIN Formations ON FormationsUtilisateur.IDENTIFIANT_FORMATION = Formations.ID_FORMATION WHERE FormationsUtilisateur.USER = :user ORDER BY FORMATION');
+$alluserformations->bindParam(':user', $_SESSION['id'], PDO::PARAM_INT);
+$alluserformations->execute();
+
+$countformations = $alluserformations->rowCount();
 
 ?>
 <?= myHeader('Profil'); ?>
@@ -43,7 +49,7 @@ $formations = $q->fetchAll();
                                 <img src="images/avatars/<?= $infos['Avatar']; ?>" onclick="setAvatar()" alt="avatar" class="rounded-circle clickable" id="Avatar" width="150" title="Cliquez pour changer votre photo de profil">
                                 <form class="d-none" id="formAvatar" method="post" enctype="multipart/form-data"><input class="d-none" type="file" id="inputAvatar" name="inputAvatar" /></form>
                                 <div class="mt-3 col-sm-12">
-                                    <?php if($infos['Admin'] != 1) { ?><h2 id="monPseudo" class="text-info"><?= $infos['Pseudo']?></h2><?php } else { ?> <h2 id="monPseudo" class="text-danger"><?= $infos['Pseudo']?> <?php } ?> <i class="fas fa-wrench text-warning editmode" id="Pseudo" onclick="setInfo(this.id, 'monPseudo')" title="Modifier mon pseudo"></i>
+                                    <?php if($infos['Admin'] != 1 && $infos['SuperAdmin'] != 1) { ?><h2 id="monPseudo" class="text-info"><?= $infos['Pseudo']?></h2><?php } else { ?> <h2 id="monPseudo" class="text-danger"><?= $infos['Pseudo']?> <?php } ?> <i class="fas fa-wrench text-warning editmode" id="Pseudo" onclick="setInfo(this.id, 'monPseudo')" title="Modifier mon pseudo"></i>
                                 </div>
                             </div>
                         </div>
@@ -100,10 +106,14 @@ $formations = $q->fetchAll();
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Formation</h6>
+                                    <h6 class="mb-0">Formation active</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <span id="maFormation"><?= $infos['FORMATION']; ?></span> ( session du <?= dateConvert($infos['DATE_DEBUT']); ?> au <?= dateConvert($infos['DATE_FIN']); ?> )
+                                    <span id="maFormation"><?= $infos['FORMATION']; ?> ( session du <?= dateConvert($infos['DATE_DEBUT']); ?> au <?= dateConvert($infos['DATE_FIN']); ?> )</span> <?php if($countformations > 1) { ?> <select id="formationselect" class="d-none"name="formationselect">
+                                        <?php while($userformations = $alluserformations->fetch()) {?>
+                                        <option value="<?= $userformations['IDENTIFIANT_FORMATION']; ?>" <?php if($userformations['IDENTIFIANT_FORMATION'] == $infos['ID_FORMATION']) { ?> selected <?php } ?>><?= $userformations['FORMATION']; ?></option>
+                                        <?php } ?>
+                                        </select> <i class="fas fa-wrench text-warning editmode" id="Formation" onclick="selectFormation(this.id, 'maFormation')" title="Changer de formation"></i><?php } ?>
                                 </div>
                             </div>
                             <hr>

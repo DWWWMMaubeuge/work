@@ -18,28 +18,36 @@ $intY=($y-(2*$marge))/10;
 
 if(isset($_GET['pseudo'])) {
     
-    if($infos['Admin'] != 0) {
+    if($infos['Admin'] != 0 || $infos['SuperAdmin'] != 0) {
     
-        $req = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Formations ON Options.FORMATION = Formations.ID_FORMATION WHERE Membres.Pseudo = :pseudo');
-        $req->bindParam(':pseudo', $_GET['pseudo'], PDO::PARAM_STR);
-        $req->execute();
-        $countmember = $req->rowCount();
+        $usermoyenne = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Formations ON Options.FORMATION = Formations.ID_FORMATION WHERE Membres.Pseudo = :pseudo');
+        $usermoyenne->bindParam(':pseudo', $_GET['pseudo'], PDO::PARAM_STR);
+        $usermoyenne->execute();
+        $countmember = $usermoyenne->rowCount();
         
         if($countmember == 1) {
         
-            $member = $req->fetch();
+            $member = $usermoyenne->fetch();
+            
+            if($member['Admin'] != 0 || $member['SuperAdmin'] != 0) {
+                
+                header('location: index.php');
+                exit();
+                
+            }
             
             $moyennes = getAverage($member['ID'], $member['ID_FORMATION']);
             
-            $stmt = $bdd->prepare('SELECT MOIS FROM Resultats WHERE ID_USER = :userid GROUP BY MOIS');
-            $stmt->bindParam(':userid', $member['ID'], PDO::PARAM_INT);
-            $stmt->execute();
-            $nbroccurence = $stmt->rowCount();
+            $allmonths = $bdd->prepare('SELECT MOIS FROM Resultats WHERE ID_USER = :userid AND FORMATION = :formation GROUP BY MOIS');
+            $allmonths->bindParam(':userid', $member['ID'], PDO::PARAM_INT);
+            $allmonths->bindParam(':formation', $member['ID_FORMATION'], PDO::PARAM_INT);
+            $allmonths->execute();
+            $nbroccurence = $allmonths->rowCount();
             
             if($nbroccurence != 0) {
                 
                 $moisgraphique = array();
-                $moisgraphique = $stmt->fetch();
+                $moisgraphique = $allmonths->fetch();
                 
             } else {
                 
@@ -47,11 +55,12 @@ if(isset($_GET['pseudo'])) {
                 
             }
             
-            $sql = $bdd->prepare('SELECT COUNT(DISTINCT MOIS) FROM Resultats WHERE ID_USER = :userid');
-            $sql->bindParam(':userid', $member['ID'], PDO::PARAM_INT);
-            $sql->execute();
+            $count = $bdd->prepare('SELECT COUNT(DISTINCT MOIS) FROM Resultats WHERE ID_USER = :userid AND FORMATION = :formation');
+            $count->bindParam(':userid', $member['ID'], PDO::PARAM_INT);
+            $count->bindParam(':formation', $member['ID_FORMATION'], PDO::PARAM_INT);
+            $count->execute();
             
-            $nbrmois = $sql->rowCount();
+            $nbrmois = $count->rowCount();
             
         } else {
             
@@ -69,10 +78,18 @@ if(isset($_GET['pseudo'])) {
     
 } else {
 
+if($infos['Admin'] != 0 || $infos['SuperAdmin'] != 0) {
+    
+    header('Location: index.php');
+    exit();
+    
+}
+
 $moyennes = getAverage($_SESSION['id'], $infos['ID_FORMATION']);
 
-$stmt = $bdd->prepare('SELECT MOIS FROM Resultats WHERE ID_USER = :userid GROUP BY MOIS');
+$stmt = $bdd->prepare('SELECT MOIS FROM Resultats WHERE ID_USER = :userid AND FORMATION = :formation GROUP BY MOIS');
 $stmt->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
+$stmt->bindParam(':formation', $infos['ID_FORMATION'], PDO::PARAM_INT);
 $stmt->execute();
 $nbroccurence = $stmt->rowCount();
 
@@ -87,8 +104,9 @@ if($nbroccurence != 0) {
     
 }
 
-$sql = $bdd->prepare('SELECT COUNT(DISTINCT MOIS) FROM Resultats WHERE ID_USER = :userid');
+$sql = $bdd->prepare('SELECT COUNT(DISTINCT MOIS) FROM Resultats WHERE ID_USER = :userid AND FORMATION = :formation');
 $sql->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
+$sql->bindParam(':formation', $infos['ID_FORMATION'], PDO::PARAM_INT);
 $sql->execute();
 
 $nbrmois = $sql->rowCount();
@@ -154,3 +172,4 @@ require_once('config/navbar.php');
     </div>
 </div>
 <?php require_once('config/footer.php'); ?>
+<?php print_r($infos['ID_FORMATION']); ?>

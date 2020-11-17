@@ -5,11 +5,11 @@
 <?php include('../config/captcha.php'); ?>
 <?php
 
-$q = $bdd->prepare('SELECT * FROM Inscriptions WHERE SECURE_KEY = :key');
-$q->bindParam(':key', $_GET['account'], PDO::PARAM_INT);
-$q->execute();
+$selectaccountinscription = $bdd->prepare('SELECT * FROM Inscriptions WHERE SECURE_KEY = :key');
+$selectaccountinscription->bindParam(':key', $_GET['account'], PDO::PARAM_INT);
+$selectaccountinscription->execute();
 
-$account = $q->fetch();
+$account = $selectaccountinscription->fetch();
 
 ?>
 <?php include('../config/head.php'); ?>
