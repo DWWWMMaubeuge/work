@@ -14,9 +14,6 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password']  )
     $password   = $_POST['password'];
     
 
-    // attention aux doublons des mail
- 
-
     $req = "SELECT count(*) as nb FROM $dbname.users WHERE mail='$mail' AND password='$password' ";
     $result = executeSQL( $req );
     $data = $result->fetch(PDO::FETCH_ASSOC);

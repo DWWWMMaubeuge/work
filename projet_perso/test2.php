@@ -1,156 +1,110 @@
 <?php
- include_once("function_connect.php");
 
-include_once("header.php");
-echo entete3("inscription");
-
-$bdd = new PDO("mysql:host=localhost;dbname=utilisateur;charset=utf8", "root", "");
-
-$req2 = $bdd->prepare("SELECT count(*) AS nb FROM users WHERE mail=:mail");
-
-
-if(isset($_POST['forminscription']))
-        {
-            if(!empty($_POST['name']) AND !empty($_POST['surname']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['password']) AND !empty($_POST['password2']) &&( $_POST && isset($_POST['name']) && isset($_POST['surname'])  && isset($_POST['mail']) && isset($_POST['mail2'])  && isset($_POST['password']) && isset($_POST['password2'])  ) )
-             
-            {
-              if($_POST['password'] == $_POST['password2'])
-              {
-                if($_POST['mail'] == $_POST['mail'])
-                {
-                  $req2->bindParam(':mail', $_POST['mail'], PDO::PARAM_STR);
-                  $req2->execute();
-                  $array = $req2->fetch(PDO::FETCH_ASSOC);
-                  
-                  if($array['nb'] == 0)
-                    { 
-                      if($_POST['mail'] == $_POST['mail2'])
-                        {
-                          $name       = $_POST['name'];
-                          $surname    = $_POST['surname'];
-                          $mail       = $_POST['mail'];
-                          $mail2       = $_POST['mail2'];
-                          $password   = $_POST['password'];
-                          $password2   = $_POST['password2'];
-                          $query = $bdd->prepare("INSERT INTO users(name,surname,mail,mail2,password,password2 ) VALUES( :name, :surname, :mail, :mail2, :password, :password )");
-                          $query->execute(array(
-                          "name"=>$_POST["name"],
-                          "surname"=>$_POST["surname"],
-                          "mail"=>$_POST["mail"],
-                          "mail2"=>$_POST["mail2"],
-                          "password"=> ($_POST["password"]),
-                          "password2"=> ($_POST["password2"])
-                          ));
-      
-                          $bdd = null;
-                          //header( "location:login.php"); 
-                          $good ="<h3>Félicitation vous venez de vous inscrire !<a href='login.php'>cliquez ici pour vous connectez !</a></h3>";
-                      }
-                  
-                     else{
-                        $erreur3 = "<h3>Vos adresses mails doivent etre identique !</h3>";
-                      }
-                    }
-                      else{
-                      $erreur5 = "<h3>Une même adresse mail existe déja !</h3>";
-                      }
-                    }
-                  else{
-                    $erreur4 = "<h3>Une même adresse mail existe déja !</h3>";
-                     }
-                    }
-            else{
-              $erreur1 = "<h3 class='erreur'>Vos mots de passes doivent être identique !</h3>";
-            }
-          }
-          else{
-               $erreur = "<h3>Tous les champs doivent etre complétés !</h3>";
-          }
-        }
-        
-        
-
-
+include 'function_connect.php';
+//include_once 'login.php';
 ?>
-
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>-->
+    <link rel="stylesheet" href="CSS/profil.css">
+    <link rel="stylesheet" href="CSS/main.css">
+    <script src="./JS/graph.js"></script>
+    <script src="./JS/changePwd"></script>
+</head>
 <body>
+    <div class="container my-5">
+        <div class="team-single">
+            <div class="row background text-white">
+                <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
+                    <div class="team-single-img mt-3" style="border-radius:5px">
+                        <img src="https://www.placecage.com/500/500" style="border-radius:15px" alt="">
+                    </div>
+                   
+                </div>
 
-    <div class="formulaire container" >
-      <FORM  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <div class="">
-          <div  class="inscr">
-          <h1>Inscription</h1>
-            <div class="pad">
-                <label class="" for="name">Prénom :</label>
-                <INPUT type='text' name='name' placeholder="saisir votre nom ici" id="name">
+                <div class="col-lg-8 col-md-7">
+                    <div class="team-single-text padding-50px-left sm-no-padding-left">
+                            <h4 class="font-size38 sm-font-size32 xs-font-size30"><?= $_SESSION['name']?></h4>
+                        <!-- <h4 class="font-size38 sm-font-size32 xs-font-size30"><?= ucwords($_SESSION['name']." ".$_SESSION['name'])?></h4> -->
+                        <div class="contact-info-section margin-40px-tb">
+                            <ul class="list-style9 no-margin">
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="fas fa-id-card-alt"></i>
+                                            <strong class="margin-10px-left">Nom</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p><?= $user['surname']?></p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="fas fa-id-card-alt"></i>
+                                            <strong class="margin-10px-left">Prenom</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p><?= $user['name']?></p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="fas fa-at"></i>
+                                            <strong class="margin-10px-left">email</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p><?= $user['mail']?></p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="fas fa-key"></i>
+                                            <strong class="margin-10px-left">Mot de passe</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <a id="changeMdp" class="underline text-white">changer mot de passe</a>
+                                            <div id="hidePwd">
+                                                <form method="post" action="PHP/SQLChangeMdp.php">
+                                                    <input type="password" id="newPwd" name="newPwd" placeholder="entrez votre nouveau mot de passe">
+                                                    <input type="submit" name="submitNewPwd" id="submitNewPwd" value="Confirmez">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+
+                    <h5 class="font-size24 sm-font-size22 xs-font-size20">Compétences</h5>
+                        <div class="sm-no-margin">
+                            <?= compProfil($array); ?>
+                        </div>
+                </div>
+                <div class="col-md-6" id="graphContainer">
+                    <img src="" alt="" id="graph" style="border-radius:20px;position:fixed;top:25%;">
+                </div>
             </div>
-            <div class="pad">
-              <label class="" for="surname">Nom :</label>
-              <INPUT type='text' name='surname' placeholder=" saisir votre prenom" id="surname">
-            </div>
-            <div class="pad">
-                <label  class="" for="mail">Email :</label>
-                <INPUT type='email' name='mail' placeholder="saisir votre mail" id="mail">
-            </div>
-            <div class="pad">
-                <label  class="" for="mail2">Email : </label>
-                <INPUT type='email' name='mail2' placeholder="veuillez confirmer votre mail" id="mail2">
-            </div>
-            <div class="pad">
-                <label  class="" for="password">Mot de Passe :</label>
-                <INPUT type='password' name='password' placeholder="saisir votre mot de passe" id="password">
-            </div>
-            <div class="pad">
-                <label  class=""  for="password2">confirmation Mot de Passe :</label>
-                <INPUT type='password' name='password2' placeholder="veuillez confirmer passe" id="password2">
-            </div>
-                <div class="enter">
-                <INPUT type='submit' name='forminscription' value="Je m'inscris !">
-            </div>
-            <div class="a">
-                <a href="login.php">déja un compte? Connectez-vous ici !</a>
-            </div>
-            <div class="a">
-                  <a href="accueil.php">pas maintenant? retour au menu</a>
-            </div>
-          
         </div>
-      </div>
-      </FORM>
-    <?php
-
-    if(isset($erreur3))
-    {
-        echo $erreur3;
-    }
-    if(isset($erreur4))
-    {
-        echo $erreur4;
-    }
-    if(isset($erreur5))
-    {
-        echo $erreur5;
-    }
-    if(isset($erreur))
-    {
-        echo $erreur;
-    }
-    if(isset($erreur1))
-    {
-        echo $erreur1;
-    }
-    if(isset($good))
-    {
-        echo $good;
-    }
-    ?>
     </div>
-    <?php
-
-Include "footer.php";
-echo footer();
-
-?>
-
 </body>
 </html>
