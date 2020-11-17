@@ -34,6 +34,8 @@ if (!isset($_SESSION["surname"])) {
     header("Location: Login.php");
     exit();
 }
+
+
 /* function setWidgetValuex( $skill  )
 {
 $widget = "<div ><p>".$skill[1]."</p><input id='number' type='number' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\"></div>\n";
@@ -44,13 +46,19 @@ function setWidgetValue2($skill)
 {
 
     $widget = "<div class =\"styled\"  >\n";
-    $widget .= "<p>" . $skill[1] . "</p><select id= \"lol\" name=\"valSkill\" onchange=\"MAJ_Value( " . $skill[0] . ", this.value )\">\n";
-    $widget .= "<option value= id='lool'></option>\n";
-    for ($a = 1; $a < 11; $a++) {
-        $widget .= "<option value=\"$a\">$a</option>\n";
-    }
 
-    $widget .= "</select><br>\n";
+        $widget .= "<p>" . $skill[1] . "</p>\n";
+
+        $widget .= "<p id=\"aff" . $skill[0] . "\"></p>\n";
+
+        $widget .= "<select class=\"lol\" id=\"lol" . $skill[0] . "\" name=\"valSkill\" onchange=\"MAJ_Value( ". $skill[0] .", this.value )\">\n";
+        $widget .= "<option value=0 class=\"lool\"></option>\n";
+        for ($a = 1; $a < 11; $a++) 
+        {
+            $widget .= "<option value=\"$a\">$a</option>\n";
+        }
+        $widget .= "</select><br>\n";
+
     $widget .= "</div>\n";
     
 
@@ -80,7 +88,7 @@ return $widget;
 
 function setAllWidgetValue($skills)
 {
-    $widget = "<div id='skill' >\n";
+    $widget = "<div class='skill' >\n";
     foreach ($skills as $skill) {
         $widget .= setWidgetValue2($skill);
     }
@@ -93,6 +101,7 @@ $ID_user = $_SESSION['ID_user'];
 $id_formation = $_SESSION['id_formation'];
 $name_user = $_SESSION['name'];
 $surname_user = $_SESSION['surname'];
+
 
 echo "<h1> Bienvenue \"$surname_user\" sur le site d'évaluation </h1>\n";
 
@@ -114,11 +123,9 @@ while ($data = $result->fetch_assoc()) {
 
 
     function MAJ_Value( id_skill, value  )
-
-    document.getElementById("message_validation").innerHTML = "valeur enregistrée";
     {
+      document.getElementById("aff"+id_skill).innerHTML = value;
       var xhttp = new XMLHttpRequest();
-
       xhttp.onreadystatechange = function() 
       {
             if (this.readyState == 4 && this.status == 200)
@@ -127,7 +134,7 @@ while ($data = $result->fetch_assoc()) {
             }
       };
 
-      xhttp.open("GET", "maj_value.php?idSkill="+id_skill+"&valSkill="+value, true);
+      xhttp.open("GET", "maj_value.php?idUser=<?=$ID_user?>&idSkill="+id_skill+"&valSkill="+value, true);
       xhttp.send();
     }
 </script>
@@ -140,6 +147,7 @@ while ($data = $result->fetch_assoc()) {
 
 </FORM>
 
+<p id="message_validation"></p>
 
 </body>
 

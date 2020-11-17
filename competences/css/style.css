@@ -47,7 +47,7 @@ h4 {
   margin-left: 25px;
 }
 
-#skill {
+.skill {
   color: red;
   margin-left: 25px;
 }
@@ -55,7 +55,7 @@ h4 {
   margin-right: 10%;
 }
 
-#lol {
+.lol {
   display: block;
   color: chocolate;
   font-family: "Giorgia";
