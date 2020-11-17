@@ -12,12 +12,29 @@
   }
 ?>
 
+<body>
+
 <?php
 include "Entete.php";
 HEAD("Page compétences");
 require "FunctionWidget.php";
 include "Connect.php";
+include "NavAdmin.php";
+Navb()
 ?>
+
+ 			<div class="header-info text-center">
+				<div class="container">
+					<h1><span> </span><label>Vos niveaux de maîtrise</label> <?php echo $_SESSION['surname']; ?>!<span> </span></h1>
+					<p>Admin Home.</p>
+					<a class="down-arrow down-arrow-to scroll" href="#about"><span> </span></a>
+					<label class="mouse-divice"> </label>
+				</div>
+			</div>
+			</div>
+      <div class="clearfix"> </div>
+      
+
 
 <script>
 
@@ -33,7 +50,7 @@ function MAJValue( id_skill, value  )
     }
   };
 
-  xhttp.open("GET", "maj_value.php?id_skill="+id_skill+"&value="+value, true);
+  xhttp.open("GET", "majValue.php?id_skill="+id_skill+"&value="+value, true);
   xhttp.send();
 }	
 
@@ -62,8 +79,16 @@ while( $data = $result->fetch_assoc())
 
 <FORM  method='POST' name="formSkill" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <?php 
-echo "<div class='skills'>";
+echo "<div class='container'>";
 echo setAllWidgetValue( $skills );
 echo "</div>";
  ?>
 </FORM>
+
+</body>
+<footer>
+<div class="footer text-center">
+				<a href="#"><img src="images/footer-logo.png" title="daisy" /></a>
+      </div>
+</footer>
+</html>

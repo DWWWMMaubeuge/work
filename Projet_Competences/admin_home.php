@@ -34,9 +34,12 @@ NavbAdmin();
 				</div>
 			</div>
 			</div>
-			<div class="clearfix"> </div>
+      <div class="clearfix"> </div>
+      
+      </body>
 
-			<!---- footer ---->
+      <!---- footer ---->
+      <footer>
 			<div class="footer text-center">
 				<a href="#"><img src="images/footer-logo.png" title="daisy" /></a>
 				<script type="text/javascript">
@@ -56,7 +59,8 @@ NavbAdmin();
 								</script>
 				<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 			</div>
-			<!---- footer ---->
+      <!---- footer ---->
+      </footer>
 			<link rel="stylesheet" href="css/swipebox.css">
 			<script src="js/jquery.swipebox.min.js"></script> 
 			    <script type="text/javascript">
@@ -65,7 +69,9 @@ NavbAdmin();
 					});
 				</script>
 
-</body>
+
+</html>
+
 
 
 
