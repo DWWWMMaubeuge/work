@@ -78,74 +78,19 @@ while( $data = $result->fetch_assoc())
 
 ?>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<style>/*
-.drum-viewport {
-  position: relative;
-  height: 8em;
-  background: hsl(0, 0%, 90%);
-  border: 5px solid hsl(0, 0%, 90%);
-  cursor: pointer;
+<style>
+.background{
+
 }
-
-.drum-viewport:focus {
-  outline: none;
-  background: hsl(0, 0%, 85%);
-  border-color: hsl(0, 0%, 85%);
+.menue{
+	
 }
-
-.drum-viewport::before,
-.drum-viewport::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  height: 3em;
-}
-
-.drum-viewport::before {
-  top: 0;
-  background: linear-gradient(to bottom,
-    hsla(0, 0%, 90%, 1),
-    hsla(0, 0%, 90%, 0));
-}
-
-.drum-viewport::after {
-  bottom: 0;
-  background: linear-gradient(to bottom,
-    hsla(0, 0%, 90%, 0),
-    hsla(0, 0%, 90%, 1));
-}
-
-.drum-viewport:focus::before {
-  background: linear-gradient(to bottom,
-    hsla(0, 0%, 85%, 1),
-    hsla(0, 0%, 85%, 0));
-}
-
-.drum-viewport:focus::after {
-  background: linear-gradient(to bottom,
-    hsla(0, 0%, 85%, 0),
-    hsla(0, 0%, 85%, 1));
-}
-
-.drum-item {
-  padding: 0.4em;
-  background: white;
-  color: hsl(210, 90%, 37%);
-  text-align: center;
-  font-weight: bold;
-}
-
-.drum-item:not(:last-child) {
-  border-bottom: 1px solid hsl(30, 90%, 55%);
-}*/
-
-
 </style>
 
 <script src="jquery.drum.min.js">
-  
+
+
+}  
 </script>
 
 
