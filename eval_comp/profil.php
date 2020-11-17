@@ -178,7 +178,7 @@ $countformations = $alluserformations->rowCount();
                             </div>
                         </div>
                     </div>
-                    <?php if($infos['Admin'] != 1) { ?>
+                    <?php if($infos['Admin'] != 1 && $infos['SuperAdmin'] != 1) { ?>
                         <div class="row gutters-sm">
                             <div class="col-sm-12 mb-3">
                                 <div class="card h-100">

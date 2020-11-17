@@ -109,6 +109,17 @@ $count = $resultats->rowCount();
                                 <hr>
                                 <?php } ?>
                             <?php } ?>
+                            <?php if($infos['SuperAdmin'] != 0 || $infos['Admin'] != 0) { ?>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Email</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <?= $user['Email']; ?>
+                                    </div>
+                                </div>
+                                <hr>
+                            <?php } ?>
                             <div class="row">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Formation</h6>
