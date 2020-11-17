@@ -105,3 +105,13 @@ footer
 
   text-align: center;
 }
+
+.C2captcha{
+  padding:10px;
+  display:inline-block;
+  border:3px double red;
+  text-align:center}
+.C2captcha:hover{border-style:solid}
+.C2captcha_inputs{display:inline-block;height:40px;margin-top:10px}
+.C2captcha_inputs img{margin:0;height:100%;max-height:calc(100% - 2px);border:1px solid gray!important}
+.C2captcha_inputs input{width:60px;display:inline;margin:0;vertical-align:top;height:calc(100% - 2px);padding:0;border:0px;border-bottom:2px dashed gray}
