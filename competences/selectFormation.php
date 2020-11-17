@@ -1,7 +1,10 @@
 <?php
 require 'src/connexion.php';
+<<<<<<< HEAD
 require './navBar.php';
 
+=======
+>>>>>>> 49803271f7874ef09e9d87cc2fe4c1665cdf2784
 
 $req = $bdd->prepare("SELECT * FROM formations");
 $req->execute();
@@ -12,6 +15,7 @@ while ($data = $req->fetch()) {
 }
 $req->closeCursor();
 
+<<<<<<< HEAD
 if (isset($_POST["formationName"]) && isset($_POST["nbSkills"])) {
   $formationName = $formationsArray[$_POST["formationName"]-1][1];
   $id_formation = $_POST["formationName"];
@@ -75,3 +79,32 @@ if (isset($_POST["formationName"]) && isset($_POST["nbSkills"])) {
 
 </body>
 </html>
+=======
+if (isset($_POST["formationName"])) {
+  $formationName = $_GET["formationName"];
+
+  // A FINIR
+}
+?>
+
+<form action="#" method="POST">
+
+
+  <div class="form-group row">
+    <select name="formationName" class='form-control'>
+      <option value="#">Sélectionner une formation</option>
+      <?php foreach ($formationsArray as $formation) : ?>
+
+        <option value="<?= $formation[0] ?>"><?= $formation[1] ?></option>
+
+      <?php endforeach; ?>
+    </select>
+  </div>
+
+  <div class="form-group row">
+    <input type="number" class="form-control" name="nbSkills" id="nbSkills" min="0" max="20" placeholder="Nombre de compétences" required>
+  </div>
+  <button type="submit" class="btn btn-block btn-success text-white">OK</button>
+
+</form>
+>>>>>>> 49803271f7874ef09e9d87cc2fe4c1665cdf2784

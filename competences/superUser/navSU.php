@@ -8,8 +8,13 @@ function dashSU() {
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><a href="superUser/insertFormation.php">Ajouter une formation</a></li>
+<<<<<<< HEAD
         <li class="list-group-item"><a href="selectFormation.php" id="addSkills">Ajouter des compétences</a></li>
         <li class="list-group-item"><a href="admin/toggleSkills.php">Activer/Désactiver des compétences</a></li>
+=======
+        <li class="list-group-item"><a href="#" id="addSkills">Ajouter des compétences</a></li>
+        <li class="list-group-item">Vestibulum at eros</li>
+>>>>>>> 49803271f7874ef09e9d87cc2fe4c1665cdf2784
       </ul>
     </div>
 EOL;

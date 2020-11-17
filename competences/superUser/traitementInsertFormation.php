@@ -27,7 +27,11 @@ if (!empty($_GET["formation"]) && isset($_GET["nbSkills"])) {
     ));
     $req->closeCursor();
 
+<<<<<<< HEAD
     header('location: ../dashboardSU.php?success=1');
+=======
+    header('location: ../dashboardSU.php?succes=1');
+>>>>>>> 49803271f7874ef09e9d87cc2fe4c1665cdf2784
     exit();
   } else {
     // ON TESTE SI LA FORMATION EXISTE DEJA
