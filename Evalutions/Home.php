@@ -14,7 +14,6 @@
 </head>
 <body>
 <!-- <div class="sucess">
-
 <div class="btn">
 <span class="noselect">< Evaluation </span>
 </div>
@@ -47,7 +46,7 @@ function setWidgetValue2( $skill  )
 {
 
     $widget = "<div class =\" styled\"  >\n";
-    $widget .="<p>".$skill[1]."</p><select id= \"lol\" name=\"valSkill\" onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
+    $widget .="<p>".$skill[1]."</p><select id= \"lol\" name=\"valSkill\" onchange=\"maj_Value( ".$skill[0].", this.value )\">\n";
     $widget .="<option value= id='lool'\"\"></option>\n";
         for( $a=1 ; $a<11 ; $a++ )
     $widget .="<option value=\"$a\">$a</option>\n";
@@ -67,7 +66,6 @@ function setWidgetValue2( $skill  )   // ID    name
   $widget .= "</div>\n";
   return $widget; 
 }
-
 */
 
 
@@ -102,10 +100,10 @@ echo "<h1> Bienvenue \"$surname_user\" sur le site d'évaluation </h1>\n";
 
 
 $req = "SELECT* FROM $DB_dbname.skills";
-$result = executeSQL( $req );
+$results = executeSQL( $req );
 
 $skills = [];
-while( $data = $result->fetch_assoc())
+while( $data = $results->fetch_assoc())
 {
     array_push( $skills, [ $data['id'], $data[ 'name']   ] );
 }
@@ -120,9 +118,8 @@ while( $data = $result->fetch_assoc())
 <script>
 
     
-    function MAJ_Value( id_skill, value  )
+    function maj_Value( id_skill, value  )
 
-    document.getElementById("message_validation").innerHTML = "valeur enregistrée";
     {
       var xhttp = new XMLHttpRequest();
       
