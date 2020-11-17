@@ -6,7 +6,7 @@ echo entete3("inscription");
 
 $bdd = new PDO("mysql:host=localhost;dbname=utilisateur;charset=utf8", "root", "");
 
-$query2 = $bdd->prepare("SELECT count(*) AS nb FROM users WHERE mail=:mail");
+$req2 = $bdd->prepare("SELECT count(*) AS nb FROM users WHERE mail=:mail");
 
 
 if(isset($_POST['forminscription']))
@@ -18,43 +18,43 @@ if(isset($_POST['forminscription']))
               {
                 if($_POST['mail'] == $_POST['mail'])
                 {
-                  $query2->bindParam(':mail', $_POST['mail'], PDO::PARAM_STR);
-                  $query2->execute();
-                  $array = $query2->fetch(PDO::FETCH_ASSOC);
-
-                  if($array['nb'] == 0){
-                    {
+                  $req2->bindParam(':mail', $_POST['mail'], PDO::PARAM_STR);
+                  $req2->execute();
+                  $array = $req2->fetch(PDO::FETCH_ASSOC);
+                  
+                  if($array['nb'] == 0)
+                    { 
                       if($_POST['mail'] == $_POST['mail2'])
-                      {
-                        $name       = $_POST['name'];
-                        $surname    = $_POST['surname'];
-                        $mail       = $_POST['mail'];
-                        $mail2       = $_POST['mail2'];
-                        $password   = $_POST['password'];
-                        $password2   = $_POST['password2'];
-                        $query = $bdd->prepare("INSERT INTO users(name,surname,mail,mail2,password,password2 ) VALUES( :name, :surname, :mail, :mail2, :password, :password )");
-                        $query->execute(array(
-                        "name"=>$_POST["name"],
-                        "surname"=>$_POST["surname"],
-                        "mail"=>$_POST["mail"],
-                        "mail2"=>$_POST["mail2"],
-                        "password"=> ($_POST["password"]),
-                        "password2"=> ($_POST["password2"])
-                        ));
-    
-                        $bdd = null;
-                        //header( "location:login.php"); 
-                        $good ="<h3>Félicitation vous venez de vous inscrire !<a href='login.php'>cliquez ici pour vous connectez !</a></h3>";
+                        {
+                          $name       = $_POST['name'];
+                          $surname    = $_POST['surname'];
+                          $mail       = $_POST['mail'];
+                          $mail2       = $_POST['mail2'];
+                          $password   = $_POST['password'];
+                          $password2   = $_POST['password2'];
+                          $query = $bdd->prepare("INSERT INTO users(name,surname,mail,mail2,password,password2 ) VALUES( :name, :surname, :mail, :mail2, :password, :password )");
+                          $query->execute(array(
+                          "name"=>$_POST["name"],
+                          "surname"=>$_POST["surname"],
+                          "mail"=>$_POST["mail"],
+                          "mail2"=>$_POST["mail2"],
+                          "password"=> ($_POST["password"]),
+                          "password2"=> ($_POST["password2"])
+                          ));
+      
+                          $bdd = null;
+                          //header( "location:login.php"); 
+                          $good ="<h3>Félicitation vous venez de vous inscrire !<a href='login.php'>cliquez ici pour vous connectez !</a></h3>";
                       }
-                    
+                  
                      else{
-                        $erreur3 = "<h3>Les adresses mails doivent etre identique</h3>";
+                        $erreur3 = "<h3>Vos adresses mails doivent etre identique !</h3>";
                       }
                     }
                       else{
                       $erreur5 = "<h3>Une même adresse mail existe déja !</h3>";
-                     }
-                    
+                      }
+                    }
                   else{
                     $erreur4 = "<h3>Une même adresse mail existe déja !</h3>";
                      }
