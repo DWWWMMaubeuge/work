@@ -1,99 +1,75 @@
-body{
-   
-    font-family:' Verdana';
-    min-height: 50vh;
-	background: url("../img/tel.webp") no-repeat ;
-    background-size: cover;
-    background-color: transparent;
-    image-rendering: auto;
-   
-
-
- 
+body {
+  font-family: " Verdana";
+  min-height: 50vh;
+  background: url("../img/tel.webp") no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  image-rendering: auto;
 }
 
-.styled
-{
-            margin-top: 7px;
-            padding:5px;
-        
-            margin-left: 25px;
-            margin-right:70px;
-            float: left;
-            width: 160px;
-            /* border: 1mm ridge rgba(228, 50, 5, 0.87); */ 
-            border: thick double rgb(216, 197, 120); 
-            /* border: dashed red; */
-            border-radius: 40px;
-            
-            background:transparent;
-            opacity: 1;
-            height: 70px;
+.styled {
+  margin-top: 7px;
+  padding: 5px;
+  margin-left: 25px;
+  margin-right: 70px;
+  float: left;
+  width: 160px;
+  /* border: 1mm ridge rgba(228, 50, 5, 0.87); */
+  border: thick double rgb(216, 197, 120);
+  /* border: dashed red; */
+  border-radius: 40px;
+  background: transparent;
+  opacity: 1;
+  height: 70px;
 }
 
-.styled p{
-            font-family: 'Giorgia';
-            font-size: 23px;
-            font-weight: 10;
-            text-transform: uppercase;
-            color:	rgb(255,248,220);
-            text-align: center;
-            text-shadow: 1px 1px 1px ;
-            height: 15px;
+.styled p {
+  font-family: "Giorgia";
+  font-size: 13px;
+  font-weight: 10;
+  text-transform: uppercase;
+  color: rgb(255, 248, 220);
+  text-align: center;
+  text-shadow: 1px 1px 1px;
+  height: 15px;
 }
 
-h1
-{
-            text-align: center;
-            color:rgb(255, 255, 255);
-            font-size: 30px;
-            border-bottom: 10px solid #ffffff;
-            text-decoration: none;
+h1 {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+  border-bottom: 10px solid #ffffff;
+  text-decoration: none;
 }
 
-h4
-{
-          text-align: right;
-          margin-left:25px;
-
+h4 {
+  text-align: right;
+  margin-left: 25px;
 }
 
-#skill
-{
-        color : red;
-        margin-left:25px;
-        
+#skill {
+  color: red;
+  margin-left: 25px;
 }
-.container
-{
-      margin-right: 10%;  
+.container {
+  margin-right: 10%;
 }
 
-
-#lol
-{
-            display:block;
-            color:chocolate;
-            font-family: 'Giorgia';
-            margin-left: 80%;
-            padding-bottom: 5%;
-            width: 20px;
-            height: 20px;
-            text-align: center;
-background-color: black;
-            border-radius: 90px;
-            
-}
-   
-
-
-.g-recaptcha{
-
-
-    width: 300px;
+#lol {
+  display: block;
+  color: chocolate;
+  font-family: "Giorgia";
+  margin-left: 80%;
+  padding-bottom: 5%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  background-color: black;
+  border-radius: 90px;
 }
 
+.g-recaptcha {
+  width: 300px;
+}
 
-    /* -----------------------------------------------Formulaire------------------------------------------------------------------- */
-
-
+/* -----------------------------------------------Formulaire------------------------------------------------------------------- */

@@ -5,26 +5,25 @@ include_once(  "CO_global_functions.php"  );
 
 if(isset($_POST['submitpost']))  
 { 
-            if(isset($_POST['g-Recaptcha-Response'])) 
-
-            { 
-                        $recaptcha = new \ReCaptcha\ReCaptcha('6LfHIuIZAAAAAImcpkuK6yZ-UBKcQycnVak8eGUZ ');
-                        $resp = $recaptcha ->verify($_POST['g-Recaptcha-Response'] ) ;
-                                        if ($resp->isSuccess()) 
-                                        {
-                                            echo" ('Captcha Valide')";
-                                                        // Verified!
-                                        } 
-                                    elseif($resp->getErrorCodes())
-                                        {
-                                        
-                                            echo"('Captcha Invalide')";
-                                        } 
-                                        else 
-                                        {
-                                          var_dump ('captcha non rempli');
-                                        }
-            } 
+    if(isset($_POST['g-Recaptcha-Response'])) 
+    { 
+     $recaptcha = new \ReCaptcha\ReCaptcha('6LfHIuIZAAAAAImcpkuK6yZ-UBKcQycnVak8eGUZ ');
+        $resp = $recaptcha ->verify($_POST['g-Recaptcha-Response'] ) ;
+                if ($resp->isSuccess()) 
+                {
+                    echo" ('Captcha Valide')";
+                                // Verified!
+                } 
+                elseif($resp->getErrorCodes())
+                {
+                
+                    echo"('Captcha Invalide')";
+                } 
+                else 
+                {
+                    var_dump ('captcha non rempli');
+                }
+    } 
 }
 
 
@@ -58,35 +57,23 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail']
         <body>
         <!-- <img src="img/logo3.png" alt=""> -->
 
-    <FORM  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <img src="img/logo6.png" alt=""> 
-        <label for=""><h2>INSCRIPTION</h2></label>
-        <INPUT type='text' name='name' placeholder="votre nom ici">
-        <br>
-        <INPUT type='text' name='surname' placeholder="votre prenom">
-        <br>
-        <INPUT type='text' name='mail' placeholder="votre mail">
-        <br>
-        <INPUT type='text' name='password' placeholder="votre mot de passe">
-        <br>
-        <div class="g-recaptcha" data-theme="dark" data-sitekey="6LfHIuIZAAAAANFucggGUn8r_r5i9zvgiYoUHDQq"></div> 
-        <br> 
-        <p class="box-register">Déjà inscrit? <a href="login.php">Connectez-vous ici</a></p>
-        <input type="submit" value="Valider" name="submitpost'"> 
-        
-    </FORM>
-
-                                    
-
+            <FORM  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <img src="img/logo6.png" alt=""> 
+                <label for=""><h2>INSCRIPTION</h2></label>
+                <INPUT type='text' name='name' placeholder="votre nom ici">
+                <br>
+                <INPUT type='text' name='surname' placeholder="votre prenom">
+                <br>
+                <INPUT type='email' name='mail' placeholder="votre mail">
+                <br>
+                <INPUT type='text' name='password' placeholder="votre mot de passe">
+                <br>
+                <div class="g-recaptcha" data-theme="dark" data-sitekey="6LfHIuIZAAAAANFucggGUn8r_r5i9zvgiYoUHDQq"></div> 
+                <br> 
+                <p class="box-register">Déjà inscrit? <a href="login.php">Connectez-vous ici</a></p>
+                <input type="submit" value="Valider" name="submitpost'"> 
+                
+            </FORM>
 
      </body>
 </html>
-
-
-
-        
-        
-        
-        
-        
-        

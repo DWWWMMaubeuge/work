@@ -15,7 +15,7 @@ function executeSQL( $req )
 		//echo "new mysqli($DB_URL, $DB_user, $DB_PW);<br>";
 		// Create connection
 		$conn = new mysqli($DB_URL, $DB_user, $DB_PW);
-
+        
 		// Check connection
 		if ($conn->connect_error) 
 		{
@@ -35,9 +35,6 @@ function executeSQL( $req )
 	return $result;
 }
 
+?> 
 
 
-
-
-
-?>

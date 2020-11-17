@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">   
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -52,96 +52,6 @@ function setWidgetValue2($skill)
 
     $widget .= "</select><br>\n";
     $widget .= "</div>\n";
-    
 
     return $widget;
 }
-
-
- 
-/*
-function setWidgetValue2( $skill  )   // ID    name
-{
-$widget  = "";
-$widget .= "<div class=\"skills\" >\n";
-$widget .= "<p>".$skill[1]."</p>\n";
-$widget .= "<input id='number' type='number' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
-$widget .= "</div>\n";
-return $widget;
-}
-function 
- */
-
-/* function setWidgetValue( $skill )
-{
-$widget = "<p>".$skill[1]."</p><input type='range'  value='0' class='form-control-range' min='0' step='1' max='10' id='".$skill[0]."' name='valSkill' onchange=\"MAJ_Value( ".$skill[0].", this.value )\" >\n";
-return $widget;
-} */
-
-function setAllWidgetValue($skills)
-{
-    $widget = "<div id='skill' >\n";
-    foreach ($skills as $skill) {
-        $widget .= setWidgetValue2($skill);
-    }
-
-    $widget .= "</div>\n";
-    return $widget;
-}
-
-$ID_user = $_SESSION['ID_user'];
-$id_formation = $_SESSION['id_formation'];
-$name_user = $_SESSION['name'];
-$surname_user = $_SESSION['surname'];
-
-echo "<h1> Bienvenue \"$surname_user\" sur le site d'évaluation </h1>\n";
-
-$req = "SELECT* FROM $DB_dbname.skills where id_formation= $id_formation" ;
-$result = executeSQL($req);
-
-$skills = [];
-while ($data = $result->fetch_assoc()) {
-    array_push($skills, [$data['id'], $data['name']]);
-}
-
-//print_r( $skills );
-
-?>
-
-
-
-<script>
-
-
-    function MAJ_Value( id_skill, value  )
-
-    document.getElementById("message_validation").innerHTML = "valeur enregistrée";
-    {
-      var xhttp = new XMLHttpRequest();
-
-      xhttp.onreadystatechange = function() 
-      {
-            if (this.readyState == 4 && this.status == 200)
-            {
-                document.getElementById("message_validation").innerHTML = "valeur enregistrée";
-            }
-      };
-
-      xhttp.open("GET", "maj_value.php?idSkill="+id_skill+"&valSkill="+value, true);
-      xhttp.send();
-    }
-</script>
-
-
-<FORM  method='POST' name="formSkill" action="<?php echo $_SERVER['PHP_SELF']; ?>">
- <div class=" container">
-<?php echo setAllWidgetValue($skills); ?>
-</div>
-
-</FORM>
-
-
-</body>
-
-</html>
-
