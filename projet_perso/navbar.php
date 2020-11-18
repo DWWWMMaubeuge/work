@@ -37,7 +37,7 @@ Nicolas
 Mon Compte
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<a class="dropdown-item" href="#">Mon profile</a>
+<a class="dropdown-item" href="profile.php">Mon profile</a>
 <div class="dropdown-divider"></div>
 <a class="dropdown-item" href="logOut.php"> se déconnecter</a>
 </div>

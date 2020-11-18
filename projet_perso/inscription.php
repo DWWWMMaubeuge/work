@@ -45,8 +45,9 @@ if(isset($_POST['forminscription']))
                                 ));
             
                                 $bdd = null;
-                                //header( "location:login.php"); 
-                                $good ="<h3>Félicitation vous venez de vous inscrire !<a href='login.php'>cliquez ici pour vous connectez !</a></h3>";
+                            
+                                //$good ="<h3>Félicitation vous venez de vous inscrire !<a href='login.php'>cliquez ici pour vous connectez !</a></h3>";
+                                header( "location:login.php"); 
                             }
                     
                         else{
@@ -149,10 +150,11 @@ if(isset($_POST['forminscription']))
     {
         echo '<span style="color:red;">'.$erreur1.'</span>';
     }
-    if(isset($good))
+    /* if(isset($good))
     {
+        //return header( "location:login.php");
         echo $good;
-    }
+    } */
     ?>
     </div>
     <?php

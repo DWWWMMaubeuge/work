@@ -15,12 +15,22 @@
   text-align: center;
   padding-top: 300px;
   padding-bottom: 30px;
-  color: #252323;
+  color:#252323;
 }
+
+/* .titre h2{
+  font-size: 60px;
+  text-align: center;
+  padding-top: 300px;
+  padding-bottom: 30px;
+  color: #252323;
+}  */
+
 body{
   opacity:1;
   /*background-color: rgb(180, 154, 112);  */
   background-color:#1f2129;
+
 }
 .d-block{
   
