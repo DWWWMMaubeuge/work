@@ -4,6 +4,6 @@
 
 	$DB_user 	= "root";
 	$DB_PW 		= "";
-	$DB_dbname 	= "DWWM_Maubeuge";
+	$DB_dbname 	= "dwwm_Maubeuge";
 
 ?>
