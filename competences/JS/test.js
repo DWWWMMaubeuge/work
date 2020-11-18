@@ -1,7 +1,9 @@
 $(function() {
-  $("select").change(function() {
-    $.post("displaySkillsAdmin.php", {
-        id_formation: $(this).attr("id")
-      });
+  $("a").click(function() {
+    $.post("disableSkill.php", {
+      id_skill: $(this).attr("id")
+    }, function() {
+      location.reload()
     });
+  });
 });

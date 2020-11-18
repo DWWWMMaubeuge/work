@@ -31,13 +31,14 @@ if (!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["email"]
   $password = hash('sha256', $password);
 
   // ON INSERT L'USER DANS LA BDD
-  $req = $bdd->prepare("INSERT INTO users(fname, lname, email, password, role) VALUES(:fname, :lname, :email, :password, :role)");
+  $req = $bdd->prepare("INSERT INTO users(fname, lname, email, password, role, id_formation) VALUES(:fname, :lname, :email, :password, :role, :id_formation)");
   $req->execute(array(
   "lname" => $lname,
   "fname" => $fname,
   "email" => $email,
   "password" => $password,
   "role" => "stagiaire",
+  "id_formation" => 2
   ));
 
   // ON RECUPERE L'ID DE L'USER
@@ -49,23 +50,27 @@ if (!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["email"]
   while ($users = $req->fetch()) {
     if ($password == $users["password"]) {
       $_SESSION["id_user"] = $users["id"];
+      $_SESSION["id_formation"] = $users["id_formation"];
     }
   }
 
   // ON RECUPERE LE NOMBRE DE COMPETNCES
-  $req = $bdd->prepare("SELECT COUNT(*) as nb FROM competences");
-  $req->execute();
+  $req = $bdd->prepare("SELECT * FROM competences WHERE id_formation = :id_formation");
+  $req->execute(array(
+    "id_formation" => $_SESSION["id_formation"]
+  ));
 
-  $nb_competences = $req->fetch(pdo::FETCH_ASSOC);
-  $nb_competences = intval($nb_competences["nb"]);
+  $nb_competences = $req->fetchAll(PDO::FETCH_ASSOC);
+  //$nb_competences = intval($nb_competences["nb"]);
 
   //ON INITIALISE lES EVALUATIONS A 0
-  for ($i = 1; $i <= $nb_competences; $i++) { 
-    $req=$bdd->prepare("INSERT INTO resultats(id_user, id_competence, evaluation) VALUES(:id_user, :id_competence, :evaluation)");
+  foreach ($nb_competences as $competence) { 
+    $req=$bdd->prepare("INSERT INTO resultats(id_user, id_competence, evaluation, id_formation) VALUES(:id_user, :id_competence, :evaluation, :id_formation)");
     $req->execute(array(
     "id_user" => $_SESSION["id_user"],
-    "id_competence" => $i,
-    "evaluation" => 0
+    "id_competence" => $competence["id"],
+    "evaluation" => 0,
+    "id_formation" => $_SESSION["id_formation"]
     ));
     $req->closeCursor();
   }

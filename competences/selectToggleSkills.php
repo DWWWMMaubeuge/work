@@ -11,12 +11,10 @@ while ($data = $req->fetch()) {
 }
 $req->closeCursor();
 
-if (isset($_POST["formationName"]) && isset($_POST["nbSkills"])) {
-  $formationName = $formationsArray[$_POST["formationName"]-1][1];
+if (isset($_POST["formationName"])) {
   $id_formation = $_POST["formationName"];
-  $nbSkills = $_POST["nbSkills"];
 
-  header('Location: admin/insertSkillsInFormation.php?id_formation=' . $id_formation . '&formation=' . $formationName . '&nbSkills=' . $nbSkills);
+  header('Location: admin/toggleSkills.php?id_formation=' . $id_formation);
   exit();
 } 
 
@@ -47,22 +45,21 @@ if (isset($_POST["formationName"]) && isset($_POST["nbSkills"])) {
         <?php endif; ?>
       <?php endif; ?>
 
+
       <form action="#" method="POST">
 
+        
 
         <div class="form-group row">
-          <select name="formationName" class='form-control'>
-            <option value="#">Sélectionner une formation</option>
+
+        <select name="formationName" class='form-control'>
+            <option>Sélectionner une formation</option>
 
             <?php foreach ($formationsArray as $formation) : ?>
-              <option value="<?= $formation[0] ?>"><?= $formation[1] ?></option>
+                <option value="<?= $formation[0] ?>"><?= $formation[1] ?></option>
             <?php endforeach; ?>
 
-          </select>
-        </div>
-
-        <div class="form-group row">
-          <input type="number" class="form-control" name="nbSkills" id="nbSkills" min="0" max="20" placeholder="Nombre de compétences" required>
+        </select>
         </div>
 
         <button type="submit" class="btn btn-block btn-success text-white" id="ok">OK</button>

@@ -13,9 +13,9 @@ $mailer = new Swift_Mailer($transport);
 
 // Create a message
 $message = (new Swift_Message('Inscription DWWM'))
-  ->setFrom(['admin@admin.fr' => 'Jean cule'])
+  ->setFrom(['competences@admin.fr' => 'Projet compétences'])
   ->setTo('thomas_3004@hotmail.fr')
-  ->setBody('Voici mon message test !')
+  ->setBody('Ceci est un message test !')
   ;
 
 // Send the message

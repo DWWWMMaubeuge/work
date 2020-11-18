@@ -28,15 +28,19 @@ function displayEval($matieres, $array) {
 }
 
 function selectNote($array, $id_mat, $value) {
-  if($value == $array[$id_mat-1]["evaluation"]) {
-    return 'selected';
+  for($i = 0; $i < count($array); $i++) {
+    if($id_mat == $array[$i]["id_competence"]) {
+      if($value == $array[$i]["evaluation"]) {
+        return 'selected';
+      }
+    }
   }
 }
 
 function optionNote($array, $id_mat) {
   echo '<option>Auto-évaluation...</option>';
   for($i = 0; $i < 11; $i++) {
-    $x = selectNote($array, $id_mat ,$i);
+    $x = selectNote($array, $id_mat, $i);
     echo '<option value="'. $i .'" '. $x .'>' . $i . '</option>';
   }
 }
