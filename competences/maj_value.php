@@ -1,21 +1,16 @@
 <?php
-
 require_once( "parametres.php" );
 include_once(  "CO_global_functions.php"  );
 
-session_start();
-$ID_user = $_SESSION[ 'ID_user' ];
-$name_user = $_SESSION[ 'name' ];
-$surname_user = $_SESSION[ 'surname' ];
+// maj_value.php?idUser=4&idSkill=4&valSkill=5
 
-
-if( $_GET['idSkill'] != "" && $_GET['valSkill'] != "" ) 
+if( $_GET['idUser'] != "" && $_GET['idSkill'] != "" && $_GET['valSkill'] != "" ) 
 {
-    $idSkill       = $_GET['idSkill'];
+    $ID_user        = $_GET['idUser'];
+    $idSkill        = $_GET['idSkill'];
     $valSkill       = $_GET['valSkill'];
   
     $req = "INSERT INTO $DB_dbname.results ( id_user, id_skill, result ) VALUES ( ".$ID_user.", ".$idSkill.", ".$valSkill." );";
     $result = executeSQL( $req );
 }
-
 ?>
