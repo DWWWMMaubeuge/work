@@ -36,8 +36,8 @@ if ( isset($_POST) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($
 	$connexion->query( $requete );
 
 	$connexion->close();
-}
-?>
+} 
+//echo "<h3> bienvenue $Post['nom']</h3>?>
 
 <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
      
