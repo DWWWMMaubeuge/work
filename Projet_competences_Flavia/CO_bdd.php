@@ -1,15 +1,40 @@
 <?php
-// Informations d'identification
-define('DB_SERVER', 'localhost:3306');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'flavia');
- 
-// Je me connecte à la base de donnée SQL
-$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-// Je vérifie la connexion
-if($conn === false){
-    die("ERREUR : Impossible de se connecter. " . mysqli_connect_error());
+$DB_servername 	= "localhost:3306";
+$DB_username 		= "root";
+$DB_password 		= "" ;
+$DB_dbname 		= "DWWM_Maubeuge";
+
+
+function executeSQL( $req )
+{
+	GLOBAL  $DB_servername, $DB_username, $DB_password, $DB_dbname;
+
+
+	$result = false;
+	if ( $req != "" )
+	{
+
+		// Create connection
+		//echo "new mysqli($DB_servername, $DB_username, $DB_password);";
+		$conn = new mysqli($DB_servername, $DB_username, $DB_password);
+
+		// Check connection
+		if ($conn->connect_error) 
+		{
+			print_r( $conn );
+			die("Connection failed: " . $conn->connect_error);
+		}
+
+
+		//echo $req."<br>";
+		$result = $conn->query( $req );
+		if ($conn->error) 
+		{
+		  die("erreur insert: " . $conn->error);
+		}
+
+		$conn->close();
+	}
+	return $result;
 }
-?>
