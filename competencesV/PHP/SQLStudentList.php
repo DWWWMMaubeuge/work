@@ -24,7 +24,7 @@ function studentList($users){
         echo "<tr>";
         echo "<th scope='row'>".$user['id']."</th>";
         echo "<td>".$user['firstname']."</td>";
-        echo "<td>".$user['name']."</td>";
+        echo "<td>".$user['name']."<a href='ViewUserPage.php?id_user=".$user['id']."'></a></td>";
         echo "</tr>";
     }
     echo "</tbody>";

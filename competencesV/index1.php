@@ -1,6 +1,7 @@
 <?php
 include('./PHP/Login.php');
 include('./PHP/Registration.php');
+include_once "PHP/affichageSuperPanel.php";
 ?>
 <!doctype html>
 <html lang="fr">
@@ -15,6 +16,7 @@ include('./PHP/Registration.php');
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
     <script src="JS/ConnectDisconnect.js"></script>
     <script src="JS/profil.js"></script>
+    <script src="JS/superPanel.js"></script>
     <link rel="stylesheet" href="CSS/main.css">
     <title>Acceuil</title>
 </head>
@@ -38,11 +40,13 @@ include('./PHP/Registration.php');
                 </ul>
             <?php endif ; ?>
             <?php if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) : ?>
+                <?php if($_SESSION['email'] != 'super@user.fr' AND $_SESSION['admin'] != 1 ) :?>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="PHP/skills"><i class="far fa-clipboard"></i>  Auto-Evaluation</a>
                     </li>
                 </ul>
+                <?php endif ;?>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="PHP/disconnect.php"><i class="fas fa-sign-out-alt"></i>  Deconnexion</a>
@@ -60,15 +64,24 @@ include('./PHP/Registration.php');
                     </li>
                 </ul>
             <?php endif ; ?>
+        </div>
     </nav>
 
 
     <?php if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) : ?>
-        <?php if(isset($_GET['errors']) && $_GET['errors']==1):?>
-        <div class="alert alert-success">Mot de passe changé avec succés</div>
+        <?php if ($_SESSION['email']=='super@user.fr'):?>
+            <div class="container my-5 border border-primary p-5 background text-center text-white">
+                <?php
+                formSuperUser($users);
+                ?>
+            </div>
+        <?php else :?>
+            <?php if(isset($_GET['errors']) && $_GET['errors']==1):?>
+            <div class="alert alert-success">Mot de passe changé avec succés</div>
+            <?php endif ;?>
+            <div class=" container my-5 border border-primary p-5 background text-center text-white h1">Bienvenue <?= $_SESSION['prenom']." ".$_SESSION['nom'] ?></div>
+            <div id="profil" class="mb-2"></div>
         <?php endif ;?>
-        <div class=" container my-5 border border-primary p-5 background text-center text-white h1">Bienvenue <?= $_SESSION['prenom']." ".$_SESSION['nom'] ?></div>
-        <div id="profil" class="mb-2"></div>
     <?php else : ?>
         <?php if(isset($_GET['errors']) && $_GET['errors']==1) : ?>
             <div class="alert alert-danger">Mot de passe ou email incorrect, réessayez</div>

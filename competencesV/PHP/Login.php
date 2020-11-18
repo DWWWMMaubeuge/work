@@ -27,6 +27,7 @@ if (isset($_POST['submitCon'])){
                 $_SESSION['idUser'] = $array['id'];
                 $_SESSION['admin'] = $array['adminRight'];
                 $_SESSION['formation'] = $array['id_form'];
+                $_SESSION['email']=$array['email'];
                 header("Location:./index1.php");
             }
             else{
