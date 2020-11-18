@@ -24,7 +24,6 @@ $q = $bdd->query('SELECT * FROM Formations ORDER BY FORMATION');
                 </select>
             </div>
             <div><label for="email">Insérer la(les) adresse(s) email à inviter</label></div>
-            <div><small>Si vous insérer plusieurs adresses, veuillez les séparer d'un espace.</small></div>
             <div class="mt-3"><textarea class="form-control" id="emails" name="emails" rows="10" cols="100"></textarea></div>
             <button id="send-data" class="btn btn-primary mx-auto my-5 text-center">Inscription</button>
         </div>
