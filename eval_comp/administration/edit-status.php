@@ -1,7 +1,7 @@
 <?php require_once('../config/pdo-connect.php'); ?>
 <?php require_once('../config/verifications.php'); ?>
 <?php userIsLogged(); ?>
-<?php userIsAdmin(); ?>
+<?php userIsAdminOrSuperAdmin(); ?>
 <?php
 
 $allmembers = $bdd->query('SELECT Pseudo FROM Membres WHERE Admin != 1 ORDER BY Pseudo');

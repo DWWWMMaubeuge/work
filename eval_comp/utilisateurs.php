@@ -125,4 +125,3 @@ if(!isset($_GET['formation'])) {
 </div>
 <script src="scripts/utilisateurs.js"></script>
 <?php require_once('config/footer.php'); ?>
-<?php print_r($infos); ?>

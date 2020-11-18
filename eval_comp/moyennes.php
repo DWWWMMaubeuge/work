@@ -172,4 +172,3 @@ require_once('config/navbar.php');
     </div>
 </div>
 <?php require_once('config/footer.php'); ?>
-<?php print_r($infos['ID_FORMATION']); ?>
