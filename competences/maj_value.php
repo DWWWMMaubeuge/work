@@ -7,10 +7,10 @@ include_once(  "CO_global_functions.php"  );
 if( $_GET['idUser'] != "" && $_GET['idSkill'] != "" && $_GET['valSkill'] != "" ) 
 {
     $ID_user        = $_GET['idUser'];
-    $idSkill        = $_GET['idSkill'];
+    $ID_skill        = $_GET['idSkill'];
     $valSkill       = $_GET['valSkill'];
   
-    $req = "INSERT INTO $DB_dbname.results ( id_user, id_skill, result ) VALUES ( ".$ID_user.", ".$idSkill.", ".$valSkill." );";
+    $req = "INSERT INTO $DB_dbname.results ( id_user, id_skill, result ) VALUES ( ".$ID_user.", ".$ID_skill.", ".$valSkill." );";
     $result = executeSQL( $req );
 }
 ?>
