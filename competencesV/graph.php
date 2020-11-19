@@ -24,8 +24,6 @@ $graph->img->SetAntiAliasing(false);
 
 
 
-
-
 $graph->title->Set('Evolution '.$notesUser[0]['matiere']);
 $graph->yaxis->title->Set('Note');
 $graph->title->SetFont( FF_ARIAL , FS_BOLD ,30);
