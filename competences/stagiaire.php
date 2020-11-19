@@ -37,7 +37,7 @@ function setWidgetValue2x( $skill  )
 function setWidgetValue2( $skill )
 {
     $widget = "<p>".$skill[1]."</p>\n";
-    $widget .= <input type='range'  value='0' class='form-control-range' min='0' step='1' max='10' id='".$skill[0]."' name='valSkill' onchange=\"MAJ_Value( ".$skill[0].", this.value )\" >\n";
+    $widget .= "<input type='range'  value='0' class='form-control-range' min='0' step='1' max='10' id='".$skill[0]."' name='valSkill' onchange=\"MAJ_Value( ".$skill[0].", this.value )\" >\n";
     return $widget;
 }
 

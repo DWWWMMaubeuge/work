@@ -21,6 +21,12 @@ function setWidgetValue1( $skill  )   // ID    name
   return $widget; 
 }
 
+function setWidgetValue2t( $skill )
+{
+    $widget = "<p>".$skill[1]."</p>\n";
+    $widget .= "<input type='range'  value='0' class='form-control-range' min='0' step='1' max='10' id='".$skill[0]."' name='valSkill' onchange=\"MAJ_Value( ".$skill[0].", this.value )\" >\n";
+    return $widget;
+}
 
 function setAllWidgetValue( $skills  )
 {
@@ -33,3 +39,44 @@ function setAllWidgetValue( $skills  )
 }
 
 ?>
+
+<!--- admin  --->
+
+
+<script>
+function inscritFormateur()
+{
+    {
+      var xhttp = new XMLHttpRequest();
+      // maj_value.php?idUser=4&idSkill=4&valueSkill=5
+      mail = document.getElementById( 'for_mail' ).value;
+      if ( mail.length > 5 )
+      {
+          ID_formation = document.getElementById( 'for_mail_sel' ).value;
+
+          let url = "inscriptFormateur.php?mail="+mail+"&idFormation="+ID_formation;
+          xhttp.open("GET", url, true); 
+          xhttp.send();
+      }
+    }   
+}
+
+function inscritFormation()
+{
+    {
+      var xhttp = new XMLHttpRequest();
+      // maj_value.php?idUser=4&idSkill=4&valueSkill=5
+      name = document.getElementById( 'session_name' ).value;
+      if ( name.length > 5 )
+      {
+          ID_formation = document.getElementById( 'for_formation_sel' ).value;
+            //inscriptFormation.php?name=miammiam&idFormation=2
+          let url = "inscriptFormation.php?name="+name+"&idFormation="+ID_formation;
+          console.log( url );
+          xhttp.open("GET", url, true); 
+          xhttp.send();
+      }
+    }   
+}
+
+</script>

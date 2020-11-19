@@ -1,4 +1,9 @@
 <?php 
+include "Entete.php";
+require "FunctionWidget.php";
+include "Connect.php";
+include "NavAdmin.php";
+
   session_start(); 
 
   if (!isset($_SESSION['surname'])) {
@@ -10,16 +15,17 @@
   	unset($_SESSION['surname']);
   	header("location: PageLogin.php");
   }
+
+  $ID_formation   = $_SESSION[ 'id_formation' ];
+  $ID_user = $_SESSION[ 'id' ];
+  $name_user = $_SESSION[ 'name' ];
+  $surname_user = $_SESSION[ 'surname' ];
 ?>
 
 <body>
 
 <?php
-include "Entete.php";
 HEAD("Page compétences");
-require "FunctionWidget.php";
-include "Connect.php";
-include "NavAdmin.php";
 Navb()
 ?>
 
@@ -33,40 +39,37 @@ Navb()
 			</div>
 			</div>
       <div class="clearfix"> </div>
-      
+
 
 
 <script>
 
-function MAJValue( id_skill, value  )
-{
-
-  var xhttp = new XMLHttpRequest();
-  
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) 
+function MAJ_Value( id_skill, value  )
     {
-     	document.getElementById("message_validation").innerHTML = "valeur enregistrée";
-    }
-  };
-
-  xhttp.open("GET", "majValue.php?id_skill="+id_skill+"&value="+value, true);
-  xhttp.send();
-}	
+      var xhttp = new XMLHttpRequest();
+      // maj_value.php?idUser=4&idSkill=4&valSkill=5
+      
+      let url = "maj_value.php?idUser=<?php echo $ID_user; ?>&idSkill="+id_skill+"&valSkill="+value;
+      xhttp.open("GET", url, true);
+      xhttp.send();
+    } 
 
 </script>	
 
 <?php
-/*session_start();
-
-$ID_user = $_SESSION[ 'ID_user' ];
-$name_user = $_SESSION[ 'name' ];
-$surname_user = $_SESSION[ 'surname' ];
-
-echo "<h3>Welcome $surname_user</h3>\n";*/
 
 
-$req = "SELECT * FROM skills";
+
+
+
+$req = "SELECT * FROM $DB_dbname.formations where id=$ID_formation";
+$result = executeSQL( $req );
+$data = $result->fetch_assoc();
+$Formation_name = $data[ 'name' ];
+
+echo "<h3>formation : $Formation_name</h3>\n";
+
+$req = "SELECT * FROM $DB_dbname.skills where id_formation=$ID_formation";
 $result = executeSQL( $req );
 
 $skills = [];

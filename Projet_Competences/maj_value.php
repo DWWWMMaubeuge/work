@@ -13,8 +13,9 @@ if ( isset($_SESSION[ 'ID_user' ])  )
 	$surname_user = $_SESSION[ 'surname' ];
 }
 
-if( $_GET['idSkill'] != "" && $_GET['valSkill'] != "" ) 
+if( $_GET['idUser'] != "" && $_GET['idSkill'] != "" && $_GET['valSkill'] != "" )
 {
+    $ID_user        = $_GET['idUser'];
     $idSkill       = $_GET['idSkill'];
     $valSkill       = $_GET['valSkill'];
   

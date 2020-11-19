@@ -1,7 +1,7 @@
 <?php 
   session_start(); 
 
-  if (!isset($_SESSION['surname'])) {
+  if (!isset($_SESSION['surname']) || $_SESSION['type'] != 'admin') {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: PageLogin.php');
   }
@@ -14,6 +14,7 @@
 
 
 <?php
+require "FunctionWidget.php";
 include "Entete.php";
 HEAD3("Page Test");
 ?>
@@ -29,13 +30,48 @@ NavbAdmin();
 				<div class="container">
 					<h1><span> </span><label>Bien le bonjour</label> <?php echo $_SESSION['surname']; ?>!<span> </span></h1>
 					<p>Admin Home.</p>
-					<a class="down-arrow down-arrow-to scroll" href="#about"><span> </span></a>
+					<!--- <a class="down-arrow down-arrow-to scroll" href="#about"><span> </span></a> --->
 					<label class="mouse-divice"> </label>
 				</div>
 			</div>
 			</div>
       <div class="clearfix"> </div>
-      
+	  
+	  
+	  <div id="addUser" class="">
+				<div class="text-center">
+					<h3>Ajouter un formateur</h3>
+						<br>
+					<FORM  method='POST' action="#">
+						<INPUT type='text' id='for_mail' name='for_mail' placeholder="mail du formateur" onchange="inscritFormateur()">
+						<br>
+						<select id='for_mail_sel' name="selFormation" onchange="inscritFormateur()" >
+						<?=$widget_formation?>
+						</select>
+						<br>
+						<INPUT type='submit' value='OK'>
+						<br>
+						<br>
+						<br>
+						<br>
+					</FORM>
+					<h3>Ajouter des stagiaires</h3>
+					<FORM  method='POST' action="inscriptStagiaire.php">
+					<br>
+						<textarea  name="list_stagiaire" rows="10" cols="50">
+						</textarea>
+						<br>
+						<br>
+						<INPUT type='text' name='for_form_stagiaire' placeholder="formation">
+						<br>
+						<INPUT type='submit' value='OK'>
+						<br>
+						<br>
+						<br>
+						<br>
+					</FORM>
+					</div>
+	   </div>
       </body>
 
       <!---- footer ---->
@@ -61,7 +97,7 @@ NavbAdmin();
 			</div>
       <!---- footer ---->
       </footer>
-			<link rel="stylesheet" href="css/swipebox.css">
+			<link rel="stylesheet" href="AdminCss.css">
 			<script src="js/jquery.swipebox.min.js"></script> 
 			    <script type="text/javascript">
 					jQuery(function($) {
@@ -71,13 +107,6 @@ NavbAdmin();
 
 
 </html>
-
-
-
-
-
-
-
 
 
 </html>

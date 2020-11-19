@@ -82,8 +82,13 @@ if (isset($_POST['login_user'])) {
         $password = md5($password);
         $query = "SELECT * FROM users WHERE surname='$surname' AND password='".hash('sha256', $password)."'";
         $results = mysqli_query($db, $query);
+        $data = $results->fetch_assoc();
         if (mysqli_num_rows($results) == 1) 
         {
+          $_SESSION[ 'type' ]          = $data[ 'type' ];
+          $_SESSION[ 'id_formation' ]  = $data[ 'id_formation' ];
+          $_SESSION[ 'id' ]            = $data[ 'id' ];
+          $_SESSION[ 'name' ]          = $data[ 'name' ];
           $_SESSION['surname'] = $surname;
           $_SESSION['success'] = "You are now logged in";
           $user_check_query = "SELECT * FROM users WHERE surname=".$_SESSION['surname'];
@@ -93,6 +98,10 @@ if (isset($_POST['login_user'])) {
           if ($user['type'] == 'admin')
           {
             header ('location: admin_home.php');
+          }
+          if ($user['type'] == 'formation')
+          {
+            header ('location: formateur_home.php');
           }
           else
           {

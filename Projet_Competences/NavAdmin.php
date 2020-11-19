@@ -13,7 +13,7 @@ echo "						</div>\n";
 echo "						<!----start-top-nav---->\n";
 echo "						 <nav class=\"top-nav\">\n";
 echo "							<ul class=\"top-nav\">\n";
-echo "								<li><a href=\"#about\" class=\"scroll\">Add user</a></li>\n";
+echo "								<li><a href=\"#addUser\" class=\"scroll\">Add user</a></li>\n";
 echo "								<li><a href=\"#port\" class=\"scroll\">Update user</a></li>\n";
 echo "								<li><a href=\"#wedo\" class=\"scroll\">Delete user</a></li>\n";
 echo "								<li><a href=\"Skills.php\">Skills</a></li>\n";
