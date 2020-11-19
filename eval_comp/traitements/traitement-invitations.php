@@ -99,16 +99,14 @@ if(!empty($_POST['Emails']) && !empty($_POST['Formation'])) {
                     
                 } else {
                     
-                    echo "l'utilisateur associé à cette adresse e-mail est déjà membre de cette formation => $email";
-                    return;
+                    $feedback = "l'utilisateur associé à cette adresse e-mail est déjà membre de cette formation => $email <br>";
                 }
 
             }
 
         } else {
 
-            echo "Une invitation a déjà été envoyé à => $email et est toujours en attente de traitement !";
-            return;
+            $feedback = "Une invitation a déjà été envoyé à => $email et est toujours en attente de traitement ! <br>";
 
         }
 
