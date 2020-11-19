@@ -1,8 +1,8 @@
 $(function() {
   $("select").change(function() {
     $.post("insert.php", {
-      id_matiere: $(this).attr("id"),
-      note: $(this).val()
+      id_competence: $(this).attr("id"),
+      evaluation: $(this).val()
     });
   });
 });

@@ -2,7 +2,7 @@
 require 'src/connexion.php';
 include 'sql/getNote.php';
 
-$result = $bdd->prepare("SELECT * FROM competences WHERE id_formation = :id_formation");
+$result = $bdd->prepare("SELECT * FROM competences WHERE id_formation = :id_formation AND active = 1");
 $result->execute(array(
   "id_formation" => $_SESSION["id_formation"]
 ));
@@ -16,7 +16,7 @@ function displayEval($matieres, $array) {
   foreach($matieres as $matiere) {
 
   echo "
-        <div class='col-xs-12 col-sm-4 col-md-4 col-lg-3'>
+        <div class='col-xs-12 col-sm-4 col-md-3 col-lg-4'>
           <div class='input-group mb-3 item'>
             <div class='input-group-prepend'>
               <label class='input-group-text text-white button-form' for=" . $matiere['id'] . " style='width: 8rem'>" . $matiere['competences'] . "</label>

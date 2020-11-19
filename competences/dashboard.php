@@ -7,7 +7,6 @@ if (!isset($_SESSION["fname"])) {
   header("location: ./");
   exit();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
