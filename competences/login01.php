@@ -5,13 +5,11 @@ include_once( "CO_global_functions.php"  );
 session_start();
 $_SESSION[ 'ID_user' ]  = 0;
 
-if( isset($_POST) && $_POST['mail'] != "" && $_POST['password'] != "" ) 
+if( $_POST && $_POST['mail'] != "" && $_POST['password'] != "") 
 {
     $mail       = $_POST['mail'];
     $password   = $_POST['password'];
-
-    //echo $password;
-    // attention aux doublons des mail
+ 
 
     $req = "SELECT count(*) as nb FROM $DB_dbname.users WHERE mail='$mail' AND password='$password'";
     $result = executeSQL( $req );

@@ -49,7 +49,7 @@ $ID_user = $_SESSION[ 'ID_user' ];
 $name_user = $_SESSION[ 'name' ];
 $surname_user = $_SESSION[ 'surname' ];
 
-echo "<h3>bonjour $surname_user</h3>\n";
+echo "<h3>Bonjour $surname_user</h3>\n";
 
 
 $req = "SELECT * FROM DWWM_Maubeuge.skills";
