@@ -70,8 +70,9 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail']
         <INPUT type='password' name='password' placeholder="votre mot de passe">
         <br>
         <div class="g-recaptcha" data-theme="dark" data-sitekey="6LfHIuIZAAAAANFucggGUn8r_r5i9zvgiYoUHDQq"></div> 
-        <br> 
         <p class="box-register">Déjà inscrit? <a href="login.php">Connectez-vous ici</a></p>
+        
+        <p class="box-register">Administrateur? <a href="admin.php">Connectez-vous ici</a></p>
         <input type="submit" value="Valider" name="submitpost'"> 
         
     </FORM>
