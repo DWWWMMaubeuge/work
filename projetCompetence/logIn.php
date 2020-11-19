@@ -32,7 +32,7 @@ if( $_POST && $_POST['email'] != "" && $_POST['password'] != ""  )
         // vérifier si l'utilisateur est un administrateur ou un utilisateur
         if ($data['type'] == 'admin') 
         {
-            header('location: admin/home.php');      
+            header('location: admin/adminPanel.php');      
         }
         elseif ($data['type'] == 'trainer')
         {

@@ -37,6 +37,13 @@ NavBar();
 <i class="fas fa-envelope"></i>
 <input type="text" placeholder="Email" name="email">
 </div>
+<div class="textbox">
+      <select name="type" id="type" >
+        <option value="admin">Admin</option>
+        <option value="trainer">Trainer</option>
+        <option value="learner">Learner</option>
+      </select>
+  </div>
 <div  class="textbox">
         <i class="fa fa-lock" aria-hidden="true"></i>
         <input type="password" placeholder="Password" name="password" value="">
@@ -50,18 +57,33 @@ include_once("functionConnect.php");
 
 
 
-if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'] != "" && $_POST['password'] != "" ) 
+if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'] != "" && $_POST['type'] != "" && $_POST['password'] != "" ) 
 {
     $name       = $_POST['name'];
     $surname    = $_POST['surname'];
     $email       = $_POST['email'];
+    $type       = $_POST['type'];
     $password   = $_POST['password'];
-
     // attention aux doublons des mail
+    $vkey = md5(time().$name);
 
-    $req = "INSERT INTO $DB_dbname.users ( name, surname, email, password ) VALUES ( '$name', '$surname', '$email', '$password' )";
+  $req = "INSERT INTO $DB_dbname.users ( name, surname, email, type, password,vkey ) VALUES ( '$name', '$surname', '$email', '$type', '$password','$vkey' )";
     executeSQL( $req );
-    header( "location: login.php");
+
+    if($req)
+    {
+        //send email
+        $to = $email;
+        $subject = "Email Verification";
+        $message = "<a href='http://localhost/work/login.php?vkey=$vkey'>Register Account</a>";
+        $headers = "From: fatformationafpa@gmail.com";
+        $headers .= "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+        mail($to,$subject,$message,$headers);
+
+        header('location: admin/thankYou.php');
+    }
 }
 
 ?>

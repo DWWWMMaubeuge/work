@@ -39,6 +39,13 @@ if (isset($_POST['submit'])){
       </select>
   </div>
   <div class="textbox">
+      <select name="training" id="training" >
+        <option value="pastry">Pastry</option>
+        <option value="dwm">DWM</option>
+        <option value="english">English</option>
+      </select>
+  </div>
+  <div class="textbox">
   <i class="fa fa-lock" aria-hidden="true"></i>
     <input type="password" name="password"  placeholder="Mot de passe" required />
   </div>

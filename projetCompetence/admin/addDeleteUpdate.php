@@ -24,13 +24,18 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
     $type       = $_POST['type'];
     $password   = $_POST['password'];
 
+    
 
-  $req = "INSERT INTO $DB_dbname.users ( name, surname, email, type, password ) VALUES ( '$name', '$surname', '$email', '$type', '$password' )";
+  $req = "INSERT INTO $DB_dbname.users ( name, surname, email, type, password,vkey ) VALUES ( '$name', '$surname', '$email', '$type', '$password','$vkey' )";
   executeSQL( $req );
+
+   
+    
 
     $_SESSION['message'] = "Record has been saved!";
     $_SESSION['msgType'] = "success";
     header( "location: displayUser.php");
+  
   
 }
 

@@ -1,0 +1,163 @@
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body{
+   
+    background: url(img/bg3.jpg) no-repeat;
+    background-size: cover;
+}
+
+
+h1{
+    color: white;
+    text-align: center;
+}
+
+.wrapper .header
+{
+    z-index: -1;
+    background: #22242A;
+    position: fixed;
+    width:100%;
+    height: 70px;
+    display: flex;
+    top: 0;
+
+}
+
+.wrapper .header .header-menu{
+    width:100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+
+}
+
+.wrapper .header .header-menu .title
+{
+    color: white;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.wrapper .header .header-menu .title span
+{
+   color:  #C19A6B;
+}
+
+.wrapper .header .header-menu .sidebar-btn
+{
+    color: white;
+    position: absolute;
+    margin-left: 240px;
+    font-size: 22px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.3s;
+    transition-property: color;
+}
+
+.wrapper .header .header-menu .sidebar-btn:hover
+{
+    color:  #C19A6B; 
+}
+
+.wrapper .header .header-menu ul
+{
+    display: flex;
+}
+
+
+.wrapper .header .header-menu ul li a
+{
+    background: white;
+    color: black;
+    display: block;
+    margin: 0 10px;
+    font-size: 10px;
+    width: 34px;
+    height: 34px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    transition: 0.3s;
+    transition-property: background, color;
+
+}
+
+.wrapper .header .header-menu ul li a:hover
+{
+
+    background:  #C19A6B; 
+    color: white;
+}
+
+
+
+/*CONTAINER TABLE*/
+
+.box-table{
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    z-index: 2;
+    
+}
+
+
+.container {
+
+    margin-top: 5%;
+}
+
+.table th{
+    text-align: center;
+    color:  #C19A6B;
+}
+
+.table td{
+    text-align: center;
+    color:  white;
+}
+
+.table .btn{
+
+    background: none;
+    border: 2px solid white;
+    color: #C19A6B;
+    margin-left: 5%;
+    
+}
+
+.table .btn:hover{
+
+
+    border: 2px solid #C19A6B;
+    color: white;   
+}
+
+.add .btn{
+
+    background: none;
+    border: 2px solid white;
+    color: #C19A6B;
+    border-radius: 1%;
+    float:bottom;
+    margin-bottom: 5px;
+}
+
+.add .btn:hover{
+
+    border: 2px solid #C19A6B;
+    color: white;   
+}
