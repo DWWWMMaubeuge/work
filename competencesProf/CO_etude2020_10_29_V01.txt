@@ -1,0 +1,130 @@
+Date 2020 10 29 
+nom X.bouget  XRB
+
+
+relecture 
+date 
+nom
+
+
+
+Les données
+    Les users
+        ID
+        nom
+        prenom
+        mail
+
+        CREATE TABLE users ( id INT AUTO_INCREMENT PRIMARY KEY NOT NULL, datex DATETIME, name VARCHAR(255), surname VARCHAR(255), password VARCHAR(255), mail VARCHAR(255) );
+
+
+    Les skills
+        ID
+        nom
+        valid 
+        
+        CREATE TABLE  skills ( id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,  name VARCHAR(255) );
+        
+
+    resultats
+        ID
+        datetime
+        ID_user
+        ID_skill
+        resultat
+
+        CREATE TABLE  results ( id INT AUTO_INCREMENT PRIMARY KEY NOT NULL, datex DATETIME DEFAULT(NOW()),  id_user INT, id_skill INT, result INT );
+
+
+
+        CREATE TABLE users ( id INT AUTO_INCREMENT PRIMARY KEY NOT NULL, datex DATETIME, name VARCHAR(255), surname VARCHAR(255), password VARCHAR(255), mail VARCHAR(255), id_formation INT );
+        CREATE TABLE  skills ( id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,  name VARCHAR(255), , id_formation INT  );
+
+
+        CREATE TABLE  results ( id INT AUTO_INCREMENT PRIMARY KEY NOT NULL, datex DATETIME DEFAULT(NOW()),  id_user INT, id_skill INT, result INT );
+        
+        INSERT INTO skills ( name ) VALUES ( "HTML", 1 );
+        INSERT INTO skills ( name ) VALUES ( "CSS", 1 );
+        INSERT INTO skills ( name ) VALUES ( "AJAX", 1 );
+        INSERT INTO skills ( name ) VALUES ( "JavaScript", 1 );
+        
+        INSERT INTO skills ( name ) VALUES ( "patisserie", 2 );
+        INSERT INTO skills ( name ) VALUES ( "sauce", 2 );
+        INSERT INTO skills ( name ) VALUES ( "légumes", 2 );
+
+        INSERT INTO skills ( name ) VALUES ( "les métaux", 3 );
+        INSERT INTO skills ( name ) VALUES ( "les métaux", 3 );
+        INSERT INTO skills ( name ) VALUES ( "les alliage", 3 );
+        INSERT INTO skills ( name ) VALUES ( "soudure électrique", 3 );
+
+
+
+
+
+        CREATE TABLE  formations ( id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,  name VARCHAR(255) );
+        INSERT INTO formations ( name ) VALUES ( "DWWM" );
+        INSERT INTO formations ( name ) VALUES ( "CUISINE" );
+        INSERT INTO formations ( name ) VALUES ( "SOUDURE" );
+
+
+        INSERT INTO users ( name, surname, mail, password ) VALUES ( "ligonnes",  "xavier",    "xligo@gmail.com", "123", 1 );
+        INSERT INTO users ( name, surname, mail, password ) VALUES ( "henry",     "bernard",   "bhl@gmail.com", "123", 1 );
+        INSERT INTO users ( name, surname, mail, password ) VALUES ( "pernod",    "JPP",       "Jpp@gmail.com", "123", 2 );
+        INSERT INTO users ( name, surname, mail, password ) VALUES ( "Mac",       "manu",      "xligo@gmail.com", "123", 2 );
+        INSERT INTO users ( name, surname, mail, password ) VALUES ( "Castix",    "ferdinand", "fcast@gmail.com", "123", 3 );
+
+        INSERT INTO results ( id_user, id_skill, result ) VALUES ( 2, 1, 15 );
+        INSERT INTO results ( id_user, id_skill, result ) VALUES ( 2, 2, 38 );
+        INSERT INTO results ( id_user, id_skill, result ) VALUES ( 2, 3, 55 );
+        INSERT INTO results ( id_user, id_skill, result ) VALUES ( 3, 1, 73 );
+        INSERT INTO results ( id_user, id_skill, result ) VALUES ( 3, 2, 66 );
+        INSERT INTO results ( id_user, id_skill, result ) VALUES ( 4, 2, 22 );
+
+
+
+
+
+        nom             espece          age         poid
+
+        medor           chien             7         24
+        felix           chat              6         1
+
+
+
+        CREATE DATABASE MyDataBase;
+        
+        DROP DATABASE MyDataBase;
+
+        use MyDataBase;
+
+
+        CREATE TABLE animaux (  nom VARCHAR( 255 ), espece  VARCHAR( 64 ), age INT, poid INT );
+
+        INSERT INTO animaux ( nom, espece, age, poid ) VALUES ( "titi", "chat", 3, 2  );
+
+
+
+
+
+
+
+INSERT INTO users ( name, surname, mail, password, id_formation ) VALUES ( "Lecuisinier",    "Max", "cuisine@gmail.com", "123", 2 );
+
+INSERT INTO users ( name, surname, mail, password, id_formation, role ) VALUES ( "Lecomte",    "JP", "compta@gmail.com", "123", 0, 'ADM' );
+
+INSERT INTO users ( name, surname, mail, password, id_formation, role ) VALUES ( "bourgey",    "Xav", "xav@gmail.com", "123", 1, 'FOR' );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
