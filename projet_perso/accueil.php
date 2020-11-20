@@ -22,7 +22,7 @@ echo nav($id);
 <h1>Nicolas CAULIER Développeur Web</h1>
 <?php
 if(isset($_SESSION[ 'ID_user' ]))
-echo "<h2>bienvenue $name</h2>";
+echo "<h2 class=\"lol\">bienvenue $name</h2>";
 ?>
 </div>
 
