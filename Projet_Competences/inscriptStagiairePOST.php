@@ -1,7 +1,7 @@
 <?php
-require_once( "parametres.php" );
-include_once(  "CO_global_functions.php"  );
-//inscriptFormateur2SessionPOST.php?mail="+mail+"&idSession="+ID_session;
+require_once( "Connect.php" );
+include_once(  "Serveur.php"  );
+
 //inscriptFormateur.php?mail="+mail+"&idFormation="+ID_formation;
 // [-0-9a-zA-Z_.+]+@[-0-9a-zA-Z.+]+.[a-zA-Z]{2,4}
 
@@ -23,10 +23,12 @@ XXX;
 
 echo "WWWW<br>";
                                             
-if( $_POST['list_stagiaire'] != "" && $_POST['selSession'] != "" ) 
+if( $_POST['list_stagiaire'] != "" && $_POST['sesFormation2'] != "" ) 
 {
     $list_stagiaire = $_POST['list_stagiaire'];
-    $ID_session    	= $_POST['selSession'];
+    $ID_session    	= $_POST['sesFormation2'];
+
+echo "XXX<br>";
 
 
 	$tabMails = [];
@@ -35,25 +37,18 @@ if( $_POST['list_stagiaire'] != "" && $_POST['selSession'] != "" )
 	foreach ($lesligne as $ligne) 
 	{
 		$lesMots = explode( " ", $ligne );
-		foreach ($lesMots as $mail) 
+		foreach ($lesMots as $mot) 
 		{
-			if ( filter_var($mail, FILTER_VALIDATE_EMAIL)) 
+			if ( filter_var($mot, FILTER_VALIDATE_EMAIL)) 
 			{	
-			    $req = "SELECT count(*) as nb FROM $DB_dbname.users WHERE mail='$mail'";
-			    $result = executeSQL( $req );
-			    $data = $result->fetch_assoc();
-			    if ( $data[ 'nb' ] == 0 )
-			    {
-				    $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password ) VALUES ( 'NC', 'NC', '$mail', 'NC')";
-				    executeSQL( $req );
-				    $req = "INSERT INTO $DB_dbname.mail2inscript ( mail, ID_session ) VALUES ( '$mail', $ID_session, 'STA' );";
-				    $result = executeSQL( $req );
-				}
-				$req = "UPDATE $DB_dbname.users SET ID_session=$ID_session, role='STA' WHERE mail='$mail'";
-				executeSQL( $req );
+			    $req = "INSERT INTO $DB_dbname.mail2inscript ( mail, ID_session, type ) VALUES ( '".$mot."', ".$ID_session.", 'user');";
+			    $result = executeSQL( $req );				
+			    //array_push($tabMails, $mot);
+	  			//echo $mot, "<br>";
 			}
 		}
 	}
-	header( "location: admin.php");
+	header( "location: admin_home.php");
+
 }
 ?>

@@ -87,19 +87,20 @@ if (isset($_POST['login_user'])) {
         {
           $_SESSION[ 'type' ]          = $data[ 'type' ];
           $_SESSION[ 'id_formation' ]  = $data[ 'id_formation' ];
+          $_SESSION[ 'id_session' ]    = $data[ 'id_session' ];
           $_SESSION[ 'id' ]            = $data[ 'id' ];
           $_SESSION[ 'name' ]          = $data[ 'name' ];
-          $_SESSION['surname'] = $surname;
-          $_SESSION['success'] = "You are now logged in";
+          $_SESSION['surname']         = $surname;
+          $_SESSION['success']         = "You are now logged in";
           $user_check_query = "SELECT * FROM users WHERE surname=".$_SESSION['surname'];
           $result = mysqli_query($db, $user_check_query);
           $user = mysqli_fetch_assoc($result);
-          $_SESSION["code"]=$code;
+          $_SESSION["code"]            =$code;
           if ($user['type'] == 'admin')
           {
             header ('location: admin_home.php');
           }
-          if ($user['type'] == 'formation')
+          if ($user['type'] == 'formateur')
           {
             header ('location: formateur_home.php');
           }

@@ -16,7 +16,7 @@
 <?php
 require "FunctionWidget.php";
 include "Entete.php";
-HEAD3("Page Test");
+HEAD3("Admin_home");
 ?>
 
 <body>
@@ -43,10 +43,39 @@ NavbAdmin();
 					<h3>Ajouter un formateur</h3>
 						<br>
 					<FORM  method='POST' action="#">
-						<INPUT type='text' id='for_mail' name='for_mail' placeholder="mail du formateur" onchange="inscritFormateur()">
+					<INPUT type='text' id='for_mail' name='for_mail' placeholder="mail du formateur" onchange="inscritFormateur2Formation()">
 						<br>
-						<select id='for_mail_sel' name="selFormation" onchange="inscritFormateur()" >
+						<select id='for_mail_sel' name="selFormation" onchange="inscritFormateur2Formation()" >
 						<?=$widget_formation?>
+						</select>
+
+						<br>
+						<br>
+						<br>
+					<h3>Ajouter une session de formation</h3>
+						<br>
+					<INPUT type='text' name='session_name' id='session_name' placeholder="nom de la formation (10car min)" onchange="inscritSession()">
+						<br>
+						<select id='for_formation_sel' name="selFormation2" onchange="inscritSession()" >
+						<?=$widget_formation?>
+						</select>
+						<br>
+						date début : 
+						<INPUT type='date' name='session_date_begin' id='session_date_b' onchange="inscritSession()">
+						<br>
+						date fin :
+					<INPUT type='date' name='session_date_end' id='session_date_e' onchange="inscritSession()">
+
+
+						<br>
+						<br>
+						<br>
+					<h3>Inscrire un formateur à session</h3> 
+						<br>
+						<INPUT type='text' id='for_mail_f2s' name='for_mail' placeholder="mail du formateur" onchange="inscritFormateur2Session()">
+						<br>
+						<select id='session_sel_f2s' name="selSession" onchange="inscritFormateur2Session()">
+						<?=$widget_session?>
 						</select>
 						<br>
 						<INPUT type='submit' value='OK'>
@@ -55,6 +84,45 @@ NavbAdmin();
 						<br>
 						<br>
 					</FORM>
+
+
+						<br>
+						<br>
+						<br>
+						<h3>Ajouter des acteurs</h3>
+						<br>
+						<FORM  method='POST' action="inscriptActeursPOST.php">
+						<textarea  name="list_stagiaire" id="list_stagiaire" rows="10" cols="50">
+						</textarea>
+						<br>
+						<select id='type_sel' name="seltype">
+						<option value=''>choisir type</option>
+						<option value='STA'>stagiaire</option>
+						<option value='FOR'>formateur</option>
+						<option value='ADM'>administrateur</option>
+						</select>
+						<br>
+						<INPUT type='submit' value='INSCRIPTION'>
+						</FORM>
+						<br>
+						<br>
+						<br>
+						inscrire des acteurs à une session de formation
+						<br>
+						<FORM  method='POST' action="inscriptStagiaire2SessionPOST.php">
+						<textarea  name="list_stagiaire" id="list_stagiaire" rows="10" cols="50">
+						</textarea>
+						<br>
+						<select id='session_sel' name="selSession" >
+						<?=$widget_session?>
+						</select>
+						<br>
+						<INPUT type='submit' value='INSCRIPTION'>
+						</FORM>
+
+
+
+
 					<h3>Ajouter des stagiaires</h3>
 					<FORM  method='POST' action="inscriptStagiaire.php">
 					<br>

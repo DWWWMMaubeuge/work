@@ -1,6 +1,6 @@
 <?php
-require_once( "parametres.php" );
-include_once(  "CO_global_functions.php"  );
+require_once( "Connect.php" );
+include_once(  "Serveur.php"  );
 //inscriptFormateur2SessionPOST.php?mail="+mail+"&idSession="+ID_session;
 //inscriptFormateur.php?mail="+mail+"&idFormation="+ID_formation;
 // [-0-9a-zA-Z_.+]+@[-0-9a-zA-Z.+]+.[a-zA-Z]{2,4}
@@ -46,14 +46,14 @@ if( $_POST['list_stagiaire'] != "" && $_POST['selSession'] != "" )
 			    {
 				    $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password ) VALUES ( 'NC', 'NC', '$mail', 'NC')";
 				    executeSQL( $req );
-				    $req = "INSERT INTO $DB_dbname.mail2inscript ( mail, ID_session ) VALUES ( '$mail', $ID_session, 'STA' );";
+				    $req = "INSERT INTO $DB_dbname.mail2inscript ( mail, ID_session, type) VALUES ( '$mail', $ID_session, 'user' );";
 				    $result = executeSQL( $req );
 				}
-				$req = "UPDATE $DB_dbname.users SET ID_session=$ID_session, role='STA' WHERE mail='$mail'";
+				$req = "UPDATE $DB_dbname.users SET ID_session=$ID_session, type='user' WHERE mail='$mail'";
 				executeSQL( $req );
 			}
 		}
 	}
-	header( "location: admin.php");
+	header( "location: admin_home.php");
 }
 ?>

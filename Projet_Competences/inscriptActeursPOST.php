@@ -1,7 +1,7 @@
 <?php
-require_once( "parametres.php" );
-include_once(  "CO_global_functions.php"  );
-//inscriptFormateur2SessionPOST.php?mail="+mail+"&idSession="+ID_session;
+require_once( "Connect.php" );
+include_once(  "Serveur.php"  );
+
 //inscriptFormateur.php?mail="+mail+"&idFormation="+ID_formation;
 // [-0-9a-zA-Z_.+]+@[-0-9a-zA-Z.+]+.[a-zA-Z]{2,4}
 
@@ -20,13 +20,11 @@ Maxime 		0618411174	maximewilmot@gmail.com			10Mb/s	Max5989 #1384 		MaxW5989
 Nicola 		0781148505	nicolascaulier@gmail.com		Fibre	Steelux2610#0764	nicolascaulier
 Xavier		O601791744  xavier.bourget@gmail.com				xavier#7128			DWWWMMaubeuge
 XXX;
-
-echo "WWWW<br>";
                                             
-if( $_POST['list_stagiaire'] != "" && $_POST['selSession'] != "" ) 
+if( $_POST['list_stagiaire'] != "" && $_POST['seltype'] != "" ) 
 {
     $list_stagiaire = $_POST['list_stagiaire'];
-    $ID_session    	= $_POST['selSession'];
+    $type    		= $_POST['seltype'];
 
 
 	$tabMails = [];
@@ -44,16 +42,16 @@ if( $_POST['list_stagiaire'] != "" && $_POST['selSession'] != "" )
 			    $data = $result->fetch_assoc();
 			    if ( $data[ 'nb' ] == 0 )
 			    {
-				    $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password ) VALUES ( 'NC', 'NC', '$mail', 'NC')";
+				    $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password, id_session, id_formation) VALUES ( 'NC', 'NC', '$mail', 'NC', 0, 0 )";
 				    executeSQL( $req );
-				    $req = "INSERT INTO $DB_dbname.mail2inscript ( mail, ID_session ) VALUES ( '$mail', $ID_session, 'STA' );";
+				    $req = "INSERT INTO $DB_dbname.mail2inscript ( mail, type ) VALUES ( '$mail', '$type');";
 				    $result = executeSQL( $req );
 				}
-				$req = "UPDATE $DB_dbname.users SET ID_session=$ID_session, role='STA' WHERE mail='$mail'";
+				$req = "UPDATE $DB_dbname.users SET type='formateur' WHERE mail='$mail'";
 				executeSQL( $req );
 			}
 		}
 	}
-	header( "location: admin.php");
+	header( "location: admin_home.php");
 }
 ?>
