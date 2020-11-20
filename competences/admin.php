@@ -122,6 +122,78 @@ function inscritStagiaire()
         }   
 }
 
+
+function afficheListeStagiaireSession( id_session )
+{
+  var objectXHTTP = new XMLHttpRequest();
+
+  objectXHTTP.onreadystatechange = function() 
+  {
+    if ( this.readyState == 4 && this.status == 200 ) 
+    {
+      document.getElementById("resLSS").innerHTML = this.responseText;
+    }
+  };
+  objectXHTTP.open("GET", "getListStagiaireSessionGET.php?idSession="+id_session, true);
+  objectXHTTP.send();
+}
+
+         
+function afficheListeSession( )
+{
+  var objectXHTTP = new XMLHttpRequest();
+
+  objectXHTTP.onreadystatechange = function() 
+  {
+    if ( this.readyState == 4 && this.status == 200 ) 
+    {
+      //console.log( this.responseText )
+      document.getElementById("resLS").innerHTML = this.responseText;
+    }
+  };                       
+
+  //console.log( "appel URL" )
+  objectXHTTP.open("GET", "getListSession.php", true);
+  objectXHTTP.send();
+}
+
+
+function afficheListeSessionByFormation( id_formation )
+{
+  var objectXHTTP = new XMLHttpRequest();
+
+  objectXHTTP.onreadystatechange = function() 
+  {
+    if ( this.readyState == 4 && this.status == 200 ) 
+    {
+      //console.log( this.responseText )
+      document.getElementById("resLSF").innerHTML = this.responseText;
+    }
+  };                       
+
+  //console.log( "appel URL" )
+  objectXHTTP.open("GET", "getListSessionFormation.php?idFormation="+id_formation, true);
+  objectXHTTP.send();
+}
+
+function afficheListeFormateurByFormation( id_formation )
+{
+  var objectXHTTP = new XMLHttpRequest();
+
+  objectXHTTP.onreadystatechange = function() 
+  {
+    if ( this.readyState == 4 && this.status == 200 ) 
+    {
+      //console.log( this.responseText )
+      document.getElementById("resLSFF").innerHTML = this.responseText;
+    }
+  };                       
+
+  //console.log( "appel URL" )
+  objectXHTTP.open("GET", "getListFormateurFormation.php?idFormation="+id_formation, true);
+  objectXHTTP.send();
+}
+
 </script>
 <br>
 Ajouter un formateur
@@ -171,7 +243,7 @@ Inscrire un formateur à session
 Ajouter des acteurs
 <br>
 <FORM  method='POST' action="inscriptActeursPOST.php">
-<textarea  name="list_stagiaire" id="list_stagiaire" rows="10" cols="50">
+<textarea  name="list_stagiaire2users" id="list_stagiaire2users" rows="10" cols="50">
 </textarea>
 <br>
 <select id='role_sel' name="selRole">
@@ -189,12 +261,59 @@ Ajouter des acteurs
 inscrire des acteurs à une session de formation
 <br>
 <FORM  method='POST' action="inscriptStagiaire2SessionPOST.php">
-<textarea  name="list_stagiaire" id="list_stagiaire" rows="10" cols="50">
+<textarea  name="list_stagiaire2session" id="list_stagiaire2session" rows="10" cols="50">
 </textarea>
 <br>
 <select id='session_sel' name="selSession" >
-<?=$widget_session?>
+<?=$widget_session?>  
 </select>
 <br>
 <INPUT type='submit' value='INSCRIPTION'>
 </FORM>
+
+<br>
+<br>
+<br>
+<div>
+liste des stagiares de : <br>
+<select id='session_sel_list_sta' name="selSession" onchange="afficheListeStagiaireSession( this.value )">
+<?=$widget_session?>
+</select>  
+<div id="resLSS">
+</div>
+</div>
+
+
+<br>
+<br>
+<br>
+<div>
+liste des sessions : <br>
+<input type="button" id='session_sel_list' name="selSession" value="list sessions" onclick="afficheListeSession()">
+<div id="resLS">
+</div>
+</div>
+
+<br>
+<br>
+<br>
+<div>
+liste des sessions par formation : <br>
+<select id='session_sel_list_ses_for' name="selSession" onchange="afficheListeSessionByFormation( this.value )">
+<?=$widget_formation?>
+</select>  
+<div id="resLSF">
+</div>
+</div>
+
+<br>
+<br>
+<br>
+<div>
+liste des formateur par formation : <br>
+<select id='session_sel_list_for_for' name="selSession" onchange="afficheListeFormateurByFormation( this.value )">
+<?=$widget_formation?>
+</select>  
+<div id="resLSFF">
+</div>
+</div>
