@@ -32,13 +32,14 @@ FROM Matieres m LEFT JOIN
              ROW_NUMBER() OVER (PARTITION BY id_Matiere, id_user ORDER BY TIME_OF_INSERTION DESC) as seqnum
       FROM Resultats r
       WHERE r.ID_USER = :ID_USER 
-      AND r.ID_SESSION = :session
+      AND r.ID_SESSION = :sessionresultat
      ) r
      ON m.id = r.ID_MATIERE AND
         seqnum = 1
-WHERE Active = TRUE AND ID_Formation = :formation;');
+WHERE Active = TRUE AND m.ID_Formation = :formation AND m.ID_Session = :session;');
 $resultats->bindParam(':ID_USER', $user['ID'], PDO::PARAM_INT);
 $resultats->bindParam(':session', $user['SESSION'], PDO::PARAM_INT);
+$resultats->bindParam(':sessionresultat', $user['SESSION'], PDO::PARAM_INT);
 $resultats->bindParam(':formation', $user['ID_FORMATION'], PDO::PARAM_INT);
 $resultats->execute();
 $count = $resultats->rowCount();
@@ -63,20 +64,22 @@ $count = $resultats->rowCount();
                             </div>
                         </div>
                     </div>
-                    <div class="card mt-3">
-                        <ul class="bg-dark list-group list-group-flush">
-                            <?php if(!empty($user['Github'])) { ?>
-                                <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                    <i class="fab fa-github" title="Lien Github"></i><a class="text-white"href="https://github.com/<?= $user['Github']; ?>"><?= $user['Github']; ?></a>
-                                </li>
-                            <?php } ?>
-                            <?php if(!empty($user['Site'])) { ?>
-                                <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                    <i class="fas fa-link" title="Lien site personnel"></i><a class="text-white" href="<?= $user['Site']; ?>" target="_blank">Site personnel</a>
-                                </li>
-                            <?php } ?>
-                        </ul>
-                    </div>
+                    <?php if(!empty($user['Github']) || !empty($user['Site'])) { ?> 
+                        <div class="card mt-3">
+                            <ul class="bg-dark list-group list-group-flush">
+                                <?php if(!empty($user['Github'])) { ?>
+                                    <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                        <i class="fab fa-github" title="Lien Github"></i><a class="text-white"href="https://github.com/<?= $user['Github']; ?>"><?= $user['Github']; ?></a>
+                                    </li>
+                                <?php } ?>
+                                <?php if(!empty($user['Site'])) { ?>
+                                    <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                        <i class="fas fa-link" title="Lien site personnel"></i><a class="text-white" href="<?= $user['Site']; ?>" target="_blank">Site personnel</a>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                    <?php } ?>
                 </div>
                 <div class="col-md-8">
                     <div class="card mb-3">

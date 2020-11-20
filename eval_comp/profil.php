@@ -12,13 +12,14 @@ FROM Matieres m LEFT JOIN
              ROW_NUMBER() OVER (PARTITION BY id_Matiere, id_user ORDER BY TIME_OF_INSERTION DESC) as seqnum
       FROM Resultats r
       WHERE r.ID_USER = :ID_USER 
-      AND r.ID_SESSION = :session
+      AND r.ID_SESSION = :sessionresultat
      ) r
      ON m.id = r.ID_MATIERE AND
         seqnum = 1
-WHERE Active = TRUE AND ID_Formation = :formation;');
-$detailsresultats->bindParam(':ID_USER', $_SESSION['id'], PDO::PARAM_INT);
+WHERE Active = TRUE AND m.ID_Formation = :formation AND m.ID_Session = :session;');
+$detailsresultats->bindParam(':ID_USER', $infos['ID'], PDO::PARAM_INT);
 $detailsresultats->bindParam(':session', $infos['SESSION'], PDO::PARAM_INT);
+$detailsresultats->bindParam(':sessionresultat', $infos['SESSION'], PDO::PARAM_INT);
 $detailsresultats->bindParam(':formation', $infos['ID_FORMATION'], PDO::PARAM_INT);
 $detailsresultats->execute();
 $count = $detailsresultats->rowCount();
