@@ -2,11 +2,11 @@
 require_once( "parametres.php" );
 include_once(  "CO_global_functions.php"  );
 
-//inscriptFormateur.php?mail="+mail+"&ID_formation="+ID_formation;
+//inscriptFormateur.php?mail="+mail+"&idFormation="+ID_formation;
 // [-0-9a-zA-Z_.+]+@[-0-9a-zA-Z.+]+.[a-zA-Z]{2,4}
 
 $mails = <<<XXX
-Thomas 		0662151729	thomas_3004@hotmail.fr			fibre	FixIt#2681			Fixito
+Thomas 		0662151729	thomas_3004@hotmail.fr			fibre	FixIt#2681 			Fixito
 Fatima 		0610032073	fatformationafpa@gmail.com		ADSL	Fatima#0358			Fatima-git
 Fouad 		0603462493	ahanchir@live.fr 				Fibre	Pusher#7933			iPuSheR
 Flavia 		0768259876	fortunatoflavia@outlook.com		ADSL	FlaVia#6711			fla1701
@@ -20,30 +20,38 @@ Maxime 		0618411174	maximewilmot@gmail.com			10Mb/s	Max5989 #1384 		MaxW5989
 Nicola 		0781148505	nicolascaulier@gmail.com		Fibre	Steelux2610#0764	nicolascaulier
 Xavier		O601791744  xavier.bourget@gmail.com				xavier#7128			DWWWMMaubeuge
 XXX;
-
-
-if( $_POST['list_stagiaire'] != "" && $_POST['for_form_stagiaire'] != "" ) 
+                                            
+if( $_POST['list_stagiaire'] != "" && $_POST['selRole'] != "" ) 
 {
-    $mails        	= $_POST['list_stagiaire'];
-    $ID_formation    = $_POST['for_form_stagiaire'];
+    $list_stagiaire = $_POST['list_stagiaire'];
+    $role    		= $_POST['selRole'];
+
 
 	$tabMails = [];
-	$mails = str_replace( "\t", " ", $mails);
+	$mails = str_replace( "\t", " ", $list_stagiaire);
 	$lesligne = explode( "\n", $mails );
 	foreach ($lesligne as $ligne) 
 	{
 		$lesMots = explode( " ", $ligne );
-		foreach ($lesMots as $mot) 
+		foreach ($lesMots as $mail) 
 		{
-			if ( filter_var($mot, FILTER_VALIDATE_EMAIL)) 
+			if ( filter_var($mail, FILTER_VALIDATE_EMAIL)) 
 			{	
-			    $req = "INSERT INTO $DB_dbname.mail2inscript ( mail, id_formation ) VALUES ( '".$mot."', ".$ID_formation." );";
-			    $result = executeSQL( $req );				
-			    //array_push($tabMails, $mot);
-	  			//echo $mot, "<br>";
+			    $req = "SELECT count(*) as nb FROM $DB_dbname.users WHERE mail='$mail'";
+			    $result = executeSQL( $req );
+			    $data = $result->fetch_assoc();
+			    if ( $data[ 'nb' ] == 0 )
+			    {
+				    $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password, id_session, id_formation) VALUES ( 'NC', 'NC', '$mail', 'NC', 0, 0 )";
+				    executeSQL( $req );
+				    $req = "INSERT INTO $DB_dbname.mail2inscript ( mail, role ) VALUES ( '$mail', '$role');";
+				    $result = executeSQL( $req );
+				}
+				$req = "UPDATE $DB_dbname.users SET role='FOR' WHERE mail='$mail'";
+				executeSQL( $req );
 			}
 		}
 	}
-  
+	header( "location: admin.php");
 }
 ?>
