@@ -11,12 +11,6 @@ function executeSQL( $req )
 	$result = false;
 	if ( $req != "" )
 	{
-<<<<<<< HEAD
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-=======
->>>>>>> main
 
 		//echo "new mysqli($DB_URL, $DB_user, $DB_PW);<br>";
 		// Create connection
