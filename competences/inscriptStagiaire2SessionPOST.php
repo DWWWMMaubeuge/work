@@ -1,31 +1,14 @@
 <?php
 require_once( "parametres.php" );
 include_once(  "CO_global_functions.php"  );
-inscriptFormateur2SessionPOST.php?mail="+mail+"&idSession="+ID_session;
+//inscriptFormateur2SessionPOST.php?mail="+mail+"&idSession="+ID_session;
 //inscriptFormateur.php?mail="+mail+"&idFormation="+ID_formation;
 // [-0-9a-zA-Z_.+]+@[-0-9a-zA-Z.+]+.[a-zA-Z]{2,4}
 
-$mails = <<<XXX
-Thomas 		0662151729	thomas_3004@hotmail.fr			fibre	FixIt#2681 			Fixito
-Fatima 		0610032073	fatformationafpa@gmail.com		ADSL	Fatima#0358			Fatima-git
-Fouad 		0603462493	ahanchir@live.fr 				Fibre	Pusher#7933			iPuSheR
-Flavia 		0768259876	fortunatoflavia@outlook.com		ADSL	FlaVia#6711			fla1701
-Steven 		0777696681	stevenhonor@live.fr				<1Mb/s	The_Evil_Fox#9722	The-Evil-Fox
-alex 		0602594578	alex.kolakowski@outlook.fr		<1Mb/s	Red La Fougère#0305	redlafougere
-axel 		0640897634	axel.mathez@gmail.com			2Mb/s	DrayZix #1138		DrayZix
-Valentin 	0764025296	valentin.crapez1995@gmail.com	<1Mb/s	Cendri#9769			ValCendri
-Steven 		0636567870	jeffrey_stl@hotmail.fr			4G		Stev-kun#2038		Stev-kun
-Pierre 		0671323818	delattre.pierre@outlook.fr		fibre	Mr_Personne#8536	Mr-Personne59
-Maxime 		0618411174	maximewilmot@gmail.com			10Mb/s	Max5989 #1384 		MaxW5989
-Nicola 		0781148505	nicolascaulier@gmail.com		Fibre	Steelux2610#0764	nicolascaulier
-Xavier		O601791744  xavier.bourget@gmail.com				xavier#7128			DWWWMMaubeuge
-XXX;
-
-echo "WWWW<br>";
                                             
-if( $_POST['list_stagiaire'] != "" && $_POST['selSession'] != "" ) 
+if( $_POST['list_stagiaire2session'] != "" && $_POST['selSession'] != "" ) 
 {
-    $list_stagiaire = $_POST['list_stagiaire'];
+    $list_stagiaire = $_POST['list_stagiaire2session'];
     $ID_session    	= $_POST['selSession'];
 
 
@@ -46,10 +29,17 @@ if( $_POST['list_stagiaire'] != "" && $_POST['selSession'] != "" )
 			    {
 				    $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password ) VALUES ( 'NC', 'NC', '$mail', 'NC')";
 				    executeSQL( $req );
-				    $req = "INSERT INTO $DB_dbname.mail2inscript ( mail, ID_session ) VALUES ( '$mail', $ID_session, 'STA' );";
+				    $req = "INSERT INTO $DB_dbname.mail2inscript ( mail, id_session ) VALUES ( '$mail', $ID_session, 'STA' );";
 				    $result = executeSQL( $req );
 				}
-				$req = "UPDATE $DB_dbname.users SET ID_session=$ID_session, role='STA' WHERE mail='$mail'";
+			    $req = "SELECT id FROM $DB_dbname.users WHERE mail='$mail'";
+			    $result = executeSQL( $req );
+			    $data = $result->fetch_assoc();
+			    $id = $data[ 'id' ];
+
+				$req = "UPDATE $DB_dbname.users SET id_session=$ID_session, role='STA' WHERE mail='$mail'";
+				executeSQL( $req );
+				$req = "INSERT INTO $DB_dbname.user_session ( id_user, id_session ) VALUES ( $id, $ID_session )";
 				executeSQL( $req );
 			}
 		}
