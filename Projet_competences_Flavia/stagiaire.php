@@ -1,6 +1,10 @@
 <?php
 require_once( "parametres.php" );
 include_once(  "CO_global_functions.php"  );
+include "MyLibrary.php";
+entete();
+logo();
+nav(0);
 
 
 //https://www.jqueryscript.net/other/slot-machine-picker-drum.html
@@ -126,3 +130,7 @@ while( $ligne = $result->fetch_assoc())
 <FORM  method='POST' name="formSkill" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <?php echo setAllWidgetsValue( $skills ); ?>
 </FORM>
+
+<?php
+footer();
+?> 
