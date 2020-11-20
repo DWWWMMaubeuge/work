@@ -2,11 +2,11 @@
 require_once( "parametres.php" );
 include_once(  "CO_global_functions.php"  );
 
-//inscriptFormateur.php?mail="+mail+"&ID_formation="+ID_formation;
+//inscriptFormateur.php?mail="+mail+"&idFormation="+ID_formation;
 // [-0-9a-zA-Z_.+]+@[-0-9a-zA-Z.+]+.[a-zA-Z]{2,4}
 
 $mails = <<<XXX
-Thomas 		0662151729	thomas_3004@hotmail.fr			fibre	FixIt#2681			Fixito
+Thomas 		0662151729	thomas_3004@hotmail.fr			fibre	FixIt#2681 			Fixito
 Fatima 		0610032073	fatformationafpa@gmail.com		ADSL	Fatima#0358			Fatima-git
 Fouad 		0603462493	ahanchir@live.fr 				Fibre	Pusher#7933			iPuSheR
 Flavia 		0768259876	fortunatoflavia@outlook.com		ADSL	FlaVia#6711			fla1701
@@ -21,14 +21,18 @@ Nicola 		0781148505	nicolascaulier@gmail.com		Fibre	Steelux2610#0764	nicolascaul
 Xavier		O601791744  xavier.bourget@gmail.com				xavier#7128			DWWWMMaubeuge
 XXX;
 
-
-if( $_POST['list_stagiaire'] != "" && $_POST['for_form_stagiaire'] != "" ) 
+echo "WWWW<br>";
+                                            
+if( $_GET['list_stagiaire'] != "" && $_GET['idSession'] != "" ) 
 {
-    $mails        	= $_POST['list_stagiaire'];
-    $ID_formation    = $_POST['for_form_stagiaire'];
+    $list_stagiaire = $_GET['list_stagiaire'];
+    $ID_session    	= $_GET['idSession'];
+
+echo "XXX<br>";
+
 
 	$tabMails = [];
-	$mails = str_replace( "\t", " ", $mails);
+	$mails = str_replace( "\t", " ", $list_stagiaire);
 	$lesligne = explode( "\n", $mails );
 	foreach ($lesligne as $ligne) 
 	{
@@ -37,13 +41,12 @@ if( $_POST['list_stagiaire'] != "" && $_POST['for_form_stagiaire'] != "" )
 		{
 			if ( filter_var($mot, FILTER_VALIDATE_EMAIL)) 
 			{	
-			    $req = "INSERT INTO $DB_dbname.mail2inscript ( mail, id_formation ) VALUES ( '".$mot."', ".$ID_formation." );";
+			    $req = "INSERT INTO $DB_dbname.mail2inscript ( mail, ID_session, role ) VALUES ( '".$mot."', ".$ID_session.", 'STA');";
 			    $result = executeSQL( $req );				
 			    //array_push($tabMails, $mot);
 	  			//echo $mot, "<br>";
 			}
 		}
 	}
-  
 }
 ?>
