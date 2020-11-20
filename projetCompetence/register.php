@@ -64,7 +64,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
     $email       = $_POST['email'];
     $type       = $_POST['type'];
     $password   = $_POST['password'];
-    // attention aux doublons des mail
+    // A revoir utilisation obsoléte de md5
     $vkey = md5(time().$name);
 
   $req = "INSERT INTO $DB_dbname.users ( name, surname, email, type, password,vkey ) VALUES ( '$name', '$surname', '$email', '$type', '$password','$vkey' )";
@@ -72,7 +72,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
 
     if($req)
     {
-        //send email
+        //send email (bien redirigé vers thanYou.php mais pas de reception de mail)
         $to = $email;
         $subject = "Email Verification";
         $message = "<a href='http://localhost/work/login.php?vkey=$vkey'>Register Account</a>";

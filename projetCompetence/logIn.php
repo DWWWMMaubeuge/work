@@ -36,11 +36,15 @@ if( $_POST && $_POST['email'] != "" && $_POST['password'] != ""  )
         }
         elseif ($data['type'] == 'trainer')
         {
-            header('location: trainer/homeTrainer.php' );
+            header('location: trainer/trainerPanel.php' );
+        }
+        elseif ($data['type'] == 'learner')
+        {
+            header('location: skills.php');
         }
         else
         {
-            header('location: skills.php');
+            header('location: register.php');
         }
     }
     else{

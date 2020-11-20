@@ -33,11 +33,11 @@ if(!isset($_SESSION["surname"])){
             <!--header menu start-->
             <div class="header">
                 <div class="header-menu">
-                    <div class="title">Admin <span>Panel</span></div>
+                    <div class="title">Trainer <span>Panel</span></div>
                     <h1>Welcome <?php echo $_SESSION['surname']; ?>!</h1>
                     <ul>
-                        <li><a href="adminPanel.php"><i class="fas fa-home"></i></a></li>
-                        <li><a href="displayTraining.php"><i class="fas fa-chalkboard-teacher"></i></a></li>
+                        <li><a href="trainerPanel.php"><i class="fas fa-home"></i></a></li>
+                        <li><a href="displaySkills.php"><i class="fas fa-chalkboard-teacher"></i></a></li>
                         <li><a href="../logOut.php"><i class="fas fa-power-off"></i></a></li>
                 
                     </ul>
