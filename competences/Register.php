@@ -9,20 +9,20 @@ if(isset($_POST['submitpost']))
     { 
      $recaptcha = new \ReCaptcha\ReCaptcha('6LfHIuIZAAAAAImcpkuK6yZ-UBKcQycnVak8eGUZ ');
         $resp = $recaptcha ->verify($_POST['g-Recaptcha-Response'] ) ;
-                if ($resp->isSuccess()) 
-                {
-                    echo" ('Captcha Valide')";
-                                // Verified!
-                } 
-                elseif($resp->getErrorCodes())
-                {
-                
-                    echo"('Captcha Invalide')";
-                } 
-                else 
-                {
-                    var_dump ('captcha non rempli');
-                }
+            if ($resp->isSuccess()) 
+            {
+                echo" ('Captcha Valide')";
+                            // Verified!
+            } 
+            elseif($resp->getErrorCodes())
+            {
+            
+                echo"('Captcha Invalide')";
+            } 
+            else 
+            {
+                var_dump ('captcha non rempli');
+            }
     } 
 }
 

@@ -8,9 +8,10 @@ $_SESSION[ 'ID_user' ]  = 0;
 
 
 if( $_POST && $_POST['mail'] != "" && $_POST['password'] != "" ) 
+
 {
-    $mail       = $_POST['mail'];
-    $password   = $_POST['password'];
+    $mail        = $_POST['mail'];
+    $password    = $_POST['password'];
 
     // attention aux doublons des mail
 
@@ -45,13 +46,12 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password'] != "" )
     <body>
             <div id="bg"></div>
             <form  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                     
-                    <img src="img/logo6.png" alt=""> 
-                    <label for=""><h2>CONNEXION</h2></label>
-                    <input type="email" name="mail" id="" placeholder="mail" class="mail"  >
-                    <label for=""></label>
-                    <input type="password" name="password" id="" placeholder="password" class="pass">
-                    <button type="submit">login to your account</button>
+                <img src="img/logo6.png" alt=""> 
+                <label for=""><h2>CONNEXION</h2></label>
+                <input type="email" name="mail" id="" placeholder="mail" class="mail"  >
+                <label for=""></label>
+                <input type="password" name="password" id="" placeholder="password" class="pass">
+                <button type="submit">login to your account</button>
             </form> 
    </body>
 

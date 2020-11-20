@@ -30,14 +30,15 @@ include_once "CO_global_functions.php";
 
 session_start();
 
-if (!isset($_SESSION["surname"])) {
+if (!isset($_SESSION["surname"])) 
+ {
     header("Location: Login.php");
-}
+ }
 
-$ID_user      = $_SESSION['ID_user'];
-$id_formation = $_SESSION['id_formation'];
-$name_user    = $_SESSION['name'];
-$surname_user = $_SESSION['surname'];
+    $ID_user       = $_SESSION['ID_user'];
+    $id_formation  = $_SESSION['id_formation'];
+    $name_user     = $_SESSION['name'];
+    $surname_user  = $_SESSION['surname'];
 
 
 

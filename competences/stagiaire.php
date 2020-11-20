@@ -90,12 +90,13 @@ while( $data = $result->fetch_assoc())
     {
       var xhttp = new XMLHttpRequest();
       
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) 
+      xhttp.onreadystatechange = function() 
         {
-            document.getElementById("message_validation").innerHTML = "valeur enregistrée";
-        }
-      };
+            if (this.readyState == 4 && this.status == 200) 
+            {
+                document.getElementById("message_validation").innerHTML = "valeur enregistrée";
+            }
+        };
 
       xhttp.open("GET", "maj_value.php?idSkill="+id_skill+"&valSkill="+value, true);
       xhttp.send();
