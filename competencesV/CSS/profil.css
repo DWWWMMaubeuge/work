@@ -138,3 +138,11 @@ img {
 #changeMdp:hover{
     cursor:pointer;
 }
+
+#changeName:hover{
+    cursor:pointer;
+}
+
+#changeFirstName:hover{
+    cursor:pointer;
+}

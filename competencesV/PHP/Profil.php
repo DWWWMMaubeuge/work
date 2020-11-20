@@ -16,7 +16,9 @@ include 'SQLProfil.php';
     <link rel="stylesheet" href="CSS/profil.css">
     <link rel="stylesheet" href="CSS/main.css">
     <script src="./JS/graph.js"></script>
-    <script src="./JS/changePwd"></script>
+    <script src="./JS/changePwd.js"></script>
+    <script src="./JS/changeName.js"></script>
+    <script src="./JS/changeFirstName.js"></script>
 </head>
 <body>
     <div class="container my-5">
@@ -42,9 +44,16 @@ include 'SQLProfil.php';
                                             <i class="fas fa-id-card-alt"></i>
                                             <strong class="margin-10px-left">Nom</strong>
                                         </div>
-                                        <div class="col-md-7 col-7">
-                                            <p><?= $user['name']?></p>
+                                        <div  class="col-md-7 col-7">
+                                            <a id='changeName' class="underline text-white" ><?= $user['name']?></a>
+                                            <div id="hideName">
+                                                <form method="post" action="PHP/SQLChangeName.php">
+                                                    <input type="text" id="newName" name="newName" placeholder="entrez votre nouveau nom">
+                                                    <input type="submit" class='btn btn-primary' name="submitNewName" id="submitNewName" value="Confirmez">
+                                                </form>
+                                            </div>
                                         </div>
+
                                     </div>
                                 </li>
                                 <li>
@@ -54,7 +63,13 @@ include 'SQLProfil.php';
                                             <strong class="margin-10px-left">Prenom</strong>
                                         </div>
                                         <div class="col-md-7 col-7">
-                                            <p><?= $user['firstname']?></p>
+                                            <a id="changeFirstName" class="underline text-white"><?= $user['firstname']?></a>
+                                            <div id="hideFirstName">
+                                                <form method="post" action="PHP/SQLChangeFirstName.php">
+                                                    <input type="text" id="newFirstName" name="newFirstName" placeholder="entrez votre nouveau prenom">
+                                                    <input type="submit" class='btn btn-primary' name="submitNewFirstName" id="submitNewFirstName" value="Confirmez">
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -80,14 +95,12 @@ include 'SQLProfil.php';
                                             <div id="hidePwd">
                                                 <form method="post" action="PHP/SQLChangeMdp.php">
                                                     <input type="password" id="newPwd" name="newPwd" placeholder="entrez votre nouveau mot de passe">
-                                                    <input type="submit" name="submitNewPwd" id="submitNewPwd" value="Confirmez">
+                                                    <input type="submit" name="submitNewPwd" class='btn btn-primary'  id="submitNewPwd" value="Confirmez">
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-
-
                             </ul>
                         </div>
                     </div>

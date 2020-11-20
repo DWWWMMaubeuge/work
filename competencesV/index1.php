@@ -2,6 +2,7 @@
 include('./PHP/Login.php');
 include('./PHP/Registration.php');
 include_once "PHP/affichageSuperPanel.php";
+include_once "PHP/bulkTreatment.php"
 ?>
 <!doctype html>
 <html lang="fr">
@@ -72,12 +73,18 @@ include_once "PHP/affichageSuperPanel.php";
         <?php if ($_SESSION['email']=='super@user.fr'):?>
             <div class="container my-5 border border-primary p-5 background text-center text-white">
                 <?php
-                formSuperUser($users);
+                formSuperUser($users,$array3);
                 ?>
             </div>
         <?php else :?>
             <?php if(isset($_GET['errors']) && $_GET['errors']==1):?>
             <div class="alert alert-success">Mot de passe changé avec succés</div>
+            <?php endif ;?>
+            <?php if(isset($_GET['errors']) && $_GET['errors']==2):?>
+                <div class="alert alert-success">Nom changé avec succés</div>
+            <?php endif ;?>
+            <?php if(isset($_GET['errors']) && $_GET['errors']==3):?>
+                <div class="alert alert-success">Prenom changé avec succés</div>
             <?php endif ;?>
             <div class=" container my-5 border border-primary p-5 background text-center text-white h1">Bienvenue <?= $_SESSION['prenom']." ".$_SESSION['nom'] ?></div>
             <div id="profil" class="mb-2"></div>
