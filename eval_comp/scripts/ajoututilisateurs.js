@@ -1,11 +1,13 @@
-$('#invitations').submit(function(e) {
+$('#ajoututilisateurs').submit(function(e) {
     e.preventDefault();
 $.ajax({
     type: 'POST',
-    url: '../traitements/traitement-invitations.php',
+    url: '../traitements/traitement-ajoututilisateurs.php',
     data: {
         'Emails': $('#emails').val(),
-        'Formation': $('#idformation').val()
+        'Formation': $('#idformation').val(),
+        'Session': $('#idsession').val(),
+        'Role': $('#role').val()
     },
     dataType: 'html',
     success: function(data) {

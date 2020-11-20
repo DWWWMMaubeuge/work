@@ -41,14 +41,14 @@ if(!isset($_GET['formation'])) {
 
     $premier = ($currentPage * $parPage) - $parPage;
 
-    $allusers= $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID ORDER BY Membres.ID ASC LIMIT :premier, :parpage');
+    $allusers= $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Sessions ON Options.SESSION = Sessions.ID_SESSION LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION ORDER BY Membres.ID ASC LIMIT :premier, :parpage');
     $allusers->bindParam(':premier', $premier, PDO::PARAM_INT);
     $allusers->bindParam(':parpage', $parPage, PDO::PARAM_INT);
     $allusers->execute();
     
 } else {
     
-    $q = $bdd->query('SELECT COUNT(*) AS nb_users FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID WHERE Options.FORMATION = ' . $_GET['formation'] );
+    $q = $bdd->query('SELECT COUNT(*) AS nb_users FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Sessions ON Options.SESSION = Sessions.ID_SESSION LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION WHERE Sessions.ID_FORMATION = ' . $_GET['formation'] );
     
     $result = $q->fetch();
     
@@ -60,7 +60,7 @@ if(!isset($_GET['formation'])) {
 
     $premier = ($currentPage * $parPage) - $parPage;
     
-    $allusers = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID WHERE Options.FORMATION = ' . $_GET['formation'] . ' ORDER BY Membres.ID ASC LIMIT :premier, :parpage');
+    $allusers = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Sessions ON Options.SESSION = Sessions.ID_SESSION LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION WHERE Sessions.ID_FORMATION = ' . $_GET['formation'] . ' ORDER BY Membres.ID ASC LIMIT :premier, :parpage');
     $allusers->bindParam(':premier', $premier, PDO::PARAM_INT);
     $allusers->bindParam(':parpage', $parPage, PDO::PARAM_INT);
     $allusers->execute();
@@ -80,12 +80,15 @@ if(!isset($_GET['formation'])) {
        <?php } ?>
         </select>
     </div>
-    <table class="table table-hover table-dark text-center w-50 m-auto">
+    <table class="table table-hover table-dark text-center w-100 m-auto">
         <thead>
             <tr>
             <th scope="col">ID</th>
             <th scope="col">Avatar</th>
             <th scope="col">Pseudo</th>
+            <?php if(isset($_GET['formation'])) { ?>
+                <th scope="col">Session</th>
+            <?php } ?>
             <?php if($infos['Admin'] == TRUE || $infos['SuperAdmin'] == TRUE) { ?>
                 <th scope="col">Moyennes</th>
             <?php } ?>
@@ -97,12 +100,21 @@ if(!isset($_GET['formation'])) {
             <td scope="row"><?= $user['ID']; ?></td>
             <td scope="row"><img src="images/avatars/<?= $user['Avatar']; ?>" alt="avatar" class="rounded-circle" width="35"></td>
             <td scope="row"><a class="<?php if($user['Admin'] == 1 || $user['SuperAdmin'] == 1) { ?>text-danger<?php } else { ?>text-info<?php } ?> m-auto" href="utilisateur.php?pseudo=<?= $user['Pseudo']; ?>"><?= $user['Pseudo']; ?></a></td>
-            <?php if($infos['Admin'] == TRUE && $user['SuperAdmin'] != TRUE  || $infos['SuperAdmin'] == TRUE && $user['Admin'] != TRUE && $infos['Pseudo'] )  { ?>
-                <?php if($infos['Pseudo'] != $user['Pseudo'] && $infos['ID_FORMATION'] == $user['FORMATION']) { ?>
-                    <td scope="row"><a class="text-white m-auto" href="moyennes.php?pseudo=<?= $user['Pseudo']; ?>"><i class="fas fa-chart-bar"></i></a></td>
+            <?php if(isset($_GET['formation'])) { ?>
+                <td scope="row">du <?= dateConvert($user['DATE_DEBUT']); ?> au <?= dateConvert($user['DATE_FIN']); ?> à <?= $user['EMPLACEMENT']; ?></td>
+            <?php } ?>
+            <?php if($infos['Admin'] == TRUE && $user['SuperAdmin'] != TRUE  || $infos['SuperAdmin'] == TRUE && $user['Admin'] != TRUE )  { ?>
+                <?php if($infos['Pseudo'] != $user['Pseudo']) { ?>
+                    <?php if($user['Admin'] != TRUE && $user['SuperAdmin'] != TRUE) { ?>
+                        <td scope="row"><a class="text-white m-auto" href="moyennes.php?pseudo=<?= $user['Pseudo']; ?>"><i class="fas fa-chart-bar"></i></a></td>
+                    <?php } else { ?>
+                        <td scope="row"></td>
+                    <?php } ?>
                 <?php } else { ?>
-                    <td></td>
+                    <td scope="row"></td>
                 <?php } ?>
+            <?php } else { ?>
+                <td scope="row"></td>
             <?php } ?>
             </tr>
         <?php } ?>

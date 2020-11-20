@@ -16,7 +16,6 @@
                     <div class="form-group d-flex-text-center mx-3">
                       <label class="mr-2" for="password">Mot de passe</label>
                       <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe" aria-describedby="helpId" required>
-                      <input type="hidden" name="securepassword" id="securepassword" required>
                     </div>
                     <button class="btn btn-primary m-auto">Login</button>
                   </form>
@@ -30,13 +29,13 @@
 
 <?php
 
-  $sql = $bdd->prepare('SELECT * FROM Invitations WHERE Email = :email');
-  $sql->bindParam(':email', $infos['Email'], PDO::PARAM_STR);
-  $sql->execute();
-  $countinvit = $sql->rowCount();
+  $checkinvit = $bdd->prepare('SELECT * FROM Invitations WHERE Email = :email');
+  $checkinvit->bindParam(':email', $infos['Email'], PDO::PARAM_STR);
+  $checkinvit->execute();
+  $countinvit = $checkinvit->rowCount();
   
   if($countinvit != 0) {
-    $invit = $sql->fetch();
+    $invit = $checkinvit->fetch();
   }
   
 ?>

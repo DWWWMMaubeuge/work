@@ -2,10 +2,11 @@ $('#confirmer-invitation').submit(function(e) {
     e.preventDefault();
 $.ajax({
     type: 'POST',
-    url: '../traitements/traitement-changementformation.php',
+    url: '../traitements/traitement-invitations.php',
     data: {
         'Email': $('#email').val(),
         'Idformation': $('#idformation').val(),
+        'Idsession': $('#idsession').val(),
         'Confirmation': $('#choix').val(),
         'Captcha': $('#captcha').val()
     },

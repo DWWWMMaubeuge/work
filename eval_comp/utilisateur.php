@@ -10,7 +10,7 @@ if(!isset($_GET['pseudo']) OR empty($_GET['pseudo'])) {
 
 }
 
-$userinfos = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Formations ON Options.FORMATION = Formations.ID_FORMATION  LEFT JOIN Sessions ON Options.FORMATION = Sessions.ID_SESSION WHERE Membres.Pseudo = :pseudo');
+$userinfos = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Sessions ON Options.SESSION = Sessions.ID_SESSION LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION WHERE Membres.Pseudo = :pseudo');
 $userinfos->bindParam(':pseudo', $_GET['pseudo'], PDO::PARAM_STR);
 $userinfos->execute();
 $check = $userinfos->rowCount();
@@ -31,15 +31,15 @@ FROM Matieres m LEFT JOIN
      (SELECT r.*,
              ROW_NUMBER() OVER (PARTITION BY id_Matiere, id_user ORDER BY TIME_OF_INSERTION DESC) as seqnum
       FROM Resultats r
-      WHERE r.ID_USER = :user
-      AND MOIS = :mois
+      WHERE r.ID_USER = :ID_USER 
+      AND r.ID_SESSION = :session
      ) r
      ON m.id = r.ID_MATIERE AND
         seqnum = 1
 WHERE Active = TRUE AND ID_Formation = :formation;');
-$resultats->bindParam(':user', $user['ID'], PDO::PARAM_INT);
+$resultats->bindParam(':ID_USER', $user['ID'], PDO::PARAM_INT);
+$resultats->bindParam(':session', $user['SESSION'], PDO::PARAM_INT);
 $resultats->bindParam(':formation', $user['ID_FORMATION'], PDO::PARAM_INT);
-$resultats->bindParam(':mois', $moisquery, PDO::PARAM_STR);
 $resultats->execute();
 $count = $resultats->rowCount();
 
@@ -55,7 +55,7 @@ $count = $resultats->rowCount();
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body">
-                            <div class="d-flex flex-column align-items-center text-center">
+                            <div class="d-flex text-dark flex-column align-items-center text-center">
                                 <img src="images/avatars/<?= $user['Avatar']; ?>" alt="avatar" class="rounded-circle" width="150">
                                 <div class="mt-3 col-sm-12">
                                     <?php if($user['Admin'] != 1 && $user['SuperAdmin'] != 1) { ?><h2 class="text-info"><?= $user['Pseudo']?></h2><?php } else { ?> <h2 class="text-danger"><?= $user['Pseudo']?> <?php } ?>
@@ -63,22 +63,20 @@ $count = $resultats->rowCount();
                             </div>
                         </div>
                     </div>
-                    <?php if(!empty($user['Github']) OR !empty($user['Site'])) { ?>
-                        <div class="card mt-3">
-                            <ul class="bg-dark list-group list-group-flush">
-                                <?php if(!empty($user['Github'])) { ?>
-                                    <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <i class="fab fa-github" title="Lien Github"></i><a class="text-white"href="https://github.com/<?= $user['Github']; ?>"><?= $user['Github']; ?></a>
-                                    </li>
-                                <?php } ?>
-                                <?php if(!empty($user['Site'])) { ?>
-                                    <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <i class="fas fa-link" title="Lien site personnel"></i><a class="text-white" href="<?= $user['Site']; ?>" target="_blank">Site personnel</a>
-                                    </li>
-                                <?php } ?>
-                            </ul>
-                        </div>
-                    <?php } ?>
+                    <div class="card mt-3">
+                        <ul class="bg-dark list-group list-group-flush">
+                            <?php if(!empty($user['Github'])) { ?>
+                                <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <i class="fab fa-github" title="Lien Github"></i><a class="text-white"href="https://github.com/<?= $user['Github']; ?>"><?= $user['Github']; ?></a>
+                                </li>
+                            <?php } ?>
+                            <?php if(!empty($user['Site'])) { ?>
+                                <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <i class="fas fa-link" title="Lien site personnel"></i><a class="text-white" href="<?= $user['Site']; ?>" target="_blank">Site personnel</a>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
                 </div>
                 <div class="col-md-8">
                     <div class="card mb-3">
@@ -122,10 +120,10 @@ $count = $resultats->rowCount();
                             <?php } ?>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Formation</h6>
+                                    <h6 class="mb-0">Formation active</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                <?php if($user['ID_FORMATION'] == 0) { echo "Non renseigné !"; } else { echo $user['FORMATION'] . " ( session du " . dateConvert($user['DATE_DEBUT']) . " au " . dateConvert($user['DATE_FIN']) . ")"; } ?>
+                                <?php if($user['ID_FORMATION'] == 0) { echo "Non renseigné !"; } else { echo $user['FORMATION'] . " ( Session du " . dateConvert($user['DATE_DEBUT']) . " au " . dateConvert($user['DATE_FIN']) . " à " . $user['EMPLACEMENT'] . " )"; } ?>
                                 </div>
                             </div>
                             <hr>

@@ -2,30 +2,28 @@
 
 
 
-function getAverage($user, $formation) {
+function getAverage($user, $formation, $session) {
 
     GLOBAL $bdd;
 
-    $sql = $bdd->prepare('SELECT SUM(RESULTAT) FROM Resultats WHERE ID_USER = :user AND FORMATION = :formation GROUP BY MOIS');
-    $sql->bindParam(':user', $user, PDO::PARAM_INT);
-    $sql->bindParam(':formation', $formation, PDO::PARAM_INT);
-    $sql->execute();
+    $allresultats = $bdd->prepare('SELECT SUM(RESULTAT) FROM Resultats WHERE ID_USER = :user AND ID_SESSION = :session GROUP BY MOIS');
+    $allresultats->bindParam(':user', $user, PDO::PARAM_INT);
+    $allresultats->bindParam(':session', $session, PDO::PARAM_INT);
+    $allresultats->execute();
 
-    $req = $bdd->prepare('SELECT COUNT(Active) FROM Matieres WHERE ID_Formation = :userformation');
-    $req->bindParam(':userformation', $formation, PDO::PARAM_INT);
-    $req->execute();
+    $allmatieres = $bdd->prepare('SELECT COUNT(Active) FROM Matieres WHERE ID_Formation = :userformation');
+    $allmatieres->bindParam(':userformation', $formation, PDO::PARAM_INT);
+    $allmatieres->execute();
 
-    $resultats = $sql->fetchAll();
-
-    $matieres = $req->fetch();
+    $matieres = $allmatieres->fetch();
 
     $moyennes = array(
 
     );
 
-    foreach($resultats as $result) {
+    while($resultats = $allresultats->fetch()) {
 
-    $moyenne = $result[0] / $matieres['COUNT(Active)'];
+    $moyenne = $resultats[0] / $matieres['COUNT(Active)'];
     $moyenne = number_format($moyenne, 2);
     array_push($moyennes, $moyenne);
 

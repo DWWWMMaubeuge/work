@@ -20,7 +20,7 @@ if(isset($_GET['pseudo'])) {
     
     if($infos['Admin'] != 0 || $infos['SuperAdmin'] != 0) {
     
-        $usermoyenne = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Formations ON Options.FORMATION = Formations.ID_FORMATION WHERE Membres.Pseudo = :pseudo');
+        $usermoyenne = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Sessions ON Options.SESSION = Sessions.ID_SESSION LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION WHERE Membres.Pseudo = :pseudo');
         $usermoyenne->bindParam(':pseudo', $_GET['pseudo'], PDO::PARAM_STR);
         $usermoyenne->execute();
         $countmember = $usermoyenne->rowCount();
@@ -36,11 +36,21 @@ if(isset($_GET['pseudo'])) {
                 
             }
             
-            $moyennes = getAverage($member['ID'], $member['ID_FORMATION']);
+            if(isset($_POST['moyennesession'])) {
+                
+                $session = $_POST['moyennesession'];
+                
+            } else {
+                
+                $session = $member['SESSION'];
+                
+            }
             
-            $allmonths = $bdd->prepare('SELECT MOIS FROM Resultats WHERE ID_USER = :userid AND FORMATION = :formation GROUP BY MOIS');
+            $moyennes = getAverage($member['ID'], $member['ID_FORMATION'], $session);
+            
+            $allmonths = $bdd->prepare('SELECT MOIS FROM Resultats WHERE ID_USER = :userid AND ID_SESSION = :session GROUP BY MOIS');
             $allmonths->bindParam(':userid', $member['ID'], PDO::PARAM_INT);
-            $allmonths->bindParam(':formation', $member['ID_FORMATION'], PDO::PARAM_INT);
+            $allmonths->bindParam(':session', $session, PDO::PARAM_INT);
             $allmonths->execute();
             $nbroccurence = $allmonths->rowCount();
             
@@ -55,12 +65,17 @@ if(isset($_GET['pseudo'])) {
                 
             }
             
-            $count = $bdd->prepare('SELECT COUNT(DISTINCT MOIS) FROM Resultats WHERE ID_USER = :userid AND FORMATION = :formation');
+            $count = $bdd->prepare('SELECT COUNT(DISTINCT MOIS) FROM Resultats WHERE ID_USER = :userid AND ID_SESSION = :session');
             $count->bindParam(':userid', $member['ID'], PDO::PARAM_INT);
-            $count->bindParam(':formation', $member['ID_FORMATION'], PDO::PARAM_INT);
+            $count->bindParam(':session', $session, PDO::PARAM_INT);
             $count->execute();
             
             $nbrmois = $count->rowCount();
+            
+            $sessionsmember = $bdd->prepare('SELECT * FROM FormationsUtilisateur LEFT JOIN Formations ON FormationsUtilisateur.IDENTIFIANT_FORMATION = Formations.ID_FORMATION LEFT JOIN Sessions ON FormationsUtilisateur.IDENTIFIANT_SESSION = Sessions.ID_SESSION WHERE FormationsUtilisateur.USER = :user AND Sessions.STATUS != FALSE ORDER BY FORMATION ASC');
+            $sessionsmember->bindParam(':user', $member['ID'], PDO::PARAM_STR);
+            $sessionsmember->execute();
+            $sessionscount = $sessionsmember->rowCount();
             
         } else {
             
@@ -85,18 +100,33 @@ if($infos['Admin'] != 0 || $infos['SuperAdmin'] != 0) {
     
 }
 
-$moyennes = getAverage($_SESSION['id'], $infos['ID_FORMATION']);
+$alluserformations = $bdd->prepare('SELECT * FROM FormationsUtilisateur LEFT JOIN Formations ON FormationsUtilisateur.IDENTIFIANT_FORMATION = Formations.ID_FORMATION LEFT JOIN Sessions ON FormationsUtilisateur.IDENTIFIANT_SESSION = Sessions.ID_SESSION WHERE FormationsUtilisateur.USER = :user AND Sessions.STATUS != FALSE ORDER BY FORMATION ASC');
+$alluserformations->bindParam(':user', $_SESSION['id'], PDO::PARAM_INT);
+$alluserformations->execute();
+$countformations = $alluserformations->rowCount();
 
-$stmt = $bdd->prepare('SELECT MOIS FROM Resultats WHERE ID_USER = :userid AND FORMATION = :formation GROUP BY MOIS');
-$stmt->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
-$stmt->bindParam(':formation', $infos['ID_FORMATION'], PDO::PARAM_INT);
-$stmt->execute();
-$nbroccurence = $stmt->rowCount();
+if(isset($_POST['moyennesession'])) {
+
+    $session = $_POST['moyennesession'];
+
+} else {
+    
+    $session = $infos['SESSION'];
+    
+}
+
+$moyennes = getAverage($_SESSION['id'], $infos['ID_FORMATION'], $session);
+
+$nbrresultats = $bdd->prepare('SELECT MOIS FROM Resultats WHERE ID_USER = :userid AND ID_SESSION = :session GROUP BY MOIS');
+$nbrresultats->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
+$nbrresultats->bindParam(':session', $session, PDO::PARAM_INT);
+$nbrresultats->execute();
+$nbroccurence = $nbrresultats->rowCount();
 
 if($nbroccurence != 0) {
     
     $moisgraphique = array();
-    $moisgraphique = $stmt->fetch();
+    $moisgraphique = $nbrresultats->fetch();
     
 } else {
     
@@ -104,12 +134,12 @@ if($nbroccurence != 0) {
     
 }
 
-$sql = $bdd->prepare('SELECT COUNT(DISTINCT MOIS) FROM Resultats WHERE ID_USER = :userid AND FORMATION = :formation');
-$sql->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
-$sql->bindParam(':formation', $infos['ID_FORMATION'], PDO::PARAM_INT);
-$sql->execute();
+$countmonths = $bdd->prepare('SELECT COUNT(DISTINCT MOIS) FROM Resultats WHERE ID_USER = :userid AND ID_SESSION = :session');
+$countmonths->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
+$countmonths->bindParam(':session', $session, PDO::PARAM_INT);
+$countmonths->execute();
 
-$nbrmois = $sql->rowCount();
+$nbrmois = $countmonths->rowCount();
 
 }
 
@@ -145,7 +175,7 @@ for($i=0;$i<$nbrmois;$i++){
     }
 }
 
-imagepng($img, "moyenne.png");
+imagepng($img, "moyennes.png");
 myHeader('Moyennes'); 
 require_once('config/navbar.php');
 ?>
@@ -168,7 +198,75 @@ require_once('config/navbar.php');
                 <?php } ?>
             </h1>
         <?php } ?>
-        <img class="rounded mx-auto d-block" src="moyenne.png" />
+        <?php 
+    
+        if(!isset($_GET['pseudo'])) {
+            
+            if($countformations != 0) {
+            
+                if($countformations > 1) { ?>
+                
+                    <form method="POST" class="text-center" id="form-moyennes">
+                        <select name="moyennesession" id="moyennesession" onchange="getMoyennes(this.id, this.value)">
+                            <?php while($userformations = $alluserformations->fetch()) { ?>
+                            
+                                <option value="<?= $userformations['IDENTIFIANT_SESSION']; ?>" <?php if(isset($_POST['moyennesession']) && $_POST['moyennesession'] == $userformations['IDENTIFIANT_SESSION']) { ?> selected <?php } ?>><?= $userformations['FORMATION']; ?> ( Session du <?= dateConvert($userformations['DATE_DEBUT']); ?> au <?= dateConvert($userformations['DATE_FIN']); ?> à <?= $userformations['EMPLACEMENT']; ?> )</option>
+                                
+                            <?php } ?>
+                            
+                        </select>
+                    </form>
+                    
+                <?php } else { ?>
+                
+                    <form method="POST" class="text-center" id="form-moyennes">
+                        <select name="moyennesession" id="moyennesession" onchange="getMoyennes(this.id, this.value)">
+                            <?php while($userformations = $alluserformations->fetch()) { ?>
+                            
+                                <option value="<?= $userformations['IDENTIFIANT_SESSION']; ?>" <?php if(isset($_POST['moyennesession']) && $_POST['moyennesession'] == $userformations['IDENTIFIANT_SESSION']) { ?> selected <?php } ?>><?= $userformations['FORMATION']; ?> ( Session du <?= dateConvert($userformations['DATE_DEBUT']); ?> au <?= dateConvert($userformations['DATE_FIN']); ?> à <?= $userformations['EMPLACEMENT']; ?> )</option>
+                                
+                            <?php } ?>
+                            
+                        </select>
+                    </form>
+                
+                <?php } ?>
+            
+            <?php } ?>
+            
+        <?php } ?>
+        
+        <?php if(isset($_GET['pseudo'])) {
+            
+            if($sessionscount != 0) {
+            
+                if($sessionscount > 1) { ?>
+                    
+                    <form method="POST" class="text-center" id="form-moyennes">
+                        <select name="moyennesession" id="moyennesession" onchange="getMoyennes(this.id, this.value)">
+                            <?php while($membersession = $sessionsmember->fetch()) { ?>
+                                <option value="<?= $membersession['IDENTIFIANT_SESSION']; ?>" <?php if(isset($_POST['moyennesession']) && $_POST['moyennesession'] == $membersession['IDENTIFIANT_SESSION']) { ?> selected <?php } ?>><?= $membersession['FORMATION']; ?> ( Session du <?= dateConvert($membersession['DATE_DEBUT']); ?> au <?= dateConvert($membersession['DATE_FIN']); ?> à <?= $membersession['EMPLACEMENT']; ?> )</option>
+                            <?php } ?>
+                        </select>
+                    </form>
+                    
+                <?php } else { ?>
+                    
+                    <form method="POST" class="text-center" id="form-moyennes">
+                        <select name="moyennesession" id="moyennesession" onchange="getMoyennes(this.id, this.value)">
+                            <?php while($membersession = $sessionsmember->fetch()) { ?>
+                                <option value="<?= $membersession['IDENTIFIANT_SESSION']; ?>" <?php if(isset($_POST['moyennesession']) && $_POST['moyennesession'] == $membersession['IDENTIFIANT_SESSION']) { ?> selected <?php } ?>><?= $membersession['FORMATION']; ?> ( Session du <?= dateConvert($membersession['DATE_DEBUT']); ?> au <?= dateConvert($membersession['DATE_FIN']); ?> à <?= $membersession['EMPLACEMENT']; ?> )</option>
+                            <?php } ?>
+                        </select>
+                    </form>
+                    
+                <?php } ?>
+            
+            <?php } ?>
+            
+        <?php } ?>
+        <img class="rounded mx-auto mt-5 d-block" src="moyennes.png" />
     </div>
 </div>
+<script src="scripts/moyennes.js"></script>
 <?php require_once('config/footer.php'); ?>

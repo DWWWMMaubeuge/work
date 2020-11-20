@@ -10,26 +10,35 @@ if($infos['Admin'] == TRUE) {
     
 }
 
-$req = $bdd->prepare('SELECT *
+$alluseresultats = $bdd->prepare('SELECT *
 FROM Matieres m LEFT JOIN
      (SELECT r.*,
              ROW_NUMBER() OVER (PARTITION BY id_Matiere, id_user ORDER BY TIME_OF_INSERTION DESC) as seqnum
       FROM Resultats r
       WHERE r.ID_USER = :ID_USER 
+      AND r.ID_SESSION = :session
      ) r
      ON m.id = r.ID_MATIERE AND
         seqnum = 1
-WHERE Active = TRUE AND ID_Formation = :formation;');
-$req->bindParam(':ID_USER', $_SESSION['id'], PDO::PARAM_INT);
-$req->bindParam(':formation', $infos['ID_FORMATION'], PDO::PARAM_INT);
-$req->execute();
+WHERE Active = TRUE AND m.ID_Formation = :formation AND m.ID_Session = :sessioncomps;');
+$alluseresultats->bindParam(':ID_USER', $_SESSION['id'], PDO::PARAM_INT);
+$alluseresultats->bindParam(':session', $infos['SESSION'], PDO::PARAM_INT);
+$alluseresultats->bindParam(':formation', $infos['ID_FORMATION'], PDO::PARAM_INT);
+$alluseresultats->bindParam(':sessioncomps', $infos['SESSION'], PDO::PARAM_INT);
+$alluseresultats->execute();
 
-$skills = [];
+$countresultats = $alluseresultats->rowCount();
 
-while( $data = $req->fetch()) {
+if($countresultats !== 0) {
 
-    array_push( $skills, [ $data['id'], $data['Nom'], $data['RESULTAT'] ] );
+    $skills = [];
 
+    while( $data = $alluseresultats->fetch()) {
+
+        array_push( $skills, [ $data['id'], $data['Nom'], $data['RESULTAT'] ] );
+
+    }
+    
 }
 ?>
 <?php include('config/head.php'); ?>
@@ -39,11 +48,15 @@ while( $data = $req->fetch()) {
 <?php require_once('config/navbar.php'); ?>
 <div class="container-fluid p-5 mt-5 banner3">
     <div class="container bg-dark my-5 p-5 opacity-4">
-        <form class="text-center m-5" method="POST" id="evaluation">
-            <h1 class='text-center my-5'>Auto-évaluation du mois de <?= ucfirst(strtolower($mois)); ?></h1>
-            <?= setAllWidgetValue( $skills ); ?>
-            <div class="alert alert-info my-5 d-none text-center" role="alert" id="confirmation"></div>
-        </form>
+        <?php if($countresultats !== 0) { ?>
+            <form class="text-center m-5" method="POST" id="evaluation">
+                <h1 class='text-center my-5'>Auto-évaluation du mois de <?= ucfirst(strtolower($mois)); ?></h1>
+                <?= setAllWidgetValue( $skills ); ?>
+                <div class="alert alert-info my-5 d-none text-center" role="alert" id="confirmation"></div>
+            </form>
+        <?php } else { ?>
+            <h1 class="text-center text-warning my-5">L'auto-évaluation n'est pas disponible pour le moment !</h1>
+        <?php } ?>
     </div>
 </div>
 <?php require_once('config/footer.php'); ?>

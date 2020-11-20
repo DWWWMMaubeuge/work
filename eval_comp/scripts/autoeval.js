@@ -1,4 +1,4 @@
-function MAJ_Value( id_skill, formation, value, iduser )
+function MAJ_Value( id_skill, formation, value, session, iduser )
     {
       var xhttp = new XMLHttpRequest();
       
@@ -12,7 +12,7 @@ function MAJ_Value( id_skill, formation, value, iduser )
         }
       };
 
-      xhttp.open("GET", "traitements/traitement-evaluation.php?idSkill="+id_skill+"&formation="+formation+"&valSkill="+value+"&iduser="+iduser, true);
+      xhttp.open("GET", "traitements/traitement-evaluation.php?idSkill="+id_skill+"&formation="+formation+"&valSkill="+value+"&session="+session+"&iduser="+iduser, true);
       xhttp.send();
 
     }

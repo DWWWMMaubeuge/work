@@ -396,10 +396,10 @@ if(isset($_FILES['inputAvatar']) AND !empty($_FILES['inputAvatar']['name'])) {
     
 }
 
-if(isset($_POST['Formation'])) {
+if(isset($_POST['Session'])) {
     
-    $formationactive = $bdd->prepare('UPDATE Options SET FORMATION = :formation WHERE ID = :user');
-    $formationactive->bindParam(':formation', $_POST['Formation'], PDO::PARAM_INT);
+    $formationactive = $bdd->prepare('UPDATE Options SET SESSION = :session WHERE ID = :user');
+    $formationactive->bindParam(':session', $_POST['Session'], PDO::PARAM_INT);
     $formationactive->bindParam(':user', $_SESSION['id'], PDO::PARAM_INT);
     $formationactive->execute();
     

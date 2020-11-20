@@ -11,27 +11,21 @@ FROM Matieres m LEFT JOIN
      (SELECT r.*,
              ROW_NUMBER() OVER (PARTITION BY id_Matiere, id_user ORDER BY TIME_OF_INSERTION DESC) as seqnum
       FROM Resultats r
-      WHERE r.ID_USER = :user
-      AND MOIS = :mois
+      WHERE r.ID_USER = :ID_USER 
+      AND r.ID_SESSION = :session
      ) r
      ON m.id = r.ID_MATIERE AND
         seqnum = 1
 WHERE Active = TRUE AND ID_Formation = :formation;');
-$detailsresultats->bindParam(':user', $_SESSION['id'], PDO::PARAM_INT);
+$detailsresultats->bindParam(':ID_USER', $_SESSION['id'], PDO::PARAM_INT);
+$detailsresultats->bindParam(':session', $infos['SESSION'], PDO::PARAM_INT);
 $detailsresultats->bindParam(':formation', $infos['ID_FORMATION'], PDO::PARAM_INT);
-$detailsresultats->bindParam(':mois', $moisquery, PDO::PARAM_STR);
 $detailsresultats->execute();
 $count = $detailsresultats->rowCount();
 
-$resultats = $detailsresultats->fetchAll();
-
-$formationsdetails = $bdd->query('SELECT * FROM Formations');
-$formations = $formationsdetails->fetchAll();
-
-$alluserformations = $bdd->prepare('SELECT * FROM FormationsUtilisateur LEFT JOIN Formations ON FormationsUtilisateur.IDENTIFIANT_FORMATION = Formations.ID_FORMATION WHERE FormationsUtilisateur.USER = :user ORDER BY FORMATION');
+$alluserformations = $bdd->prepare('SELECT * FROM FormationsUtilisateur LEFT JOIN Formations ON FormationsUtilisateur.IDENTIFIANT_FORMATION = Formations.ID_FORMATION LEFT JOIN Sessions ON FormationsUtilisateur.IDENTIFIANT_SESSION = Sessions.ID_SESSION WHERE FormationsUtilisateur.USER = :user AND Sessions.STATUS != FALSE ORDER BY FORMATION ASC');
 $alluserformations->bindParam(':user', $_SESSION['id'], PDO::PARAM_INT);
 $alluserformations->execute();
-
 $countformations = $alluserformations->rowCount();
 
 ?>
@@ -56,7 +50,7 @@ $countformations = $alluserformations->rowCount();
                     </div>
                     <div class="card mt-3">
                         <ul class="bg-dark list-group list-group-flush">
-                            <?php if($infos['ID_FORMATION'] == 1) { ?>
+                            <?php if($infos['FORMATION'] == "Développeurs web") { ?>
                                 <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                     <?php if(!empty($infos['Github'])) { ?>
                                         <i class="fab fa-github" title="Lien Github"></i><a class="text-white" id="monGithub" href="https://github.com/<?= $infos['Github']; ?>"><?= $infos['Github']; ?></a><i class="fas fa-wrench text-warning editmode" id="Github" onclick="setInfo(this.id, 'monGithub')" title="Modifier mon pseudo Github"></i>
@@ -106,14 +100,15 @@ $countformations = $alluserformations->rowCount();
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Formation active</h6>
+                                    <h6 class="mb-0">Formation active <i class="fas fa-question-circle text-warning editmode" title="Si vous êtes inscrits à plusieurs sessions de formation en même temps, cette option vous permet de choisir quelle session sera utilisé pour accéder à l'auto-évaluation. Si vous êtes formateur, la formation active définiera également quelle formation sera modifiée dans l'espace administration."></i></h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <span id="maFormation"><?= $infos['FORMATION']; ?> ( session du <?= dateConvert($infos['DATE_DEBUT']); ?> au <?= dateConvert($infos['DATE_FIN']); ?> )</span> <?php if($countformations > 1) { ?> <select id="formationselect" class="d-none"name="formationselect">
-                                        <?php while($userformations = $alluserformations->fetch()) {?>
-                                        <option value="<?= $userformations['IDENTIFIANT_FORMATION']; ?>" <?php if($userformations['IDENTIFIANT_FORMATION'] == $infos['ID_FORMATION']) { ?> selected <?php } ?>><?= $userformations['FORMATION']; ?></option>
+                                    <span id="maFormation"><?= $infos['FORMATION']; ?> ( Session du <?= dateConvert($infos['DATE_DEBUT']); ?> au <?= dateConvert($infos['DATE_FIN']); ?> - <?= $infos['EMPLACEMENT']; ?> )</span> <?php if($countformations > 1) { ?> <select id="formationselect" class="d-none" name="formationselect">
+                                        <option value=""></option>
+                                        <?php while($userformations = $alluserformations->fetch()) { ?>
+                                            <option value="<?= $userformations['IDENTIFIANT_SESSION']; ?>"><?= $userformations['FORMATION']; ?> ( Session du <?= dateConvert($userformations['DATE_DEBUT']); ?> au <?= dateConvert($userformations['DATE_FIN']); ?> - <?= $userformations['EMPLACEMENT']; ?> )</option>
                                         <?php } ?>
-                                        </select> <i class="fas fa-wrench text-warning editmode" id="Formation" onclick="selectFormation(this.id, 'maFormation')" title="Changer de formation"></i><?php } ?>
+                                        </select> <i class="fas fa-wrench text-warning editmode" id="Session" onclick="selectFormation(this.id, 'maFormation')" title="Changer de formation"></i><?php } ?>
                                 </div>
                             </div>
                             <hr>
@@ -179,23 +174,25 @@ $countformations = $alluserformations->rowCount();
                         </div>
                     </div>
                     <?php if($infos['Admin'] != 1 && $infos['SuperAdmin'] != 1) { ?>
-                        <div class="row gutters-sm">
-                            <div class="col-sm-12 mb-3">
-                                <div class="card h-100">
-                                    <div class="card-body text-dark">
-                                        <h6 class="d-flex w-100 align-items-center mb-3"><i class="material-icons text-info mr-2">Auto-évaluation du mois de <?= strtolower($mois); ?></i></h6>
-                                            <?php foreach($resultats as $resultat) { ?>
-                                                <?php if($resultat['Active'] == TRUE) { ?>
-                                                    <small><?= $resultat['Nom']; ?></small>
-                                                    <div class="progress mb-3" style="height: 5px">
-                                                    <div class="progress-bar" role="progressbar" style="width: <?= ($resultat['RESULTAT']); ?>0%" aria-valuemin="0" aria-valuemax="10"></div>
-                                                    </div>
+                        <?php if($count !== 0) { ?>
+                            <div class="row gutters-sm">
+                                <div class="col-sm-12 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-body text-dark">
+                                            <h6 class="d-flex w-100 align-items-center mb-3"><i class="material-icons text-info mr-2">Auto-évaluation du mois de <?= strtolower($mois); ?></i></h6>
+                                                <?php while($resultat = $detailsresultats->fetch()) { ?>
+                                                    <?php if($resultat['Active'] == TRUE) { ?>
+                                                        <small><?= $resultat['Nom']; ?></small>
+                                                        <div class="progress mb-3" style="height: 5px">
+                                                        <div class="progress-bar" role="progressbar" style="width: <?= ($resultat['RESULTAT']); ?>0%" aria-valuemin="0" aria-valuemax="10"></div>
+                                                        </div>
+                                                    <?php } ?>
                                                 <?php } ?>
-                                            <?php } ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php } ?>
                     <?php } ?>
                 </div>
             </div>

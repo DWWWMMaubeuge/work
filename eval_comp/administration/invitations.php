@@ -4,31 +4,51 @@
 <?php userIsSuperAdmin(); ?>
 <?php
 
-$q = $bdd->query('SELECT * FROM Formations ORDER BY FORMATION');
+$selectformations = $bdd->query('SELECT * FROM Formations ORDER BY FORMATION');
+$selectsessions = $bdd->query('SELECT * FROM Sessions LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION WHERE Sessions.STATUS = TRUE ORDER BY ID_SESSION');
 
 ?>
 <?php include('../config/head.php'); ?>
 <?= myHeader('Invitations'); ?>
 <?php require_once('../config/navbar.php'); ?>
 <div class="container-fluid p-5 banner3 mt-5">
-    <h1 class="text-center m-5">Inviter des utilisateurs</h1>
-    <form class="mx-auto" method="POST" id="invitations">
-        <div class="form-group w-50 mx-auto text-center">
-            <div class="form-group my-5">
-                <label for="formation">Selectionner la formation</label>
-                <select name="formation" id="idformation">
-                    <option value=""></option>
-                    <?php while($formation = $q->fetch()) { ?>
-                        <option value="<?= $formation['ID_FORMATION']; ?>"><?= $formation['FORMATION']; ?></option>
-                    <?php } ?>
-                </select>
+    <div class="container bg-dark my-5 p-5 opacity-4">
+        <h1 class="text-center m-5">Inviter des utilisateurs</h1>
+        <form class="mx-auto" method="POST" id="ajoututilisateurs">
+            <div class="form-group w-50 mx-auto text-center">
+                <div class="form-group my-5">
+                    <label for="idformation">Selectionnez la formation</label>
+                    <select name="idformation" id="idformation">
+                        <option value=""></option>
+                        <?php while($formation = $selectformations->fetch()) { ?>
+                            <option value="<?= $formation['ID_FORMATION']; ?>"><?= $formation['FORMATION']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                 <div class="form-group my-5">
+                    <label class="col-12" for="idsession">Selectionnez la session</label>
+                    <select name="idsession" id="idsession">
+                        <option value=""></option>
+                        <?php while($sessions = $selectsessions->fetch()) { ?>
+                            <option value="<?= $sessions['ID_SESSION']; ?>"><?= $sessions['FORMATION']; ?> - du <?= dateConvert($sessions['DATE_DEBUT']); ?> au <?= dateConvert($sessions['DATE_FIN']); ?> à <?= $sessions['EMPLACEMENT']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="form-group my-5">
+                    <label for="role">Selectionnez le rôle</label>
+                    <select name="role" id="role">
+                        <option value=""></option>
+                        <option value="Stagiaire">Stagiaire</option>
+                        <option value="Formateur">Formateur</option>
+                    </select>
+                </div>
+                <div><label for="email">Insérez la(les) adresse(s) email à inviter</label></div>
+                <div class="mt-3"><textarea class="form-control" id="emails" name="emails" rows="10" cols="100"></textarea></div>
+                <button id="send-data" class="btn btn-primary mx-auto my-5 text-center">Inscription</button>
             </div>
-            <div><label for="email">Insérer la(les) adresse(s) email à inviter</label></div>
-            <div class="mt-3"><textarea class="form-control" id="emails" name="emails" rows="10" cols="100"></textarea></div>
-            <button id="send-data" class="btn btn-primary mx-auto my-5 text-center">Inscription</button>
-        </div>
-    </form>
-    <div class="alert alert-light my-5 d-none text-center" role="alert" id="notification"></div>
+        </form>
+        <div class="alert alert-light my-5 d-none text-center" role="alert" id="notification"></div>
+    </div>
 </div>
-<script src="../scripts/invitations.js"></script>
+<script src="../scripts/ajoututilisateurs.js"></script>
 <?php require_once('../config/footer.php'); ?>

@@ -35,7 +35,9 @@ $account = $selectaccountinscription->fetch();
                 <input type="text" class="form-control" name="captcha" id="captcha" autocomplete="off" aria-describedby="captchaHelp" required>
             </div>
             <input type="hidden" value="<?= $account['EMAIL']; ?>" name="email" id="email" readonly required >
-            <input type="hidden" value="<?= $account['ID_FORMATION']; ?>" name="formation" id="formation" readonly required >
+            <input type="hidden" value="<?= $account['ID_FORMATION']; ?>" name="formation" id="formation" readonly required>
+            <input type="hidden" value="<?= $account['SESSION_NUMBER']; ?>" name="session" id="session" readonly required>
+            <input type="hidden" value="<?= $account['ROLE']; ?>" name="role" id="role" readonly required>
             <button id="send-data" class="btn btn-primary mx-auto text-center">Activer mon compte</button>
         </div>
     </form>

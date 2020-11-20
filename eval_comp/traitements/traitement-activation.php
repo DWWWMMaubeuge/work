@@ -12,6 +12,7 @@ if(isset($_POST['Pseudo']) && isset($_POST['Password']) && isset($_POST['Email']
         $email = $_POST['Email'];
         $password = $_POST['Password'];
         $formation = $_POST['Formation'];
+        $session = $_POST['Session'];
     
         $pseudolength = strlen($pseudo);
         $mdplength = strlen($password);
@@ -36,7 +37,16 @@ if(isset($_POST['Pseudo']) && isset($_POST['Password']) && isset($_POST['Email']
                         
                         if($verif2 == 0) {
                             
-                            $admin = 0;
+                            if($_POST['Role'] == 0) {
+                                
+                                $admin = 0;
+                                
+                            } else {
+                                
+                                $admin = 1;
+                                
+                            }
+                            
                             $superadmin = 0;
                             
                             $insertmembre = $bdd->prepare('INSERT INTO Membres(Pseudo, Email, MDP, Admin, SuperAdmin) VALUES(:pseudo, :email, :mdp, :admin, :superadmin)');
@@ -54,18 +64,19 @@ if(isset($_POST['Pseudo']) && isset($_POST['Password']) && isset($_POST['Email']
                             
                             $hidden = 0;
     
-                            $insertoption = $bdd->prepare('INSERT INTO Options(HIDDEN, FORMATION) VALUES(:hidden, :formation)');
+                            $insertoption = $bdd->prepare('INSERT INTO Options(HIDDEN, SESSION) VALUES(:hidden, :session)');
                             $insertoption->bindParam(':hidden', $hidden, PDO::PARAM_BOOL);
-                            $insertoption->bindValue(':formation', $formation, PDO::PARAM_INT);
+                            $insertoption->bindValue(':session', $session, PDO::PARAM_INT);
                             $insertoption->execute();
                             
                             $deleteinscription = $bdd->prepare('DELETE FROM Inscriptions WHERE EMAIL = :email');
                             $deleteinscription->bindparam(':email', $email, PDO::PARAM_STR);
                             $deleteinscription->execute();
                             
-                            $insertformationutilisateur1 = $bdd->prepare('INSERT INTO FormationsUtilisateur(USER, IDENTIFIANT_FORMATION) VALUES(:user, :formation)');
+                            $insertformationutilisateur1 = $bdd->prepare('INSERT INTO FormationsUtilisateur(USER, IDENTIFIANT_FORMATION, IDENTIFIANT_SESSION) VALUES(:user, :formation, :session)');
                             $insertformationutilisateur1->bindParam(':user', $id['ID'], PDO::PARAM_INT);
                             $insertformationutilisateur1->bindParam(':formation', $formation, PDO::PARAM_INT);
+                            $insertformationutilisateur1->bindParam(':session', $session, PDO::PARAM_INT);
                             $insertformationutilisateur1->execute();
                             
                             $feedback = "Votre compte a bien été activé ! Vous pouvez désormais vous connecter !";

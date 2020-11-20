@@ -4,7 +4,8 @@ $('#activerComp').submit(function(e) {
         type: 'POST',
         url: '../traitements/traitement-editcomps.php',
         data: {
-            'ON': $('#enableComp').val()
+            'ON': $('#enableComp').val(),
+            'SESSION': $('#session').val()
         },
         dataType: 'text',
         success: function(data) {
@@ -24,7 +25,8 @@ $('#desactiverComp').submit(function(e) {
         type: 'POST',
         url: '../traitements/traitement-editcomps.php',
         data: {
-            'OFF': $('#disableComp').val()
+            'OFF': $('#disableComp').val(),
+            'SESSION': $('#session').val()
         },
         dataType: 'text',
         success: function(data) {
@@ -42,7 +44,8 @@ $('#ajoutComp').submit(function(e) {
         data: {
             'ADD': $('#add').val(),
             'ACTIVE': $('#is-activated').val(),
-            'FORMATION': $('#formation').val()
+            'FORMATION': $('#formation').val(),
+            'SESSION': $('#session').val()
         },
         dataType: 'text',
         success: function(data) {
@@ -60,7 +63,8 @@ $('#dates').submit(function(e) {
         data: {
             'DEBUT': $('#datedebut').val(),
             'FIN': $('#datefin').val(),
-            'FORMATION': $('#formation').val()
+            'FORMATION': $('#formation').val(),
+            'SESSION': $('#session').val()
         },
         dataType: 'text',
         success: function(data) {
