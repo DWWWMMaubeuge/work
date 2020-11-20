@@ -37,12 +37,12 @@ function setWidgetValue2x( $skill  )
     return $widget;
 }
 
-function setWidgetValue2( $skill )
+/*function setWidgetValue2( $skill )
 {
     $widget = "<p>".$skill[1]."</p>\n";
-    $widget .= <input type='range'  value='0' class='form-control-range' min='0' step='1' max='10' id='".$skill[0]."' name='valSkill' onchange=\"MAJ_Value( ".$skill[0].", this.value )\" >\n";
+    $widget .= <input type='range'  value='0' class='form-control-range' min='0' step='1' max='10' id='".$skill[0]."' name='valSkill' onchange=\"MAJ_Value( ".$skill[0].", this.value )\" >";
     return $widget;
-}
+}*/
 
 
 // reçoit le tableau des skills   
@@ -127,8 +127,8 @@ while( $ligne = $result->fetch_assoc())
 
 
 <FORM  method='POST' name="formSkill" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-<<<<<<< HEAD
-<?php echo setAllWidgetValue( $skills ); ?>
+
+<?php //echo setAllWidgetsValue( $skills ); ?>
 </FORM>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -136,4 +136,4 @@ while( $ligne = $result->fetch_assoc())
 =======
 <?php echo setAllWidgetsValue( $skills ); ?>
 </FORM>
->>>>>>> main
+
