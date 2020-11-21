@@ -5,7 +5,6 @@
 <?php
 
 $selectformations = $bdd->query('SELECT * FROM Formations ORDER BY FORMATION');
-$selectsessions = $bdd->query('SELECT * FROM Sessions LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION WHERE Sessions.STATUS = TRUE ORDER BY ID_SESSION');
 
 ?>
 <?php include('../config/head.php'); ?>
@@ -17,21 +16,18 @@ $selectsessions = $bdd->query('SELECT * FROM Sessions LEFT JOIN Formations ON Se
         <form class="mx-auto" method="POST" id="ajoututilisateurs">
             <div class="form-group w-50 mx-auto text-center">
                 <div class="form-group my-5">
-                    <label for="idformation">Selectionnez la formation</label>
-                    <select name="idformation" id="idformation">
+                    <label class="col-12" for="idformation">Selectionnez la formation</label>
+                    <select name="idformation" id="idformation" onchange="getSessions()">
                         <option value=""></option>
                         <?php while($formation = $selectformations->fetch()) { ?>
                             <option value="<?= $formation['ID_FORMATION']; ?>"><?= $formation['FORMATION']; ?></option>
                         <?php } ?>
                     </select>
                 </div>
-                 <div class="form-group my-5">
+                 <div class="d-none form-group my-5" id="selectsession">
                     <label class="col-12" for="idsession">Selectionnez la session</label>
                     <select name="idsession" id="idsession">
                         <option value=""></option>
-                        <?php while($sessions = $selectsessions->fetch()) { ?>
-                            <option value="<?= $sessions['ID_SESSION']; ?>"><?= $sessions['FORMATION']; ?> - du <?= dateConvert($sessions['DATE_DEBUT']); ?> au <?= dateConvert($sessions['DATE_FIN']); ?> à <?= $sessions['EMPLACEMENT']; ?></option>
-                        <?php } ?>
                     </select>
                 </div>
                 <div class="form-group my-5">

@@ -126,7 +126,7 @@ $count = $resultats->rowCount();
                                     <h6 class="mb-0">Formation active</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                <?php if($user['ID_FORMATION'] == 0) { echo "Non renseigné !"; } else { echo $user['FORMATION'] . " ( Session du " . dateConvert($user['DATE_DEBUT']) . " au " . dateConvert($user['DATE_FIN']) . " à " . $user['EMPLACEMENT'] . " )"; } ?>
+                                <?php if($user['ID_FORMATION'] == 0) { echo "Non renseigné !"; } else { echo $user['FORMATION'] . " ( Session du " . dateConvert($user['DATE_DEBUT']) . " au " . dateConvert($user['DATE_FIN']) . " - " . $user['EMPLACEMENT'] . " )"; } ?>
                                 </div>
                             </div>
                             <hr>

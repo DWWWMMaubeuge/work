@@ -7,7 +7,6 @@ $('#addsession').submit(function(e) {
             'Formation': $('#formation').val(),
             'Debut': $('#debut').val(),
             'Fin': $('#fin').val(),
-            'Active': $('#active').val(),
             'Emplacement': $('#emplacement').val()
         },
         dataType: 'text',

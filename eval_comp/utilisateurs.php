@@ -48,7 +48,7 @@ if(!isset($_GET['formation'])) {
     
 } else {
     
-    $q = $bdd->query('SELECT COUNT(*) AS nb_users FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Sessions ON Options.SESSION = Sessions.ID_SESSION LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION WHERE Sessions.ID_FORMATION = ' . $_GET['formation'] );
+    /*$q = $bdd->query('SELECT COUNT(*) AS nb_users FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Sessions ON Options.SESSION = Sessions.ID_SESSION LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION WHERE Sessions.ID_FORMATION = ' . $_GET['formation'] );
     
     $result = $q->fetch();
     
@@ -61,6 +61,23 @@ if(!isset($_GET['formation'])) {
     $premier = ($currentPage * $parPage) - $parPage;
     
     $allusers = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Sessions ON Options.SESSION = Sessions.ID_SESSION LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION WHERE Sessions.ID_FORMATION = ' . $_GET['formation'] . ' ORDER BY Membres.ID ASC LIMIT :premier, :parpage');
+    $allusers->bindParam(':premier', $premier, PDO::PARAM_INT);
+    $allusers->bindParam(':parpage', $parPage, PDO::PARAM_INT);
+    $allusers->execute();*/
+    
+    $alluserformations = $bdd->query('SELECT COUNT(*) AS nb_users FROM Membres LEFT JOIN FormationsUtilisateur ON Membres.ID = FormationsUtilisateur.USER LEFT JOIN Sessions ON FormationsUtilisateur.IDENTIFIANT_SESSION = Sessions.ID_SESSION WHERE FormationsUtilisateur.IDENTIFIANT_FORMATION = ' . $_GET['formation']);
+    
+    $result = $alluserformations->fetch();
+    
+    $nbUsers = (int) $result['nb_users'];
+
+    $parPage = 5;
+
+    $pages = ceil($nbUsers / $parPage);
+
+    $premier = ($currentPage * $parPage) - $parPage;
+    
+    $allusers = $bdd->prepare('SELECT * FROM Membres LEFT JOIN FormationsUtilisateur ON Membres.ID = FormationsUtilisateur.USER LEFT JOIN Sessions ON FormationsUtilisateur.IDENTIFIANT_SESSION = Sessions.ID_SESSION WHERE FormationsUtilisateur.IDENTIFIANT_FORMATION = ' . $_GET['formation'] . ' ORDER BY Membres.ID ASC LIMIT :premier, :parpage');
     $allusers->bindParam(':premier', $premier, PDO::PARAM_INT);
     $allusers->bindParam(':parpage', $parPage, PDO::PARAM_INT);
     $allusers->execute();
@@ -101,7 +118,7 @@ if(!isset($_GET['formation'])) {
             <td scope="row"><img src="images/avatars/<?= $user['Avatar']; ?>" alt="avatar" class="rounded-circle" width="35"></td>
             <td scope="row"><a class="<?php if($user['Admin'] == 1 || $user['SuperAdmin'] == 1) { ?>text-danger<?php } else { ?>text-info<?php } ?> m-auto" href="utilisateur.php?pseudo=<?= $user['Pseudo']; ?>"><?= $user['Pseudo']; ?></a></td>
             <?php if(isset($_GET['formation'])) { ?>
-                <td scope="row">du <?= dateConvert($user['DATE_DEBUT']); ?> au <?= dateConvert($user['DATE_FIN']); ?> à <?= $user['EMPLACEMENT']; ?></td>
+                <td scope="row">du <?= dateConvert($user['DATE_DEBUT']); ?> au <?= dateConvert($user['DATE_FIN']); ?> - <?= $user['EMPLACEMENT']; ?></td>
             <?php } ?>
             <?php if($infos['Admin'] == TRUE && $user['SuperAdmin'] != TRUE  || $infos['SuperAdmin'] == TRUE && $user['Admin'] != TRUE )  { ?>
                 <?php if($infos['Pseudo'] != $user['Pseudo']) { ?>

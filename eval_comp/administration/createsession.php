@@ -12,11 +12,11 @@ $selectformations = $bdd->query('SELECT * FROM Formations ORDER BY FORMATION');
 <?php require_once('../config/navbar.php'); ?>
 <div class="container-fluid p-5 banner3 mt-5">
     <div class="container bg-dark my-5 p-5 opacity-4">
-        <h1 class="text-center m-5">Créer une session</h1>
+        <h1 class="text-center m-5">Créer une session de formation</h1>
         <form class="mx-auto" method="POST" id="addsession">
             <div class="form-group w-50 mx-auto text-center">
-                <div class="form-group my-5">
-                    <label for="formation">Selectionnez la formation de la session</label>
+                <div class="form-group mt-5">
+                    <label class="col-12" for="formation">Selectionnez la formation de la session</label>
                     <select name="formation" id="formation">
                         <option value=""></option>
                         <?php while($formation = $selectformations->fetch()) { ?>
@@ -24,27 +24,19 @@ $selectformations = $bdd->query('SELECT * FROM Formations ORDER BY FORMATION');
                         <?php } ?>
                     </select>
                 </div>
-                 <div class="form-group my-5">
-                    <label for="debut">Selectionnez la date de début</label>
+                 <div class="form-group mt-5">
+                    <label class="col-12" for="debut">Selectionnez la date de début</label>
                     <input type="date" name="debut" id="debut" required>
                 </div>
-                <div class="form-group my-5">
-                    <label for="fin">Selectionnez la date de fin</label>
+                <div class="form-group mt-5">
+                    <label class="col-12" for="fin">Selectionnez la date de fin</label>
                     <input type="date" name="fin" id="fin" required>
                 </div>
                 <div class="form-group my-5">
-                    <label for="active">La session doit-elle être active ?</label>
-                    <select name="active" id="active">
-                        <option value=""></option>
-                        <option value="Oui">Oui</option>
-                        <option value="Non">Non</option>
-                    </select>
-                </div>
-                <div class="form-group my-5">
-                    <label for="emplacement">Insérez le lieu de la formation</label>
+                    <label class="col-12" for="emplacement">Insérez le lieu de la formation</label>
                     <input type="text" name="emplacement" id="emplacement" required>
                 </div>
-                <button id="send-data" class="btn btn-primary mx-auto my-5 text-center">Inscription</button>
+                <button id="send-data" class="btn btn-primary mx-auto text-center">Inscription</button>
             </div>
         </form>
         <div class="alert alert-light my-5 d-none text-center" role="alert" id="notification"></div>

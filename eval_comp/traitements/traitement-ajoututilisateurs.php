@@ -73,9 +73,9 @@ if(!empty($_POST['Emails']) && !empty($_POST['Formation']) && !empty($_POST['Rol
                     $insertInscription->bindParam(':Role', $role, PDO::PARAM_BOOL);
                     $insertInscription->bindParam(':Session', $session, PDO::PARAM_INT);
                     $insertInscription->execute();
-                    $msg = "Bonjour,\n\nVous venez de recevoir une invitation à créer un compte et à rejoindre la formation " . $formation['FORMATION'] . " sur le site d'auto-évaluation de l'AFPA !\nCliquez ici: https:\/\/dwm-competences.000webhostapp.com/administration/activation.php?account=$key pour activer votre compte.\n\n\nCet email vous a été envoyé automatiquement. Merci de ne pas y répondre.";
+                    $msg = "Bonjour,\n\nVous venez de recevoir une invitation à créer un compte et à rejoindre une session pour la formation " . $formation['FORMATION'] . " sur le site d'auto-évaluation de l'AFPA !\nCliquez ici: https:\/\/dwm-competences.000webhostapp.com/administration/activation.php?account=$key pour activer votre compte.\n\n\nCet email vous a été envoyé automatiquement. Merci de ne pas y répondre.";
                     $header = "From: noreply@AFPA-formations.com";
-                    mail($email, "Activation de votre compte AFPA-Formations", $msg, $header);
+                    mail($email, "Activation de votre compte d'auto-evaluation", $msg, $header);
 
                     $feedback = "La (les) invitation(s) a (ont) bien été envoyée(s) !";
                     
@@ -107,9 +107,9 @@ if(!empty($_POST['Emails']) && !empty($_POST['Formation']) && !empty($_POST['Rol
                     $insertInvitation->bindParam(':Session', $session, PDO::PARAM_INT);
                     $insertInvitation->bindParam(':Role', $role, PDO::PARAM_BOOL);
                     $insertInvitation->execute();
-                    $msg = "Bonjour,\n\nVous avez été invité à intégrer la formation " . $formation['FORMATION'] . " sur le site d'auto-évaluation de l'AFPA ! Cliquez ici: https://dwm-competences.000webhostapp.com/administration/confirmer-invitation.php?account=$key pour accepter ou décliner cette invitation.\n\n\nCet email vous a été envoyé automatiquement. Merci de ne pas y répondre.";
+                    /*$msg = "Bonjour,\n\nVous avez été invité à intégrer une session dans la formation " . $formation['FORMATION'] . " sur le site d'auto-évaluation de l'AFPA ! Cliquez ici: https://dwm-competences.000webhostapp.com/administration/confirmer-invitation.php?account=$key pour accepter ou décliner cette invitation.\n\n\nCet email vous a été envoyé automatiquement. Merci de ne pas y répondre.";
                     $header = "From: noreply@AFPA-formations.com";
-                    mail($email, "Invitation à rejoindre une nouvelle formation AFPA-Formations", $msg, $header);
+                    mail($email, "Invitation une nouvelle session de formation", $msg, $header);*/
 
                     $feedback = "La (les) invitation(s) a (ont) bien été envoyée(s) !";
                     
