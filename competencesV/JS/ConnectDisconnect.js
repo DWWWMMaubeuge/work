@@ -1,9 +1,9 @@
 $(function(){
     $("#ladiv").load("./PHP/connnexion.php")
     $("#ladiv2").load("./PHP/inscription.php")
-    $("#ladiv").hide()
+    //$("#ladiv").hide()
     $("#ladiv2").hide()
-    $("#connect").click(function(){
+   $("#connect").click(function(){
         $("#ladiv").toggle();
     })
     $("#disconnect").click(function(){

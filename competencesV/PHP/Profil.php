@@ -9,16 +9,11 @@ include 'SQLProfil.php';
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>-->
     <link rel="stylesheet" href="CSS/profil.css">
     <link rel="stylesheet" href="CSS/main.css">
     <script src="./JS/graph.js"></script>
-    <script src="./JS/changePwd.js"></script>
-    <script src="./JS/changeName.js"></script>
-    <script src="./JS/changeFirstName.js"></script>
+<!--    <script src="./JS/changePwd.js"></script>-->
+    <script src="./JS/changeProfil.js"></script>
 </head>
 <body>
     <div class="container my-5">
@@ -47,10 +42,9 @@ include 'SQLProfil.php';
                                         <div  class="col-md-7 col-7">
                                             <a id='changeName' class="underline text-white" ><?= $user['name']?></a>
                                             <div id="hideName">
-                                                <form method="post" action="PHP/SQLChangeName.php">
-                                                    <input type="text" id="newName" name="newName" placeholder="entrez votre nouveau nom">
-                                                    <input type="submit" class='btn btn-primary' name="submitNewName" id="submitNewName" value="Confirmez">
-                                                </form>
+                                                <input type="text" id="newName" name="newName" placeholder="entrez votre nouveau nom">
+                                                <input type="submit" class='btn btn-primary' name="submitNewName" id="submitNewName" value="Confirmez">
+                                                <div id="successName" class="alert alert-success mt-2">Nom changé avec succés</div>
                                             </div>
                                         </div>
 
@@ -65,10 +59,9 @@ include 'SQLProfil.php';
                                         <div class="col-md-7 col-7">
                                             <a id="changeFirstName" class="underline text-white"><?= $user['firstname']?></a>
                                             <div id="hideFirstName">
-                                                <form method="post" action="PHP/SQLChangeFirstName.php">
-                                                    <input type="text" id="newFirstName" name="newFirstName" placeholder="entrez votre nouveau prenom">
-                                                    <input type="submit" class='btn btn-primary' name="submitNewFirstName" id="submitNewFirstName" value="Confirmez">
-                                                </form>
+                                                <input type="text" id="newFirstName" name="newFirstName" placeholder="entrez votre nouveau prenom">
+                                                <input type="submit" class='btn btn-primary' name="submitNewFirstName" id="submitNewFirstName" value="Confirmez">
+                                                <div id="successFirstName" class="alert alert-success mt-2">Prénom changé avec succés</div>
                                             </div>
                                         </div>
                                     </div>
@@ -91,12 +84,11 @@ include 'SQLProfil.php';
                                             <strong class="margin-10px-left">Mot de passe</strong>
                                         </div>
                                         <div class="col-md-7 col-7">
-                                            <a id="changeMdp" class="underline text-white">changer mot de passe</a>
+                                            <a id="changeMdp" class="underline text-white">Changer mot de passe</a>
                                             <div id="hidePwd">
-                                                <form method="post" action="PHP/SQLChangeMdp.php">
-                                                    <input type="password" id="newPwd" name="newPwd" placeholder="entrez votre nouveau mot de passe">
-                                                    <input type="submit" name="submitNewPwd" class='btn btn-primary'  id="submitNewPwd" value="Confirmez">
-                                                </form>
+                                                <input type="password" id="newPwd" name="newPwd" placeholder="entrez votre nouveau mot de passe">
+                                                <input type="submit" name="submitNewPwd" class='btn btn-primary'  id="submitNewPwd" value="Confirmez">
+                                                <div id="successPwd" class="alert alert-success mt-2">Mot de passe changé avec succés</div>
                                             </div>
                                         </div>
                                     </div>
@@ -105,13 +97,11 @@ include 'SQLProfil.php';
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-6">
-
                     <h5 class="font-size24 sm-font-size22 xs-font-size20">Compétences</h5>
-                        <div class="sm-no-margin">
-                            <?= compProfil($array); ?>
-                        </div>
+                    <div class="sm-no-margin">
+                        <?= compProfil($array); ?>
+                    </div>
                 </div>
                 <div class="col-md-6" id="graphContainer">
                     <img src="" alt="" id="graph" style="border-radius:20px;position:fixed;top:25%;">

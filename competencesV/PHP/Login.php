@@ -1,4 +1,5 @@
 <?php
+
 include 'idBDD.php';
 session_start();
 
@@ -39,7 +40,6 @@ if (isset($_POST['submitCon'])){
             $errors=1;
             header("Location:./index1.php?errors=$errors");
         }
-
     }
     else{
         $errors=2;

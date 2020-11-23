@@ -16,7 +16,6 @@ $(function(){
         },function () {
             $('#msg2').html("Droit d'admin modifié avec succés")
             $('#msg2').addClass("alert alert-success mt-2")
-            $('#msg2')
         })
     })
 })

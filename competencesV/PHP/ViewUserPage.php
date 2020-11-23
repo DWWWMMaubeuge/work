@@ -44,7 +44,7 @@ include 'SQLViewUserPage.php';
             <?php compProfil2($array);?>
             </div>
             <div class="col-6">
-                <img id='graphAdmin'src="" alt="" style="position:fixed;right:15%;border-radius:20px; ">
+                <img id='graphAdmin'src="" alt="" style="position:fixed;right:20%;border-radius:20px; ">
             </div>
         </div>
     </div>

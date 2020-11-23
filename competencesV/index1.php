@@ -1,5 +1,5 @@
 <?php
-include('./PHP/Login.php');
+include 'PHP/Login.php';
 include('./PHP/Registration.php');
 include_once "PHP/affichageSuperPanel.php";
 include_once "PHP/bulkTreatment.php"
@@ -77,19 +77,11 @@ include_once "PHP/bulkTreatment.php"
                 ?>
             </div>
         <?php else :?>
-            <?php if(isset($_GET['errors']) && $_GET['errors']==1):?>
-            <div class="alert alert-success">Mot de passe changé avec succés</div>
-            <?php endif ;?>
-            <?php if(isset($_GET['errors']) && $_GET['errors']==2):?>
-                <div class="alert alert-success">Nom changé avec succés</div>
-            <?php endif ;?>
-            <?php if(isset($_GET['errors']) && $_GET['errors']==3):?>
-                <div class="alert alert-success">Prenom changé avec succés</div>
-            <?php endif ;?>
             <div class=" container my-5 border border-primary p-5 background text-center text-white h1">Bienvenue <?= $_SESSION['prenom']." ".$_SESSION['nom'] ?></div>
             <div id="profil" class="mb-2"></div>
         <?php endif ;?>
     <?php else : ?>
+
         <?php if(isset($_GET['errors']) && $_GET['errors']==1) : ?>
             <div class="alert alert-danger">Mot de passe ou email incorrect, réessayez</div>
         <?php elseif(isset($_GET['errors']) && $_GET['errors']==2 ) : ?>
@@ -102,14 +94,13 @@ include_once "PHP/bulkTreatment.php"
             <div class="alert alert-danger">Les mot de passe doivent correspondre</div>
         <?php elseif(isset($_GET['errors']) && $_GET['errors']==6 ) : ?>
             <div class="alert alert-danger">Tout les champs doivent être remplis</div>
-        <?php elseif(isset($_GET['errors']) && $_GET['errors']==7 ) : ?>
+        <?php elseif(isset($_GET['errors']) && $_GET['errors']==7 ) :?>
             <div class="alert alert-danger">Le Captcha est pas bon</div>
         <?php endif ;?>
+
         <div id="ladiv" class="container my-5 border border-primary p-5 background text-center text-white"></div>
         <div id="ladiv2" class="container my-5 border border-primary p-5 background text-center text-white"></div>
     <?php endif ; ?>
-
-
 
 </body>
 </html>
