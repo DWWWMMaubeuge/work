@@ -17,6 +17,7 @@ $account = $selectaccountinscription->fetch();
 <?php require_once('../config/navbar.php'); ?>
 <div class="container-fluid banner3 mt-5 p-5" id="top">
     <h1 class="text-center m-5">Activation du compte</h1>
+    <div class="alert alert-light my-5 d-none text-center" role="alert" id="notification"></div>
     <form class="mx-auto" method="POST" id="activation">
         <div class="form-group w-50 mx-auto text-center">
             <div class="m-5">
@@ -41,6 +42,5 @@ $account = $selectaccountinscription->fetch();
             <button id="send-data" class="btn btn-primary mx-auto text-center">Activer mon compte</button>
         </div>
     </form>
-    <div class="alert alert-light my-5 d-none text-center" role="alert" id="notification"></div>
 <script src="../scripts/activation.js"></script>
 <?php require_once('../config/footer.php'); ?>

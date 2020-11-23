@@ -44,6 +44,9 @@ function setAvatar() {
                     let errorWindow = document.getElementById('erreur');
                     errorWindow.className = "alert alert-danger my-5 text-center";
                     errorWindow.innerHTML = error;
+                    $('html, body').animate({
+                        scrollTop: $("body").offset().top
+                    }, 0);
                     setTimeout(() => {
     
                         errorWindow.className = "alert alert-danger my-5 text-center d-none";
@@ -54,6 +57,9 @@ function setAvatar() {
                 } else {
                     
                     avatar.setAttribute('src', data);
+                    $('html, body').animate({
+                        scrollTop: $("body").offset().top
+                    }, 0);
                     
                 }
     
@@ -122,6 +128,9 @@ function setInfo(id, idelem2) {
 
                             errorWindow.className = "alert alert-danger my-5 text-center";
                             errorWindow.innerHTML = data;
+                            $('html, body').animate({
+                                scrollTop: $("body").offset().top
+                            }, 0);
 
                             setTimeout(() => {
 
@@ -141,6 +150,9 @@ function setInfo(id, idelem2) {
                                     let errorWindow = document.getElementById('erreur');
                                     errorWindow.className = "alert alert-success my-5 text-center";
                                     errorWindow.innerText = data;
+                                    $('html, body').animate({
+                                        scrollTop: $("body").offset().top
+                                    }, 0);
                                     setTimeout(() => {
 
                                         errorWindow.className = "alert alert-danger my-5 text-center d-none";
@@ -155,6 +167,9 @@ function setInfo(id, idelem2) {
                                 let errorWindow = document.getElementById('erreur');
                                 errorWindow.className = "alert alert-success my-5 text-center";
                                 errorWindow.innerText = data;
+                                $('html, body').animate({
+                                    scrollTop: $("body").offset().top
+                                }, 0);
                                 setTimeout(() => {
 
                                     errorWindow.className = "alert alert-danger my-5 text-center d-none";
@@ -173,6 +188,9 @@ function setInfo(id, idelem2) {
                                     let errorWindow = document.getElementById('erreur');
                                     errorWindow.className = "alert alert-success my-5 text-center";
                                     errorWindow.innerText = data;
+                                    $('html, body').animate({
+                                        scrollTop: $("body").offset().top
+                                    }, 0);
                                     setTimeout(() => {
 
                                         errorWindow.className = "alert alert-danger my-5 text-center d-none";
@@ -187,6 +205,9 @@ function setInfo(id, idelem2) {
                                 let errorWindow = document.getElementById('erreur');
                                 errorWindow.className = "alert alert-success my-5 text-center";
                                 errorWindow.innerText = data;
+                                $('html, body').animate({
+                                    scrollTop: $("body").offset().top
+                                }, 0);
                                 setTimeout(() => {
 
                                     errorWindow.className = "alert alert-danger my-5 text-center d-none";
@@ -203,6 +224,9 @@ function setInfo(id, idelem2) {
                                 let errorWindow = document.getElementById('erreur');
                                 errorWindow.className = "alert alert-success my-5 text-center";
                                 errorWindow.innerHTML = data;
+                                $('html, body').animate({
+                                    scrollTop: $("body").offset().top
+                                }, 0);
                                 setTimeout(() => {
 
                                     errorWindow.className = "alert alert-danger my-5 text-center d-none";
@@ -215,6 +239,9 @@ function setInfo(id, idelem2) {
                                 let errorWindow = document.getElementById('erreur');
                                 errorWindow.className = "alert alert-success my-5 text-center";
                                 errorWindow.innerHTML = data;
+                                $('html, body').animate({
+                                    scrollTop: $("body").offset().top
+                                }, 0);
 
                                 setTimeout(() => {
 
@@ -266,6 +293,9 @@ function setOptions(id) {
                 let errorWindow = document.getElementById('erreur');
                 errorWindow.className = "alert alert-success my-5 text-center";
                 errorWindow.innerHTML = data;
+                $('html, body').animate({
+                    scrollTop: $("body").offset().top
+                }, 0);
                 setTimeout(() => {
 
                     errorWindow.className = "alert alert-danger my-5 text-center d-none";
@@ -323,6 +353,9 @@ function setPassword(id) {
                             let errorWindow = document.getElementById('erreur');
                             errorWindow.className = "alert alert-danger my-5 text-center";
                             errorWindow.innerHTML = data;
+                            $('html, body').animate({
+                                scrollTop: $("body").offset().top
+                            }, 0);
 
                             setTimeout(() => {
 
@@ -336,6 +369,9 @@ function setPassword(id) {
                             let errorWindow = document.getElementById('erreur');
                             errorWindow.className = "alert alert-success my-5 text-center";
                             errorWindow.innerHTML = data;
+                            $('html, body').animate({
+                                scrollTop: $("body").offset().top
+                            }, 0);
 
                             setTimeout(() => {
 

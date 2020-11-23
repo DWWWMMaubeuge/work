@@ -8,6 +8,7 @@
 <div class="container-fluid p-5 mt-5 banner3">
     <div class="container bg-dark my-5 p-5 opacity-4">
         <h2 class="text-center my-5">Ajouter une formation</h2>
+        <div class="alert alert-info my-5 d-none text-center" role="alert" id="notification"></div>
         <form class="text-center" method="POST" id="ajoutformation">
             <div class="form-group">
                 <label class="col-12 mb-3" for="ajouter">Insérez le nom de la formation</label>
@@ -15,7 +16,6 @@
             </div>
             <button id="send-data" class="btn btn-primary mt-2 mb-3 text-center">Ajouter</button>
         </form>
-        <div class="alert alert-info my-5 d-none text-center" role="alert" id="notification"></div>
     </div>
 </div>
 <script src="../scripts/ajoutformation.js"></script>

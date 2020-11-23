@@ -119,7 +119,7 @@ $('#connexion').submit(function(e) {
     };
     
     let password = document.getElementById( "password" ).value;
-    document.getElementById('password').value = sha256(password);
+    password = sha256(password);
     
     $.ajax({
     
@@ -127,13 +127,11 @@ $('#connexion').submit(function(e) {
         url: '../traitements/traitement-connexion.php',
         data: {
             'email': $('#connexionemail').val(),
-            'mdp': $('#password').val()
+            'mdp': password
         },
         dataType: 'html',
     
         success: function(data) {
-            
-          document.getElementById('password').value = password;
     
           if(data == "") {
     

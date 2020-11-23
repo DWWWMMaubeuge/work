@@ -8,7 +8,10 @@ function MAJ_Value( id_skill, formation, value, session, iduser )
             let confirmation = document.getElementById('confirmation');
 
             confirmation.className = "alert alert-info my-5 text-center";
-            confirmation.innerHTML = "Note modifié avec succès !";
+            confirmation.innerHTML = "Note modifiée avec succès !";
+            $('html, body').animate({
+                scrollTop: $("body").offset().top
+            }, 0);
         }
       };
 

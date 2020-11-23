@@ -8,6 +8,7 @@
 <div class="container-fluid p-5 mt-5 banner3">
     <div class="container bg-dark my-5 p-5 opacity-4">
         <h2 class="text-center my-5">Modifications des compétences</h2>
+        <div class="alert alert-info my-5 d-none text-center" role="alert" id="notification"></div>
         <form class="text-center" method="POST" id="activerComp">
             <h3 class='text-center my-4'>Activation d'une compétence</h3>
             <?= getDisabledComps($infos['ID_FORMATION'], $infos['SESSION']); ?>
@@ -50,7 +51,6 @@
             <input type="hidden" value="<?= $infos['SESSION']; ?>" name="session" id="session" required readonly>
             <button id="send-data" class="btn btn-primary mt-2 mb-3 text-center">Modifier</button>
         </form>
-        <div class="alert alert-info my-5 d-none text-center" role="alert" id="notification"></div>
     </div>
 </div>
 <script src="../scripts/editeval.js"></script>

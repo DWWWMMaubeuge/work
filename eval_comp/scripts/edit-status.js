@@ -10,6 +10,9 @@ $('#ajouteradmin').submit(function(e) {
         success: function(data) {
             $('#notification').html(data);
             $("#notification").removeClass("alert alert-info my-5 d-none").addClass("alert alert-light my-5");
+            $('html, body').animate({
+                scrollTop: $("body").offset().top
+            }, 0);
             // setTimeout( function() {
             //     window.location.replace("accueil.php");
             // }, 5000)

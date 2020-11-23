@@ -117,25 +117,41 @@ $('#activation').submit(function(e) {
     };
     
     let password = document.getElementById( "mdp" ).value;
-    document.getElementById('mdp').value = sha256(password);
+    password = sha256(password);
     
-$.ajax({
-    type: 'POST',
-    url: '../traitements/traitement-activation.php',
-    data: {
-        'Pseudo': $('#pseudo').val(),
-        'Password': $('#mdp').val(),
-        'Email': $('#email').val(),
-        'Formation': $('#formation').val(),
-        'Session': $('#session').val(),
-        'Captcha': $('#captcha').val(),
-        'Role': $('#role').val()
-    },
-    dataType: 'html',
-    success: function(data) {
-        document.getElementById('mdp').value = password;
-        $('#notification').html(data);
-        $("#notification").removeClass("alert alert-light my-5 d-none text-center").addClass("alert alert-light my-5 text-center");
-    }
-});
+    $.ajax({
+        type: 'POST',
+        url: '../traitements/traitement-activation.php',
+        data: {
+            'Pseudo': $('#pseudo').val(),
+            'Password': password,
+            'Email': $('#email').val(),
+            'Formation': $('#formation').val(),
+            'Session': $('#session').val(),
+            'Captcha': $('#captcha').val(),
+            'Role': $('#role').val()
+        },
+        dataType: 'html',
+        success: function(data) {
+            
+            $('#notification').html(data);
+            $("#notification").removeClass("alert alert-light my-5 d-none text-center").addClass("alert alert-light my-5 text-center");
+            $('html, body').animate({
+                scrollTop: $("body").offset().top
+            }, 0);
+                
+            if(data == "Votre compte a bien été activé ! Vous allez être redirigé vers votre profil !") {
+                
+                setTimeout(() => {
+        
+                    window.location.replace('../profil.php');
+        
+                }, 2500);
+                
+            }
+            
+        }
+        
+    });
+    
 });

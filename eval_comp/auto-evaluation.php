@@ -51,8 +51,8 @@ if($countresultats !== 0) {
         <?php if($countresultats !== 0) { ?>
             <form class="text-center m-5" method="POST" id="evaluation">
                 <h1 class='text-center my-5'>Auto-évaluation du mois de <?= ucfirst(strtolower($mois)); ?></h1>
-                <?= setAllWidgetValue( $skills ); ?>
                 <div class="alert alert-info my-5 d-none text-center" role="alert" id="confirmation"></div>
+                <?= setAllWidgetValue( $skills ); ?>
             </form>
         <?php } else { ?>
             <h1 class="text-center text-warning my-5">L'auto-évaluation n'est pas disponible pour le moment !</h1>

@@ -314,7 +314,7 @@ if(isset($_POST['MDP'])) {
 
     } else {
 
-        $feedback = "Votre mot de passe est trop court !";
+        $feedback = "Votre nouveau mot de passe est trop court !";
 
     }
 

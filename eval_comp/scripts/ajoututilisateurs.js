@@ -43,6 +43,9 @@ $('#ajoututilisateurs').submit(function(e) {
         success: function(data) {
             $('#notification').html(data);
             $("#notification").removeClass("alert alert-light my-5 d-none text-center").addClass("alert alert-light my-5 text-center");
+            $('html, body').animate({
+                scrollTop: $("body").offset().top
+            }, 0);
         }
     });
 });

@@ -79,7 +79,16 @@ if(isset($_POST['Pseudo']) && isset($_POST['Password']) && isset($_POST['Email']
                             $insertformationutilisateur1->bindParam(':session', $session, PDO::PARAM_INT);
                             $insertformationutilisateur1->execute();
                             
-                            $feedback = "Votre compte a bien été activé ! Vous pouvez désormais vous connecter !";
+                            $recuperationid = $bdd->prepare('SELECT * FROM Membres WHERE Email = :email');
+                            $recuperationid->bindParam(':email', $_POST['Email'], PDO::PARAM_STR);
+                            $recuperationid->execute();
+                            
+                            $recupid = $recuperationid->fetch();
+                            
+                            $_SESSION['id'] = $recupid['ID'];
+                            
+                            
+                            $feedback = "Votre compte a bien été activé ! Vous allez être redirigé vers votre profil !";
                             
                         } else {
                             

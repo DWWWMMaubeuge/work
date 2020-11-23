@@ -13,6 +13,7 @@ $selectformations = $bdd->query('SELECT * FROM Formations ORDER BY FORMATION');
 <div class="container-fluid p-5 banner3 mt-5">
     <div class="container bg-dark my-5 p-5 opacity-4">
         <h1 class="text-center m-5">Inviter des utilisateurs</h1>
+        <div class="alert alert-light my-5 d-none text-center" role="alert" id="notification"></div>
         <form class="mx-auto" method="POST" id="ajoututilisateurs">
             <div class="form-group w-50 mx-auto text-center">
                 <div class="form-group my-5">
@@ -43,7 +44,6 @@ $selectformations = $bdd->query('SELECT * FROM Formations ORDER BY FORMATION');
                 <button id="send-data" class="btn btn-primary mx-auto my-5 text-center">Inscription</button>
             </div>
         </form>
-        <div class="alert alert-light my-5 d-none text-center" role="alert" id="notification"></div>
     </div>
 </div>
 <script src="../scripts/ajoututilisateurs.js"></script>
