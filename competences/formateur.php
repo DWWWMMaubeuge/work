@@ -28,15 +28,26 @@ $formationName = $data[ 'name'];
 echo "<h3>formation : $formationName</h3>\n";
 
 // XXXXX
+$ID_session   = $_SESSION[ 'ID_formation' ];
+$name_session      = $_SESSION[ 'name' ];
+
 // recupère le nom de la session si il en a une
-$req = "SELECT * FROM $DB_dbname.sessions .......... ";
-//$result = executeSQL( $req );
+$req = "SELECT * FROM $DB_dbname.sessions where id=$ID_formation";
 //$data = $result->fetch_assoc();
 //$sessionsName = $data[ 'name'];
 //echo "<h3>session : $sessionsName</h3>\n";
 
 
 // XXXXX
+
+$name_user      = $_SESSION[ 'name' ];
+$surname_user   = $_SESSION[ 'surname' ];
+$password_user  = $_SESSION[ 'password' ];
+$mail_user      = $_SESSION[ 'mail' ];
+$ID_formation   = $_SESSION[ 'ID_formation' ];
+$ID_session     = $_SESSION[ 'ID_session' ];
+$role_user      = $_SESSION[ 'role'];
+
 // recupère la liste des stagiaires
 /*
 $req = "SELECT * FROM $DB_dbname.users ............";
@@ -44,6 +55,7 @@ $res = executeSQL( $req );
 $list_stagiaires = "<ul name=\"listStagiare\" >\n";
 while( $ligne = $res->fetch_assoc() )
 {
+  array_push( $users, [ $ligne['id'], $ligne[ 'name'], $ligne[ 'surname'], $ligne[ 'password'],$ligne[ 'mail'}  $ligne[ 'id_formation'],$ligne[ 'id_session'], $ligne[ 'role']  ] );
 	//print_r( $ligne );
 	$list_stagiaires .="<li>".$ligne['name']."</li>\n";
 }
