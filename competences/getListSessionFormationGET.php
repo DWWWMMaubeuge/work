@@ -8,8 +8,6 @@ if( $_GET['idFormation'] != "" )
 {
     $ID_formation    	= $_GET['idFormation'];
 
-
-
 	$req = "select * from $DB_dbname.sessions where id_formation=$ID_formation;";
 	$result = executeSQL( $req );
 

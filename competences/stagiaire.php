@@ -12,11 +12,8 @@ function setWidgetValue2z( $skill  )
         $widget .="<option>$a</option>\n";
         //$widget .="<option value=\"$a\">$a</option>\n";
     $widget .="</select>\n";
-
-
     return $widget;
 }
-
 
 function setWidgetValue2y( $skill  )
 {
@@ -37,9 +34,10 @@ function setWidgetValue2x( $skill  )
 function setWidgetValue2( $skill )
 {
     $widget = "<p>".$skill[1]."</p>\n";
-    $widget .= <input type='range'  value='0' class='form-control-range' min='0' step='1' max='10' id='".$skill[0]."' name='valSkill' onchange=\"MAJ_Value( ".$skill[0].", this.value )\" >\n";
+    $widget .= "<input type='range'  value='0' class='form-control-range' min='0' step='1' max='10' id='".$skill[0]."' name='valSkill' onchange=\"MAJ_Value( ".$skill[0].", this.value )\" >\n";
     return $widget;
 }
+
 
 
 // reçoit le tableau des skills   
@@ -68,7 +66,7 @@ session_start();
 
 // verifier que le visteurs est bien passé par le login
 if ( !isset( $_SESSION[ 'ID_user' ]) || $_SESSION[ 'ID_user' ] == 0 )
-    header( "location: login01.php");
+    header( "location: login.php");
 
 
 $ID_formation   = $_SESSION[ 'ID_formation' ];
@@ -77,7 +75,6 @@ $name_user      = $_SESSION[ 'name' ];
 $surname_user   = $_SESSION[ 'surname' ];
 
 echo "<h3>bonjour $surname_user $name_user </h3>\n";
-
 
 
 // je recupère le nom de la formation
@@ -106,9 +103,6 @@ while( $ligne = $result->fetch_assoc())
                         ...
                   ] */ 
 }
-
-//print_r( $skills );
-
 ?>
 <script>
     function MAJ_Value( id_skill, value  )
@@ -116,7 +110,7 @@ while( $ligne = $result->fetch_assoc())
       var xhttp = new XMLHttpRequest();
       // maj_value.php?idUser=4&idSkill=4&valSkill=5
       
-      let url = "maj_value.php?idUser=<?php echo $ID_user; ?>&idSkill="+id_skill+"&valSkill="+value;
+      let url = "majValueSkillGET.php?idUser=<?php echo $ID_user; ?>&idSkill="+id_skill+"&valSkill="+value;
       xhttp.open("GET", url, true);
       xhttp.send();
     }   
