@@ -195,7 +195,22 @@ function afficheListeFormateurByFormation( id_formation )
   objectXHTTP.send();
 }
 
+
+function inscritNouvelleFormation( nomFormation )
+{
+  var objectXHTTP = new XMLHttpRequest();
+
+  let url = "addNewFormation.php?nameFormation="+nomFormation;
+  console.log( "appel URL ", url )
+
+  objectXHTTP.open("GET", url, true);
+  objectXHTTP.send();
+}
+
+
+
 </script>
+<h1> page d'admin</h1>
 <br>
 Ajouter un formateur
 <br>
@@ -318,3 +333,14 @@ liste des formateur par formation : <br>
 <div id="resLSFF">
 </div>
 </div>
+
+
+<br>
+<br>
+<br>
+Ajouter une formation
+<br>
+<FORM  method='POST' action="#">
+<INPUT type='text' id='add_formation' name='add_formation' placeholder="nom de la formation" onchange="inscritNouvelleFormation( this.value )">
+<br>
+<br>
