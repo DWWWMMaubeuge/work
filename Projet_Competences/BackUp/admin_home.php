@@ -97,9 +97,9 @@ NavbAdmin();
 						<br>
 						<select id='type_sel' name="seltype">
 						<option value=''>choisir type</option>
-						<option value='user'>stagiaire</option>
-						<option value='formateur'>formateur</option>
-						<option value='admin'>administrateur</option>
+						<option value='STA'>stagiaire</option>
+						<option value='FOR'>formateur</option>
+						<option value='ADM'>administrateur</option>
 						</select>
 						<br>
 						<INPUT type='submit' value='INSCRIPTION'>

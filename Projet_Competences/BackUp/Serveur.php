@@ -45,10 +45,10 @@ if (isset($_POST['reg_user'])) {
 
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-  	$password = ($password_1);//encrypt the password before saving in the database
+  	$password = md5($password_1);//encrypt the password before saving in the database
 
   	$query = "INSERT INTO users (name, surname, mail, password) 
-  			  VALUES('$name','$surname', '$mail', '$password')";
+  			  VALUES('$name','$surname', '$mail', '".hash('sha256', $password)."')";
   	mysqli_query($db, $query);
   	$_SESSION['surname'] = $surname;
   	$_SESSION['success'] = "You are now logged in";
@@ -79,8 +79,8 @@ if (isset($_POST['login_user'])) {
     }
   
     if (count($errors) == 0) {
-        $password = ($password);
-        $query = "SELECT * FROM users WHERE surname='$surname' AND password='$password'";
+        $password = md5($password);
+        $query = "SELECT * FROM users WHERE surname='$surname' AND password='".hash('sha256', $password)."'";
         $results = mysqli_query($db, $query);
         $data = $results->fetch_assoc();
         if (mysqli_num_rows($results) == 1) 
