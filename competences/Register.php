@@ -36,14 +36,14 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail']
 
     // attention aux doublons des mail
     
-    $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password ) VALUES ( '$name', '$surname', '$mail', '$password' )";
+    $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password, role ) VALUES ( '$name', '$surname', '$mail', '$password','STA' )";
     executeSQL( $req );
     header( "location: Login.php");
 }
  
 ?>
 <!DOCTYPE html>
-    <html lang="en">  
+    <html lang="fr">  
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,7 +68,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail']
                 <br>
                 <INPUT type='text' name='password' placeholder="votre mot de passe">
                 <br>
-                <div class="g-recaptcha" data-theme="dark" data-sitekey="6LfHIuIZAAAAANFucggGUn8r_r5i9zvgiYoUHDQq"></div> 
+                <div class="g-recaptcha" id="captcha" data-theme="dark" data-sitekey="6LfHIuIZAAAAANFucggGUn8r_r5i9zvgiYoUHDQq"></div> 
                 <br> 
                 <p class="box-register">Déjà inscrit? <a href="login.php">Connectez-vous ici</a></p>
                 <input type="submit" value="Valider" name="submitpost'"> 

@@ -12,7 +12,8 @@ while ($ligne = $res->fetch_assoc()) {
 
 $widget_formation .= "</select>\n";
 
-if ($_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail'] != "" && $_POST['password'] != "") {
+if ($_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail'] != "" && $_POST['password'] != "")
+{
     $name     = $_POST['name'];
     $surname  = $_POST['surname'];
     $mail     = $_POST['mail'];

@@ -4,7 +4,7 @@
 
 	$DB_user 	 = "root";
 	$DB_PW 		 = "";
-	$DB_dbname 	 = "fouad";
+	$DB_dbname 	 = "competence";
 
 
 

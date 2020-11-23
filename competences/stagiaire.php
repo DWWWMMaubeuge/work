@@ -54,6 +54,14 @@ function setAllWidgetValue( $skills  )
 
 
 
+
+
+
+
+
+
+
+
 session_start();
 $ID_formation   = $_SESSION[ 'id_formation' ];
 $ID_user        = $_SESSION[ 'ID_user' ];
