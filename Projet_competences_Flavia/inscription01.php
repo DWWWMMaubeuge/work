@@ -22,6 +22,19 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail']
 }
 
 ?>
+<?php
+session_start();
+ 
+if(isset($_POST['captcha'])) {
+   if($_POST['captcha'] == $_SESSION['captcha']) {
+      echo "Captcha valide !";
+   } else {
+      echo "Captcha invalide...";
+   }
+}
+
+?>
+
 
 <h2 class="page-heading">Inscription</h2>
 <div id="post-container">
@@ -50,9 +63,13 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail']
 <INPUT type='text' name='password' placeholder="Votre mot de passe">
 <br>
 <INPUT type='submit' value='OK' onclick="encodePW()">
-</FORM></p>
+</FORM>
+<img src="captcha.php" />
+   <input type="text" name="captcha" />
+   <input type="submit" /></p>
   </aside>
 </div>
+
 
 </main>
 
