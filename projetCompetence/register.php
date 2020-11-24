@@ -49,6 +49,7 @@ NavBar();
         <input type="password" placeholder="Password" name="password" value="">
     </div>
 <INPUT class="btn" type='submit' value='Sign in'>
+<p class="text-center">Already a member? <a href="login.php">Sign In</a></p>
 </div>
 </FORM>
 <?php
@@ -65,9 +66,21 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
     $type       = $_POST['type'];
     $password   = $_POST['password'];
     // A revoir utilisation obsoléte de md5
-    $vkey = md5(time().$name);
+    //$vkey = md5(time().$name);
 
-  $req = "INSERT INTO $DB_dbname.users ( name, surname, email, type, password,vkey ) VALUES ( '$name', '$surname', '$email', '$type', '$password','$vkey' )";
+    // verification doublons emails 
+    $emailQuery = "SELECT * FROM $DB_dbname.users WHERE email=? LIMIT 1 ";
+    $stmt = $conn-> prepare($emailQuery);
+    $stmt-> bind_param('s',$email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $userCount = $result->num_rows;
+
+    if($userCount > 0){
+      $errors['email'] = "Email already exists";
+    }
+
+  $req = "INSERT INTO $DB_dbname.users ( name, surname, email, type, password ) VALUES ( '$name', '$surname', '$email', '$type', '$password' )";
     executeSQL( $req );
 
     if($req)

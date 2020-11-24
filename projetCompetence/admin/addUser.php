@@ -47,7 +47,7 @@ if (isset($_POST['submit'])){
   </div>
   <div class="textbox">
   <i class="fa fa-lock" aria-hidden="true"></i>
-    <input type="password" name="password"  placeholder="Mot de passe" required />
+    <input type="password" name="password"  placeholder="Password" required />
   </div>
     <input type="submit" name="submit" value="Add" class="btn" />
 </form>

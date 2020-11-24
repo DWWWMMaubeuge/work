@@ -4,6 +4,7 @@ include_once("../functionConnect.php");
 
 
 
+
 session_start();
 // VALEURS PAR DEFAUT
 
@@ -20,13 +21,13 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
 {
     $name       = $_POST['name'];
     $surname    = $_POST['surname'];
-    $email       = $_POST['email'];
+    $email      = $_POST['email'];
     $type       = $_POST['type'];
     $password   = $_POST['password'];
 
     
 
-  $req = "INSERT INTO $DB_dbname.users ( name, surname, email, type, password,vkey ) VALUES ( '$name', '$surname', '$email', '$type', '$password','$vkey' )";
+  $req = "INSERT INTO $DB_dbname.users ( name, surname, email, type, password ) VALUES ( '$name', '$surname', '$email', '$type', '$password')";
   executeSQL( $req );
 
    

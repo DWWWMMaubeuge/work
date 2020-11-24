@@ -29,11 +29,17 @@ NavBar2();
 function setWidgetValue2( $skill  )   // ID    name 
 {
   $widget  = "";
-  $widget .= "<p>".$skill[1]."</p>\n";
-  $widget .= "<input  id='number' type='number' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
+  $widget .= "<div class=\"container\">";
+  $widget .= "<div class=\"row\">";
+  $widget .= "<p>"."<div class=\"col-md-3\">".$skill[1]."</p>\n";
+  $widget .= "<input id='number' type='number' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
+  $widget .= "</div>";
+  $widget .= "</div>";
  
   return $widget; 
 }
+
+/*
 
 function setWidgetValue1( $skill  )   // ID    name 
 {
@@ -45,6 +51,7 @@ function setWidgetValue1( $skill  )   // ID    name
   return $widget; 
 }
 
+*/
 
 function setAllWidgetValue( $skills  )
 {
@@ -101,13 +108,7 @@ while( $ligne = $result->fetch_assoc())
 <FORM  method='POST' name="formSkill" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <?php 
 
-echo "<div class=\"container\" >\n";
-echo "<div class=\"row\">";
-echo "<div class=\"col-*-*-4\">";
 echo setAllWidgetValue( $skills );
-echo "</div>\n";
-echo "</div>\n";
-echo "</div>\n";
 
 
  ?>

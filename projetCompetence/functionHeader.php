@@ -30,7 +30,6 @@ echo "<div class=\"container\">";
 
 
     function NavBar2(){
-        echo "<div class=\"container\">";
                 echo "<div class=\"navbar\">";
                     echo "<nav>";
                         echo "<ul>";

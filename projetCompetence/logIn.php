@@ -76,6 +76,8 @@ if( $_POST && $_POST['email'] != "" && $_POST['password'] != ""  )
         </div>
         
         <input class="btn" type="submit" name="btn" value="Log in">
+        <p class="text-center">Not yet a member? <a href="register.php">Sign Up</a></p>
+
     </FORM>
 </div>
 </body>

@@ -165,9 +165,15 @@ body{
     margin: 12px 0;
 }
 
+.text-center a
+{
+    color: white;
+    text-decoration: none;
+}
+
 
 /*SKILLS PAGE*/
-
+/*
 .container{
 
     width: 100% ;
@@ -178,8 +184,9 @@ body{
     column-gap: 60px;
     -moz-column-gap: 50px;
     -webkit-column-gap: 50px;
+    
  }
- 
+ */
 /*align-items: center;
     justify-content: center;*/
 
@@ -189,12 +196,10 @@ body{
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.4);
     width: 100%;
-    padding-left: 50%;
-    padding-right: 50%;
-    margin-left: 50%;
-    margin-right: 50%;
     z-index: 2;
+    margin-top: 5%;
     border: 1px solid #f1f1f1;
+    
     
 }
 
@@ -215,7 +220,7 @@ body{
     font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
-    color:	#A9A9A9;
+    color:	#dcdae7;
     
 }
 

@@ -13,23 +13,6 @@ $DB_username 		= "student";
 $DB_password 		= "student" ;
 $DB_dbname 			= "DWWM_Maubeuge";
 */
-
-// global functions
-
-//variables de connextion Fatima
-
-$DB_servername 	= "localhost:3306";
-$DB_username 		= "root";
-$DB_password 		= "" ;
-$DB_dbname 		= "skills";
-
-// variables de connextion Xavier
-/*$DB_servername 		= "localhost";
-$DB_username 		= "student";
-$DB_password 		= "student" ;
-$DB_dbname 			= "DWWM_Maubeuge";
-
-*/
 function executeSQL( $req )
 {
 	GLOBAL  $DB_servername, $DB_username, $DB_password, $DB_dbname;
