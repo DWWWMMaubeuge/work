@@ -1,0 +1,55 @@
+SQL
+
+CREATE USER 'student'@'%' IDENTIFIED BY 'student';
+
+GRANT ALL PRIVILEGES ON evil.* TO 'student'@'%';
+
+CREATE USER 'student'@'localhost' IDENTIFIED BY 'student';
+
+GRANT ALL PRIVILEGES ON DWWM_Maubeuge.* TO 'student'@'localhost';
+
+SHOW GRANTS FOR 'username'@'localhost';
+
+REVOKE type_of_permission ON database_name.table_name FROM 'username'@'localhost';
+DROP USER 'username'@'localhost';
+
+
+FLUSH PRIVILEGES;
+
+
+
+ALL PRIVILEGES- 	allows a MySQL user full access to a designated database (or if no database is selected, global access across the system)
+CREATE- 			allows them to create new tables or databases
+DROP- 				allows them to them to delete tables or databases
+DELETE- 			allows them to delete rows from tables
+INSERT- 			allows them to insert rows into tables
+SELECT- 			allows them to use the SELECT command to read through databases
+UPDATE- 			allows them to update table rows
+GRANT OPTION- 		allows them to grant or remove other users’ privileges
+
+
+
+select users.name as utilisateur, skills.name as matiere, results.result  from users, skills, results WHERE users.id=results.id_user AND skills.id=results.id_skill  AND users.name='tata';
+
+SELECT users.name as utilisateur, skills.name as matiere, results.result  
+FROM results 
+JOIN users ON users.id=results.id_user
+JOIN skills ON skills.id=results.id_user;
+
+WHERE users.id=results.id_user AND skills.id=results.id_skill  AND users.name='tata';
+
+
+
+SELECT 
+    m.member_id, 
+    m.name member, 
+    c.committee_id, 
+    c.name committee
+FROM
+    members m
+INNER JOIN committees c USING(name);
+
+
+nez-pog
+team-DS
+PE
