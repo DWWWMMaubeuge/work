@@ -97,15 +97,17 @@ include 'SQLProfil.php';
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <h5 class="font-size24 sm-font-size22 xs-font-size20">Compétences</h5>
-                    <div class="sm-no-margin">
-                        <?= compProfil($array); ?>
+                <?php if($_SESSION['admin']!=1) :?>
+                    <div class="col-md-6">
+                        <h5 class="font-size24 sm-font-size22 xs-font-size20">Compétences</h5>
+                        <div class="sm-no-margin">
+                            <?= compProfil($array); ?>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6" id="graphContainer">
-                    <img src="" alt="" id="graph" style="border-radius:20px;position:fixed;top:25%;">
-                </div>
+                    <div class="col-md-6" id="graphContainer">
+                        <div id="moving-div" class="moving-div"><img src="" alt="" id="graph" style="border-radius:20px;position:relative"></div>
+                    </div>
+                <?php endif ; ?>
             </div>
         </div>
     </div>

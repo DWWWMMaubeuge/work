@@ -12,4 +12,13 @@ $(function(){
         $('#graph').attr('src',' ')
     })
 
+    $(document).scroll(function(){
+        windowScroll()
+    })
+
+    function windowScroll(){
+        var st = $(document).scrollTop();
+
+        $("#moving-div").css({"top": 0 + st * 0.4 + "px"});
+    }
 })

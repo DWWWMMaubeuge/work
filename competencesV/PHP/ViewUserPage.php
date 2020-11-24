@@ -32,7 +32,7 @@ include 'SQLViewUserPage.php';
             </ul>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="PHP/disconnect.php"><i class="fas fa-sign-out-alt"></i>  Deconnexion</a>
+                    <a class="nav-link" href="disconnect.php"><i class="fas fa-sign-out-alt"></i>  Deconnexion</a>
                 </li>
             </ul>
         </div>
@@ -44,7 +44,7 @@ include 'SQLViewUserPage.php';
             <?php compProfil2($array);?>
             </div>
             <div class="col-6">
-                <img id='graphAdmin'src="" alt="" style="position:fixed;right:20%;border-radius:20px; ">
+                <div id="moving-div" class="moving-div"><img id='graphAdmin' src="" alt="" style="border-radius:20px;position:relative"></div>
             </div>
         </div>
     </div>
