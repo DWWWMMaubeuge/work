@@ -1,9 +1,9 @@
 
 .titre {
-  background-image:url("img/bg32.jpg");
+  background-image:url("img/bgbg.jpg");
   background-repeat: no-repeat;
   width: 100%;
-  height:650px;
+  height:700px;
   margin-bottom: 0;
   padding-bottom:0;
   
@@ -58,6 +58,6 @@ body{
   background-color:#1f2129;
 }
 .lol {
-  color: red;
+  color: #252323;
   text-align :center;
 }
