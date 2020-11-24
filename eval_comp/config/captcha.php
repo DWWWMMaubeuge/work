@@ -5,8 +5,8 @@ $nlignes = 7; // Nombre de lignes qui le recouvriront
 $carac = array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z');
 $nca = count($carac); // Comptage du nombre de caractères
 $font = '../font/FFF_Tusj.ttf'; // Reglage de la police d'écriture
-$x = $ncarac*30+10; // Reglage de la longueur de l'image du captcha
-$y = 40; // Reglage de la hauteur
+$x = $ncarac*30+10; // Reglage de la longueur de l'image du captcha (en px)
+$y = 40; // Reglage de la hauteur (en px)
 $img = imagecreatetruecolor($x,$y); // On crée l'image de base
 imagefill($img,0,0,imagecolorallocate($img, 255,255,255)); // On remplit l'image avec la couleur blanche
 $chaine = ""; // Création de la variable qui contiendra la chaine de caractères que l'utilisateur devra recopier

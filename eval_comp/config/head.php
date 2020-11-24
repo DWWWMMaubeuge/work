@@ -12,7 +12,7 @@ function myHeader($title) {
             <link rel='stylesheet' href='../style/custom.css'>
             <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
             <script src='https://kit.fontawesome.com/747acc35b5.js' crossorigin='anonymous'></script>
-            <title>Formation DWM / $title </title>
+            <title>AFPA-Formations / $title </title>
         </head>
         <body class='bg-dark text-white'>"
     ;

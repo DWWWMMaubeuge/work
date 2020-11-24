@@ -5,7 +5,7 @@
 <?php include('../config/captcha.php'); ?>
 <?php
 
-// Récupération de toutes les infos de l'inscription de l'utilisateur selon la secure_key passée en paramètre.
+// Récupération de toutes les infos de l'inscription de l'utilisateur selon la secure_key qu'il a passé en paramètre.
 $selectaccountinscription = $bdd->prepare('SELECT * FROM Inscriptions WHERE SECURE_KEY = :key');
 $selectaccountinscription->bindParam(':key', $_GET['account'], PDO::PARAM_INT);
 $selectaccountinscription->execute();
@@ -19,10 +19,10 @@ $account = $selectaccountinscription->fetch();
 <div class="container-fluid banner3 mt-5 p-5" id="top">
     <h1 class="text-center m-5">Activation du compte</h1>
     <div class="alert alert-light my-5 d-none text-center" role="alert" id="notification"></div>
-    <!-- Début du formulaire d'inscription-->
+    <!-- Début du formulaire d'inscription -->
     <form class="mx-auto" method="POST" id="activation">
         <div class="form-group w-50 mx-auto text-center">
-            <!-- Champ pseudo-->
+            <!-- Champ pseudo -->
             <div class="m-5">
                 <label for="pseudo">Pseudo</label>
                 <input type="text" placeholder="example@example.com" class="form-control" name="pseudo" id="pseudo" autocomplete="off" aria-describedby="pseudoHelp" required>
@@ -32,7 +32,7 @@ $account = $selectaccountinscription->fetch();
                 <label for="mdp">Mot de passe</label>
                 <input type="password" class="form-control" name="mdp" id="mdp" autocomplete="off" aria-describedby="mdpHelp" required>
             </div>
-            <!-- Container du captcha-->
+            <!-- Container du captcha généré-->
             <div class="m-5">
                 <div>
                     <img class="m-5" src="captcha.png" />
@@ -48,6 +48,6 @@ $account = $selectaccountinscription->fetch();
             <button id="send-data" class="btn btn-primary mx-auto text-center">Activer mon compte</button>
         </div>
     </form>
-<!-- Lien vers le script ajax qui gère le formulaire-->
+<!-- Lien vers le script ajax qui gère le formulaire -->
 <script src="../scripts/activation.js"></script>
 <?php require_once('../config/footer.php'); ?>

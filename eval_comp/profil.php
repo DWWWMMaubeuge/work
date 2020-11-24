@@ -1,11 +1,13 @@
 <?php require_once('config/pdo-connect.php'); ?>
 <?php require_once('config/verifications.php'); ?>
-<?php userIsLogged(); ?>
+<?php userIsLogged(); // Vérification si l'utilisateur est connecté ?>
 <?php include('config/head.php'); ?>
 <?php
 
+// Stockage des 3 premières lettres du mois actuel dans une variable
 $moisquery = substr($mois, 0, 3);
 
+// Selection de touts les résultats pour les compétences actives et ou le mois du résultat, l'id de l'utilisateur et l'id de la session correspondent au mois actuel, son id utilisateur et sa session active
 $detailsresultats = $bdd->prepare('SELECT *
 FROM Matieres m LEFT JOIN
      (SELECT r.*,
@@ -13,6 +15,7 @@ FROM Matieres m LEFT JOIN
       FROM Resultats r
       WHERE r.ID_USER = :ID_USER 
       AND r.ID_SESSION = :sessionresultat
+      AND r.MOIS = :mois
      ) r
      ON m.id = r.ID_MATIERE AND
         seqnum = 1
@@ -21,9 +24,12 @@ $detailsresultats->bindParam(':ID_USER', $infos['ID'], PDO::PARAM_INT);
 $detailsresultats->bindParam(':session', $infos['SESSION'], PDO::PARAM_INT);
 $detailsresultats->bindParam(':sessionresultat', $infos['SESSION'], PDO::PARAM_INT);
 $detailsresultats->bindParam(':formation', $infos['ID_FORMATION'], PDO::PARAM_INT);
+$detailsresultats->bindParam(':mois', $moisquery, PDO::PARAM_STR);
 $detailsresultats->execute();
+// Comptage du nombre de résultats
 $count = $detailsresultats->rowCount();
 
+// Récupération de toutes les sessions de formations de l'utilisateur
 $alluserformations = $bdd->prepare('SELECT * FROM FormationsUtilisateur LEFT JOIN Formations ON FormationsUtilisateur.IDENTIFIANT_FORMATION = Formations.ID_FORMATION LEFT JOIN Sessions ON FormationsUtilisateur.IDENTIFIANT_SESSION = Sessions.ID_SESSION WHERE FormationsUtilisateur.USER = :user AND Sessions.STATUS != FALSE ORDER BY FORMATION ASC');
 $alluserformations->bindParam(':user', $_SESSION['id'], PDO::PARAM_INT);
 $alluserformations->execute();
@@ -41,8 +47,10 @@ $countformations = $alluserformations->rowCount();
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex text-dark flex-column align-items-center text-center">
+                                <!-- Avatar -->
                                 <img src="images/avatars/<?= $infos['Avatar']; ?>" onclick="setAvatar()" alt="avatar" class="rounded-circle clickable" id="Avatar" width="150" title="Cliquez pour changer votre photo de profil">
                                 <form class="d-none" id="formAvatar" method="post" enctype="multipart/form-data"><input class="d-none" type="file" id="inputAvatar" name="inputAvatar" /></form>
+                                <!-- Pseudo -->
                                 <div class="mt-3 col-sm-12">
                                     <?php if($infos['Admin'] != 1 && $infos['SuperAdmin'] != 1) { ?><h2 id="monPseudo" class="text-info"><?= $infos['Pseudo']?></h2><?php } else { ?> <h2 id="monPseudo" class="text-danger"><?= $infos['Pseudo']?> <?php } ?> <i class="fas fa-wrench text-warning editmode" id="Pseudo" onclick="setInfo(this.id, 'monPseudo')" title="Modifier mon pseudo"></i>
                                 </div>
@@ -51,6 +59,7 @@ $countformations = $alluserformations->rowCount();
                     </div>
                     <div class="card mt-3">
                         <ul class="bg-dark list-group list-group-flush">
+                            <!-- Github-->
                             <?php if($infos['FORMATION'] == "Développeurs web") { ?>
                                 <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                     <?php if(!empty($infos['Github'])) { ?>
@@ -60,6 +69,7 @@ $countformations = $alluserformations->rowCount();
                                     <?php } ?>
                                 </li>
                             <?php } ?>
+                            <!-- Site personnel-->
                             <li class="bg-dark list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 <?php if(!empty($infos['Site'])) { ?>
                                     <i class="fas fa-link" title="Lien site personnel"></i><a class="text-white" id="monSite" href="<?= $infos['Site']; ?>" target="_blank">Site personnel</a><i class="fas fa-wrench text-warning editmode" id="Site" onclick="setInfo(this.id, 'monSite')" title="Modifier l'adresse de mon site"></i>
@@ -73,6 +83,7 @@ $countformations = $alluserformations->rowCount();
                 <div class="col-md-8">
                     <div class="card mb-3">
                         <div class="card-body text-dark">
+                            <!-- Prénom de l'utilisateur -->
                             <div class="row">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Prénom</h6>
@@ -86,6 +97,7 @@ $countformations = $alluserformations->rowCount();
                                 </div>
                             </div>
                             <hr>
+                            <!-- Nom de l'utilisateur -->
                             <div class="row">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Nom</h6>
@@ -99,6 +111,7 @@ $countformations = $alluserformations->rowCount();
                                 </div>
                             </div>
                             <hr>
+                            <!-- Session de formation active -->
                             <div class="row">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Formation active <i class="fas fa-question-circle text-warning editmode" title="Si vous êtes inscrits à plusieurs sessions de formation en même temps, cette option vous permet de choisir quelle session sera utilisé pour accéder à l'auto-évaluation. Si vous êtes formateur, la formation active définiera également quelle formation sera modifiée dans l'espace administration."></i></h6>
@@ -113,6 +126,7 @@ $countformations = $alluserformations->rowCount();
                                 </div>
                             </div>
                             <hr>
+                            <!-- Email -->
                             <div class="row">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Email <i class="fas fa-question-circle text-warning editmode" title="Votre adresse e-mail est uniquement utilisée à des fins d'administration sur le site et ne sera jamais affiché ailleurs que sur votre profil. Elle sera également toujours cachée des visiteurs."></i></h6>
@@ -122,6 +136,7 @@ $countformations = $alluserformations->rowCount();
                                 </div>
                             </div>
                             <hr>
+                            <!-- Téléphone fixe-->
                             <div class="row">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Téléphone fixe</h6>
@@ -135,6 +150,7 @@ $countformations = $alluserformations->rowCount();
                                 </div>
                             </div>
                             <hr>
+                            <!-- Téléphone mobile -->
                             <div class="row">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Téléphone mobile</h6>
@@ -148,6 +164,7 @@ $countformations = $alluserformations->rowCount();
                                 </div>
                             </div>
                             <hr>
+                            <!-- Options de visibilitée du profil de l'utilisateur -->
                             <div class="row">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Visibilitée du profil <i class="fas fa-question-circle text-warning editmode" title="Si visible est coché votre nom, prenom et vos numéro(s) de téléphone(s) seront visibles par tout le monde si ils sont renseignés. Au contraire, le mode caché cachera ces informations sensibles"></i></h6>
@@ -164,6 +181,7 @@ $countformations = $alluserformations->rowCount();
                                 </div>
                             </div>
                             <hr>
+                            <!-- Option de modification de mot de passe de l'utilisateur -->
                             <div class="row">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Mot de passe</h6>
@@ -174,7 +192,10 @@ $countformations = $alluserformations->rowCount();
                             </div>
                         </div>
                     </div>
+                    <!-- Résultats des compétences pour la session active et le mois courant -->
+                    <!-- Si l'utilisateur n'est ni un Admin ni un SuperAdmin:-->
                     <?php if($infos['Admin'] != 1 && $infos['SuperAdmin'] != 1) { ?>
+                        <!-- Si au moins un résultat est retourné:-->
                         <?php if($count !== 0) { ?>
                             <div class="row gutters-sm">
                                 <div class="col-sm-12 mb-3">
@@ -200,5 +221,6 @@ $countformations = $alluserformations->rowCount();
         </div>
     </div>
 </div>
+<!-- Lien vers le script de la page profil -->
 <script src="scripts/profil.js"></script>
 <?php require_once('config/footer.php'); ?>

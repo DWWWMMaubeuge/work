@@ -1,5 +1,11 @@
+// Envoi du formulaire d'activation de compte lorsque l'utilisateur appuie sur le bouton d'envoi qui appelle ce script
 $('#activation').submit(function(e) {
+    
+    // Annulation de l'action de base du formulaire
     e.preventDefault();
+    /* Fonction de hachage javascript
+       La ressource original peut être trouvée ici:
+       https://geraintluff.github.io/sha256/ */
     var sha256 = function sha256(ascii) {
         
         function rightRotate(value, amount) {
@@ -112,16 +118,26 @@ $('#activation').submit(function(e) {
             }
         }
         
+        // Retourne le hash
         return result;
         
     };
     
-    let password = document.getElementById( "mdp" ).value;
-    password = sha256(password);
+    // Création d'une variable password qui contient de base l'input de l'utilisateur dans le champ du mot de passe
+    let password;
+    // Remplacement de la valeur de la variable avec le hashage en sha256 du mot de passe de l'utilisateur
+    password = sha256(document.getElementById( "mdp" ).value);
     
+    // Envoi des données via Ajax sur une page de traitement php
     $.ajax({
         type: 'POST',
         url: '../traitements/traitement-activation.php',
+        /* Les données envoyés correspondent aux données que l'utilisateur a entrer dans le formulaire
+           SAUF la données 'Password' qui contient la version hachée du mot de passe de l'utilisateur 
+           De ce fait, le mot de passe de l'utilisateur en version texte plein n'est jamais utilisé lors 
+           de l'insertion en base de données */
+           
+        // Préparation des données à envoyés => $_POST[variable] = value
         data: {
             'Pseudo': $('#pseudo').val(),
             'Password': password,
@@ -131,19 +147,28 @@ $('#activation').submit(function(e) {
             'Captcha': $('#captcha').val(),
             'Role': $('#role').val()
         },
+        // Envoi et réception des données au format html
         dataType: 'html',
+        // En cas de succès:
         success: function(data) {
             
+            // Insertion de la réponse de la page de traitement dans une div qui sert de message d'alerte à l'utilisateur
             $('#notification').html(data);
+            // Changement de la classe de la div pour la faire apparaitre
             $("#notification").removeClass("alert alert-light my-5 d-none text-center").addClass("alert alert-light my-5 text-center");
+            // Replacement automatique du scroll de l'utilisateur pour le placer sur le haut de la page où se trouve l'alerte
             $('html, body').animate({
-                scrollTop: $("body").offset().top
-            }, 0);
                 
+                scrollTop: $("body").offset().top
+                
+            }, 0);
+            
+            // Si le traitement des données est réussie et que la page de traitement retourne le message de confirmation:
             if(data == "Votre compte a bien été activé ! Vous allez être redirigé vers votre profil !") {
                 
                 setTimeout(() => {
-        
+                    
+                    // Redirection de l'utilisateur vers le profil de son compte créé au bout de 2,5 secondes.
                     window.location.replace('../profil.php');
         
                 }, 2500);

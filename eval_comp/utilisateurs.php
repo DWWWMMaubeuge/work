@@ -1,82 +1,89 @@
 <?php require_once('config/pdo-connect.php'); ?>
 <?php require_once('config/verifications.php'); ?>
-<?php userIsLogged(); ?>
+<?php userIsLogged(); // Vérification si l'utilisateur est connecté ?>
 <?php include('config/head.php'); ?>
 <?php 
 
+// Si un numéro de page n'est fourni en paramètre dans l'url: 
 if(isset($_GET['page']) && !empty($_GET['page'])){
     
+    // Stockage de la page courante dans une variable
     $currentPage = (int) strip_tags($_GET['page']);
-    
+
+// Sinon:
 } else {
     
+    // Création de la variable $currentPage est assignation de celle-ci à 1
     $currentPage = 1;
 
     
 }
 
+// Si l'id d'une formation est passé en paramètre:
 if(isset($_GET['formation'])) {
     
+    // Stockage de l'id de la formation dans la $variable type
     $type = $_GET['formation'];
     
 } else {
     
+    // Sinon $type sera vide
     $type = "";
     
 }
 
+// Selection des données de toutes les formations existantes dans la base de données
 $formations = $bdd->query('SELECT * FROM Formations');
 
+// Si aucun id de formation n'est fourni en paramètre:
 if(!isset($_GET['formation'])) {
     
-    $query = $bdd->query('SELECT COUNT(*) AS nb_users FROM Membres');
-
-    $result = $query->fetch();
-
+    // Comptage du total du nombre d'utilisateur enregistré dans la base de données
+    $countmembers = $bdd->query('SELECT COUNT(*) AS nb_users FROM Membres');
+    
+    // Récupération du nombre total et stockage dans une variable $result
+    $result = $countmembers->fetch();
+    
+    // Stockage du nombre d'utilisateurs dans une variable $nbUsers
     $nbUsers = (int) $result['nb_users'];
-
+    
+    // Définission du nombre d'utilisateur par page
     $parPage = 5;
-
+    
+    // Calcul du nombre de pages
     $pages = ceil($nbUsers / $parPage);
-
+    
+    // Definission du premier utilisateur à afficher
     $premier = ($currentPage * $parPage) - $parPage;
 
+    // Selection de toutes les données des utilisateurs dans la base de données
     $allusers= $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Sessions ON Options.SESSION = Sessions.ID_SESSION LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION ORDER BY Membres.ID ASC LIMIT :premier, :parpage');
     $allusers->bindParam(':premier', $premier, PDO::PARAM_INT);
     $allusers->bindParam(':parpage', $parPage, PDO::PARAM_INT);
     $allusers->execute();
-    
+
+// Si une id de formation est fourni en paramètre:
 } else {
     
-    /*$q = $bdd->query('SELECT COUNT(*) AS nb_users FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Sessions ON Options.SESSION = Sessions.ID_SESSION LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION WHERE Sessions.ID_FORMATION = ' . $_GET['formation'] );
-    
-    $result = $q->fetch();
-    
-    $nbUsers = (int) $result['nb_users'];
-
-    $parPage = 5;
-
-    $pages = ceil($nbUsers / $parPage);
-
-    $premier = ($currentPage * $parPage) - $parPage;
-    
-    $allusers = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Sessions ON Options.SESSION = Sessions.ID_SESSION LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION WHERE Sessions.ID_FORMATION = ' . $_GET['formation'] . ' ORDER BY Membres.ID ASC LIMIT :premier, :parpage');
-    $allusers->bindParam(':premier', $premier, PDO::PARAM_INT);
-    $allusers->bindParam(':parpage', $parPage, PDO::PARAM_INT);
-    $allusers->execute();*/
-    
+    // Comptage du total du nombre d'utilisateur enregistré dans la base de données et qui font partie de la formation selectionnée
     $alluserformations = $bdd->query('SELECT COUNT(*) AS nb_users FROM Membres LEFT JOIN FormationsUtilisateur ON Membres.ID = FormationsUtilisateur.USER LEFT JOIN Sessions ON FormationsUtilisateur.IDENTIFIANT_SESSION = Sessions.ID_SESSION WHERE FormationsUtilisateur.IDENTIFIANT_FORMATION = ' . $_GET['formation']);
     
+    // Recuperation du nombre total d'utilisateur dans la formation
     $result = $alluserformations->fetch();
     
+    // Stockage du nombre d'utilisateurs dans une variable $nbUsers
     $nbUsers = (int) $result['nb_users'];
-
+    
+    // Définission du nombre d'utilisateur par page
     $parPage = 5;
-
+    
+    // Calcul du nombre de pages
     $pages = ceil($nbUsers / $parPage);
-
+    
+    // Definission du premier utilisateur à afficher
     $premier = ($currentPage * $parPage) - $parPage;
     
+    // Selection de toutes les données des utilisateurs dans la base de données et qui font partie de la formation selectionnée
     $allusers = $bdd->prepare('SELECT * FROM Membres LEFT JOIN FormationsUtilisateur ON Membres.ID = FormationsUtilisateur.USER LEFT JOIN Sessions ON FormationsUtilisateur.IDENTIFIANT_SESSION = Sessions.ID_SESSION WHERE FormationsUtilisateur.IDENTIFIANT_FORMATION = ' . $_GET['formation'] . ' ORDER BY Membres.ID ASC LIMIT :premier, :parpage');
     $allusers->bindParam(':premier', $premier, PDO::PARAM_INT);
     $allusers->bindParam(':parpage', $parPage, PDO::PARAM_INT);
@@ -89,6 +96,7 @@ if(!isset($_GET['formation'])) {
 <?php require_once('config/navbar.php'); ?>
 <div class="container-fluid p-5 mt-5 banner3">
     <h1 class="text-center">Liste des utilisateurs</h1>
+    <!-- Selecteur de formation -->
     <div class="row my-5">
        <select class="text-center mx-auto" name="type" onChange="selectFormation(this.value)">
         <option value="" <?php if($type == "") { echo "selected"; } ?> readonly>Touts les utilisateurs</option>
@@ -97,6 +105,7 @@ if(!isset($_GET['formation'])) {
        <?php } ?>
         </select>
     </div>
+    <!-- Tableau des utilisateurs -->
     <table class="table table-hover table-dark text-center w-100 m-auto">
         <thead>
             <tr>
@@ -137,6 +146,7 @@ if(!isset($_GET['formation'])) {
         <?php } ?>
         </tbody>
     </table>
+    <!-- Pagination -->
     <nav class="my-5">
         <ul class="pagination justify-content-center">
             <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
@@ -156,5 +166,6 @@ if(!isset($_GET['formation'])) {
         </ul>
     </nav>
 </div>
+<!-- Lien vers le script de la page utilisateurs -->
 <script src="scripts/utilisateurs.js"></script>
 <?php require_once('config/footer.php'); ?>
