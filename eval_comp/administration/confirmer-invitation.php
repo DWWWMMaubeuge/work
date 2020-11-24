@@ -1,19 +1,19 @@
 <?php require_once('../config/pdo-connect.php'); ?>
 <?php require_once('../config/verifications.php'); ?>
-<?php userIsLogged(); ?>
+<?php userIsLogged(); // Vérification si l'utilisateur est connecté ?>
 <?php include('../config/head.php'); ?>
-<?php
-
-?>
 <?php include('../config/captcha.php'); ?>
 <?php
 
+// Selection de toutes les données dans la table des invitations grâce à l'email de l'utilisateur
 $selectinvitation = $bdd->prepare('SELECT * FROM Invitations LEFT JOIN Formations ON Invitations.FormationID = Formations.ID_FORMATION LEFT JOIN Sessions ON Invitations.Session_ID = Sessions.ID_SESSION WHERE Email = :email');
 $selectinvitation->bindParam(':email', $infos['Email'], PDO::PARAM_STR);
 $selectinvitation->execute();
 
+// Comptage du nombre de résultat
 $countinvitation = $selectinvitation->rowCount();
 
+// Redirection de l'utilisateur vers son profil si aucun résultat n'est trouvé
 if($countinvitation != 1) {
     
     header('Location: profil.php');
@@ -21,6 +21,7 @@ if($countinvitation != 1) {
     
 }
 
+// Récupération de toutes les données de l'invitation
 $invitation = $selectinvitation->fetch();
 
 
@@ -48,6 +49,7 @@ $invitation = $selectinvitation->fetch();
                     <label for="captcha">Veuillez recopier le code ci-dessus</label>
                     <input type="text" class="form-control" name="captcha" id="captcha" autocomplete="off" aria-describedby="captchaHelp" required>
                 </div>
+                <!-- Inputs cachées avec les détails de l'invitation et l'email de l'utilisateur, utilisés pendant le traitement PHP/SQL -->
                 <input type="hidden" value="<?= $invitation['FormationID']; ?>" name="idformation" id="idformation" readonly required >
                 <input type="hidden" value="<?= $invitation['ID_SESSION']; ?>" name="idsession" id="idsession" readonly required>
                 <input type="hidden" value="<?= $infos['Email']; ?>" name="email" id="email" readonly required >

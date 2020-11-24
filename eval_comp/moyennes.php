@@ -46,9 +46,9 @@ if(isset($_GET['pseudo'])) {
                 
             }
             
-            $moyennes = getAverage($member['ID'], $member['ID_FORMATION'], $session);
+            $moyennes = getAverage($member['ID'], $session);
             
-            $allmonths = $bdd->prepare('SELECT MOIS FROM Resultats WHERE ID_USER = :userid AND ID_SESSION = :session GROUP BY MOIS');
+            $allmonths = $bdd->prepare('SELECT MOIS FROM Resultats LEFT JOIN Matieres ON Resultats.ID_SESSION = Matieres.ID_Session WHERE Resultats.ID_USER = :userid AND Resultats.ID_SESSION = :session AND Matieres.Active = TRUE GROUP BY MOIS');
             $allmonths->bindParam(':userid', $member['ID'], PDO::PARAM_INT);
             $allmonths->bindParam(':session', $session, PDO::PARAM_INT);
             $allmonths->execute();
@@ -115,9 +115,9 @@ if(isset($_POST['moyennesession'])) {
     
 }
 
-$moyennes = getAverage($_SESSION['id'], $infos['ID_FORMATION'], $session);
+$moyennes = getAverage($_SESSION['id'], $session);
 
-$nbrresultats = $bdd->prepare('SELECT MOIS FROM Resultats WHERE ID_USER = :userid AND ID_SESSION = :session GROUP BY MOIS');
+$nbrresultats = $bdd->prepare('SELECT MOIS FROM Resultats LEFT JOIN Matieres ON Resultats.ID_SESSION = Matieres.ID_Session WHERE Resultats.ID_USER = :userid AND Resultats.ID_SESSION = :session AND Matieres.Active = TRUE GROUP BY MOIS');
 $nbrresultats->bindParam(':userid', $_SESSION['id'], PDO::PARAM_INT);
 $nbrresultats->bindParam(':session', $session, PDO::PARAM_INT);
 $nbrresultats->execute();
@@ -210,8 +210,8 @@ require_once('config/navbar.php');
                         <select name="moyennesession" id="moyennesession" onchange="getMoyennes(this.id, this.value)">
                             <?php while($userformations = $alluserformations->fetch()) { ?>
                             
-                                <option value="<?= $userformations['IDENTIFIANT_SESSION']; ?>" <?php if(isset($_POST['moyennesession']) && $_POST['moyennesession'] == $userformations['IDENTIFIANT_SESSION']) { ?> selected <?php } ?>><?= $userformations['FORMATION']; ?> ( Session du <?= dateConvert($userformations['DATE_DEBUT']); ?> au <?= dateConvert($userformations['DATE_FIN']); ?> à <?= $userformations['EMPLACEMENT']; ?> )</option>
-                                
+                               <option value="<?= $userformations['IDENTIFIANT_SESSION']; ?>" <?php if(isset($_POST['moyennesession'])) { if($_POST['moyennesession'] == $userformations['IDENTIFIANT_SESSION']) { ?> selected <?php } ?><?php } elseif($userformations['IDENTIFIANT_SESSION'] == $infos['SESSION']) { ?> selected <?php } ?>><?= $userformations['FORMATION']; ?> ( Session du <?= dateConvert($userformations['DATE_DEBUT']); ?> au <?= dateConvert($userformations['DATE_FIN']); ?> à <?= $userformations['EMPLACEMENT']; ?> )</option>
+                                    
                             <?php } ?>
                             
                         </select>
@@ -223,7 +223,7 @@ require_once('config/navbar.php');
                         <select name="moyennesession" id="moyennesession" onchange="getMoyennes(this.id, this.value)">
                             <?php while($userformations = $alluserformations->fetch()) { ?>
                             
-                                <option value="<?= $userformations['IDENTIFIANT_SESSION']; ?>" <?php if(isset($_POST['moyennesession']) && $_POST['moyennesession'] == $userformations['IDENTIFIANT_SESSION']) { ?> selected <?php } ?>><?= $userformations['FORMATION']; ?> ( Session du <?= dateConvert($userformations['DATE_DEBUT']); ?> au <?= dateConvert($userformations['DATE_FIN']); ?> à <?= $userformations['EMPLACEMENT']; ?> )</option>
+                                <option value="<?= $userformations['IDENTIFIANT_SESSION']; ?>" <?php if(isset($_POST['moyennesession'])) { if($_POST['moyennesession'] == $userformations['IDENTIFIANT_SESSION']) { ?> selected <?php } ?><?php } elseif($userformations['IDENTIFIANT_SESSION'] == $infos['SESSION']) { ?> selected <?php } ?>><?= $userformations['FORMATION']; ?> ( Session du <?= dateConvert($userformations['DATE_DEBUT']); ?> au <?= dateConvert($userformations['DATE_FIN']); ?> à <?= $userformations['EMPLACEMENT']; ?> )</option>
                                 
                             <?php } ?>
                             
@@ -245,8 +245,11 @@ require_once('config/navbar.php');
                     <form method="POST" class="text-center" id="form-moyennes">
                         <select name="moyennesession" id="moyennesession" onchange="getMoyennes(this.id, this.value)">
                             <?php while($membersession = $sessionsmember->fetch()) { ?>
-                                <option value="<?= $membersession['IDENTIFIANT_SESSION']; ?>" <?php if(isset($_POST['moyennesession']) && $_POST['moyennesession'] == $membersession['IDENTIFIANT_SESSION']) { ?> selected <?php } ?>><?= $membersession['FORMATION']; ?> ( Session du <?= dateConvert($membersession['DATE_DEBUT']); ?> au <?= dateConvert($membersession['DATE_FIN']); ?> à <?= $membersession['EMPLACEMENT']; ?> )</option>
+                            
+                                <option value="<?= $membersession['IDENTIFIANT_SESSION']; ?>" <?php if(isset($_POST['moyennesession'])) { if($_POST['moyennesession'] == $membersession['IDENTIFIANT_SESSION']) { ?> selected <?php } ?><?php } elseif($membersession['IDENTIFIANT_SESSION'] == $member['SESSION']) { ?> selected <?php } ?>><?= $membersession['FORMATION']; ?> ( Session du <?= dateConvert($membersession['DATE_DEBUT']); ?> au <?= dateConvert($membersession['DATE_FIN']); ?> à <?= $membersession['EMPLACEMENT']; ?> )</option>
+                                
                             <?php } ?>
+                            
                         </select>
                     </form>
                     
@@ -255,8 +258,11 @@ require_once('config/navbar.php');
                     <form method="POST" class="text-center" id="form-moyennes">
                         <select name="moyennesession" id="moyennesession" onchange="getMoyennes(this.id, this.value)">
                             <?php while($membersession = $sessionsmember->fetch()) { ?>
-                                <option value="<?= $membersession['IDENTIFIANT_SESSION']; ?>" <?php if(isset($_POST['moyennesession']) && $_POST['moyennesession'] == $membersession['IDENTIFIANT_SESSION']) { ?> selected <?php } ?>><?= $membersession['FORMATION']; ?> ( Session du <?= dateConvert($membersession['DATE_DEBUT']); ?> au <?= dateConvert($membersession['DATE_FIN']); ?> à <?= $membersession['EMPLACEMENT']; ?> )</option>
+                            
+                                <option value="<?= $membersession['IDENTIFIANT_SESSION']; ?>" <?php if(isset($_POST['moyennesession'])) { if($_POST['moyennesession'] == $membersession['IDENTIFIANT_SESSION']) { ?> selected <?php } ?><?php } elseif($membersession['IDENTIFIANT_SESSION'] == $member['SESSION']) { ?> selected <?php } ?>><?= $membersession['FORMATION']; ?> ( Session du <?= dateConvert($membersession['DATE_DEBUT']); ?> au <?= dateConvert($membersession['DATE_FIN']); ?> à <?= $membersession['EMPLACEMENT']; ?> )</option>
+                                
                             <?php } ?>
+                            
                         </select>
                     </form>
                     

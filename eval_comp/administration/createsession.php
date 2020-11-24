@@ -1,9 +1,10 @@
 <?php require_once('../config/pdo-connect.php'); ?>
 <?php require_once('../config/verifications.php'); ?>
-<?php userIsLogged(); ?>
-<?php userIsSuperAdmin(); ?>
+<?php userIsLogged(); // Vérifications si l'utilisateur est connecté ?>
+<?php userIsSuperAdmin(); // Vérifications si l'utilisateur est un superadmin ?>
 <?php
 
+// Récupération des détails de toutes les formations existantes
 $selectformations = $bdd->query('SELECT * FROM Formations ORDER BY FORMATION');
 
 ?>
@@ -20,19 +21,23 @@ $selectformations = $bdd->query('SELECT * FROM Formations ORDER BY FORMATION');
                     <label class="col-12" for="formation">Selectionnez la formation de la session</label>
                     <select name="formation" id="formation">
                         <option value=""></option>
+                        <!-- Affichage des données des formations dans des balises options -->
                         <?php while($formation = $selectformations->fetch()) { ?>
                             <option value="<?= $formation['ID_FORMATION']; ?>"><?= $formation['FORMATION']; ?></option>
                         <?php } ?>
                     </select>
                 </div>
+                <!-- Selection de la date de début de la session à créer -->
                  <div class="form-group mt-5">
                     <label class="col-12" for="debut">Selectionnez la date de début</label>
                     <input type="date" name="debut" id="debut" required>
                 </div>
+                <!-- Selection de la date de fin de la session à créer -->
                 <div class="form-group mt-5">
                     <label class="col-12" for="fin">Selectionnez la date de fin</label>
                     <input type="date" name="fin" id="fin" required>
                 </div>
+                <!-- Insertion de l'emplacement de la session à créer -->
                 <div class="form-group my-5">
                     <label class="col-12" for="emplacement">Insérez le lieu de la formation</label>
                     <input type="text" name="emplacement" id="emplacement" required>

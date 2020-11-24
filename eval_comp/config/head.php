@@ -1,5 +1,6 @@
 <?php
 
+// fonction header qui nécessite le titre des pages en tant que parametre
 function myHeader($title) {
 
     echo "<!DOCTYPE html>

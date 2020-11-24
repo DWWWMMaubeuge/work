@@ -16,13 +16,14 @@ try {
   $bdd = new PDO("mysql:host=$servername;dbname=id15316558_dwm_maubeuge", $username, $password);
   $bdd->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
   $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  
 } catch(PDOException $e) {
 
     echo $e->getMessage();
     
 }
 
-// Verification si l'utilisateur c'est connecter à son compte sur le site
+// Verification si l'utilisateur c'est connecter à son compte sur le site et récupération de ses infos si c'est le cas
 
 if(isset($_SESSION['id'])) {
 
