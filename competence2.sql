@@ -19,11 +19,6 @@
 -- Table structure for table `Membres`
 --
 
-DROP DATABASE IF EXISTS `DWWM_Maubeuge`;
-
-CREATE DATABASE DWWM_Maubeuge CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-use DWWM_Maubeuge;
-
 
 DROP TABLE IF EXISTS `formations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -202,6 +197,14 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (1,'2020-11-17 15:31:29','trouvetout','geo','123','geo@gmail.com',1,1,'FOR'),(2,'2020-11-17 15:31:29','picsou','oncle','admim','oncle@gmail.com',0,0,'ADM'),(3,'2020-11-17 15:31:29','ligonnes','xavier','123','xligo@gmail.com',1,1,'STA'),(4,'2020-11-17 15:31:29','Castix','ferdinand','123','fcast@gmail.com',3,3,'STA'),(5,'2020-11-17 15:31:29','Lecuisinier','Max','123','cuisine@gmail.com',2,2,'STA'),(6,'2020-11-17 15:31:29','Lecomte','JP','123','compta@gmail.com',0,0,'ADM'),(7,'2020-11-17 15:31:29','bourgey','Xav','123','xav@gmail.com',1,1,'FOR'),(8,'2020-11-17 15:31:29','durand','Sam','123','sam@gmail.com',2,1,'FOR'),(9,'2020-11-17 15:31:29','admin','admin','admin','admin',0,0,'ADM'),(25,'2020-11-19 15:51:07','Robert','Thomas','123','thomas_3004@hotmail.fr',0,14,'STA'),(26,'2020-11-19 15:52:21','Fatima','NC','123','fatformationafpa@gmail.com',0,14,'STA'),(27,'2020-11-19 15:52:21','Fouad','NC','123','ahanchir@live.fr',0,14,'STA'),(28,'2020-11-19 15:52:21','Flavia','NC','123','fortunatoflavia@outlook.com',0,14,'STA'),(29,'2020-11-19 15:52:21','Steven','NC','123','stevenhonor@live.fr',0,14,'STA'),(30,'2020-11-19 15:52:21','Alex','NC','123','alex.kolakowski@outlook.fr',0,14,'STA'),(31,'2020-11-19 15:52:21','Axel','NC','123','axel.mathez@gmail.com',0,2,'STA'),(32,'2020-11-19 15:52:21','Valentin','NC','123','valentin.crapez1995@gmail.com',0,2,'STA'),(33,'2020-11-19 15:52:21','Steven','NC','123','jeffrey_stl@hotmail.fr',0,2,'STA'),(34,'2020-11-19 15:52:21','Pierre','NC','123','delattre.pierre@outlook.fr',0,2,'STA'),(35,'2020-11-19 15:54:49','Maxime','NC','123','maximewilmot@gmail.com',0,2,'STA'),(36,'2020-11-19 15:57:18','Nicolas','NC','123','nicolascaulier@gmail.com',NULL,2,'STA');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-11-23 17:10:24
-

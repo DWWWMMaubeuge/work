@@ -2,12 +2,18 @@
 require_once( "parametres.php" );
 include_once(  "CO_global_functions.php"  );
 
-//inscriptFormateur.php?mail="+mail+"&idFormation="+ID_formation;
-
-if( $_GET['name'] != "" && $_GET['idFormation'] != "" ) 
+if (
+	isset( $_GET['name']				) && 
+	isset( $_GET['idFormation']			) &&
+	isset( $_GET['dateb']				) && 
+	isset( $_GET['datee']				) && 
+	( $_GET['name'] != "" 				) &&
+	( $_GET['dateb'] < $_GET['datee']	) && 
+	( $_GET['idFormation'] >0   		)
+	) 
 {
     $name        	= $_GET['name'];
-    $ID_formation    = $_GET['idFormation'];
+    $ID_formation   = $_GET['idFormation'];
     $dateb    		= $_GET['dateb'];
     $datee    		= $_GET['datee'];
   
