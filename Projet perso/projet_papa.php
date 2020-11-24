@@ -40,10 +40,10 @@ if ( isset($_POST) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($
 ?>
 
 <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
-     
-     <h2>Nom</h2>
+     <div class="div_form">
+     <label for="nom">Nom</label>
      <input type="text"  	name="nom" 		placeholder="nom ">
-<br>
+    </div>
   <h2>Prénom</h2>
   <input type="text"  	name="prenom" 	placeholder="prenom">
 <br>

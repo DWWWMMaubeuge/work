@@ -13,6 +13,18 @@ body{
     background-image: url(disque_vinyle.jpg);
     background-size: cover;
 }
-h2{
+label{
     color:rgb(82, 132, 224);
+}
+.div_form{
+display:flex;
+flex-direction: column;
+margin-left: auto;
+margin-right: auto;
+align-items: center;
+}
+
+input{
+    width: 25%;
+
 }
