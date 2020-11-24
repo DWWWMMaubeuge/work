@@ -7,7 +7,7 @@ session_start();
 // verifier que le visteurs est bien passé par le login (donc il a un ID_user != 0)
 // verifier que le visteurs est bien administrateur (donc il a un role ==   ADM )
 if ( !isset( $_SESSION[ 'ID_user' ]) || $_SESSION[ 'ID_user' ] == 0 || $_SESSION[ 'role' ] != 'ADM')
-    header( "location: login01.php");
+    header( "location: login.php");
 
 // recupération des formations pour le comboBox
 $req = "SELECT * FROM $DB_dbname.formations";
@@ -26,103 +26,125 @@ while( $ligne = $res->fetch_assoc())
     $widget_session .="<option value=\"".$ligne['id']."\">$nom</option>\n";
 }
 
-
-if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail'] != "" && $_POST['password'] != "" ) 
-{
-    $name       = $_POST['name'];
-    $surname    = $_POST['surname'];
-    $mail       = $_POST['mail'];
-    $password   = $_POST['password'];
-
-    // attention aux doublons des mail
-
-    $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password ) VALUES ( '$name', '$surname', '$mail', '$password' )";
-    executeSQL( $req );
-    header( "location: accueil02_multiple.php");
-}
-
 ?>
 <script>
 function inscritFormateur2Formation()
 {
-    {
-      var xhttp = new XMLHttpRequest();
+  var xhttp = new XMLHttpRequest();
 
-      mail = document.getElementById( 'for_mail' ).value;
-      ID_formation = document.getElementById( 'for_mail_sel' ).value;
+  mail          = document.getElementById( 'for_mail' ).value;
+  ID_formation  = document.getElementById( 'for_mail_sel' ).value;
 
-      if ( mail.length > 5 && ID_formation > 0 )
-      {
-
-          let url = "inscriptFormateur2FormationGET.php?mail="+mail+"&idFormation="+ID_formation;
-          xhttp.open("GET", url, true); 
-          xhttp.send();
-      }
-    }   
-}
-
+  if ( mail.length > 5 && ID_formation > 0 )
+  {
+      let url = "inscritFormateur2FormationGET.php?mail="+mail+"&idFormation="+ID_formation;
+      xhttp.open("GET", url, true); 
+      xhttp.send();
+  }
+ }
 
 function inscritFormateur2Session()
 {
-    {
-      var xhttp = new XMLHttpRequest();
-      // maj_value.php?idUser=4&idSkill=4&valueSkill=5
-      mail = document.getElementById( 'for_mail_f2s' ).value;
-      ID_session = document.getElementById( 'session_sel_f2s' ).value;
-      if ( mail.length > 5 && ID_session > 0 )
-      {
-          let url = "inscriptFormateur2SessionGET.php?mail="+mail+"&idSession="+ID_session;
-          xhttp.open("GET", url, true); 
-          xhttp.send();
-      }
-    }   
+  var xhttp = new XMLHttpRequest();
+
+  mail        = document.getElementById( 'for_mail_f2s' ).value;
+  ID_session  = document.getElementById( 'session_sel_f2s' ).value;
+  
+  if ( mail.length > 5 && ID_session > 0 )
+  {
+      let url = "inscritFormateur2SessionGET.php?mail="+mail+"&idSession="+ID_session;
+      xhttp.open("GET", url, true); 
+      xhttp.send();
+  }
 }
-
-
 
 function inscritSession()
 {
-        var xhttp = new XMLHttpRequest();
-        // maj_value.php?idUser=4&idSkill=4&valueSkill=5
-        name = document.getElementById( 'session_name' ).value;
-        date_begin = document.getElementById( 'session_date_b' ).value;
-        date_end = document.getElementById( 'session_date_e' ).value;
-        ID_formation = document.getElementById( 'for_formation_sel' ).value;
-        console.log( date_begin +" "+ date_end +" "+ ID_formation );
+  var xhttp = new XMLHttpRequest();
 
-        if ( name.length > 10 && ID_formation > 0 && date_begin.length > 5 && date_end.length > 5 )
-        {
-                //inscriptFormation.php?name=miammiam&idFormation=2
-                let url = "inscriptFormation.php?name="+name+"&idFormation="+ID_formation+"&dateb="+date_begin+"&datee="+date_end;
-                
-                console.log( url );
-                xhttp.open("GET", url, true); 
-                xhttp.send();
-        }   
+  name          = document.getElementById( 'session_name' ).value;
+  date_begin    = document.getElementById( 'session_date_b' ).value;
+  date_end      = document.getElementById( 'session_date_e' ).value;
+  ID_formation  = document.getElementById( 'for_formation_sel' ).value;
+  
+  if ( name.length > 10 && ID_formation > 0 && date_begin.length > 5 && date_end.length > 5 )
+  {
+    let url = "inscritFormationGET.php?name="+name+"&idFormation="+ID_formation+"&dateb="+date_begin+"&datee="+date_end;
+    
+    //console.log( url );
+    xhttp.open("GET", url, true); 
+    xhttp.send();
+  }   
 }
 
-function inscritStagiaire()
+function afficheListeStagiaireSession( id_session )
 {
-        return;
-        var xhttp = new XMLHttpRequest();
-        // maj_value.php?idUser=4&idSkill=4&valueSkill=5
-        list_stagiaire = document.getElementById( 'list_stagiaire' ).value;
-        ID_session = document.getElementById( 'session_sel' ).value;
+  var objectXHTTP = new XMLHttpRequest();
+  objectXHTTP.open("GET", "getListStagiaireSessionGET.php?idSession="+id_session, true);
+  objectXHTTP.send();
 
-        //console.log( date_begin +" "+ date_end +" "+ ID_formation );
+  objectXHTTP.onreadystatechange = function() 
+  {
+    if ( this.readyState == 4 && this.status == 200 ) 
+      document.getElementById("resLSS").innerHTML = this.responseText;
+  };
+}
+       
+function afficheListeSession( )
+{
+  var objectXHTTP = new XMLHttpRequest();
 
-        if ( list_stagiaire.length > 5 && ID_session > 0 )
-        {
-                //inscriptFormation.php?name=miammiam&idFormation=2
-                let url = "inscriptStagiaireGET.php?list_stagiaire="+list_stagiaire+"&idSession="+ID_session;
-                
-                console.log( url );
-                xhttp.open("GET", url, true); 
-                xhttp.send();
-        }   
+  objectXHTTP.open("GET", "getListSessionGET.php", true);
+  objectXHTTP.send();
+
+  objectXHTTP.onreadystatechange = function() 
+  {
+    if ( this.readyState == 4 && this.status == 200 ) 
+      document.getElementById("resLS").innerHTML = this.responseText;
+  };                       
+}
+
+function afficheListeSessionByFormation( id_formation )
+{
+  var objectXHTTP = new XMLHttpRequest();
+
+  objectXHTTP.open("GET", "getListSessionFormationGET.php?idFormation="+id_formation, true);
+  objectXHTTP.send();
+
+  objectXHTTP.onreadystatechange = function() 
+  {
+    if ( this.readyState == 4 && this.status == 200 ) 
+      document.getElementById("resLSF").innerHTML = this.responseText;
+  };                       
+}
+
+function afficheListeFormateurByFormation( id_formation )
+{
+  var objectXHTTP = new XMLHttpRequest();
+
+  objectXHTTP.open("GET", "getListFormateurFormationGET.php?idFormation="+id_formation, true);
+  objectXHTTP.send();
+
+  objectXHTTP.onreadystatechange = function() 
+  {
+    if ( this.readyState == 4 && this.status == 200 ) 
+      document.getElementById("resLSFF").innerHTML = this.responseText;
+  };                       
+}
+
+function inscritFormation( nomFormation )
+{
+  var objectXHTTP = new XMLHttpRequest();
+
+  let url = "inscritFormationGET.php?name="+nomFormation;
+  console.log( "appel URL ", url )
+
+  objectXHTTP.open("GET", url, true);
+  objectXHTTP.send();
 }
 
 </script>
+<h1> page d'admin</h1>
 <br>
 Ajouter un formateur
 <br>
@@ -171,7 +193,7 @@ Inscrire un formateur à session
 Ajouter des acteurs
 <br>
 <FORM  method='POST' action="inscriptActeursPOST.php">
-<textarea  name="list_stagiaire" id="list_stagiaire" rows="10" cols="50">
+<textarea  name="list_stagiaire2users" id="list_stagiaire2users" rows="10" cols="50">
 </textarea>
 <br>
 <select id='role_sel' name="selRole">
@@ -189,12 +211,70 @@ Ajouter des acteurs
 inscrire des acteurs à une session de formation
 <br>
 <FORM  method='POST' action="inscriptStagiaire2SessionPOST.php">
-<textarea  name="list_stagiaire" id="list_stagiaire" rows="10" cols="50">
+<textarea  name="list_stagiaire2session" id="list_stagiaire2session" rows="10" cols="50">
 </textarea>
 <br>
 <select id='session_sel' name="selSession" >
-<?=$widget_session?>
+<?=$widget_session?>  
 </select>
 <br>
 <INPUT type='submit' value='INSCRIPTION'>
 </FORM>
+
+<br>
+<br>
+<br>
+<div>
+liste des stagiares de : <br>
+<select id='session_sel_list_sta' name="selSession" onchange="afficheListeStagiaireSession( this.value )">
+<?=$widget_session?>
+</select>  
+<div id="resLSS">
+</div>
+</div>
+
+
+<br>
+<br>
+<br>
+<div>
+liste des sessions : <br>
+<input type="button" id='session_sel_list' name="selSession" value="list sessions" onclick="afficheListeSession()">
+<div id="resLS">
+</div>
+</div>
+
+<br>
+<br>
+<br>
+<div>
+liste des sessions par formation : <br>
+<select id='session_sel_list_ses_for' name="selSession" onchange="afficheListeSessionByFormation( this.value )">
+<?=$widget_formation?>
+</select>  
+<div id="resLSF">
+</div>
+</div>
+
+<br>
+<br>
+<br>
+<div>
+liste des formateur par formation : <br>
+<select id='session_sel_list_for_for' name="selSession" onchange="afficheListeFormateurByFormation( this.value )">
+<?=$widget_formation?>
+</select>  
+<div id="resLSFF">
+</div>
+</div>
+
+
+<br>
+<br>
+<br>
+Ajouter une formation
+<br>
+<FORM  method='POST' action="#">
+<INPUT type='text' id='add_formation' name='add_formation' placeholder="nom de la formation" onchange="inscritFormation( this.value )">
+<br>
+<br>

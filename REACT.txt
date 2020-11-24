@@ -1,0 +1,15 @@
+REACT
+
+https://openclassrooms.com/forum/sujet/installation-de-reactjs-sur-ubuntu-18-04
+	curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
+
+
+https://fr.reactjs.org/docs/create-a-new-react-app.html
+
+	sudo install npm
+
+	npx create-react-app mon-app
+	suivre instruction
+
+	<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
