@@ -11,7 +11,6 @@ session_start();
 //if ( ! isset( $_SESSION[ 'ID_user' ] ))
 //    header( "location: login01.php")
 
-
 $ID_formation   = $_SESSION[ 'ID_formation' ];
 $ID_user        = $_SESSION[ 'ID_user' ];
 $name_user      = $_SESSION[ 'name' ];
@@ -56,11 +55,11 @@ $list_stagiaires .= "</ul>\n";
 
 // fonction AJAX qui appelle une page PHP pour mettre des données dans la DBrecupérer
 // les données sont transmise en mode GET
-function addNewSkill( data )
+function inscritSkill( name )
 {
   var objectXHTTP = new XMLHttpRequest();
 
-  let url = "addNewSkill.php?data="+data+"&idFormation=<?= $ID_formation?>";
+  let url = "inscritSkillGET.php?name="+name+"&idFormation=<?= $ID_formation?>";
   console.log( "appel URL ", url )
 
   objectXHTTP.open("GET", url, true);
@@ -74,5 +73,5 @@ function addNewSkill( data )
 Ajouter un skill
 <br>
 <FORM  method='POST' action="#">
-<INPUT type='text' id='new_skil' name='new_skill' placeholder="nom du skill" onchange="addNewSkill( this.value )">
+<INPUT type='text' id='new_skil' name='new_skill' placeholder="nom du skill" onchange="inscritSkill( this.value )">
 <br>

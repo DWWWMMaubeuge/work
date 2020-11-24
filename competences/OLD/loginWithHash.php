@@ -146,11 +146,7 @@ function encodePW()
     pw = document.getElementById( "PWX" ).value;
     document.getElementById( "PWXc" ).value = sha256( pw );
 }
-
 </script>
-
-
-
 <FORM  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <INPUT type='text' name='mail' placeholder="votre mail">
 <br>
