@@ -18,7 +18,7 @@ Nicolas
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 <a class="dropdown-item" href="accueil.php">Accueil</a>
 <div class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Loisir</a>
+<a class="dropdown-item" href="#">A propos</a>
 <div class="dropdown-divider"></div>
 <a class="dropdown-item" href="#">Jeux</a>      
 </div>
@@ -77,7 +77,7 @@ Nicolas
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 <a class="dropdown-item" href="accueil.php">Accueil</a>
 <div class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Loisir</a>
+<a class="dropdown-item" href="#">A propos</a>
 <div class="dropdown-divider"></div>
 <a class="dropdown-item" href="#">Jeux</a>      
 </div>

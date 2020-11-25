@@ -18,13 +18,7 @@
   color:#252323;
 }
 
-/* .titre h2{
-  font-size: 60px;
-  text-align: center;
-  padding-top: 300px;
-  padding-bottom: 30px;
-  color: #252323;
-}  */
+
 
 body{
   opacity:1;
@@ -60,4 +54,9 @@ body{
 .lol {
   color: #252323;
   text-align :center;
+}
+.carte {
+  text-align: center;
+  background-color:#1f2129;
+  padding-bottom:40px;
 }
