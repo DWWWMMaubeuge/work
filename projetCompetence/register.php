@@ -69,7 +69,7 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
     //$vkey = md5(time().$name);
 
     // verification doublons emails 
-    $emailQuery = "SELECT * FROM $DB_dbname.users WHERE email=? LIMIT 1 ";
+    /*$emailQuery = "SELECT * FROM $DB_dbname.users WHERE email=? LIMIT 1 ";
     $stmt = $conn-> prepare($emailQuery);
     $stmt-> bind_param('s',$email);
     $stmt->execute();
@@ -77,25 +77,34 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
     $userCount = $result->num_rows;
 
     if($userCount > 0){
-      $errors['email'] = "Email already exists";
+      $errors['email'] = "Email already exists"; devafpa2020@gmail.com
     }
-
+*/
   $req = "INSERT INTO $DB_dbname.users ( name, surname, email, type, password ) VALUES ( '$name', '$surname', '$email', '$type', '$password' )";
     executeSQL( $req );
 
     if($req)
     {
-        //send email (bien redirigé vers thanYou.php mais pas de reception de mail)
-        $to = $email;
+        //send email ok !!
+
+        $to      = $email;
         $subject = "Email Verification";
-        $message = "<a href='http://localhost/work/login.php?vkey=$vkey'>Register Account</a>";
-        $headers = "From: fatformationafpa@gmail.com";
+        $message = "<p>Votre demande d'inscription à la formation $type à bien été validée! Veuillez suivre le lien suivant pour vous connecter à votre compte</p>";
+        $message .= "<a href='http://localhost/work/projetCompetence/login.php?'>Register Account</a>";
+        $headers = "From: formafpaTest@gmail.com";
         $headers .= "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-        mail($to,$subject,$message,$headers);
+        if (mail($to,$subject,$message,$headers)) 
+        {
+          echo "Email send successfully to $to";
+          header('location: admin/thankYou.php');
+        }else
+        {
+          echo "failure to send";
+        }
 
-        header('location: admin/thankYou.php');
+        
     }
 }
 

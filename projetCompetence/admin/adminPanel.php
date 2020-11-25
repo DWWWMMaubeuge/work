@@ -63,7 +63,7 @@
                             <i class="fas fa-envelope"></i><span>Messages <i class="fas fa-chevron-down drop-down"></i></span>
                         </a>
                         <div class="sub-menu">
-                            <a href="addUser.php"><i class="fas fa-envelope"></i><span>New</span></a>
+                            <a href="emailToUser.php"><i class="fas fa-envelope"></i><span>New</span></a>
                             <a href="#"><i class="fas fa-envelope-square"></i><span>Sent</span></a>
                         </div>
                     </li>

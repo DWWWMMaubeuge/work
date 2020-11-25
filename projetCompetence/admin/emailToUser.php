@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="../style/addUser.css" />
+</head>
+<body>
+<?php
+
+require_once('../functionConnect.php');
+include_once('addDeleteUpdate.php');
+
+if (isset($_POST['submit'])){
+  $submit = $_POST['submit'];
+
+  header( "location: displayUser.php");
+
+}
+
+?>
+<form class="login-box" action="" method="post">
+    <h1>New Message to user</h1>
+    <div class="textbox">
+    <i class="fa fa-user" aria-hidden="true"></i>
+  <input type="text" name="surname" value="<?php echo $surname; ?>"  placeholder="Surname" required />
+    </div>
+    <div class="textbox">
+    <i class="fa fa-user" aria-hidden="true"></i>
+  <input type="text" name="name" value="<?php echo $name; ?> "  placeholder="Name" required />
+    </div>
+    
+  <div class="textbox">
+      <select name="type" id="type" >
+        <option value="admin">Admin</option>
+        <option value="trainer">Trainer</option>
+        <option value="learner">Learner</option>
+      </select>
+  </div>
+  <div class="textbox">
+      <select name="training" id="training" >
+        <option value="pastry">Pastry</option>
+        <option value="dwm">DWM</option>
+        <option value="english">English</option>
+      </select>
+  </div>
+  <div class="textbox">
+  <textarea id="w3review" name="email"  value="<?php echo $email; ?>" rows="4" cols="50" placeholder="Enter Email adress" required>
+  </textarea>
+  </div>
+    <input type="submit" name="submit" value="Send" class="btn" />
+</form>
+
+</body>
+</html>
