@@ -11,12 +11,14 @@ $password = "";
 GLOBAL $bdd;
 GLOBAL $infos;
 
+// Essai de connexion à la base de données
 try {
 
   $bdd = new PDO("mysql:host=$servername;dbname=id15316558_dwm_maubeuge", $username, $password);
   $bdd->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
   $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  
+
+// Capture et affichage de l'erreur si elle existe
 } catch(PDOException $e) {
 
     echo $e->getMessage();
