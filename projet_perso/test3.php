@@ -14,8 +14,8 @@ include "navbar.php";
         $id=$_SESSION[ 'ID_user' ];
         $name=$_SESSION['name'];
         $surname= $_SESSION['surname'];
-        /* $mail= $_SESSION['mail']; 
-        $date= $_SESSION['date_inscription']; */ 
+        $mail= $_SESSION['mail']; 
+        $date= $_SESSION['date_inscription']; 
         
     }
     else{
@@ -32,6 +32,7 @@ include "navbar.php";
 echo nav($id);
 ?>
 </div>
+<div class="profile">
 <div class="container emp-profile">
             <form method="post">
                 <div class="row">
@@ -115,7 +116,7 @@ echo nav($id);
                                                 <label>Mail</label>
                                             </div>
                                             <div class="col-md-6">
-                                            <p><?= $_SESSION['surname']?></p>
+                                            <p><?= $_SESSION['mail']?></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -180,6 +181,7 @@ echo nav($id);
                 </div>
             </form>           
         </div>
+</div>
         <?php
 
 Include "footer.php";

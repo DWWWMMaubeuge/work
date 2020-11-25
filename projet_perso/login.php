@@ -25,6 +25,8 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password']  )
         $_SESSION[ 'ID_user' ]  = $data[ 'id' ];
         $_SESSION[ 'name' ]     = $data[ 'name' ];
         $_SESSION[ 'surname' ]  = $data[ 'surname' ];
+        $_SESSION[ 'mail' ]     = $data[ 'mail' ];
+        $_SESSION[ 'date_inscription' ]  = $data[ 'date_inscription' ];
         $bdd = null;
         header( "location:accueil.php");
     }
