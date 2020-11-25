@@ -1,3 +1,9 @@
+
+
+....................
+
+
+
 <?php require_once('pdo-connect.php'); ?>
 <?php require_once('verifications.php'); ?>
 <?php userIsLogged(); ?>
