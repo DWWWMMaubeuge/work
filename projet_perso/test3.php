@@ -1,14 +1,12 @@
 <?php
 session_start();
 $id=0;
-
-
+if(isset($_SESSION[ 'ID_user' ]))
+    $id=$_SESSION[ 'ID_user' ];
+   
 include "header.php";
-        echo entete();
-        include "navbar.php";  
-
- if(isset($_SESSION['mail'])) 
- {
+echo entete();
+include "navbar.php";
 
     if(isset($_SESSION[ 'ID_user' ]))
     {
@@ -16,13 +14,13 @@ include "header.php";
         $id=$_SESSION[ 'ID_user' ];
         $name=$_SESSION['name'];
         $surname= $_SESSION['surname'];
-        $mail= $_SESSION['mail']; 
+        /* $mail= $_SESSION['mail']; 
+        $date= $_SESSION['date_inscription']; */ 
         
     }
     else{
         header( "location: login.php");
     }
- }
 
 ?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -39,7 +37,7 @@ echo nav($id);
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <img src="img/profile2a.png" alt=""/>
                             <div class="file btn btn-lg btn-primary">
                                 Changer de Photo
                                 <input type="file" name="file"/>
@@ -98,7 +96,7 @@ echo nav($id);
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Name</label>
+                                                <label>Prenom</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p><?= $_SESSION['name']?></p>
@@ -106,7 +104,7 @@ echo nav($id);
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Email</label>
+                                                <label>Nom</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p><?= $_SESSION['surname']?></p>
@@ -117,15 +115,15 @@ echo nav($id);
                                                 <label>Mail</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>123 456 7890</p>
+                                            <p><?= $_SESSION['surname']?></p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Profession</label>
+                                                <label>Date</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Web Developer and Designer</p>
+                                                <p><?= $_SESSION['date_inscription']?></p>
                                             </div>
                                         </div>
                             </div>
@@ -182,3 +180,13 @@ echo nav($id);
                 </div>
             </form>           
         </div>
+        <?php
+
+Include "footer.php";
+echo footer();
+
+?>
+
+</body>
+
+</html>

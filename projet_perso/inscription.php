@@ -164,7 +164,7 @@ if(isset($_POST['forminscription']))
     if(isset($good))
     {
         //return header( "location:login.php");
-        echo '<span style="color:white;">'.$good.'</span>';
+        echo '<span>'.$good.'</span>';
     } 
     ?>
     </div>
