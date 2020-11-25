@@ -48,12 +48,12 @@ if(isset($_POST['forminscription']))
                             
                                 
                                 /* header( "location:login.php"); */
-                                $dest = "nicolascauliertest@gmail.com";
+                                $dest = $mail;
                                 $sujet = "Email de test";
-                                $corp = "Salut ceci est un email de test envoyer par un script PHP";
+                                $corp = "Salut ceci est un email de test envoyer par un script PHP, Félicitation vous venez de vous inscrire ! Email envoyé avec succès à votre adresse mail... <a href='http://localhost/xavier/work/projet_perso/login.php'>cliquez ici pour vous connectez !</a>!!!";
                                 $headers = "From: nicolascauliertest@gmail.com";
                                 if (mail($dest, $sujet, $corp, $headers)) {
-                                  $good ="<p>Félicitation vous venez de vous inscrire ! Email envoyé avec succès à votre adresse mail... <a href='login.php'>cliquez ici pour vous connectez !</a></p>";
+                                  $good ="<p>Félicitation vous venez de vous inscrire ! Email envoyé avec succès à votre adresse mail... Veuillez vous conectez a votre adresse mail pour confirmer !!</p>";
                                 } else {
                                   echo "Échec de l'envoi de l'email... ";
                                 }
