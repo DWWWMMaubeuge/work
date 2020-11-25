@@ -27,7 +27,7 @@ while( $ligne = $res->fetch_assoc())
     $widget_session .="<option value=\"".$ligne['id']."\">$nom</option>\n";
 }
 
-<<<<<<< HEAD
+
 
 if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail'] != "" && $_POST['password'] != "" ) 
 {
@@ -43,8 +43,6 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['mail']
     header( "location: accueil02_multiple.php");
 }
 
-=======
->>>>>>> main
 ?>
 <script>
 function inscritFormateur2Formation()
