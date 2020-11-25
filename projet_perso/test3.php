@@ -1,17 +1,29 @@
 <?php
 session_start();
-if(isset($_SESSION[ 'ID_user' ]))
-{
-    $id=$_SESSION[ 'ID_user' ];
-    $name= $_SESSION['name'];
-    $_SESSION['surname'];
-    include "header.php";
-    echo entete();
-    include "navbar.php";  
-}
-else{
-    header( "location: login.php");
-}
+$id=0;
+
+
+include "header.php";
+        echo entete();
+        include "navbar.php";  
+
+ if(isset($_SESSION['mail'])) 
+ {
+
+    if(isset($_SESSION[ 'ID_user' ]))
+    {
+        
+        $id=$_SESSION[ 'ID_user' ];
+        $name=$_SESSION['name'];
+        $surname= $_SESSION['surname'];
+        $mail= $_SESSION['mail']; 
+        
+    }
+    else{
+        header( "location: login.php");
+    }
+ }
+
 ?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -97,12 +109,12 @@ echo nav($id);
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><?= $_SESSION['mail']?></p>
+                                                <p><?= $_SESSION['surname']?></p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Phone</label>
+                                                <label>Mail</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>123 456 7890</p>

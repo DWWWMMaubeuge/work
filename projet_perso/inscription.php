@@ -46,8 +46,17 @@ if(isset($_POST['forminscription']))
             
                                 $bdd = null;
                             
-                                //$good ="<h3>Félicitation vous venez de vous inscrire !<a href='login.php'>cliquez ici pour vous connectez !</a></h3>";
-                                header( "location:login.php"); 
+                                
+                                /* header( "location:login.php"); */
+                                $dest = "nicolascauliertest@gmail.com";
+                                $sujet = "Email de test";
+                                $corp = "Salut ceci est un email de test envoyer par un script PHP";
+                                $headers = "From: nicolascauliertest@gmail.com";
+                                if (mail($dest, $sujet, $corp, $headers)) {
+                                  $good ="<p>Félicitation vous venez de vous inscrire ! Email envoyé avec succès à votre adresse mail... <a href='login.php'>cliquez ici pour vous connectez !</a></p>";
+                                } else {
+                                  echo "Échec de l'envoi de l'email... ";
+                                }
                             }
                     
                         else{
@@ -73,6 +82,8 @@ if(isset($_POST['forminscription']))
           else{
                $erreur = "Tous les champs doivent etre complétés !";
           }
+
+       
         }
         
         
@@ -150,11 +161,11 @@ if(isset($_POST['forminscription']))
     {
         echo '<span style="color:red;">'.$erreur1.'</span>';
     }
-    /* if(isset($good))
+    if(isset($good))
     {
         //return header( "location:login.php");
-        echo $good;
-    } */
+        echo '<span style="color:white;">'.$good.'</span>';
+    } 
     ?>
     </div>
     <?php
