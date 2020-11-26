@@ -25,11 +25,15 @@ $liste_question = array(
 session_start();
 $_SESSION[ 'ID_user' ]  = 0;
 
+<<<<<<< HEAD
 # Sélection d'une question à poser au hasard
 $id_question_posee = array_rand($liste_question);
  
 # Mémorisation de la question posée à l'utilisateur dans la session
 $_SESSION['captcha']['id_question_posee'] = $id_question_posee;
+=======
+
+>>>>>>> main
 
 if(     isset($_POST)               && 
         isset($_POST['mail'])       &&       
@@ -69,8 +73,12 @@ if( !in_array($reponse_utilisateur, $liste_question[$id_question_posee]['reponse
         $_SESSION[ 'ID_formation' ]  = $data[ 'id_formation' ];
         $_SESSION[ 'ID_user' ]       = $data[ 'id' ];
         $_SESSION[ 'name' ]          = $data[ 'name' ];
-        $_SESSION[ 'surname' ]       = $data[ 'surname' ];
-    
+
+        $_SESSION[ 'IP' ]            = $_SERVER['REMOTE_ADDR'];
+        $_SESSION[ 'user_agent' ]    = $_SERVER['HTTP_USER_AGENT'];
+
+
+
         $role = $_SESSION[ 'role' ];
         if ( $role == 'ADM' )
             header( "location: admin.php");
