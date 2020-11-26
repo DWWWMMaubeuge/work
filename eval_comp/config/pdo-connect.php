@@ -38,7 +38,8 @@ if(isset($_SESSION['id'])) {
     $userOS = detect_os();
     $userBrowser = detect_browser();
   
-    // Si l'utilisateur n'a pas son ip, la version de son navigateur ou la version de son os stocké dans la superglobale de session alors que normalement il est censé être passé par le formulaire de connexion ou si ils ne correspondent pas à ce qui a été stocké lors de la connexion:
+    /* Si l'utilisateur n'a pas son ip, la version de son navigateur ou la version de son os stocké dans la superglobale de session alors que normalement il est censé être passé par le formulaire de connexion 
+    ou si ils ne correspondent pas à ce qui a été stocké lors de la connexion: */
     if(!isset($_SESSION['ip']) || !isset($_SESSION['os']) || !isset($_SESSION['browser']) || $userIP != $_SESSION['ip'] || $userOS != $_SESSION['os'] || $userBrowser != $_SESSION['browser']) {
         
         // Récupération de l'email du compte pour le mail d'alerte
