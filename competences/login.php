@@ -5,6 +5,8 @@ include_once( "CO_global_functions.php"  );
 session_start();
 $_SESSION[ 'ID_user' ]  = 0;
 
+
+
 if(     isset($_POST)               && 
         isset($_POST['mail'])       &&       
         isset($_POST['password'])   &&
@@ -31,8 +33,12 @@ if(     isset($_POST)               &&
         $_SESSION[ 'ID_formation' ]  = $data[ 'id_formation' ];
         $_SESSION[ 'ID_user' ]       = $data[ 'id' ];
         $_SESSION[ 'name' ]          = $data[ 'name' ];
-        $_SESSION[ 'surname' ]       = $data[ 'surname' ];
-    
+
+        $_SESSION[ 'IP' ]            = $_SERVER['REMOTE_ADDR'];
+        $_SESSION[ 'user_agent' ]    = $_SERVER['HTTP_USER_AGENT'];
+
+
+
         $role = $_SESSION[ 'role' ];
         if ( $role == 'ADM' )
             header( "location: admin.php");

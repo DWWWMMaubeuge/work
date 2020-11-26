@@ -9,6 +9,13 @@ session_start();
 if ( !isset( $_SESSION[ 'ID_user' ]) || $_SESSION[ 'ID_user' ] == 0 || $_SESSION[ 'role' ] != 'ADM')
     header( "location: login.php");
 
+//echo session_id(), "<br>";
+//echo $_SESSION[ 'IP' ], "<br>";
+//echo $_SESSION[ 'user_agent' ], "<br>";
+
+// wireshark (permet de sniffer les réseaux)
+// postman   (une extension de Firefox permet de forger un entête)
+
 // recupération des formations pour le comboBox
 $req = "SELECT * FROM $DB_dbname.formations";
 $res = executeSQL( $req );
