@@ -55,5 +55,5 @@ $selectformations = $bdd->query('SELECT * FROM Formations ORDER BY FORMATION');
     </div>
 </div>
 <!-- Lien vers le script ajax qui gère le formulaire -->
-<script src="../scripts/ajoututilisateurs.js"></script>
+<script src="../scripts/invitations.js"></script>
 <?php require_once('../config/footer.php'); ?>

@@ -57,5 +57,6 @@ $invitation = $selectinvitation->fetch();
             </div>
         </form>
     </div>
+<!-- Lien vers le script ajax qui gère l'envoi des données d'invitations à php -->
 <script src="../scripts/confirmer-invitation.js"></script>
 <?php require_once('../config/footer.php'); ?>

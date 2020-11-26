@@ -22,7 +22,7 @@
                 <a class="text-light" href="invitations.php"><i class="fas fa-envelope"></i> Inviter des utilisateurs dans une session de formation</a>
             </div>
             <div class="my-5 p-5 bg-dark opacity-4">
-                <a class="text-light" href="edit-status.php"><i class="fas fa-plus-circle"></i> Ajouter un formateur</a>
+                <a class="text-light" href="edit-status.php"><i class="fas fa-plus-circle"></i> Modifier les permissions d'un membre</a>
             </div>
             <div class="my-5 p-5 bg-dark opacity-4">
                 <a class="text-light" href="createsession.php"><i class="fas fa-plus-circle"></i> Créer une session de formation</a>

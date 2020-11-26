@@ -39,6 +39,7 @@ function getSessions() {
     }
     
 }
+
 // Envoi du formulaire d'invitations lorsque le SuperAdmin appuie sur le bouton d'envoi qui appelle ce script
 $('#ajoututilisateurs').submit(function(e) {
     

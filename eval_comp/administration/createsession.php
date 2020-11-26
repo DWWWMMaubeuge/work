@@ -47,5 +47,6 @@ $selectformations = $bdd->query('SELECT * FROM Formations ORDER BY FORMATION');
         </form>
     </div>
 </div>
+<!-- Lien vers le script ajax qui gère le formulaire de création de session -->
 <script src="../scripts/createsession.js"></script>
 <?php require_once('../config/footer.php'); ?>
