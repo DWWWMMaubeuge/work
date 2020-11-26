@@ -87,6 +87,20 @@ function addUser( $mail, $role )
 	return $data[ 'id' ];
 }
 
+function initSecurity( )
+{
+    $_SESSION[ 'IP' ]            = $_SERVER['REMOTE_ADDR'];
+    $_SESSION[ 'user_agent' ]    = $_SERVER['HTTP_USER_AGENT'];
+}
 
+function checkSecurity( )
+{
+	GLOBAL $_SERVER;
+	$ip 		= $_SERVER['REMOTE_ADDR'];
+	$user_agent = $_SERVER['HTTP_USER_AGENT'];
+
+	if ( 	!isset($_SESSION) || $_SESSION[ 'ID_user' ] == 0    )
+		header( "location: login.php" );
+}
 
 ?>
