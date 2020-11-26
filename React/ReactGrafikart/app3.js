@@ -7,13 +7,13 @@ const PRODUCTS = [
     {category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7"}
   ];
 
-function ProductRow({product}){
+const ProductRow = React.memo(function ({product}){
     const name= product.stocked ? product.name : <span className="text-danger">{product.name}</span>
     return <tr>
         <td>{name}</td>
         <td>{product.price}</td>
     </tr>
-}
+})
 
 function ProductCategoryRow({category}) {
     return <tr>
@@ -91,12 +91,18 @@ class FilterableProductTable extends React.Component{
         this.handleFilterTextChange=this.handleFilterTextChange.bind(this)
         this.handleInStockChange=this.handleInStockChange.bind(this)
     }
-handleFilterTextChange (filterText) {
-    this.setState({filterText})
-}
-handleInStockChange (inStockOnly) {
-    this.setState({inStockOnly})
-}
+
+    shouldComponentUpdate (nextProps, nextState) {
+        console.log( nextProps, nextState)
+        return false
+    }
+    
+    handleFilterTextChange (filterText) {
+        this.setState({filterText})
+    }
+    handleInStockChange (inStockOnly) {
+        this.setState({inStockOnly})
+    }
 
     render() {
         const {products} = this.props

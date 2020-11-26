@@ -8,6 +8,12 @@
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" defer></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script src="app3.js" defer type="text/babel"></script>
+    <script>
+        function wait(t) {
+            const start = Date.now()
+            while(Date.now() - start < t ) { }
+        }
+    </script>
 </head>
 <body>
     <div class="container mt-4">
