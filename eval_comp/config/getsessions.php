@@ -2,7 +2,7 @@
 
 include('pdo-connect.php');
     
-    if(isset($_SESSION['id']) && $infos['SuperAdmin'] == TRUE) {
+    if(isset($_SESSION['id']) && $infos['Administrateur'] == TRUE) {
         
         if(isset($_POST['idformation'])) {
             

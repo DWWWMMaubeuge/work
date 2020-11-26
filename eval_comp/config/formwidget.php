@@ -1,6 +1,6 @@
 <?php 
 
-if(isset($_SESSION['id']) && $infos['Admin'] != TRUE && $infos['SuperAdmin'] != TRUE) {
+if(isset($_SESSION['id']) && $infos['Formateur'] != TRUE && $infos['Administrateur'] != TRUE) {
 
     function setWidgetValue( $skill ) {
         

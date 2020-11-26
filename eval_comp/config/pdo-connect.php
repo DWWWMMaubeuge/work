@@ -8,6 +8,7 @@ $username = "";
 $password = "";
 
 GLOBAL $bdd;
+GLOBAL $userip;
 GLOBAL $infos;
 
 // Essai de la connexion à la base de données
@@ -24,13 +25,54 @@ try {
     
 }
 
-// Vérification si l'utilisateur c'est connecter à son compte sur le site et récupération de ses infos si c'est le cas
+// Vérification si l'utilisateur c'est connecter à son compte sur le site
 if(isset($_SESSION['id'])) {
+    
+    // Récupération et stockage de l'adresse ip de l'appareil connecté sur le compte de l'utilisateur
+    $userip = $_SERVER['REMOTE_ADDR'];
+  
+    // Si l'utilisateur n'a pas son ip stocké dans la superglobale de session alors que normalement il est censé être passé par le formulaire de connexion ou si l'ip de la machine connectée ne correspond pas à l'ip récupéré lors de la connexion au compte:
+    if(!isset($_SESSION['ip']) || $userip != $_SESSION['ip']) {
+        
+        // Récupération de l'email du compte pour le mail d'alerte
+        $getEmail = $bdd->prepare('SELECT Email FROM Membres WHERE ID = :user');
+        $getEmail->bindParam(':user', $_SESSION['id'], PDO::PARAM_INT);
+        $getEmail->execute();
+        
+        $emailToAlert = $getEmail->fetch();
+        
+        // Création et envoi d'un mail pour prévenir le membre qu'une connexion étrange a eu lieu sur son compte
+        $to = $emailToAlert['Email'];
+        $subject = "Erreur de sécurité lié à votre compte";
+        $from = "noreply@AFPA-Formations.com";
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset= utf8' . "\r\n";
+        $headers .= 'From: '.$from."\r\n".
+        'Reply-To: '.$from."\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+        $msg = "<html><body><h1 style='color: red;'>Une brèche dans la sécuritée de votre compte a été detectée</h1>\n\n<p>Une connexion anormale a été detectée depuis un appareil étranger et a été déconnecté de votre compte.</p><p>Nous vous recommandons de modifier impérativement votre mot de passe !</p><p>Cet email vous a été envoyé automatiquement, merci de ne pas y répondre. En cas de questions, veuillez contacter un Administrateur directement sur le site AFPA-Formations.</p></body></html>";
+        $header = "From: noreply@AFPA-Formations.com";
+        mail($to, $subject, $msg, $headers);
+        
+        // Redirection vers la page de déconnexion automatique
+        header('location: ../deconnexion.php');
+        exit();
+      
+    }
+  
+    // Si l'ip de la machine connectée ne correspond pas à l'ip récupéré lors de la connexion au compte:
+    if($userip != $_SESSION['ip']) {
+      
+        header('location: ../deconnexion.php');
+        exit();
+      
+    }
 
-  $connectinfos = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Sessions ON Options.SESSION = Sessions.ID_SESSION LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION WHERE Membres.ID = :id');
-  $connectinfos->bindParam(':id', $_SESSION['id']);
-  $connectinfos->execute();
-  $infos = $connectinfos->fetch();
+    // Récupération des infos du compte de l'utilisateur si tout va bien
+    $connectinfos = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Sessions ON Options.SESSION = Sessions.ID_SESSION LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION WHERE Membres.ID = :id');
+    $connectinfos->bindParam(':id', $_SESSION['id']);
+    $connectinfos->execute();
+    $infos = $connectinfos->fetch();
 
 }
 

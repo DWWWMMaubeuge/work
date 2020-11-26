@@ -19,8 +19,8 @@ $intY=($y-(2*$marge))/10; // Calcul de la marge verticale entre deux graduation 
 // Si un pseudo est passé en paramètre dans l'url:
 if(isset($_GET['pseudo'])) {
     
-    // Si l'utilisateur qui affiche le graphique est un Admin ou un SuperAdmin
-    if($infos['Admin'] != 0 || $infos['SuperAdmin'] != 0) {
+    // Si l'utilisateur qui affiche le graphique est un Formateur ou un Administrateur
+    if($infos['Formateur'] != 0 || $infos['Administrateur'] != 0) {
         
         // Selection de toutes les données de la cible passé en paramètre dans l'url grâce à son pseudo
         $usermoyenne = $bdd->prepare('SELECT * FROM Membres LEFT JOIN Options ON Membres.ID = Options.ID LEFT JOIN Sessions ON Options.SESSION = Sessions.ID_SESSION LEFT JOIN Formations ON Sessions.ID_FORMATION = Formations.ID_FORMATION WHERE Membres.Pseudo = :pseudo');
@@ -35,11 +35,20 @@ if(isset($_GET['pseudo'])) {
             // Récupération de toutes les données de la cible et stockage dans une variable
             $member = $usermoyenne->fetch();
             
-            // Si la cible est un Admin ou un SuperAdmin:
-            if($member['Admin'] != 0 || $member['SuperAdmin'] != 0) {
+            // Si la cible est un Formateur ou un Administrateur:
+            if($member['Formateur'] != 0 || $member['Administrateur'] != 0) {
                 
                 // Redirection de l'utilisateur vers l'accueil
-                header('location: index.php');
+                header('Location: index.php');
+                exit();
+                
+            }
+            
+            // Si la cible n'a pas de session active
+            if($member['SESSION'] == 0) {
+                
+                // Redirection de l'utilisateur vers l'accueil
+                header('Location: index.php');
                 exit();
                 
             }
@@ -102,17 +111,17 @@ if(isset($_GET['pseudo'])) {
         // Si aucun membre avec ce pseudo n'existe:
         } else {
             
-            // Redirection de l'utilisateur vers son profil
-            header('location: ../profil.php');
+            // Redirection de l'utilisateur vers la page d'accueil
+            header('location: ../index.php');
             exit();
             
         }
     
-    // Si l'utilisateur n'est pas un Admin ou un SuperAdmin:
+    // Si l'utilisateur n'est pas un Formateur ou un Administrateur:
     } else {
         
-        // Redirection de l'utilisateur vers son profil
-        header('location: ../profil.php');
+        // Redirection de l'utilisateur vers la page d'accueil
+        header('location: ../index.php');
         exit();
         
     }
@@ -120,11 +129,20 @@ if(isset($_GET['pseudo'])) {
 // Si aucun pseudo n'est passé en paramètre dans l'url:
 } else {
 
-// Vérification si l'utilisateur est un Admin ou un SuperAdmin
-if($infos['Admin'] != 0 || $infos['SuperAdmin'] != 0) {
+// Vérification si l'utilisateur est un Formateur ou un Administrateur
+if($infos['Formateur'] != 0 || $infos['Administrateur'] != 0) {
     
     // Redirection de l'utilisateur vers son profil si c'est le cas
-    header('Location: ../profil.php');
+    header('Location: ../index.php');
+    exit();
+    
+}
+
+// Si l'utilisateur n'a pas de session de formation active:
+if($infos['SESSION'] == 0) {
+    
+    // Redirection de l'utilisateur vers l'accueil
+    header('Location: ../index.php');
     exit();
     
 }

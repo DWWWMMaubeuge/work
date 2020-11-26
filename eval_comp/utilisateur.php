@@ -34,27 +34,32 @@ $user = $userinfos->fetch();
 // Stockage des 3 premières lettres du mois actuel dans une variable
 $moisquery = substr($mois, 0, 3);
 
-// Selection de touts les résultats pour les compétences actives et ou le mois du résultat, l'id de l'utilisateur et l'id de la session correspondent au mois actuel, l'id utilisateur de la cible et sa session active
-$resultats = $bdd->prepare('SELECT *
-FROM Matieres m LEFT JOIN
-     (SELECT r.*,
-             ROW_NUMBER() OVER (PARTITION BY id_Matiere, id_user ORDER BY TIME_OF_INSERTION DESC) as seqnum
-      FROM Resultats r
-      WHERE r.ID_USER = :ID_USER 
-      AND r.ID_SESSION = :sessionresultat
-      AND r.MOIS = :mois
-     ) r
-     ON m.id = r.ID_MATIERE AND
-        seqnum = 1
-WHERE Active = TRUE AND m.ID_Formation = :formation AND m.ID_Session = :session;');
-$resultats->bindParam(':ID_USER', $user['ID'], PDO::PARAM_INT);
-$resultats->bindParam(':session', $user['SESSION'], PDO::PARAM_INT);
-$resultats->bindParam(':sessionresultat', $user['SESSION'], PDO::PARAM_INT);
-$resultats->bindParam(':formation', $user['ID_FORMATION'], PDO::PARAM_INT);
-$resultats->bindParam(':mois', $moisquery, PDO::PARAM_STR);
-$resultats->execute();
-// Comptage du nombre de résultat
-$count = $resultats->rowCount();
+// Verification si l'utilisateur a une session de formation active:
+if($user['SESSION'] != 0) {
+
+    // Selection de touts les résultats pour les compétences actives et ou le mois du résultat, l'id de l'utilisateur et l'id de la session correspondent au mois actuel, l'id utilisateur de la cible et sa session active
+    $resultats = $bdd->prepare('SELECT *
+    FROM Matieres m LEFT JOIN
+         (SELECT r.*,
+                 ROW_NUMBER() OVER (PARTITION BY id_Matiere, id_user ORDER BY TIME_OF_INSERTION DESC) as seqnum
+          FROM Resultats r
+          WHERE r.ID_USER = :ID_USER 
+          AND r.ID_SESSION = :sessionresultat
+          AND r.MOIS = :mois
+         ) r
+         ON m.id = r.ID_MATIERE AND
+            seqnum = 1
+    WHERE Active = TRUE AND m.ID_Formation = :formation AND m.ID_Session = :session;');
+    $resultats->bindParam(':ID_USER', $user['ID'], PDO::PARAM_INT);
+    $resultats->bindParam(':session', $user['SESSION'], PDO::PARAM_INT);
+    $resultats->bindParam(':sessionresultat', $user['SESSION'], PDO::PARAM_INT);
+    $resultats->bindParam(':formation', $user['ID_FORMATION'], PDO::PARAM_INT);
+    $resultats->bindParam(':mois', $moisquery, PDO::PARAM_STR);
+    $resultats->execute();
+    // Comptage du nombre de résultat
+    $count = $resultats->rowCount();
+
+}
 
 ?>
 <?php include('config/head.php'); ?>
@@ -73,7 +78,7 @@ $count = $resultats->rowCount();
                                 <img src="images/avatars/<?= $user['Avatar']; ?>" alt="avatar" class="rounded-circle" width="150">
                                 <!-- Pseudo -->
                                 <div class="mt-3 col-sm-12">
-                                    <?php if($user['Admin'] != 1 && $user['SuperAdmin'] != 1) { ?><h2 class="text-info"><?= $user['Pseudo']?></h2><?php } else { ?> <h2 class="text-danger"><?= $user['Pseudo']?> <?php } ?>
+                                    <?php if($user['Formateur'] != 1 && $user['Administrateur'] != 1) { ?><h2 class="text-info"><?= $user['Pseudo']?></h2><?php } else { ?> <h2 class="text-danger"><?= $user['Pseudo']?> <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -128,7 +133,7 @@ $count = $resultats->rowCount();
                                 <hr>
                                 <?php } ?>
                             <?php } ?>
-                            <?php if($infos['SuperAdmin'] != 0 || $infos['Admin'] != 0) { ?>
+                            <?php if($infos['Administrateur'] != 0 || $infos['Formateur'] != 0) { ?>
                                 <!-- Email -->
                                 <div class="row">
                                     <div class="col-sm-3">
@@ -146,7 +151,11 @@ $count = $resultats->rowCount();
                                     <h6 class="mb-0">Formation active</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                <?php if($user['ID_FORMATION'] == 0) { echo "Non renseigné !"; } else { echo $user['FORMATION'] . " ( Session du " . dateConvert($user['DATE_DEBUT']) . " au " . dateConvert($user['DATE_FIN']) . " - " . $user['EMPLACEMENT'] . " )"; } ?>
+                                <?php if($user['SESSION'] != 0) { ?>
+                                    <?= $user['FORMATION']; ?> ( Session du <?= dateConvert($user['DATE_DEBUT']); ?> au <?= dateConvert($user['DATE_FIN']); ?> - <?= $user['EMPLACEMENT']; ?> )
+                                <?php } else { ?>
+                                Cet utilisateur n'a pas de formation active !
+                                <?php } ?>
                                 </div>
                             </div>
                             <hr>
@@ -180,7 +189,8 @@ $count = $resultats->rowCount();
                         </div>
                     </div>
                     <!-- Auto évaluation pour le mois courant -->
-                    <?php if($user['Admin'] != 1 && $user['SuperAdmin'] != 1) { ?>
+                    <!-- Vérification si l'utilisateur n'est ni Formateur, ni Administrateur et qu'il a une session de formation active-->
+                    <?php if($user['Formateur'] != 1 && $user['Administrateur'] != 1 && $user['SESSION'] != 0) { ?>
                         <div class="row gutters-sm">
                             <div class="col-sm-12 mb-3">
                                 <div class="card h-100">

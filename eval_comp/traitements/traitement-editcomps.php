@@ -2,8 +2,8 @@
 
 include('../config/pdo-connect.php');
 
-// Verification si les données sont envoyés depuis un membre connecté sur le site et si ce membre est un SuperAdmin
-if(isset($_SESSION['id']) && $infos['Admin'] == TRUE) {
+// Verification si les données sont envoyés depuis un membre connecté sur le site et si ce membre est un Formateur
+if(isset($_SESSION['id']) && $infos['Formateur'] == TRUE) {
 
     if(isset($_POST['ON'])) {
     

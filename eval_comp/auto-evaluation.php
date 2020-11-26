@@ -3,8 +3,15 @@
 <?php userIsLogged(); // On vérifie si l'utilisateur est connecté ?>
 <?php
 
-// Si l'utilisateur est un admin ou un superadmin on le renvoie vers l'accueil
-if($infos['Admin'] == TRUE || $infos['SuperAdmin'] == TRUE) {
+// Si l'utilisateur est un Formateur ou un Administrateur on le renvoie vers l'accueil
+if($infos['Formateur'] == TRUE || $infos['Administrateur'] == TRUE) {
+    
+    header('Location: ../index.php');
+    exit();
+    
+}
+
+if($infos['SESSION'] == 0) {
     
     header('Location: ../index.php');
     exit();

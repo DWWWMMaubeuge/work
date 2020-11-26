@@ -58,8 +58,8 @@ $('#editstatus').submit(function(e) {
         // Préparation des données à envoyés => $_POST[variable] = value
         data: {
             'Membre': $('#membre').val(),
-            'SuperAdmin': $('#superAdmin').val(),
-            'Admin': $('#admin').val()
+            'Administrateur': $('#superAdmin').val(),
+            'Formateur': $('#admin').val()
         },
         // Envoi et réception des données au format html
         dataType: 'html',

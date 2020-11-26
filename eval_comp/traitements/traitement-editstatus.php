@@ -2,14 +2,14 @@
 
 include('../config/pdo-connect.php');
 
-// Verification si les données sont envoyés depuis un membre connecté sur le site et si ce membre est un SuperAdmin
-if(isset($_SESSION['id']) && $infos['SuperAdmin'] == TRUE) {
+// Verification si les données sont envoyés depuis un membre connecté sur le site et si ce membre est un Administrateur
+if(isset($_SESSION['id']) && $infos['Administrateur'] == TRUE) {
     
-    // Si un pseudo est selectionné par un SuperAdmin et passé par Ajax
+    // Si un pseudo est selectionné par un Administrateur et est passé par Ajax
     if(isset($_POST['Pseudo'])) {
         
         //Selection du status du membre sur le site
-        $getStatusMember = $bdd->prepare('SELECT SuperAdmin, Admin FROM Membres WHERE Pseudo = :pseudo');
+        $getStatusMember = $bdd->prepare('SELECT Administrateur, Formateur FROM Membres WHERE Pseudo = :pseudo');
         $getStatusMember->bindParam(':pseudo', $_POST['Pseudo'], PDO::PARAM_STR);
         $getStatusMember->execute();
         $countQuery = $getStatusMember->rowCount();
@@ -24,10 +24,10 @@ if(isset($_SESSION['id']) && $infos['SuperAdmin'] == TRUE) {
                 $response .= "<label class='col-12' for='superAdmin'>SuperAdministrateur</label>";
                 $response .= "<select name='superAdmin' id='superAdmin'>";
                     $response .= "<option value='0' ";
-                    $response .= $result['SuperAdmin'] == 0 ? "selected" : "";
+                    $response .= $result['Administrateur'] == 0 ? "selected" : "";
                     $response .= ">Non</option>";
                     $response .= "<option value='1' ";
-                    $response .= $result['SuperAdmin'] == 1 ? "selected" : "";
+                    $response .= $result['Administrateur'] == 1 ? "selected" : "";
                     $response .= ">Oui</option>";
                 $response .= " </select>";
             $response .= "</div>";
@@ -35,10 +35,10 @@ if(isset($_SESSION['id']) && $infos['SuperAdmin'] == TRUE) {
                 $response .= "<label class='col-12' for='admin'>Administrateur</label>";
                 $response .= "<select name='admin' id='admin'>";
                 $response .= "<option value='0' ";
-                $response .= $result['Admin'] == 0 ? "selected" : "";
+                $response .= $result['Formateur'] == 0 ? "selected" : "";
                 $response .= ">Non</option>";
                 $response .= "<option value='1' ";
-                $response .= $result['Admin'] == 1 ? "selected" : "";
+                $response .= $result['Formateur'] == 1 ? "selected" : "";
                 $response .= ">Oui</option>";
                 $response .= "</select>";
             $response .= "</div>";
@@ -54,16 +54,16 @@ if(isset($_SESSION['id']) && $infos['SuperAdmin'] == TRUE) {
         
     }
 
-    if(isset($_POST['Membre']) && isset($_POST['SuperAdmin']) && isset($_POST['Admin'])) {
+    if(isset($_POST['Membre']) && isset($_POST['Administrateur']) && isset($_POST['Formateur'])) {
         
         // Stockages des status dans des variables
-        $superadmin = intval($_POST['SuperAdmin']);
-        $admin = intval($_POST['Admin']);
+        $superadmin = intval($_POST['Administrateur']);
+        $admin = intval($_POST['Formateur']);
         
         // Mise à jour des status du membres selon les nouveaux paramètres
-        $updatemember = $bdd->prepare('UPDATE Membres SET SuperAdmin = :superadmin, Admin = :admin WHERE Pseudo = :pseudo');
-        $updatemember->bindParam(':superadmin', $superadmin, PDO::PARAM_BOOL);
-        $updatemember->bindParam(':admin', $admin, PDO::PARAM_BOOL);
+        $updatemember = $bdd->prepare('UPDATE Membres SET Administrateur = :administrateur, Formateur = :formateur WHERE Pseudo = :pseudo');
+        $updatemember->bindParam(':administrateur', $superadmin, PDO::PARAM_BOOL);
+        $updatemember->bindParam(':formateur', $admin, PDO::PARAM_BOOL);
         $updatemember->bindParam(':pseudo', $_POST['Membre'], PDO::PARAM_STR);
         $updatemember->execute();
         

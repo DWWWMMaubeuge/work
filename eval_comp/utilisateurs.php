@@ -84,7 +84,7 @@ if(!isset($_GET['formation'])) {
     $premier = ($currentPage * $parPage) - $parPage;
     
     // Selection de toutes les données des utilisateurs dans la base de données et qui font partie de la formation selectionnée
-    $allusers = $bdd->prepare('SELECT * FROM Membres LEFT JOIN FormationsUtilisateur ON Membres.ID = FormationsUtilisateur.USER LEFT JOIN Sessions ON FormationsUtilisateur.IDENTIFIANT_SESSION = Sessions.ID_SESSION WHERE FormationsUtilisateur.IDENTIFIANT_FORMATION = ' . $_GET['formation'] . ' ORDER BY Membres.ID ASC LIMIT :premier, :parpage');
+    $allusers = $bdd->prepare('SELECT * FROM Membres LEFT JOIN FormationsUtilisateur ON Membres.ID = FormationsUtilisateur.USER LEFT JOIN Sessions ON FormationsUtilisateur.IDENTIFIANT_SESSION = Sessions.ID_SESSION LEFT JOIN Options ON Membres.ID = Options.ID WHERE FormationsUtilisateur.IDENTIFIANT_FORMATION = ' . $_GET['formation'] . ' ORDER BY Membres.ID ASC LIMIT :premier, :parpage');
     $allusers->bindParam(':premier', $premier, PDO::PARAM_INT);
     $allusers->bindParam(':parpage', $parPage, PDO::PARAM_INT);
     $allusers->execute();
@@ -115,7 +115,7 @@ if(!isset($_GET['formation'])) {
             <?php if(isset($_GET['formation'])) { ?>
                 <th scope="col">Session</th>
             <?php } ?>
-            <?php if($infos['Admin'] == TRUE || $infos['SuperAdmin'] == TRUE) { ?>
+            <?php if($infos['Formateur'] == TRUE || $infos['Administrateur'] == TRUE) { ?>
                 <th scope="col">Moyennes</th>
             <?php } ?>
             </tr>
@@ -125,13 +125,13 @@ if(!isset($_GET['formation'])) {
             <tr>
             <td scope="row"><?= $user['ID']; ?></td>
             <td scope="row"><img src="images/avatars/<?= $user['Avatar']; ?>" alt="avatar" class="rounded-circle" width="35"></td>
-            <td scope="row"><a class="<?php if($user['Admin'] == 1 || $user['SuperAdmin'] == 1) { ?>text-danger<?php } else { ?>text-info<?php } ?> m-auto" href="utilisateur.php?pseudo=<?= $user['Pseudo']; ?>"><?= $user['Pseudo']; ?></a></td>
+            <td scope="row"><a class="<?php if($user['Formateur'] == 1 || $user['Administrateur'] == 1) { ?>text-danger<?php } else { ?>text-info<?php } ?> m-auto" href="utilisateur.php?pseudo=<?= $user['Pseudo']; ?>"><?= $user['Pseudo']; ?></a></td>
             <?php if(isset($_GET['formation'])) { ?>
                 <td scope="row">du <?= dateConvert($user['DATE_DEBUT']); ?> au <?= dateConvert($user['DATE_FIN']); ?> - <?= $user['EMPLACEMENT']; ?></td>
             <?php } ?>
-            <?php if($infos['Admin'] == TRUE && $user['SuperAdmin'] != TRUE  || $infos['SuperAdmin'] == TRUE && $user['Admin'] != TRUE )  { ?>
-                <?php if($infos['Pseudo'] != $user['Pseudo']) { ?>
-                    <?php if($user['Admin'] != TRUE && $user['SuperAdmin'] != TRUE) { ?>
+            <?php if($infos['Formateur'] == TRUE && $user['Administrateur'] != TRUE  || $infos['Administrateur'] == TRUE && $user['Formateur'] != TRUE )  { ?>
+                <?php if($infos['Pseudo'] != $user['Pseudo'] && $user['SESSION'] != 0) { ?>
+                    <?php if($user['Formateur'] != TRUE && $user['Administrateur'] != TRUE) { ?>
                         <td scope="row"><a class="text-white m-auto" href="moyennes.php?pseudo=<?= $user['Pseudo']; ?>"><i class="fas fa-chart-bar"></i></a></td>
                     <?php } else { ?>
                         <td scope="row"></td>
@@ -169,3 +169,4 @@ if(!isset($_GET['formation'])) {
 <!-- Lien vers le script de la page utilisateurs -->
 <script src="scripts/utilisateurs.js"></script>
 <?php require_once('config/footer.php'); ?>
+<?php print_r($user); ?>

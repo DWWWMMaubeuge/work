@@ -63,14 +63,14 @@
             <!-- Lien vers l'accueil -->
             <a class='nav-link' href='../index.php'><i class="fas fa-home"></i> Accueil</a>
             </li>
-            <?php if($infos['Admin'] == TRUE || $infos['SuperAdmin'] == TRUE) { ?>
+            <?php if($infos['Formateur'] == TRUE || $infos['Administrateur'] == TRUE) { ?>
               <li class='nav-item'>
-                <!-- Si l'utilisateur est un superamin ou un admin, le lien vers l'administration s'affiche -->
+                <!-- Si l'utilisateur est un Administrateur ou un Formateur, le lien vers l'administration s'affiche -->
                 <a class='nav-link' href='../administration/accueiladmin.php'><i class="fas fa-fan fa-spin text-danger"></i> Administration</a>
               </li>
             <?php } ?>
-            <?php if($infos['Admin'] != TRUE && $infos['SuperAdmin'] != TRUE) { ?>
-                <!-- Si l'utilisateur n'est ni superadmin ni administrateur le lien vers l'auto évaluation s'affiche -->
+            <?php if($infos['Formateur'] != TRUE && $infos['Administrateur'] != TRUE && $infos['SESSION'] != 0) { ?>
+                <!-- Si l'utilisateur n'est ni Administrateur ni administrateur le lien vers l'auto évaluation s'affiche -->
                 <li class='nav-item'>
                     <a class='nav-link' href='../auto-evaluation.php'><i class="fas fa-sliders-h"></i> Auto-evaluation</a>
                 </li>
@@ -87,8 +87,8 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <!-- Lien vers le profil-->
                 <a class="dropdown-item" href="../profil.php"><i class="fas fa-id-card"></i> Mon profil</a>
-                <?php if($infos['Admin'] != TRUE && $infos['SuperAdmin'] != TRUE) { ?>
-                    <!-- Si l'utilisateur n'est ni superadmin ni admin on affiche un lien vers les moyennes -->
+                <?php if($infos['Formateur'] != TRUE && $infos['Administrateur'] != TRUE && $infos['SESSION'] != 0) { ?>
+                    <!-- Si l'utilisateur n'est ni Administrateur ni Formateur on affiche un lien vers les moyennes -->
                     <a class="dropdown-item" href="../moyennes.php"><i class="fas fa-chart-bar"></i> Mes moyennes</a>
                 <?php } ?>
                 <?php if($countinvit != 0) { ?>

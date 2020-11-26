@@ -2,7 +2,7 @@
 
 include('../config/pdo-connect.php'); // Insertion du fichier de connexion à la bdd
     
-if(isset($_SESSION['id']) && $infos['Admin'] == TRUE) {
+if(isset($_SESSION['id']) && $infos['Formateur'] == TRUE) {
         
     // Fonction récuperant les compétences selon la formation active, la session active où est inscrit l'utilisateur et le status des compétences demandées
     function getComps($idformation, $idsession, $status) { 

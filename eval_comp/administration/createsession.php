@@ -1,7 +1,7 @@
 <?php require_once('../config/pdo-connect.php'); ?>
 <?php require_once('../config/verifications.php'); ?>
 <?php userIsLogged(); // Vérifications si l'utilisateur est connecté ?>
-<?php userIsSuperAdmin(); // Vérifications si l'utilisateur est un superadmin ?>
+<?php userIsSuperAdmin(); // Vérifications si l'utilisateur est un Administrateur ?>
 <?php
 
 // Récupération des détails de toutes les formations existantes

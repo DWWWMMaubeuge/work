@@ -1,7 +1,7 @@
 <?php require_once('../config/pdo-connect.php'); ?>
 <?php require_once('../config/verifications.php'); ?>
 <?php userIsLogged(); // Vérification si l'utilisateur est connecté ?>
-<?php userIsSuperAdmin(); // Vérification si l'utilisateur est un superadmin ?>
+<?php userIsSuperAdmin(); // Vérification si l'utilisateur est un Administrateur ?>
 <?php
 
 // Récupération de touts les membres

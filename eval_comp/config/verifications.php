@@ -29,7 +29,7 @@ function userIsAdmin() {
 
   GLOBAL $infos;
 
-  if($infos['Admin'] != TRUE) {
+  if($infos['Formateur'] != TRUE) {
 
     header('Location: ../index.php');
     exit();
@@ -43,7 +43,7 @@ function userIsSuperAdmin() {
     
     GLOBAL $infos;
     
-    if($infos['SuperAdmin'] != TRUE) {
+    if($infos['Administrateur'] != TRUE) {
         
         header('Location: ../index.php');
         exit();
@@ -57,7 +57,7 @@ function userIsAdminOrSuperAdmin() {
     
     GLOBAL $infos;
     
-    if($infos['Admin'] != 1 && $infos['SuperAdmin'] != 1){
+    if($infos['Formateur'] != 1 && $infos['Administrateur'] != 1){
         
         header('Location: ../index.php');
         exit();

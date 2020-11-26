@@ -1,7 +1,7 @@
 <?php include('../config/comps.php'); ?>
 <?php require_once('../config/verifications.php'); ?>
 <?php userIsLogged(); // Vérification si l'utilisateur est connecté ?>
-<?php userIsAdmin(); // Vérification si l'utilisateur est un admin ?>
+<?php userIsAdmin(); // Vérification si l'utilisateur est un Formateur ?>
 <?php include('../config/head.php'); ?>
 <?= myHeader('Edition de compétences'); ?>
 <?php require_once('../config/navbar.php'); ?>

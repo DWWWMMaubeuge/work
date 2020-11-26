@@ -1,7 +1,7 @@
 <?php require_once('../config/pdo-connect.php'); ?>
 <?php require_once('../config/verifications.php'); ?>
 <?php userIsLogged(); // Vérification si l'utilisateur est connecté ?> 
-<?php userIsSuperAdmin(); // Vérification si l'utilisateur est un superadmin ?>
+<?php userIsSuperAdmin(); // Vérification si l'utilisateur est un Administrateur ?>
 <?php 
 
 $getFormations = $bdd->query('SELECT * FROM Formations ORDER BY FORMATION');
@@ -20,15 +20,15 @@ $getFormations = $bdd->query('SELECT * FROM Formations ORDER BY FORMATION');
                 <label class="col-12 mb-3" for="ajouter">Insérez le nom de la formation</label>
                 <input type="text" id="nomformation" name="nomformation">
             </div>
-            <button id="send-data" class="btn btn-primary mt-2 mb-3 text-center">Ajouter</button>
+            <button id="send-data" class="btn btn-primary mt-2 mb-3 text-center">Ajouter la formation</button>
         </form>
         <!-- Début du formulaire de suppression d'une formation-->
-        <form class="text-center" method="POST" id="ajoutformation">
+        <form class="text-center" method="POST" id="supprimerformation">
             <h2 class="text-center my-5">Supprimer une formation</h2>
             <div class="form-group">
-                <label class="col-12 mb-3" for="ajouter">Selectionner la formation à supprimer</label>
-                <div id="test">
-                <select id="deleteformation" name="deleteformation">
+                <label class="col-12 mb-3" for="supprimer">Selectionner la formation à supprimer</label>
+                <div id="formations">
+                <select id="supprimer" name="supprimer">
                     <option value=""></option>
                     <?php while($resultGet = $getFormations->fetch()) { ?>
                         <option value="<?= $resultGet['ID_FORMATION']; ?>"><?= $resultGet['FORMATION']; ?></option>
@@ -36,10 +36,10 @@ $getFormations = $bdd->query('SELECT * FROM Formations ORDER BY FORMATION');
                 </select>
                 </div>
             </div>
-            <button id="send-data" class="btn btn-primary mt-2 mb-3 text-center">Ajouter</button>
+            <button id="send-data" class="btn btn-primary mt-2 mb-3 text-center">Supprimer la formation</button>
         </form>
     </div>
 </div>
 <!-- Lien vers le script ajax qui gère l'envoi des données des formulaire à la page de traitement php -->
-<script src="../scripts/ajoutformation.js"></script>
+<script src="../scripts/edit-formations.js"></script>
 <?php require_once('../config/footer.php'); ?>

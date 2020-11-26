@@ -26,6 +26,8 @@ if(isset($_POST['email'])) {
                 $infos = $account->fetch();
                 $_SESSION = [];
                 $_SESSION['id'] = $infos['ID'];
+                // Stockage de l'adresse ip qui se connecte sur le compte de l'utilisateur
+                $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
 
             } else {
                 

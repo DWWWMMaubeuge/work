@@ -52,7 +52,7 @@ $countformations = $alluserformations->rowCount();
                                 <form class="d-none" id="formAvatar" method="post" enctype="multipart/form-data"><input class="d-none" type="file" id="inputAvatar" name="inputAvatar" /></form>
                                 <!-- Pseudo -->
                                 <div class="mt-3 col-sm-12">
-                                    <?php if($infos['Admin'] != 1 && $infos['SuperAdmin'] != 1) { ?><h2 id="monPseudo" class="text-info"><?= $infos['Pseudo']?></h2><?php } else { ?> <h2 id="monPseudo" class="text-danger"><?= $infos['Pseudo']?> <?php } ?> <i class="fas fa-wrench text-warning editmode" id="Pseudo" onclick="setInfo(this.id, 'monPseudo')" title="Modifier mon pseudo"></i>
+                                    <?php if($infos['Formateur'] != 1 && $infos['Administrateur'] != 1) { ?><h2 id="monPseudo" class="text-info"><?= $infos['Pseudo']?></h2><?php } else { ?> <h2 id="monPseudo" class="text-danger"><?= $infos['Pseudo']?> <?php } ?> <i class="fas fa-wrench text-warning editmode" id="Pseudo" onclick="setInfo(this.id, 'monPseudo')" title="Modifier mon pseudo"></i>
                                 </div>
                             </div>
                         </div>
@@ -117,12 +117,17 @@ $countformations = $alluserformations->rowCount();
                                     <h6 class="mb-0">Formation active <i class="fas fa-question-circle text-warning editmode" title="Si vous êtes inscrits à plusieurs sessions de formation en même temps, cette option vous permet de choisir quelle session sera utilisé pour accéder à l'auto-évaluation. Si vous êtes formateur, la formation active définiera également quelle formation sera modifiée dans l'espace administration."></i></h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <span id="maFormation"><?= $infos['FORMATION']; ?> ( Session du <?= dateConvert($infos['DATE_DEBUT']); ?> au <?= dateConvert($infos['DATE_FIN']); ?> - <?= $infos['EMPLACEMENT']; ?> )</span> <?php if($countformations > 1) { ?> <select id="formationselect" class="d-none" name="formationselect">
+                                    <?php if($infos['SESSION'] != 0) { ?>
+                                        <span id="maFormation"><?= $infos['FORMATION']; ?> ( Session du <?= dateConvert($infos['DATE_DEBUT']); ?> au <?= dateConvert($infos['DATE_FIN']); ?> - <?= $infos['EMPLACEMENT']; ?> )</span>
+                                    <?php } else { ?>
+                                        <span id="maFormation">Aucune formation active !</span>
+                                    <?php } ?>
+                                    <?php if($countformations > 1 || $infos['SESSION'] == 0 && $countformations = 1) { ?> <select id="formationselect" class="d-none" name="formationselect">
                                         <option value=""></option>
                                         <?php while($userformations = $alluserformations->fetch()) { ?>
                                             <option value="<?= $userformations['IDENTIFIANT_SESSION']; ?>"><?= $userformations['FORMATION']; ?> ( Session du <?= dateConvert($userformations['DATE_DEBUT']); ?> au <?= dateConvert($userformations['DATE_FIN']); ?> - <?= $userformations['EMPLACEMENT']; ?> )</option>
                                         <?php } ?>
-                                        </select> <i class="fas fa-wrench text-warning editmode" id="Session" onclick="selectFormation(this.id, 'maFormation')" title="Changer de formation"></i><?php } ?>
+                                        </select> <?php if($infos['SESSION'] != 0) { ?> <i class="fas fa-wrench text-warning editmode" id="Session" onclick="selectFormation(this.id, 'maFormation')" title="Changer de formation"></i><?php } } ?>
                                 </div>
                             </div>
                             <hr>
@@ -193,8 +198,8 @@ $countformations = $alluserformations->rowCount();
                         </div>
                     </div>
                     <!-- Résultats des compétences pour la session active et le mois courant -->
-                    <!-- Si l'utilisateur n'est ni un Admin ni un SuperAdmin:-->
-                    <?php if($infos['Admin'] != 1 && $infos['SuperAdmin'] != 1) { ?>
+                    <!-- Si l'utilisateur n'est ni un Formateur ni un Administrateur:-->
+                    <?php if($infos['Formateur'] != 1 && $infos['Administrateur'] != 1) { ?>
                         <!-- Si au moins un résultat est retourné:-->
                         <?php if($count !== 0) { ?>
                             <div class="row gutters-sm">
@@ -224,3 +229,7 @@ $countformations = $alluserformations->rowCount();
 <!-- Lien vers le script de la page profil -->
 <script src="scripts/profil.js"></script>
 <?php require_once('config/footer.php'); ?>
+<?php print_r($_SERVER['REMOTE_ADDR']); ?>
+<br>
+<br>
+<?= $_SESSION['ip']; ?>
