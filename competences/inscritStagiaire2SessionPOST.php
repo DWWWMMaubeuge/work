@@ -18,6 +18,9 @@ if(   isset($_POST['list_stagiaire2session']		)  &&
 		$ID_NewUser = addUser( $mail, 'STA');
 		$req = "UPDATE $DB_dbname.users SET id_session=$ID_session, role='STA' WHERE mail='$mail'";
 		executeSQL( $req );
+
+		// to fix : set id_formation 
+
 		$req = "INSERT INTO $DB_dbname.user_session ( id_user, id_session ) VALUES ( $ID_NewUser, $ID_session )";
 		executeSQL( $req );
 	}
