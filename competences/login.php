@@ -97,3 +97,9 @@ Réponse  : <input type="text" name="captcha_reponse" value="" />
 <br>
 <INPUT type='submit' value='OK' onclick="encodePW()">
 </form>
+
+<style>
+	.backG{
+		background: red;
+	}
+</style>
