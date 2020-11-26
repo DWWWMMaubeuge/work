@@ -1,3 +1,4 @@
+....................
 <?php
 require_once( "parametres.php" );
 include_once(  "CO_global_functions.php"  );
