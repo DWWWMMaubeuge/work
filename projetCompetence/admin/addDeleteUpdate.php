@@ -100,42 +100,5 @@ if (isset($_POST['update']))
 
 }
 
-// send message to user
-
-if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'] != "" && $_POST['type'] != "" && $_POST['training'] != "" ) 
-{
-    $name       = $_POST['name'];
-    $surname    = $_POST['surname'];
-    $email       = $_POST['email'];
-    $type       = $_POST['type'];
-    $training   = $_POST['training'];
-  
-  $req = "INSERT INTO $DB_dbname.users ( name, surname, email, type, password ) VALUES ( '$name', '$surname', '$email', '$type', '$training' )";
-    executeSQL( $req );
-
-    if($req)
-    {
-        //send email ok !!
-
-        $to      = $email;
-        $subject = "Email Verification";
-        $message = "<p>Votre demande d'inscription à la formation $type à bien été validée! Veuillez suivre le lien suivant pour vous connecter à votre compte</p>";
-        $message .= "<a href='http://localhost/work/projetCompetence/login.php?'>Register Account</a>";
-        $headers = "From: formafpaTest@gmail.com";
-        $headers .= "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-        if (mail($to,$subject,$message,$headers)) 
-        {
-          echo "Email send successfully to $to";
-          header('location: admin/thankYou.php');
-        }else
-        {
-          echo "failure to send";
-        }
-
-        
-    }
-}
 
 ?>

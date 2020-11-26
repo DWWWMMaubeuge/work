@@ -7,12 +7,12 @@
 <?php
 
 require_once('../functionConnect.php');
-include_once('addDeleteUpdate.php');
+include_once('sendEmail.php');
 
 if (isset($_POST['submit'])){
   $submit = $_POST['submit'];
 
-  header( "location: displayUser.php");
+  header( "location: displayMsg.php");
 
 }
 
@@ -43,8 +43,8 @@ if (isset($_POST['submit'])){
       </select>
   </div>
   <div class="textbox">
-  <textarea id="w3review" name="email"  value="<?php echo $email; ?>" rows="4" cols="50" placeholder="Enter Email adress" required>
-  </textarea>
+       <i class="fas fa-envelope"></i>
+    <input type="text" name="email" value="<?php echo $email; ?>" placeholder="Email" required />
   </div>
     <input type="submit" name="submit" value="Send" class="btn" />
 </form>

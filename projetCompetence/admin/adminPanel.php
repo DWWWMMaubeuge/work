@@ -64,7 +64,7 @@
                         </a>
                         <div class="sub-menu">
                             <a href="emailToUser.php"><i class="fas fa-envelope"></i><span>New</span></a>
-                            <a href="#"><i class="fas fa-envelope-square"></i><span>Sent</span></a>
+                            <a href="displayMsg.php"><i class="fas fa-envelope-square"></i><span>Sent</span></a>
                         </div>
                     </li>
                     <li class="item" id="settings">

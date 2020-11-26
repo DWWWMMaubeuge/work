@@ -77,9 +77,9 @@ $req = "SELECT * FROM $DB_dbname.skills";
 $result = executeSQL( $req );
 
 $skills = [];
-while( $ligne = $result->fetch_assoc())
+while( $row = $result->fetch_assoc())
 {
-    array_push( $skills, [ $ligne['id'], $ligne[ 'skill' ]   ] );
+    array_push( $skills, [ $row['id'], $row[ 'skill' ]   ] );
 }
 ?>
 

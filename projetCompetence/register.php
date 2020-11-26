@@ -19,6 +19,8 @@ NavBar();
 
 ?>
 
+</body>
+</html>
 <body>
 
 <div class="login-box">
@@ -44,6 +46,13 @@ NavBar();
         <option value="learner">Learner</option>
       </select>
   </div>
+  <div class="textbox">
+      <select name="training" id="training" >
+        <option value="pastry">Pastry</option>
+        <option value="dwm">DWM</option>
+        <option value="english">English</option>
+      </select>
+  </div>
 <div  class="textbox">
         <i class="fa fa-lock" aria-hidden="true"></i>
         <input type="password" placeholder="Password" name="password" value="">
@@ -64,48 +73,24 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
     $surname    = $_POST['surname'];
     $email       = $_POST['email'];
     $type       = $_POST['type'];
+    $training  = $_POST['training'];
     $password   = $_POST['password'];
-    // A revoir utilisation obsoléte de md5
-    //$vkey = md5(time().$name);
+   
+$name = $conn -> real_escape_string($name);
+$surname = $conn -> real_escape_string($surname);
+$email = $conn -> real_escape_string($email);
+$password = $conn -> real_escape_string($password);
 
-    // verification doublons emails 
-    /*$emailQuery = "SELECT * FROM $DB_dbname.users WHERE email=? LIMIT 1 ";
-    $stmt = $conn-> prepare($emailQuery);
-    $stmt-> bind_param('s',$email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $userCount = $result->num_rows;
-
-    if($userCount > 0){
-      $errors['email'] = "Email already exists"; devafpa2020@gmail.com
-    }
-*/
+$req= "SELECT * FROM $DB_dbname.users WHERE email='$email'";
+if(mysqli_num_rows($req)>0)
+{
+  echo "Email already use";
+}
+else{
   $req = "INSERT INTO $DB_dbname.users ( name, surname, email, type, password ) VALUES ( '$name', '$surname', '$email', '$type', '$password' )";
     executeSQL( $req );
+    header( "location: login.php");
+  }
 
-    if($req)
-    {
-        //send email ok !!
-
-        $to      = $email;
-        $subject = "Email Verification";
-        $message = "<p>Votre demande d'inscription à la formation $type à bien été validée! Veuillez suivre le lien suivant pour vous connecter à votre compte</p>";
-        $message .= "<a href='http://localhost/work/projetCompetence/login.php?'>Register Account</a>";
-        $headers = "From: formafpaTest@gmail.com";
-        $headers .= "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-        if (mail($to,$subject,$message,$headers)) 
-        {
-          echo "Email send successfully to $to";
-          header('location: admin/thankYou.php');
-        }else
-        {
-          echo "failure to send";
-        }
-
-        
-    }
-}
-
+  }
 ?>

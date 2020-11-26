@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
+<div class="textbox">
+       <i class="fas fa-envelope"></i>
     <h1>Thank you</h1>
+</div>
 </body>
 </html>
