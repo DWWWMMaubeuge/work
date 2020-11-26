@@ -1,6 +1,6 @@
 <?php
 require_once "parametres.php";
-include_once "CO_global_functions.php";
+include_once "GloBal_Functions.php";
 
 session_start();
 $_SESSION['ID_user'] = 0;
@@ -55,10 +55,10 @@ if ($_POST && $_POST['mail'] != "" && $_POST['password'] != "")
 
     <form  method='POST'action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <img src="img/logo6.png" alt="">
-        <label for=""><h2>CONNEXION</h2></label>
-        <input type="email" name="mail" id="" placeholder="mail" class="mail"  >
+        <h2 style=height:15%>CONNEXION</h2>
+        <input type="email" name="mail" id="" placeholder="Mail" class="mail"  >
         <label for=""></label>
-        <input type="password" name="password" id="" placeholder="password" class="pass">
+        <input type="password" name="password" id="" placeholder="Password" class="pass">
         <button type="submit">login to your account</button>
     </form>
 

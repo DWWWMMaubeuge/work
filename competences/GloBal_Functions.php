@@ -32,6 +32,22 @@ function executeSQL( $req )
 	return $result;
 }
 
+function MailExist( $mail )
+{
+	GLOBAL $DB_dbname;
+
+    $req        = "SELECT count(*) as NB FROM $DB_dbname.users WHERE mail='$mail'";
+    $result     = executeSQL( $req );
+    $data       = $result->fetch_assoc();
+	$doubleMail = $data[ 'NB' ];
+
+	return  $doubleMail;
+}
+
+
+
+
+
 ?> 
 
 

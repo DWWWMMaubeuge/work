@@ -28,7 +28,7 @@
 
 <?php
 require_once "parametres.php";
-include_once "CO_global_functions.php";
+include_once "GloBal_Functions.php";
 
 session_start();
 
@@ -116,7 +116,14 @@ while ($data = $result->fetch_assoc()) {
             {
                     if (this.readyState == 4 && this.status == 200)
                     {
-                        document.getElementById("message_validation").innerHTML = "valeur enregistrée";
+                        document.getElementById("message_validation") .style.visibility="visible";
+                        document.getElementById("message_validation").innerHTML = "la valeur est bien enregistrée";
+                        setTimeout(() => 
+                        {
+                            document.getElementById("message_validation") .style.visibility="hidden";
+                            
+                        }, 1500);
+
                     }
             };
             xhttp.open("GET", "maj_value.php?idUser=<?=$ID_user?>&idSkill="+id_skill+"&valSkill="+value, true);
@@ -124,6 +131,7 @@ while ($data = $result->fetch_assoc()) {
             }
 </script>
 
+                                   <div id="message_validation"></div>
 
         <FORM  method='POST' name="formSkill" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <div class=" container">
@@ -131,6 +139,6 @@ while ($data = $result->fetch_assoc()) {
                 </div>
         </FORM>
 
-                           <p id="message_validation"></p>
+                           
 
 
