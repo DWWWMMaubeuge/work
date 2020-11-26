@@ -27,7 +27,9 @@ if(isset($_POST['email'])) {
                 $_SESSION = [];
                 $_SESSION['id'] = $infos['ID'];
                 // Stockage de l'adresse ip qui se connecte sur le compte de l'utilisateur
-                $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
+                $_SESSION['ip'] = get_ip();
+                $_SESSION['os'] = detect_os();
+                $_SESSION['browser'] = detect_browser();
 
             } else {
                 

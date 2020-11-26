@@ -229,7 +229,3 @@ $countformations = $alluserformations->rowCount();
 <!-- Lien vers le script de la page profil -->
 <script src="scripts/profil.js"></script>
 <?php require_once('config/footer.php'); ?>
-<?php print_r($_SERVER['REMOTE_ADDR']); ?>
-<br>
-<br>
-<?= $_SESSION['ip']; ?>
