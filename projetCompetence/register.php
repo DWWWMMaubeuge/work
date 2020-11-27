@@ -3,15 +3,21 @@
 include_once("functionHeader.php");
 
 ?>
-
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
     <title>Register Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style/style.css">
-</head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
 <?php
 
 setHeader();
@@ -67,7 +73,7 @@ include_once("functionConnect.php");
 
 
 
-if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'] != "" && $_POST['type'] != "" && $_POST['password'] != "" ) 
+if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'] != "" && $_POST['type'] != "" && $_POST['training'] != "" && $_POST['password'] != "" ) 
 {
     $name       = $_POST['name'];
     $surname    = $_POST['surname'];
@@ -76,20 +82,21 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
     $training  = $_POST['training'];
     $password   = $_POST['password'];
    
-$name = $conn -> real_escape_string($name);
-$surname = $conn -> real_escape_string($surname);
-$email = $conn -> real_escape_string($email);
-$password = $conn -> real_escape_string($password);
 
-$req= "SELECT * FROM $DB_dbname.users WHERE email='$email'";
-if(mysqli_num_rows($req)>0)
+$req = "SELECT count(*) as nb FROM $DB_dbname.users WHERE email='$email' ";
+$result = executeSQL( $req );
+$data = $result->fetch_assoc();
+if ( $data[ 'nb' ] == 0 )
 {
-  echo "Email already use";
+$req = "INSERT INTO $DB_dbname.users ( name, surname, email, type, training, password ) VALUES ( '$name', '$surname', '$email', '$type', '$training', '$password' )";
+executeSQL( $req );
+header( "location: login.php");
+ 
 }
 else{
-  $req = "INSERT INTO $DB_dbname.users ( name, surname, email, type, password ) VALUES ( '$name', '$surname', '$email', '$type', '$password' )";
-    executeSQL( $req );
-    header( "location: login.php");
+       echo "<div class=\"alert alert-danger\" role=\"alert\">
+              Email already used
+            </div>";
   }
 
   }

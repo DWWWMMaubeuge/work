@@ -30,22 +30,22 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['email'
 
         $to      = $email;
         $subject = "Email Verification";
-        $message = "<p>Bonjour, afin de complteter votre inscription à la formation $training en tant que $type, veuillez suivre le lien suivant : </p>";
+        $message = "<p>Bonjour $surname, afin de completer votre inscription à la formation $training en tant que $type, veuillez suivre le lien suivant : </p>";
         $message .= "<a href='http://localhost/work/projetCompetence/register.php?'>Register Account</a>";
         $headers = "From: formafpaTest@gmail.com";
-        $headers .= "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Centre de formation" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
         if (mail($to,$subject,$message,$headers)) 
         {
           echo "Email send successfully to $to";
           header('location: admin/thankYou.php');
-        }else
+        }
+        else
         {
           echo "failure to send";
         }
 
-        
     }
 }
 
