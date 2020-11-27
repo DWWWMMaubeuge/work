@@ -1,121 +1,136 @@
 body 
-{
-  font-family: " Verdana";
-  min-height: 50vh;
-  background: url("../img/tel.webp") no-repeat;
-  background-size: cover;
-  background-color: transparent;
-  image-rendering: auto;
-}
+    {
+      font-family: " Verdana"; 
+      min-height: 40vh;
+      background: url("../img/tel.webp") no-repeat;
+      background-size: cover;
+      background-color: transparent;
+      /* image-rendering: auto; */
+      
+    }
 
 .styled 
-{
-  
-  
-  padding: 0.5px;
-  margin-left: 25px;
-  margin-right: 70px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  float: left;
-  width: 160px;
-  height: 80px;
-  text-align: center;
- 
-  
-  
-  /* border: 1mm ridge rgba(228, 50, 5, 0.87); */
-  border: thick double rgb(216, 197, 120);
-  /* border: dashed red; */
-  border-radius: 40px;
-  background: transparent;
-  opacity: 1;
-  
-}
+    {
+      padding: 0.5px;
+      margin-left: 25px;
+      margin-right: 70px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      float: left;
+      width: 160px;
+      height: 80px;
+      text-align: center;
+      /* border: 1mm ridge rgba(228, 50, 5, 0.87); */
+      border: thick double rgb(216, 197, 120);
+      /* border: dashed red; */
+      border-radius: 40px;
+      background: transparent;
+      opacity: 0.8;
+      
+    }
+
+    .container
+    {
+      
+        margin-left: 16%;
+        margin-right: 10%;
+        margin-top: auto%;
+        
+        
+    }
 
 .styled p 
-{
-  font-family: "Giorgia";
-  font-size: 20px;
-  font-weight: 80;
-  text-transform: uppercase;
-  color: rgb(255, 248, 220);
-  text-align: center;
-  text-shadow: 1px 1px 1px;
-  height: 15px;
-}
+  {
+      font-family: "Giorgia";
+      font-size: 20px;
+      font-weight: 80;
+      text-transform: uppercase;
+      color: rgb(255, 248, 220);
+      text-align: center;
+      text-shadow: 1px 1px 1px;
+      height: 15px;
+  }
 
 h1 
-{
-  text-align: center;
-  color: rgb(255, 255, 255);
-  font-size: 30px;
-  border-bottom: 10px solid #ffffff;
-  text-decoration: none;
-}
+  {
+      text-align: center;
+      color: rgb(255, 255, 255);
+      font-size: 30px;
+      border-bottom: 10px solid #ffffff;
+      text-decoration: none;
+  }
 
 h4 
-{
-  text-align:  right;
-  margin-left:  25px;
-}
+  {
+      text-align:  right;
+      margin-left:  25px;
+  }
 
 .skill 
-{
-  color:      red;
-  margin-left: 25px;
-}
-.container
- {
-  margin-right: 10%;
-}
+  {
+      color:      red;
+      margin-left: 25px;
+  }
+
 
 .lol 
-{
-  
-  color:    chocolate;
-  font-family:"Giorgia";
-  margin-left:      5%;
-  margin-right:9px;
-  padding-bottom:  5%;
-  width: 20px;
-  height: 15px;
-  position: center;
-  background-color: beige;
-  opacity: 0.9;
-  border-radius: 100px;
-  cursor: pointer;
-  
-}
+  {
+      color:    chocolate;
+      font-family:"Giorgia";
+      margin-left:      5%;
+      margin-right:9px;
+      padding-bottom:  5%;
+      width: 20px;
+      height: 15px;
+      position: center;
+      background-color: beige;
+      opacity: 0.9;
+      border-radius: 100px;
+      cursor: pointer;  
+  }
 
 select:focus
+  {
+      background-color:rgb(0, 0, 0); 
+  }
+
+.NB
 {
-
-  background-color:rgb(0, 0, 0);
-  
-}
-
-
-
-
-.NB{
-
-
-background:transparent;
-  color:red;
-}
+    background:transparent;
+    color:red;
+  }
 
 #message_validation
 
 {
-
-font-size: 20px;
-color:rgba(255, 217, 0, 0.596);
-text-align: center;
-
-
-
+    
+    font-family:  Georgia;
+    font-size: 20px;
+    color:orangered;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    border-radius: 60px;
+    margin-left: 40%;
+    margin-right: 40%;
+    transition: all 0.3s ease-out;
 }
+
+table.hauteur
+{
+    min-height: 100vh;
+}
+
+i
+{
+    color:khaki;
+}
+
+
+/* .logout
+{
+   
+  color: red;
+} */
 
 
 /* -----------------------------------------------Formulaire------------------------------------------------------------------- */

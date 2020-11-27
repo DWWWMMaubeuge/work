@@ -20,7 +20,7 @@
 </div>
 <p><C'est votre tableau de bord. </p> -->
 
-<a href="logout.php"><h4><i class="fas fa-sign-out-alt"></i></h4></a>
+<a href="logout.php" class="logout"><h4><i class="fas fa-sign-out-alt"></i></h4></a>
 
 </body>
 
@@ -49,18 +49,20 @@ return $widget;
 } */
 
 function setWidgetValue2($skill)
-    {
-        $widget = "<div class =\"styled\" >\n";
-        $widget .= "<p>" . $skill[1] . "</p>\n";
-        $widget .= "<p id=\"aff" . $skill[0] . "\"></p>\n";
-        $widget .= "<select class=\"lol\" id=\"lol" . $skill[0] . "\" name=\"valSkill\" min='0' max='10'  onchange=\"MAJ_Value( " . $skill[0] . ", this.value )\">\n";
-        $widget .= "<option value=0 class=\"lool\"></option>\n";
-        for ($a = 1; $a < 11; $a++) 
-        {
-            $widget .= "<option value=\"$a\">$a</option>\n";
-        }
-        $widget .= "</select><br>\n";
-        $widget .= "</div>\n";
+    {   
+        $widget  = "<table classe=\"hauteur\">\n";
+            $widget .= "<div class =\"styled\" >\n";
+            $widget .= "<p>" . $skill[1] . "</p>\n";
+            $widget .= "<p id=\"aff" . $skill[0] . "\"></p>\n";
+            $widget .= "<select class=\"lol\" id=\"lol" . $skill[0] . "\" name=\"valSkill\" min='0' max='10'  onchange=\"MAJ_Value( " . $skill[0] . ", this.value )\">\n";
+            $widget .= "<option value=0 class=\"lool\"></option>\n";
+            for ($a = 1; $a < 11; $a++) 
+            {
+                $widget .= "<option value=\"$a\">$a</option>\n";
+            }
+            $widget .= "</select><br>\n";
+            $widget .= "</div>\n";
+        $widget .= "</table>\n";
         return $widget;
     }
 
@@ -107,35 +109,33 @@ while ($data = $result->fetch_assoc()) {
 //print_r( $skills );
 
 ?>
+
 <script>
-        function MAJ_Value( id_skill, value  )
+    function MAJ_Value( id_skill, value  )
+    {
+    document.getElementById("aff"+id_skill).innerHTML = value;
+    var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function()
+        {
+            if (this.readyState == 4 && this.status == 200)
             {
-            document.getElementById("aff"+id_skill).innerHTML = value;
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function()
-            {
-                    if (this.readyState == 4 && this.status == 200)
-                    {
-                        document.getElementById("message_validation") .style.visibility="visible";
-                        document.getElementById("message_validation").innerHTML = "la valeur est bien enregistrée";
-                        setTimeout(() => 
-                        {
-                            document.getElementById("message_validation") .style.visibility="hidden";
-                            
-                        }, 1500);
-
-                    }
-            };
-            xhttp.open("GET", "maj_value.php?idUser=<?=$ID_user?>&idSkill="+id_skill+"&valSkill="+value, true);
-            xhttp.send();
+                document.getElementById("message_validation") .style.visibility="visible";
+                document.getElementById("message_validation").innerHTML = " « la valeur est bien enregistrée.»";
+                setTimeout(() => 
+                {
+                    document.getElementById("message_validation") .style.visibility="hidden";    
+                }, 700);
             }
-</script>
-
-                                   <div id="message_validation"></div>
+        };
+    xhttp.open("GET", "maj_value.php?idUser=<?=$ID_user?>&idSkill="+id_skill+"&valSkill="+value, true);
+    xhttp.send();
+    }
+</script> 
+                                 <div id="message_validation"></div>
 
         <FORM  method='POST' name="formSkill" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <div class=" container">
-                <?=setAllWidgetValue($skills)?>
+                     <?=setAllWidgetValue($skills)?>
                 </div>
         </FORM>
 

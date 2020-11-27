@@ -20,7 +20,7 @@ function executeSQL( $req )
 			die("Connection failed: " . $conn->connect_error);
 			}
 
-			//echo $req."<br>";
+			//echo $req."<br>"; /* <<<<<<<<********************** DEBUG*******************>>>>>> */
 			$result = $conn->query( $req );
 			if ($conn->error) 
 			{

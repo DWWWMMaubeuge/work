@@ -9,6 +9,7 @@ if ($_POST && $_POST['mail'] != "" && $_POST['password'] != "")
 {
             $mail      = $_POST['mail'];
             $password  = $_POST['password'];
+            $password = hash('sha256' , $_POST['password']);
 
     // attention aux doublons des mail
 
@@ -25,6 +26,7 @@ if ($_POST && $_POST['mail'] != "" && $_POST['password'] != "")
             $_SESSION['name']           = $data['name'];
             $_SESSION['surname']        = $data['surname'];
             $role = $_SESSION['role']   = $data['role'];
+
             //print_r ($data);
             
             if ( $role == "STA")
@@ -37,7 +39,7 @@ if ($_POST && $_POST['mail'] != "" && $_POST['password'] != "")
                 header("location: login.php");
             
         }
-    echo "<h3>login incorrect</h3>";            
+    echo "<h3 class=\"login\">Login incorrect</h3>";            
 }
 ?>
 <!DOCTYPE html> 
@@ -54,13 +56,27 @@ if ($_POST && $_POST['mail'] != "" && $_POST['password'] != "")
 <!-- <div id="bg"></div> -->
 
     <form  method='POST'action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <img src="img/logo6.png" alt="">
-        <h2 style=height:15%>CONNEXION</h2>
-        <input type="email" name="mail" id="" placeholder="Mail" class="mail"  >
-        <label for=""></label>
-        <input type="password" name="password" id="" placeholder="Password" class="pass">
-        <button type="submit">login to your account</button>
+        <div class="logo">
+            <img src="img/logo7.png" alt="">
+            <h2 margin-right=100px>CONNEXION</h2>
+        </div>
+        <?php if(isset($error_message)){  ?>
+                <div class="error"><?php echo $error_message ; ?></div>
+                <?php } ?>
+        <input  type="email"     name="mail"     id="" placeholder="EMAIL" class="mail"  >
+        <input  type="password"  name="password" id="" placeholder="MOT DE PASSE" class="pass">
+        <p class="box-register">Mot de Passe oublier<a style="color:blue" font-size= 10px href="Register.php">S'inscrire</a></p>
+        <button type="submit"   class="glow-on-hover" >SE CONNECTER</button>
     </form>
 
     </body>
 </html>
+
+
+<!-- <div class="logo">
+            <img src="img/logo7.png" alt="">
+            <h2 margin-right=100px>CONNEXION</h2>
+        </div>
+
+
+<button  type="submit">SE CONNECTER</button> -->
