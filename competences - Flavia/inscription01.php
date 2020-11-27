@@ -17,9 +17,10 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['passwo
 
     // attention aux doublons des mail
 
-    $req = "INSERT INTO $DB_dbname.users ( name, surname, password, mail, role ) VALUES ( '$name', '$surname', '$password', '$mail', '$role' )";
+
+    $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password ) VALUES ( '$name', '$surname', '$mail', '$password' )";
     executeSQL( $req );
- 
+    header( "location: accueil02_multiple.php");
 }
 
 ?>

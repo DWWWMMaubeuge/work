@@ -2,17 +2,21 @@
 require_once( "parametres.php" );
 include_once(  "CO_global_functions.php"  );
 
-checkSecurity();
-
-
-if (
-	isset( $_GET['name']				) && 
-	( $_GET['name'] != "" 				) 
-   ) 
+//inscriptFormateur2SessionPOST.php?mail="+mail+"&idSession="+ID_session;
+                                            
+if( 
+	isset( $_GET['mail']		) && 
+	isset( $_GET['idFormation']	) &&
+	( $_GET['mail'] != "" 		) && 
+	( $_GET['idFormation'] >0   ) 
 {
-    $name        	= $_GET['name'];
-  
-    $req = "INSERT INTO $DB_dbname.formations ( name ) VALUES ( '".$name."');";
-    $result = executeSQL( $req );
+
+    $mail 			= $_GET['mail'];
+    $ID_formation   = $_GET['idFormation'];
+
+	$ID_NewUser = addUser( $mail, 'FOR');
+
+	$req = "UPDATE $DB_dbname.users SET id_formation=$ID_formation WHERE mail='$mail'";
+	executeSQL( $req );
 }
 ?>

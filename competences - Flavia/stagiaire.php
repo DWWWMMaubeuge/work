@@ -16,8 +16,11 @@ function setWidgetValue2z( $skill  )
         $widget .="<option>$a</option>\n";
         //$widget .="<option value=\"$a\">$a</option>\n";
     $widget .="</select>\n";
+
+
     return $widget;
 }
+
 
 function setWidgetValue2y( $skill  )
 {
@@ -37,35 +40,30 @@ function setWidgetValue2x( $skill  )
 
 function setWidgetValue2( $skill )
 {
-    $widget = "<p>".$skill[1]."</p>\n";
-    $widget .= "<input type='range'  value='0' class='form-control-range' min='0' step='1' max='10' id='".$skill[0]."' name='valSkill' onchange=\"MAJ_Value( ".$skill[0].", this.value )\" >\n";
+    $widget = "<p>".$skill[1]."</p><input type='range'  value='0' class='form-control-range' min='0' step='1' max='10' id='".$skill[0]."' name='valSkill' onchange=\"MAJ_Value( ".$skill[0].", this.value )\" >\n";
     return $widget;
 }
 
 
-
-// reçoit le tableau des skills   
-/*
-        $skills = [       ID   name
-                        [ 1, "HTML"],
-                        [ 2, "CSS" ],
-                        ...
-                  ] */ 
-// retourne une str qui contient le code HTML de tous les éléments de saisie des skills
-function setAllWidgetsValue( $skills  )
+function setAllWidgetValue( $skills  )
 {
     $widget = "<div id='valSkills' >\n";
     foreach( $skills as $skill )
         $widget .= setWidgetValue2( $skill );
     $widget .= "</div>\n";
+    //return setWidgetValue2( $skills[0] );
     return $widget;
+
 }
 
-// ****************************************************************************
-// ****************************************************************************
-// ****************************************************************************
-// ****************************************************************************
-// debut du programme
+
+
+
+
+
+
+
+
 session_start();
 
 // verifier que le visteurs est bien passé par le login
@@ -80,47 +78,49 @@ $surname_user   = $_SESSION[ 'surname' ];
 
 echo "<h3>bonjour $surname_user $name_user </h3>\n";
 
-
-// je recupère le nom de la formation
 $req = "SELECT * FROM $DB_dbname.formations where id=$ID_formation";
 $result = executeSQL( $req );
 $data = $result->fetch_assoc();
-$Formation_name = $data[ 'name' ];
+$Formation_name = $data[ 'name'];
 
 echo "<h3>formation : $Formation_name</h3>\n";
 
 
 
-// je récupère les skills de la formation
+
 $req = "SELECT * FROM $DB_dbname.skills where id_formation=$ID_formation";
 $result = executeSQL( $req );
 
-// déclaration d'un tableau vide pour stocker les skills
 $skills = [];
-while( $ligne = $result->fetch_assoc())
+while( $data = $result->fetch_assoc())
 {
-    array_push( $skills, [ $ligne['id'], $ligne[ 'name']   ] );
-    /*
-        $skills = [       ID   name
-                        [ 1, "HTML"],
-                        [ 2, "CSS" ],
-                        ...
-                  ] */ 
+    array_push( $skills, [ $data['id'], $data[ 'name']   ] );
 }
+
+//print_r( $skills );
+
 ?>
+
 <script>
     function MAJ_Value( id_skill, value  )
     {
       var xhttp = new XMLHttpRequest();
-      // maj_value.php?idUser=4&idSkill=4&valSkill=5
       
-      let url = "majValueSkillGET.php?idUser=<?php echo $ID_user; ?>&idSkill="+id_skill+"&valSkill="+value;
-      xhttp.open("GET", url, true);
+      xhttp.onreadystatechange = function() 
+        {
+            if (this.readyState == 4 && this.status == 200) 
+            {
+                document.getElementById("message_validation").innerHTML = "valeur enregistrée";
+            }
+        };
+
+      xhttp.open("GET", "maj_value.php?idSkill="+id_skill+"&valSkill="+value, true);
       xhttp.send();
     }   
+
 </script>
 
 
 <FORM  method='POST' name="formSkill" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-<?php echo setAllWidgetsValue( $skills ); ?>
+<?php echo setAllWidgetValue( $skills ); ?>
 </FORM>
