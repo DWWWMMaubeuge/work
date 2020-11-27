@@ -1,6 +1,6 @@
 <?php
 require_once( "parametres.php" );
-include_once(  "CO_global_functions.php"  );
+include_once "GloBal_Functions.php";
 
 session_start();
 $ID_formation   = $_SESSION[ 'id_formation' ];

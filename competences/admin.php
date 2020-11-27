@@ -1,6 +1,6 @@
 <?php
 require_once "parametres.php";
-include_once "CO_global_functions.php";
+include_once "GloBal_Functions.php";
 
 $req = "SELECT * FROM $DB_dbname.formations";
 $res = executeSQL($req);

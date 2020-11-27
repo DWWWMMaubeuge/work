@@ -1,6 +1,6 @@
 <?php
 require_once( "parametres.php" );
-include_once(  "CO_global_functions.php"  );
+include_once "GloBal_Functions.php";
 
 
 //https://www.jqueryscript.net/other/slot-machine-picker-drum.html

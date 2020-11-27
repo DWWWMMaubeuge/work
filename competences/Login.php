@@ -27,7 +27,7 @@ if ($_POST && $_POST['mail'] != "" && $_POST['password'] != "")
             $_SESSION['surname']        = $data['surname'];
             $role = $_SESSION['role']   = $data['role'];
 
-            //print_r ($data);
+            //print_r ($data); <<<<<<<<<<<<<<< DEBUG >>>>>>>>>>>>>>>>>>>>>>>>>>>
             
             if ( $role == "STA")
                 header("location: Home.php");
