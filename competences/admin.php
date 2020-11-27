@@ -291,9 +291,6 @@ liste des formateur par formation : <br>
 <div id="resLSFF">
 </div>
 </div>
-
-
-<br>
 <br>
 <br>
 Ajouter une formation
