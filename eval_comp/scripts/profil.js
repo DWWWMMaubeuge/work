@@ -679,7 +679,7 @@ function selectFormation(id, span) {
     // Ciblage du selecteur de session
     let mySelect = document.getElementById('formationselect');
     // Changement de la classe du selecteur de session pour le faire apparaitre
-    mySelect.className = "";
+    mySelect.className = "col-6";
     // Changement de la classe de l'element de base pour le faire disparaitre
     baseElement.className = "d-none";
     // Mise en évidence du selecteur créé
