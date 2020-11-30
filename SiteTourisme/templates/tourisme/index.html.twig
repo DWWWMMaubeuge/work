@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fantastic Journeys{% endblock %}
+
+{% block body %}
+    <div class="snowfall" id="snowfall">
+		<div class="info bg-dark opacity-4 px-5">
+			<h1>Fantastic Journeys</h1>
+			<p>Le monde comme vous ne l'avez jamais vu.</p>
+            <button type="button" class="btn btn-primary"><a class="text-white" href="{{path('decouvrir')}}">Découvrir</a></button>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('scripts/neige.js') }}"></script>
+{% endblock %}
