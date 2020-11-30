@@ -34,10 +34,8 @@ if(     isset($_POST)               &&
         $_SESSION[ 'ID_user' ]       = $data[ 'id' ];
         $_SESSION[ 'name' ]          = $data[ 'name' ];
 
-        $_SESSION[ 'IP' ]            = $_SERVER['REMOTE_ADDR'];
-        $_SESSION[ 'user_agent' ]    = $_SERVER['HTTP_USER_AGENT'];
-
-
+        initSecurity();
+        
 
         $role = $_SESSION[ 'role' ];
         if ( $role == 'ADM' )
