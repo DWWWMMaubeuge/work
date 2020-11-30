@@ -1,5 +1,13 @@
-
 <!DOCTYPE html>
+ 
+<?php
+
+  include_once("functionConnect.php");
+  include_once("functionHeader.php");
+  include_once("widgetValue.php");
+  NavBar2();
+
+?>
 
 <html lang="fr" dir="ltr">
   <head>
@@ -14,116 +22,39 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </head>
   <body>
+    <div class="container">
+        <div class="row ">
+
+           <?=setAllWidgetValue($skills)?>
+
+        </div>
+    </div>
+
+    <script>
+        function MAJ_Value( id_skill, value  )
+        {
+                                        
+          document.getElementById("displaySkill"+id_skill).innerHTML = "" +value;
+
+
+          var xhttp = new XMLHttpRequest();
+          
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) 
+            {
+                document.getElementById("message_validation").innerHTML = "valeur enregistrée";
+            }
+          };
+
+          xhttp.open("GET", "majValue.php?idSkill="+id_skill+"&valSkill="+value, true);
+          xhttp.send();
+        }   
+    </script>
 
   </body>
+
 </html>
-  
-<?php
-
-include_once("functionConnect.php");
-include_once("functionHeader.php");
-NavBar2();
 
 
-
-function setWidgetValue2( $skill  )   // ID    name 
-{
-  $widget  = "";
-  $widget .= "<p>".$skill[1]."</p>\n";
-  $widget .= "<input id='number' type='number' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
-  
-  return $widget; 
-}
-
-/*
-
-function setWidgetValue1( $skill  )   // ID    name 
-{
-  $widget  = "";
-  $widget .= "<div class=\"skills\" >\n";
-  $widget .= "<p>".$skill[1]."</p>\n";
-  $widget .= "<input id='number' type='range' value='0' name='valSkill' min='0' max='10' onchange=\"MAJ_Value( ".$skill[0].", this.value )\">\n";
-  $widget .= "<p id=\"displaySkill".$skill[0]."\"></p>\n";
-  return $widget; 
-}
-
-*/
-
-function setAllWidgetValue( $skills )
-{
-    $widget  = "";
-    $widget .= "<div id='valSkills' >\n";
-    foreach( $skills as $skill )
-        $widget .= setWidgetValue2( $skill );
-    $widget .= "</div>\n";
-    return $widget;
-}
-
-// Undefined index 'name' et 'surname'
-session_start();
-
-$ID_user = $_SESSION[ 'ID_user' ];
-$name_user = $_SESSION[ 'name' ];
-$surname_user = $_SESSION[ 'surname' ];
-
-echo "<h3>Welcome $surname_user</h3>\n";
-
-
-$req = "SELECT * FROM $DB_dbname.skills";
-$result = executeSQL( $req );
-
-$skills = [];
-while( $row = $result->fetch_assoc())
-{
-    array_push( $skills, [ $row['id'], $row[ 'skill' ]   ] );
-}
-?>
-
-<script>
-    function MAJ_Value( id_skill, value  )
-    {
-                                     
-      document.getElementById("displaySkill"+id_skill).innerHTML = ""+value;
-
-
-      var xhttp = new XMLHttpRequest();
-      
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) 
-        {
-            document.getElementById("message_validation").innerHTML = "valeur enregistrée";
-        }
-      };
-
-      xhttp.open("GET", "majValue.php?idSkill="+id_skill+"&valSkill="+value, true);
-      xhttp.send();
-    }   
-</script>
-
-
-<FORM  method='POST' name="formSkill" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <div class="container">
-      
-            <?=setAllWidgetValue($skills)?>
-        
-    </div>
-</FORM>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-</html>
 
 
