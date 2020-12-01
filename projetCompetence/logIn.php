@@ -40,7 +40,7 @@ if( $_POST && $_POST['email'] != "" && $_POST['password'] != ""  )
         }
         elseif ($data['type'] == 'learner')
         {
-            header('location: skills.php');
+            header('location: learner/learnerPanel.php');
         }
         else
         {

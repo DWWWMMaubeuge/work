@@ -13,8 +13,6 @@
 
 */
 
-
-
   //send email (bien redirigé vers thanYou.php mais pas de reception de mail)
 
   $to = "formafpaTest@gmail.com";

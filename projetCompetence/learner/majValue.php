@@ -1,6 +1,6 @@
 <?php
 
-include_once(  "functionConnect.php"  );
+include_once(  "../functionConnect.php"  );
 
 session_start();
 $ID_user=0;

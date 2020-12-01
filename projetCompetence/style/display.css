@@ -161,3 +161,42 @@ h1{
     border: 2px solid #C19A6B;
     color: white;   
 }
+
+/*skills*/
+
+.row{
+    margin-top: 40px;
+    justify-content: center;
+    padding: 10px 0 10px 10%;
+}
+
+label{
+    color: white;
+}
+
+label:hover
+{
+    color: #C19A6B;
+
+}
+
+.col-4 input:hover
+{
+    color: #C19A6B;
+    margin:2%.   
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+    -webkit-appearance: none;
+}
+
+
+
+h2
+{
+    text-align: center;
+    color: white;
+    font-size: 10px;
+}

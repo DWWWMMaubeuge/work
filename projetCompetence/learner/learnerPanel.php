@@ -23,14 +23,13 @@
             <!--header menu start-->
             <div class="header">
                 <div class="header-menu">
-                    <div class="title">Trainer <span>Panel</span></div>
+                    <div class="title">Learner <span>Panel</span></div>
                     <h1>Welcome <?php echo $_SESSION['surname']; ?>!</h1>
                     <div class="sidebar-btn">
                         <i class="fas fa-bars"></i>
                     </div>
                     <ul>
-                        <li><a href="displayUser.php"><i class="fas fa-user"></i></a></li>
-                        <li><a href="displayTraining.php"><i class="fas fa-chalkboard-teacher"></i></a></li>
+                        <li><a href="displaySkills.php"><i class="fas fa-clipboard-list"></i></a></li>
                         <li><a href="../logOut.php"><i class="fas fa-power-off"></i></a></li>
                 
                     </ul>

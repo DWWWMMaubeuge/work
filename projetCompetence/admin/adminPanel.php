@@ -42,7 +42,7 @@
                 <div class="sidebar-menu">
                     <div  class="profile">
                         <img src="../style/img/profil" alt="">
-                        <p>Admin</p>
+                        <p><?php echo $_SESSION['surname']; ?></p>
 </div>
                     <li class="item">
                         <a href="#" class="menu-btn">
