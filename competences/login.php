@@ -8,7 +8,7 @@ $secret = '6Lcp8_QZAAAAALWJI3ojz1aDBQHgyNx9NfE11y4D'; // votre clé privée
 
 session_start();
 $_SESSION[ 'ID_user' ]  = 0;
-//checkSecurity();
+
 
 
 if(     isset($_POST)               && 

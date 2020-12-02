@@ -8,6 +8,7 @@ include_once(  "CO_global_functions.php"  );
 
 
 session_start();
+checksecurity();
 
 //if ( ! isset( $_SESSION[ 'ID_user' ] ))
 //    header( "location: login01.php")

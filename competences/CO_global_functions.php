@@ -49,7 +49,6 @@ function parseMailIntoText( $text  )
 		foreach ($lesMots as $mail) 
 			if ( filter_var($mail, FILTER_VALIDATE_EMAIL)) 
 				array_push($tabMails, $mail ); 	
-
 	}
 	return $tabMails;
 }
@@ -79,7 +78,6 @@ function addUser( $mail, $role )
 	    $req = "INSERT INTO $DB_dbname.mail2inscript ( mail, role ) VALUES ( '$mail', '$role');";
 	    executeSQL( $req );
 	}
-    
     $req = "SELECT * FROM $DB_dbname.users WHERE mail='$mail'";
     $result = executeSQL( $req );
     $data = $result->fetch_assoc();

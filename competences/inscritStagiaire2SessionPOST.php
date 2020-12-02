@@ -7,7 +7,7 @@ if(   isset($_POST['list_stagiaire2session']		)  &&
 		   ($_POST['list_stagiaire2session'] != "" 	)  && 
 	  isset($_POST['selSession']					)  &&
 	 	   ($_POST['selSession'] > 0				) 
-  ) 
+  )
 {
     $list_stagiaire = $_POST['list_stagiaire2session'];
     $ID_session    	= $_POST['selSession'];
