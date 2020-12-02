@@ -33,6 +33,7 @@ if(     isset($_POST)               &&
         $_SESSION[ 'ID_formation' ]  = $data[ 'id_formation' ];
         $_SESSION[ 'ID_user' ]       = $data[ 'id' ];
         $_SESSION[ 'name' ]          = $data[ 'name' ];
+        $_SESSION[ 'surname' ]          = $data[ 'name' ];
 
         initSecurity();
         
