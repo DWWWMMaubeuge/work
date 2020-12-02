@@ -30622,10 +30622,10 @@ function App() {
     },
     onSubmit: handleSubmit
   }, /*#__PURE__*/_react.default.createElement(FormField, {
-    name: "name"
-  }, "Nom"), /*#__PURE__*/_react.default.createElement(FormField, {
     name: "firstname"
-  }, "Pr\xE9nom"), /*#__PURE__*/_react.default.createElement(PrimaryButton, null, "Envoyer")));
+  }, "Pr\xE9nom"), /*#__PURE__*/_react.default.createElement(FormField, {
+    name: "name"
+  }, "Nom"), /*#__PURE__*/_react.default.createElement(PrimaryButton, null, "Envoyer")));
 }
 
 (0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(App, null), document.getElementById('app'));
@@ -30657,7 +30657,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53932" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54546" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

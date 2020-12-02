@@ -8,10 +8,12 @@ const FormContext=createContext({})
 function FormWithContext({defaultValue, onSubmit, children}){
 
     const [data, setData] = useState(defaultValue)
+
     const change = useCallback(function(name,value){
-        setData (d => Object.assign({},d, {[name]: value}))
+        setData (d => Object.assign({} ,d , {[name]: value}))
     })
-    const value=useMemo(function(){
+
+    const value = useMemo(function(){
         return Object.assign({}, data, {change: change})
     },[data, change])
 
@@ -27,8 +29,8 @@ function FormWithContext({defaultValue, onSubmit, children}){
 
 function FormField ({name,children}){
     const data = useContext(FormContext)
-    const handleChange = useCallback(function(e){
-        data.change(e.target.name, e.target.value)
+    const handleChange = useCallback(function(e) {
+        data.change(e.target.name,e.target.value)
     },[data.change])
     return (
         <div className="form-group">
@@ -51,8 +53,8 @@ function App(){
     return (
         <div className="container">
             <FormWithContext defaultValue={{name:'Doe', firstname: 'John'}}  onSubmit={handleSubmit}>
-                <FormField name="name">Nom</FormField>
                 <FormField name="firstname">Prénom</FormField>
+                <FormField name="name">Nom</FormField>
                 <PrimaryButton>Envoyer</PrimaryButton>
             </FormWithContext>
         </div>
