@@ -25,7 +25,7 @@ echo nav($id);
 if(isset($_SESSION[ 'ID_user' ]))
 {
     $name= $_SESSION['name'];
-echo "<h2 class=\"lol\">bienvenue $name</h2>";
+echo "<h2 class=\"bvn\">bienvenue $name</h2>";
 }
 else{
     echo "";
