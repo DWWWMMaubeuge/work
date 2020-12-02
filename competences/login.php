@@ -2,9 +2,13 @@
 require_once( "parametres.php" );
 include_once( "CO_global_functions.php"  );
 
+
+$siteKey = '6Lcp8_QZAAAAAN51nm-ntee5JlytKBGGYDOwVyD3'; // votre clé publique
+$secret = '6Lcp8_QZAAAAALWJI3ojz1aDBQHgyNx9NfE11y4D'; // votre clé privée
+
 session_start();
 $_SESSION[ 'ID_user' ]  = 0;
-
+//checkSecurity();
 
 
 if(     isset($_POST)               && 
@@ -33,11 +37,10 @@ if(     isset($_POST)               &&
         $_SESSION[ 'ID_formation' ]  = $data[ 'id_formation' ];
         $_SESSION[ 'ID_user' ]       = $data[ 'id' ];
         $_SESSION[ 'name' ]          = $data[ 'name' ];
+        $_SESSION[ 'surname' ]       = $data[ 'surname' ];
 
-        $_SESSION[ 'IP' ]            = $_SERVER['REMOTE_ADDR'];
-        $_SESSION[ 'user_agent' ]    = $_SERVER['HTTP_USER_AGENT'];
-
-
+        initSecurity();
+        
 
         $role = $_SESSION[ 'role' ];
         if ( $role == 'ADM' )
@@ -60,3 +63,13 @@ if(     isset($_POST)               &&
 <br>
 <INPUT type='submit' value='OK' onclick="encodePW()">
 </FORM>
+
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<form action="login.php" method="POST">
+<div class="g-recaptcha" data-sitekey="<?php echo $siteKey; ?>"></div>
+   <input type="submit" value="Envoyer">
+   
+
+  </form>
+ 
+ 
