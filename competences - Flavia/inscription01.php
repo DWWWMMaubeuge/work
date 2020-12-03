@@ -16,13 +16,24 @@ if( $_POST && isset($_POST['name']) && $_POST['surname'] != "" && $_POST['passwo
     $role       = $_POST['role'];
 
     // attention aux doublons des mail
+    $req = "SELECT count(*) as nb FROM $DB_dbname.users WHERE mail='$mail' ";
+    $result = executeSQL( $req );
+    $data = $result->fetch_assoc();
+    if ( $data[ 'nb' ] == 0 )
+    {
 
-
-    $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password ) VALUES ( '$name', '$surname', '$mail', '$password' )";
+    $req = "INSERT INTO $DB_dbname.users ( name, surname, mail, password, role ) VALUES ( '$name', '$surname', '$mail', '$password' , '$role')";
     executeSQL( $req );
-    header( "location: accueil02_multiple.php");
+    header( "location: login.php");
+
+}
+else{
+  echo "<div class=\"alert alert-danger\" role=\"alert\">
+         Email already used
+       </div>";
 }
 
+}
 ?>
 
 

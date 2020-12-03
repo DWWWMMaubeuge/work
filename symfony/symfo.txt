@@ -1,0 +1,30 @@
+Premièrement, créer un répertoire pour enregistrer les fichiers du projet Jobeet :
+
+$ mkdir -p /home/sfprojects/jobeet
+$ cd /home/sfprojects/jobeet
+
+
+Sous Windows:
+
+c:\> mkdir c:\development\sfprojects\jobeet
+c:\> cd c:\development\sfprojects\jobeet
+
+
+Créer un répertoire pour enregistrer les fichiers de la librairie du framework symfony :
+
+$ mkdir -p lib/vendor
+
+
+En dessous de la section "Source Download", vous trouverez l'archive au format tgz ou .zip. Téléchargez l'archive et mettez la dans le dossier lib/vendor fraîchement créée, puis décompressez la.
+
+$ cd lib/vendor
+$ tar zxpf symfony-1.2.2.tgz
+$ mv symfony-1.2.2 symfony
+$ rm symfony-1.2.2.tgz
+
+
+$ cd ../..
+$ php lib/vendor/symfony/data/bin/check_configuration.php
+S'il y a un problème, la sortie vous donnera les conseils pour le résoudre. Vous devez également exécuter la vérification à partir d'un navigateur car la configuration PHP peut être différente. Copiez le fichier quelque part dans le répertoire racine du serveur web et accédez au fichier. N'oubliez pas de supprimer le fichier à partir du répertoire racine web après:
+
+$ rm web/check_configuration.php
