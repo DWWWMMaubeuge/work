@@ -15,7 +15,7 @@ class TourismeController extends AbstractController
      */
     public function index(): Response
     {
-        // affichage de la page
+        // affichage de la page.
         return $this->render('tourisme/index.html.twig', [
             'controller_name' => 'TourismeController',
         ]);
