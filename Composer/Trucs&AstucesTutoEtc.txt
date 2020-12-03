@@ -1,0 +1,16 @@
+Page Tuto :
+    - https://kgaut.net/blog/2017/installer-composer-sous-windows.html 
+
+Truc pour commande :
+    - https://cmder.net/
+
+Composer c'est quoi?
+    - Composer c'est un outil qui permet de précharger des librairies
+    et de les autoloader dans nos pages PHP pour ce simplifier la vie,
+    minimiser les requiere ect. 
+    Sur le site : https://packagist.org/ on peut trouver des package de
+    fonctionnalité déjà créer.
+    On peut également créer notre propre bundle de fonction.
+
+Autres Tutos :
+    - https://www.grafikart.fr/tutoriels/composer-480
