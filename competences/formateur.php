@@ -19,6 +19,7 @@ $name_user      = $_SESSION[ 'name' ];
 $surname_user   = $_SESSION[ 'surname' ];
 
 
+
 echo "<h3>bonjour $surname_user</h3>\n";
 
 // recupère le nom de la formation
@@ -34,9 +35,9 @@ $name_session      = $_SESSION[ 'name' ];
 
 // recupère le nom de la session si il en a une
 $req = "SELECT * FROM $DB_dbname.sessions where id=$ID_formation";
-//$data = $result->fetch_assoc();
-//$sessionsName = $data[ 'name'];
-//echo "<h3>session : $sessionsName</h3>\n";
+$data = $result->fetch_assoc();
+$sessionsName = $data[ 'name'];
+echo "<h3>session : $sessionsName</h3>\n";
 
 
 // XXXXX
@@ -60,8 +61,8 @@ while( $ligne = $res->fetch_assoc() )
 	//print_r( $ligne );
 	$list_stagiaires .="<li>".$ligne['name']."</li>\n";
 }
-$list_stagiaires .= "</ul>\n";
-*/
+$list_stagiaires .= "</ul>\n";*/
+
 
 
 ?>
