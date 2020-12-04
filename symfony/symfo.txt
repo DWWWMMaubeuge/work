@@ -1,30 +1,75 @@
-Premièrement, créer un répertoire pour enregistrer les fichiers du projet Jobeet :
+******Création d'applications Symfony ¶ Ouvrez votre terminal de console et exécutez l'une de ces commandes pour créer une nouvelle application Symfony:*****
 
-$ mkdir -p /home/sfprojects/jobeet
-$ cd /home/sfprojects/jobeet
-
-
-Sous Windows:
-
-c:\> mkdir c:\development\sfprojects\jobeet
-c:\> cd c:\development\sfprojects\jobeet
+composer create-project symfony/website-skeleton 
 
 
-Créer un répertoire pour enregistrer les fichiers de la librairie du framework symfony :
+****Exécution des applications Symfony ¶ En production, vous devez installer un serveur Web comme Nginx ou Apache et le configurer pour exécuter Symfony . Cette méthode peut également être utilisée si vous n'utilisez pas le serveur Web local Symfony pour le développement.******
 
-$ mkdir -p lib/vendor
+*****Cependant, pour le développement local, le moyen le plus pratique d'exécuter Symfony est d'utiliser le serveur Web local fourni par le symfonybinaire. Ce serveur local fournit entre autres la prise en charge de HTTP / 2, des requêtes simultanées, TLS / SSL et la génération automatique de certificats de sécurité.******
 
+******Ouvrez votre terminal de console, accédez à votre nouveau répertoire de projet et démarrez le serveur Web local comme suit:*****
 
-En dessous de la section "Source Download", vous trouverez l'archive au format tgz ou .zip. Téléchargez l'archive et mettez la dans le dossier lib/vendor fraîchement créée, puis décompressez la.
-
-$ cd lib/vendor
-$ tar zxpf symfony-1.2.2.tgz
-$ mv symfony-1.2.2 symfony
-$ rm symfony-1.2.2.tgz
+ cd my-project/
+ symfony server:start
 
 
-$ cd ../..
-$ php lib/vendor/symfony/data/bin/check_configuration.php
-S'il y a un problème, la sortie vous donnera les conseils pour le résoudre. Vous devez également exécuter la vérification à partir d'un navigateur car la configuration PHP peut être différente. Copiez le fichier quelque part dans le répertoire racine du serveur web et accédez au fichier. N'oubliez pas de supprimer le fichier à partir du répertoire racine web après:
 
-$ rm web/check_configuration.php
+ ******Configurer un projet Symfony existant ¶
+******En plus de créer de nouveaux projets Symfony, vous travaillerez également sur des projets déjà créés par d'autres développeurs. Dans ce cas, il vous suffit d'obtenir le code du projet et d'installer les dépendances avec Composer. En supposant que votre équipe utilise Git, configurez votre projet avec les commandes suivantes:******
+
+
+ cd projects/
+ git clone ...
+
+
+ cd my-project/
+ composer install
+
+
+
+ *****Installer des packages ¶*****
+
+ cd my-project/
+ composer require logger
+
+
+ 
+
+
+
+
+ L’installeur symfony¶
+Pour créer une application web traditionnelle :
+
+symfony new --full my_project
+Pour créer une app plus légère comme un microservice, une app console ou une API :
+
+symfony new my_project
+Pour installer la version LTS courante :
+
+symfony new my_project --version=lts
+Pour installer la dernière version stable :
+
+symfony new my_project --version=stable
+Pour installer la version de développement :
+
+symfony new my_project --version=next
+et pour installer une version spécifique :
+
+symfony new my_project --version=4.4
+Avec composer :¶
+Pour créer une application web traditionnelle (ici en version 4.4) :
+
+composer create-project symfony/website-skeleton my_project ^4.4.0
+Pour créer une app plus légère comme un microservice, une app console ou une API (version 4.4 ici):
+
+composer create-project symfony/skeleton my_project ^4.4.0
+Squellette d’application Symfony :¶
+Créons un répertoire de travail mvc-sf dans votre dossier Web, par exemple www ou ~/www (ou ~/public_html) si on utilise user_dir d’Apache ou plus simplement n’importe où si on utilise le serveur Web embarqué de PHP ou celui fourni par Symfony.
+
+et créons la trame d’une application Symfony (sf) de type microservice à l’aide de symfony :
+
+symfony new hello-sf
+ou à l’aide de composer :
+
+composer create-project symfony/skeleton hello-sf
