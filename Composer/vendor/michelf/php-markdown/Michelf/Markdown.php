@@ -10,6 +10,8 @@
 
 namespace Michelf;
 
+use Michelf\MarkdownInterface;
+
 /**
  * Markdown Parser Class
  */
