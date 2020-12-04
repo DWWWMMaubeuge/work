@@ -55,6 +55,10 @@ if(     isset($_POST)               &&
     echo "<h3>login incorrect</h3>";
 }
 ?>
+
+<h2>LOGIN</h2>
+
+<link rel="stylesheet" href="login.css" type="text/css">
 <FORM  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <INPUT type='text' name='mail' placeholder="votre mail">
 <br>
