@@ -1,0 +1,12 @@
+{
+    "name": "redri/composer",
+    "require": {
+        "michelf/php-markdown": "^1.9"
+    },
+    "authors": [
+        {
+            "name": "redlafougere",
+            "email": "69895192+redlafougere@users.noreply.github.com"
+        }
+    ]
+}
