@@ -6,7 +6,7 @@ $_SESSION[ 'ID_user' ]  = 0;
 include_once("function_connect.php");
 include_once("header.php");
 echo entete2("login");
-
+include "navbar.php";
 
 if( $_POST && $_POST['mail'] != "" && $_POST['password']  ) 
 {
@@ -35,7 +35,11 @@ if( $_POST && $_POST['mail'] != "" && $_POST['password']  )
 }
 
 ?>
-
+<div>
+<?php
+echo nav("");
+?>
+</div>
 <body>    
     <div class="formulaire container">
         <FORM  method='POST' action="<?=$_SERVER['PHP_SELF']; ?>">

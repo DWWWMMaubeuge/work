@@ -1,8 +1,8 @@
 <?php
- include_once("function_connect.php");
-
+include_once("function_connect.php");
 include_once("header.php");
- echo entete3("comp");  
+echo entete3("comp"); 
+include "navbar.php";
 
 $bdd = new PDO("mysql:host=localhost;dbname=utilisateur;charset=utf8", "root", "");
 
@@ -90,7 +90,11 @@ if(isset($_POST['forminscription']))
 
 
 ?>
-
+<div>
+<?php
+echo nav("");
+?>
+</div>
 <body>
 
     <div class="formulaire container" >
@@ -135,6 +139,27 @@ if(isset($_POST['forminscription']))
         </div>
       </div>
       </FORM>
+      <button class="g-recaptcha" 
+        data-sitekey="6LfdMvkZAAAAAI9Hy5j3u3CPYeONs8evuKh0xXE5" 
+        data-callback='onSubmit' 
+        data-action='submit'>Submit</button>
+    
+      <script>
+   function onSubmit(token) {
+     document.getElementById("demo-form").submit();
+   }
+ </script>
+     
+      <script>
+      function onClick(e) {
+        e.preventDefault();
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6LfdMvkZAAAAAI9Hy5j3u3CPYeONs8evuKh0xXE5', {action: 'submit'}).then(function(token) {
+              // Add your logic to submit to your backend server here.
+          });
+        });
+      }
+  </script>
     <?php
 
     if(isset($erreur3))
