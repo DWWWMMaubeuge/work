@@ -40,6 +40,7 @@ class TourismeController extends AbstractController
      * @Route("/phpinfo", name="phpinfo")
      */
     public function phpinfo(): Response{
+    
         // Pour voir la version de php utilisé par symfony.
         return new Response('<html><body>'.phpinfo().'</body></html>');
         
