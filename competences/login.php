@@ -25,15 +25,13 @@ $liste_question = array(
 session_start();
 $_SESSION[ 'ID_user' ]  = 0;
 
-<<<<<<< HEAD
+
 # Sélection d'une question à poser au hasard
 $id_question_posee = array_rand($liste_question);
  
 # Mémorisation de la question posée à l'utilisateur dans la session
 $_SESSION['captcha']['id_question_posee'] = $id_question_posee;
-=======
 
->>>>>>> main
 
 if(     isset($_POST)               && 
         isset($_POST['mail'])       &&       
