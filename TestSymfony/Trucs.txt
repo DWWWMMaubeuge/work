@@ -1,2 +1,5 @@
 tuto :
     - https://www.grafikart.fr/tutoriels/presentation-1064
+
+
+-lecture d'information et tuto
