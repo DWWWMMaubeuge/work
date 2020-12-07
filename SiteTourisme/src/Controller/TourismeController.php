@@ -41,7 +41,7 @@ class TourismeController extends AbstractController
      */
     public function phpinfo(): Response{
     
-        // Pour voir la version de php utilisé par symfony.
+        // Pour voir la version de php utilisée par symfony.
         return new Response('<html><body>'.phpinfo().'</body></html>');
         
     }
