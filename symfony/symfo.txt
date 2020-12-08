@@ -1,75 +1,39 @@
-******Création d'applications Symfony ¶ Ouvrez votre terminal de console et exécutez l'une de ces commandes pour créer une nouvelle application Symfony:*****
+RESUMÉ projet symfo
 
-composer create-project symfony/website-skeleton 
+- installer composer
 
+- composer      create-project symfony/website-skeleton leNomDeMonProjet "4.4.*"
 
-****Exécution des applications Symfony ¶ En production, vous devez installer un serveur Web comme Nginx ou Apache et le configurer pour exécuter Symfony . Cette méthode peut également être utilisée si vous n'utilisez pas le serveur Web local Symfony pour le développement.******
+- rentrer dans le projet avec : cd leNomDeMonProjet
 
-*****Cependant, pour le développement local, le moyen le plus pratique d'exécuter Symfony est d'utiliser le serveur Web local fourni par le symfonybinaire. Ce serveur local fournit entre autres la prise en charge de HTTP / 2, des requêtes simultanées, TLS / SSL et la génération automatique de certificats de sécurité.******
-
-******Ouvrez votre terminal de console, accédez à votre nouveau répertoire de projet et démarrez le serveur Web local comme suit:*****
-
- cd my-project/
- symfony server:start
+- configurer le fichier .env pour la connexion à la BDD
 
 
+- créer un controller : console make:controller TotoController
+  le controlleur gère la reponse à une route 
 
- ******Configurer un projet Symfony existant ¶
-******En plus de créer de nouveaux projets Symfony, vous travaillerez également sur des projets déjà créés par d'autres développeurs. Dans ce cas, il vous suffit d'obtenir le code du projet et d'installer les dépendances avec Composer. En supposant que votre équipe utilise Git, configurez votre projet avec les commandes suivantes:******
-
-
- cd projects/
- git clone ...
-
-
- cd my-project/
- composer install
+- créer des routes dans le fichier config/routes.yaml
+  (attention le yaml est sensible à l'indentation)
+  ex :
+    pageAccueil:
+        path: /accueil
+        controller: App\Controller\TotoController::accueilTraitement
 
 
-
- *****Installer des packages ¶*****
-
- cd my-project/
- composer require logger
+- créer des méthodes qui se chargeront du traitement de la route. 
+  Dans le repertoire src/controller/TotoController.php
+  Le plus smple étant de partir d'un copier coller de la méthode index présente par défault dans le controller
 
 
- 
+RESUMÉ possibilités TWIG
 
+    Vos pages TWIG peuvent être dérivées d'une page de base
 
+    {# ce text est un commentaire #}
 
+    faire apparaitre la variable {{ var }} 
 
- L’installeur symfony¶
-Pour créer une application web traditionnelle :
-
-symfony new --full my_project
-Pour créer une app plus légère comme un microservice, une app console ou une API :
-
-symfony new my_project
-Pour installer la version LTS courante :
-
-symfony new my_project --version=lts
-Pour installer la dernière version stable :
-
-symfony new my_project --version=stable
-Pour installer la version de développement :
-
-symfony new my_project --version=next
-et pour installer une version spécifique :
-
-symfony new my_project --version=4.4
-Avec composer :¶
-Pour créer une application web traditionnelle (ici en version 4.4) :
-
-composer create-project symfony/website-skeleton my_project ^4.4.0
-Pour créer une app plus légère comme un microservice, une app console ou une API (version 4.4 ici):
-
-composer create-project symfony/skeleton my_project ^4.4.0
-Squellette d’application Symfony :¶
-Créons un répertoire de travail mvc-sf dans votre dossier Web, par exemple www ou ~/www (ou ~/public_html) si on utilise user_dir d’Apache ou plus simplement n’importe où si on utilise le serveur Web embarqué de PHP ou celui fourni par Symfony.
-
-et créons la trame d’une application Symfony (sf) de type microservice à l’aide de symfony :
-
-symfony new hello-sf
-ou à l’aide de composer :
-
-composer create-project symfony/skeleton hello-sf
+    {%  qquChose  %}  ce bloc permet de gérer les emboitements de nos pages
+        - include
+        - substitution de bloc
+        - héritage de page
