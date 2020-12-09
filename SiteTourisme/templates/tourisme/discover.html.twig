@@ -3,32 +3,35 @@
 {% block title %}Fantastic Journeys / Decouverte{% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{asset('css/discover.css')}}">
+  <link rel="stylesheet" href="{{ asset('css/discover.css') }}">
 {% endblock %}
 
 {% block navbar %}
-    <nav class="navbar fixed-top navbar-expand-sm  navbar-dark ">
-        <ul class="navbar-nav container">
-            <li class="nav-item" style="margin-left:-20px;font-size:30px">
-            <a class="nav-link" href="{{path('home')}}">Fantastic Journeys</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="{{path('home')}}">ACCUEIL</a>
-            </li>
-            <li class="nav-item">
-            <span class="nav-link clickable" onclick="goToServices()">SERVICES</span>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">A PROPOS</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">CONTACT</a>
-            </li>
-        </ul>
-    </nav>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="{{ path('home') }}">Fantastic Journeys</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav container">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('home') }}">ACCUEIL</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{{ path('discover') }}">DECOUVRIR</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">SERVICES</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('contact') }}">CONTACT</a>
+          </li>
+      </ul>
+    </div>
+  </nav>
 {% endblock %}
 
-{% block body %}
+{% block content %}
         <main role="main">
       <div class="jumbotron my-5">
         <div class="container">
@@ -148,16 +151,12 @@
     </a>
   </div>
 </div>
-
 </section>
-
-
-<hr>
-    </main>
+</main>
 {% endblock %}
 
 {% block footer %}
-    <section id="footer">
+    <footer id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
@@ -174,9 +173,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </footer>
 {% endblock %}
 
 {% block javascripts %}
-<script src="{{asset('scripts/discover.js')}}"></script>
+  <script src="{{asset('scripts/discover.js')}}"></script>
 {% endblock %}

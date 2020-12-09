@@ -2,12 +2,16 @@
 
 {% block title %}Fantastic Journeys{% endblock %}
 
-{% block body %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+{% endblock %}
+
+{% block content %}
     <div class="snowfall" id="snowfall">
 		<div class="info bg-dark opacity-4 px-5">
 			<h1>Fantastic Journeys</h1>
 			<p>Le monde comme vous ne l'avez jamais vu.</p>
-            <button type="button" class="btn btn-primary"><a class="text-white" href="{{path('decouvrir')}}">Découvrir</a></button>
+            <a class="text-white clickable" href="{{path('discover')}}"><button type="button" class="btn btn-primary">Découvrir</button></a>
 		</div>
 	</div>
 {% endblock %}

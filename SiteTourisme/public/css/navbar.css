@@ -1,0 +1,14 @@
+.nav-link{
+    color:black;
+    background-color: #4D4D4D;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+nav{
+    background-color: #4D4D4D;
+}
+
+#topnav{
+    background-color: #F8F9FA;
+}

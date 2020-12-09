@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fantastic Journeys / Contact{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{{ path('home') }}">Fantastic Journeys</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav container">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}">ACCUEIL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('discover') }}">DECOUVRIR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">SERVICES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('contact') }}">CONTACT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+<main role="main">
+    <div class="container mx-auto bg-info px-0 py-2" style="margin-top: 100px;">
+		<div class="container">
+            {{ form_start(formContact) }}
+            {{form_widget(formContact) }}
+            <input type="submit" value="Envoyer mon message" />
+            {{ form_end(formContact) }}
+		</div>
+	</div>
+</main>
+{% endblock %}
+
+{% block footer %}
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                    <ul class="list-unstyled list-inline social text-center">
+                        <li class="list-inline-item"><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row text-warning">
+                <div class="col-12 text-center">
+                    <span class="text-center">© Copyright 2020 The-Evil-Fox</span> 
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

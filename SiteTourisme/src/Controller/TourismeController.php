@@ -4,9 +4,15 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Entity\Carrousel;
+use App\Entity\Contact;
+use App\Form\ContactType;
 use App\Repository\CarrouselRepository;
+use Doctrine\ORM\EntityManagerInterface;
 
 class TourismeController extends AbstractController
 {
@@ -15,7 +21,7 @@ class TourismeController extends AbstractController
      */
     public function index(): Response
     {
-        // affichage de la page.
+        // affichage de la page
         return $this->render('tourisme/index.html.twig', [
             'controller_name' => 'TourismeController',
         ]);
@@ -23,7 +29,7 @@ class TourismeController extends AbstractController
     }
 
     /**
-     * @Route("/discover", name="decouvrir")
+     * @Route("/discover", name="discover")
      */
     public function discover(CarrouselRepository $repo): Response
     {
@@ -37,11 +43,36 @@ class TourismeController extends AbstractController
     }
 
     /**
+     * @Route("/contact", name="contact")
+     */
+    public function contact(Contact $contact = null, Request $request): Response {
+        
+        $contact = new Contact();
+
+        $form = $this->createForm(ContactType::class, $contact);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $contact->setCreatedAt(new \DateTime());
+            dump($contact);
+            $insertMessage = $this->getDoctrine()->getManager();
+            $insertMessage->persist($contact);
+            $insertMessage->flush();
+        }
+
+        return $this->render('tourisme/contact.html.twig',[
+            'controller_name' => 'TourismeController',
+            'formContact' => $form->createView()
+        ]);
+        
+    }
+
+    /**
      * @Route("/phpinfo", name="phpinfo")
      */
     public function phpinfo(): Response{
-    
-        // Pour voir la version de php utilisée par symfony.
+        // Pour voir la version de php utilisé par symfony.
         return new Response('<html><body>'.phpinfo().'</body></html>');
         
     }
