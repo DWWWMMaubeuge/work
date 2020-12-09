@@ -1,8 +1,11 @@
 <?php
 include_once("function_connect.php");
+require_once('recaptcha/autoload.php');
 include_once("header.php");
 echo entete3("comp"); 
 include "navbar.php";
+
+
 
 $bdd = new PDO("mysql:host=localhost;dbname=utilisateur;charset=utf8", "root", "");
 
@@ -11,6 +14,22 @@ $req2 = $bdd->prepare("SELECT count(*) AS nb FROM users WHERE mail=:mail");
 
 if(isset($_POST['forminscription']))
         {
+          //emplacement captchat 
+          if(isset($_POST['g-Recaptcha-Response'])) 
+                                { 
+                                $recaptcha = new \ReCaptcha\ReCaptcha('6Ldic_8ZAAAAAMLkZetRc1egNKgQKl4FjELFtgJI');
+                                    $resp = $recaptcha ->verify($_POST['g-Recaptcha-Response'] ) ;
+                                        if ($resp->isSuccess()) {
+                                            echo" ('Captcha Valide')";
+                                                        // Verified!
+                                        }elseif($resp->getErrorCodes()){
+                                        
+                                            echo"('Captcha Invalide')";
+                                        }else{
+                                            var_dump ('captcha non rempli');
+                                        }
+                                } 
+
             if(!empty($_POST['name']) AND !empty($_POST['surname']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['password']) AND !empty($_POST['password2']) &&( $_POST && isset($_POST['name']) && isset($_POST['surname'])  && isset($_POST['mail']) && isset($_POST['mail2'])  && isset($_POST['password']) && isset($_POST['password2'])  ) )
              
             {
@@ -45,9 +64,9 @@ if(isset($_POST['forminscription']))
                                 ));
             
                                 $bdd = null;
+                                
                             
                                 
-                                /* header( "location:login.php"); */
                                 $dest = $mail;
                                 $sujet = "Email de test";
                                 $corp = "Salut ceci est un email de test envoyer par un script PHP, Félicitation vous venez de vous inscrire ! Email envoyé avec succès à votre adresse mail... <a href='http://localhost/xavier/work/projet_perso/login.php'>cliquez ici pour vous connectez !</a>!!!";
@@ -101,65 +120,46 @@ echo nav("");
       <FORM  method='POST' action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <div class="">
           <div  class="inscr">
-          <h1>Inscription</h1>
-            <div class="pad">
-                <label class="" for="name">Prénom :</label>
-                <INPUT type='text' name='name' placeholder="saisir votre nom ici" id="name">
-            </div>
-            <div class="pad">
-              <label class="" for="surname">Nom :</label>
-              <INPUT type='text' name='surname' placeholder=" saisir votre prenom" id="surname">
-            </div>
-            <div class="pad">
-                <label  class="" for="mail">Email :</label>
-                <INPUT type='email' name='mail' placeholder="saisir votre mail" id="mail">
-            </div>
-            <div class="pad">
-                <label  class="" for="mail2">Email : </label>
-                <INPUT type='email' name='mail2' placeholder="veuillez confirmer votre mail" id="mail2">
-            </div>
-            <div class="pad">
-                <label  class="" for="password">Mot de Passe :</label>
-                <INPUT type='password' name='password' placeholder="saisir votre mot de passe" id="password">
-            </div>
-            <div class="pad">
-                <label  class=""  for="password2">confirmation Mot de Passe :</label>
-                <INPUT type='password' name='password2' placeholder="veuillez confirmer passe" id="password2">
-            </div>
-                <div class="enter">
-                <INPUT type='submit' name='forminscription' value="Je m'inscris !">
-            </div>
-            <div class="a">
-                <a href="login.php">déja un compte? Connectez-vous ici !</a>
-            </div>
-            <div class="a">
+            <h1>Inscription</h1>
+                <div class="pad">
+                  <label class="" for="name">Prénom :</label>
+                  <INPUT type='text' name='name' placeholder="saisir votre nom ici" id="name">
+                </div>
+                <div class="pad">
+                  <label class="" for="surname">Nom :</label>
+                  <INPUT type='text' name='surname' placeholder=" saisir votre prenom" id="surname">
+                </div>
+                <div class="pad">
+                    <label  class="" for="mail">Email :</label>
+                    <INPUT type='email' name='mail' placeholder="saisir votre mail" id="mail">
+                </div>
+                <div class="pad">
+                    <label  class="" for="mail2">Email : </label>
+                    <INPUT type='email' name='mail2' placeholder="veuillez confirmer votre mail" id="mail2">
+                </div>
+                <div class="pad">
+                    <label  class="" for="password">Mot de Passe :</label>
+                    <INPUT type='password' name='password' placeholder="saisir votre mot de passe" id="password">
+                </div>
+                <div class="pad">
+                    <label  class=""  for="password2">confirmation Mot de Passe :</label>
+                    <INPUT type='password' name='password2' placeholder="veuillez confirmer passe" id="password2">
+                </div>
+                <div class="a">
+                  <a href="login.php">déja un compte? Connectez-vous ici !</a>
+                </div>
+                <div class="a">
                   <a href="accueil.php">pas maintenant? retour au menu</a>
-            </div>
-          
+                </div>   
+                <div class="g-recaptcha" id="captcha" data-theme="dark" data-sitekey="6Ldic_8ZAAAAAEAwVklRVvwMYWCC916BOiDU0h4j">
+                 </div>
+                <div class="enter">
+                  <input type='submit'class="enter" name='forminscription' value="Je m'inscris !">
+                </div>
+          </div>
         </div>
-      </div>
       </FORM>
-      <button class="g-recaptcha" 
-        data-sitekey="6LfdMvkZAAAAAI9Hy5j3u3CPYeONs8evuKh0xXE5" 
-        data-callback='onSubmit' 
-        data-action='submit'>Submit</button>
-    
-      <script>
-   function onSubmit(token) {
-     document.getElementById("demo-form").submit();
-   }
- </script>
      
-      <script>
-      function onClick(e) {
-        e.preventDefault();
-        grecaptcha.ready(function() {
-          grecaptcha.execute('6LfdMvkZAAAAAI9Hy5j3u3CPYeONs8evuKh0xXE5', {action: 'submit'}).then(function(token) {
-              // Add your logic to submit to your backend server here.
-          });
-        });
-      }
-  </script>
     <?php
 
     if(isset($erreur3))

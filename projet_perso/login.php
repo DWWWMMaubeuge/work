@@ -54,8 +54,8 @@ echo nav("");
                         <label class="" for="password">Mot de Passe :</label>
                         <input type="password" placeholder="Password" name="password" value="">
                     </div>
-                    <div class="enter">
-                        <input type="submit"  value="Je me connecte">
+                    <div class="pad1">
+                        <input type="submit" class="pad1"  value="Je me connecte">
                     </div>
                     <div class="a">
                         <a href="inscription.php">pas encore de compte? cliquez ici !</a>

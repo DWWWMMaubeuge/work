@@ -20,14 +20,14 @@ Nicolas
 <div class="dropdown-divider"></div>
 <a class="dropdown-item" href="#">A propos</a>
 <div class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Jeux</a>      
+<a class="dropdown-item" href="https://cauliernicolas.000webhostapp.com/jeux.php"target="_blank">Jeux</a>      
 </div>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="#">New</a>
+<a class="nav-link" href="accueil.php">New</a>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="#">Formulaire</a>
+<a class="nav-link" href="https://cauliernicolas.000webhostapp.com/"target="_blank">réalisation</a>
 </li>
 <li class="nav-item">
 <a class="nav-link" href="#">CV</a>
@@ -46,6 +46,7 @@ Mon Compte
 
 <a href="#" class="fa fa-user"></a>   
 <a href="#" class="fa fa-twitter"></a>
+<a href="https://www.twitch.tv/steelux2610"target="_blank" class="fa fa-twitch"></a>
 <a href="https://www.youtube.com/channel/UC7UyFqncumbBrV0Oa063KnQ?view_as=subscriber"target="_blank" class="fa fa-youtube"></a>
 <a href="logOut.php" class="fa fa-sign-out"></a>
 
@@ -79,14 +80,14 @@ Nicolas
 <div class="dropdown-divider"></div>
 <a class="dropdown-item" href="#">A propos</a>
 <div class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Jeux</a>      
+<a class="dropdown-item" href="https://cauliernicolas.000webhostapp.com/jeux.php"target="_blank">Jeux</a>      
 </div>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="#">New</a>
+<a class="nav-link" href="accueil.php">Accueil</a>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="#">Formulaire</a>
+<a class="nav-link" href="https://cauliernicolas.000webhostapp.com/"target="_blank">realisation</a>
 </li>
 <li class="nav-item">
 <a class="nav-link" href="#">CV</a>
@@ -106,7 +107,7 @@ connexion
 </ul> 
 <a href="#" class="far fa-sign-in-alt"></a>
 <a href="#" class="fa fa-user"></a>  
-<a href="#" class="fa fa-twitch"></a>
+<a href="https://www.twitch.tv/steelux2610"target="_blank" class="fa fa-twitch"></a>
 <a href="#" class="fa fa-twitter"></a>
 <a href="https://www.youtube.com/channel/UC7UyFqncumbBrV0Oa063KnQ?view_as=subscriber"target="_blank" class="fa fa-youtube"></a>
 

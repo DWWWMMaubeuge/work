@@ -22,7 +22,7 @@ input{
   margin-top: 100px;
   margin-bottom: 220px;
   border-radius:25px;
-  max-width:600px;
+  max-width:700px;
  
  
 }
@@ -33,23 +33,42 @@ body {
 
 }
  .enter{
-   margin-top: 20px;
-   padding-right: 70px;
+  
+  padding-top:20px;
+  padding-bottom:40px;
+  width: 250px;
+  height:60px;
+  padding-right: 70px;
+  margin: 0 auto;
+  margin-bottom:60px;
 }
 
 .a{
-  margin-top: 20px;
+  
+  padding-top:40px;
   padding-right: 70px;
+  
   
 }
 a{
     color: white;
+    width: 450px;
+  margin: 0 auto;
 }
 .inscr{
 text-align:right;
 }
 .pad{
-    padding-right: 70px;
+  padding-right: 70px;
+  margin: 0 auto;
+}
+.pad1{
+  margin-top:30px;
+  padding-bottom:30px;
+  padding-right: 70px;
+  margin-bottom:20px;
+  height:60px;
+  
 }
 h1{
     padding-right: 90px;
@@ -66,8 +85,38 @@ h3{
 }
 .erreur{
   color: rgb(70, 21, 21);
+  font-size:25px;
 }
 p{
-  font-size:20px;
+  font-size:22px;
   color: blue;
+}
+.g-recaptcha {
+  width: 300px;
+  margin: 0 auto;
+  padding-right: 70px;
+  opacity:0.7 ;
+  border-radius: 20px;
+  margin-top:60px;
+  margin-bottom:20px;
+}
+.erreur1{
+  color: rgb(70, 21, 21);
+  font-size:25px;
+}
+.erreur2{
+  color: rgb(70, 21, 21);
+  font-size:25px;
+}
+.erreur3{
+  color: rgb(70, 21, 21);
+  font-size:25px;
+}
+.erreur4{
+  color: rgb(70, 21, 21);
+  font-size:25px;
+}
+.erreur5{
+  color: rgb(70, 21, 21);
+  font-size:25px;
 }
