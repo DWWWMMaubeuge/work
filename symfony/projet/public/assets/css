@@ -1,0 +1,51 @@
+Nav {
+	fond-couleur:  #d4b672;
+	fond de marge: 30px ;
+}
+
+/* carte d’article */
+. article-carte {
+	fond de marge: 30px ;
+}
+
+. article-carte h2 {
+	taille de police: 1,5rem ;
+	marge: 0;
+	dessus de marge: 10px ;
+	fond de marge: 5px ;
+}
+
+. article-carte h2 a {
+	couleur:  #d4b672;
+}
+
+. article-carte. carte-image {
+	taille de fond: couverture !important;
+	position de fond: centre !important;
+	arrière-plan-répétition: non-répétition !important;
+	hauteur: 300px ;
+	position: relative;
+	z-index: 1;
+	couleur:  #fff;
+	affichage: flex;
+	flex-direction: colonne;
+	justifier-contenu: flex-end;
+	rembourrage: 20px ;
+}
+
+. article-carte. carte-image::après {
+	contenu: '';
+	position: absolue;
+	haut: 0;
+	àgauche : 0;
+	largeur: 100% ;
+	hauteur: 100% ;
+	fond-couleur: rgba(0, 0, 0, .7);
+	z-index: -1;
+}
+
+. article-carte. image-carte h2 a {
+	taille de police: 2.2rem ;
+	couleur:  #fff;
+}
+ pour p
