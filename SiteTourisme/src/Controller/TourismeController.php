@@ -60,7 +60,7 @@ class TourismeController extends AbstractController
             $insertMessage->persist($contact);
             $insertMessage->flush();
         }
-
+	// Affichage du formulaire
         return $this->render('tourisme/contact.html.twig',[
             'controller_name' => 'TourismeController',
             'formContact' => $form->createView()
