@@ -46,7 +46,7 @@ class TourismeController extends AbstractController
      * @Route("/contact", name="contact")
      */
     public function contact(Contact $contact = null, Request $request): Response {
-        
+        // Creation du formulaire
         $contact = new Contact();
 
         $form = $this->createForm(ContactType::class, $contact);
