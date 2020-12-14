@@ -1,4 +1,5 @@
-RESUMÉ pour créer un projet sur symfony
+RESUMÉ 
+Création d'un projet sur symfony
 
 Installer composer et symfony
 une fois l'installation terminé...
@@ -12,21 +13,30 @@ Insérez la ligne de commande suivante dans le terminal....
 après quelques secondes de téléchargement...
 Rentrer dans le projet en restant sur la même fenêtre en insérant la commande
                                         $ cd leNomDeMonProjet
-Pour démarrer le serveur, à la suite insérer la commande:     
-                                        $ php bin/console server:start
-Si vous avez une erreur qui vous dit que la commande server:start n'est pas défini, il faut donc installer un serveur de développement en faisant la commande
-                                        $ composer req server
-Vous pouvez maintenant essayer la commande 
-                                        $ php bin/console server:start 
-                                        ou 
-                                        $ php bin/console server:run
+Pour démarrer le serveur, à la suite insérer la commande:
+	                                $php -S localhost:8000 -t public
+                                            OR 
+	                                $composer require symfony/web-server-bundle --dev ^4.4.2
+                                        
 Normalement maintenant, ça marche. 
-Ouvrez donc votre navigateur et naviguer sur l’adresse http://127.0.0.1:8000.
+Ouvrez donc votre navigateur et naviguer sur l’adresse http://localhost:8000.
 
+Maintenant,configurer le fichier .env pour la connexion à la BDD
 
-Configurer le fichier .env pour la connexion à la BDD
-Généralement la ligne 33 est à modifié elle ressemble à celle ci --> DATABASE_URL="postgresql://root@127.0.0.1:5432/blog?serverVersion=13&charset=utf8"
+DATABASE_URL="mysql://root@localhost:3306/nomdevotrebasededonnée"
+
 Modifié donc cette ligne, afin qu'elle s'adapte bien à votre base de donnée.
+Maintenant...
+Pour créer une base de donnée en ligne de commande: $php bin/console doctrine:database:create
+
+Maintenant il faut créer des routes :
+
+- créer des routes dans le fichier config/routes.yaml
+  (attention le yaml est sensible à l'indentation)
+  ex :
+    pageAccueil:
+        path: /accueil
+        controller: App\Controller\NomController::index
 
 Après cela, créer un controller en tapant la commande : 
                                         $ php bin/console make:controller LeNomdeMonController
@@ -35,12 +45,6 @@ Un petit carré vert inscrit Success ! Apparaît...
                                   là, 2 fichiers ont été créés, LeNomDeMonController.php dans src/Controller et index.html.twig dans templates/leNomDeMonProjet
 
 
-- créer des routes dans le fichier config/routes.yaml
-  (attention le yaml est sensible à l'indentation)
-  ex :
-    pageAccueil:
-        path: /accueil
-        controller: App\Controller\TotoController::accueilTraitement
 
 
 - créer des méthodes qui se chargeront du traitement de la route. 
