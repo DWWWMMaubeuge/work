@@ -56,7 +56,7 @@ echo "            </div>\n";
 };
 
 
-/*
+
 function NavBar(){
 echo $str =<<<EOL
 
@@ -73,5 +73,5 @@ echo $str =<<<EOL
 EOL;
     
 }
-*/
+
 ?>
