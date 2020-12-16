@@ -44,7 +44,7 @@ echo $str =<<<ENT
 				<section id="container">
 			<header>
 	<span class='nav'>Menu</span>
-	<div class='top_bar'><ul><li class="firstLi"><a class="selected" href="index.php">Accueil</a></li><li class="firstLi"><a href="cabinet-psychologue-maubeuge.php">ODC Conseil</a></li><li class="firstLi"><a href="liens-utiles.php">Liens utiles </a></li><li class="firstLi"><a href="actualites_al.html">Actualités</a></li><li class="firstLi"><a href="contact.php">Contact</a></li><li class="firstLi"><a href="plan.php">Plan d'accès</a></li></ul></div>	
+	<div class='top_bar'><ul><li class="firstLi"><a class="selected" href="index.php">Accueil</a></li><li class="firstLi"><a href="cabinet-psychologue-maubeuge.php">ODC Conseil</a></li><li class="firstLi"><a href="liens-utiles.php">Liens utiles </a></li><li class="firstLi"><a href="actualites_al.php">Actualités</a></li><li class="firstLi"><a href="contact.php">Contact</a></li><li class="firstLi"><a href="plan.php">Plan d'accès</a></li></ul></div>	
 	<section>
 				<a href="/" class="logo">
 			<img src="images/logo.png" alt="Psychologue Maubeuge - logo ODC Conseil" />

@@ -1,3 +1,7 @@
+<?php
+include "entete.php";
+Entete("Troubles psychiques Maubeuge – ODC Conseil, psychologue Rousies");
+?>
 <!DOCTYPE html>
 <html class="les-troubles">
 <head>
@@ -39,7 +43,7 @@
 	<span class='nav'>Menu</span>
 	<div class='top_bar'><ul><li class="firstLi"><a href="/">Accueil</a></li><li class="firstLi"><a href="cabinet-psychologue-maubeuge.php">ODC Conseil</a></li><li class="firstLi"><a href="liens-utiles.php">Liens utiles </a></li><li class="firstLi"><a href="actualites_al.html">Actualités</a></li><li class="firstLi"><a href="contact.php">Contact</a></li><li class="firstLi"><a href="plan.php">Plan d'accès</a></li></ul></div>	<section>
 				<a href="/" class="logo">
-			<img src="gifs/logo.png" alt="Psychologue Maubeuge - logo ODC Conseil" />
+			<img src="images/logo.png" alt="Psychologue Maubeuge - logo ODC Conseil" />
 			<span class="baseline">Cabinet de Psychologie</span>
 		</a>
         <div class="container-infos">
@@ -54,7 +58,7 @@
                                 <p class="bouton-principal">
                     <a href="rappel-telephonique.php" data-fancybox-type="iframe" rel="lightbox2">Demandez à être rappelé</a>
                 </p>
-                <a id="facebook" href="https://www.facebook.com/psychologuemaubeuge/" target="_blank"><img src="gifs/fb.png" alt="Psychologue Maubeuge"></a>
+                <a id="facebook" href="https://www.facebook.com/psychologuemaubeuge/" target="_blank"><img src="images/fb.png" alt="Psychologue Maubeuge"></a>
             </div>
         </div>    
 	</section>
@@ -123,7 +127,7 @@
 <footer>
 	<section>
 		<a href="/" class="logo">
-			<img src="gifs/logo-footer.png" alt="Cabinet psychologue Maubeuge - ODC Conseil" />
+			<img src="images/logo-footer.png" alt="Cabinet psychologue Maubeuge - ODC Conseil" />
 			<span class="baseline">Cabinet de Psychologie</span>
 		</a>
 				    <a href="https://www.google.fr/maps/place/208+Rue+de+Maubeuge,+59131+Rousies/@50.2683657,3.979587,17z/data=!3m1!4b1!4m5!3m4!1s0x47c269cddd1da6b1:0xa35c997b703095b7!8m2!3d50.2683657!4d3.9817757" class="adresse_footer" target="_blank">
