@@ -1,0 +1,180 @@
+https://www.kaherecode.com/tutorials
+https://www.kaherecode.com/tutorial/le-guide-du-debutant-sur-symfony4
+
+
+https://getcomposer.org/
+https://getcomposer.org/download/
+	php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+	php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+	php composer-setup.php
+	php -r "unlink('composer-setup.php');"
+
+    composer      create-project symfony/website-skeleton leNomDEMonTrojet "4.4.*"
+php composer.phar create-project symfony/website-skeleton blog "4.4.*"
+
+php composer.phar create-project symfony/website-skeleton test "4.4.*"
+
+.env
+	DATABASE_URL="mysql://symfo:symfo@localhost:3306/symf_blogT"
+
+	cd blog/
+	php -S localhost:8000 -t public
+OR 
+	composer require symfony/web-server-bundle --dev ^4.4.2
+
+
+CREER ROUTE
+
+	routes.yaml
+	homepage:
+	    path: /
+	    controller: App\Controller\BlogController::index
+	
+	php bin/console make:controller BlogController
+
+php bin/console doctrine:database:create
+php bin/console make:entity
+
+
+php bin/console doctrine:schema:update --dump-sql
+php bin/console doctrine:schema:update --force
+
+php bin/console make:entity --regenerate
+
+php bin/console make:form
+
+
+TEST
+php composer.phar require --dev symfony/phpunit-bridge
+composer require --dev symfony/phpunit-bridge
+
+
+
+RESUMÉ projet symfo
+
+- installer composer
+
+- composer      create-project symfony/website-skeleton leNomDeMonProjet "4.4.*"
+
+- rentrer dans le projet avec : cd leNomDeMonProjet
+
+- configurer le fichier .env pour la connexion à la BDD
+
+
+- créer un controller : console make:controller TotoController
+  le controlleur gère la reponse à une route 
+
+- créer des routes dans le fichier config/routes.yaml
+  (attention le yaml est sensible à l'indentation)
+  ex :
+	pageAccueil:
+	    path: /accueil
+	    controller: App\Controller\TotoController::accueilTraitement
+
+
+- créer des méthodes qui se chargeront du traitement de la route. 
+  Dans le repertoire src/controller/TotoController.php
+  Le plus smple étant de partir d'un copier coller de la méthode index présente par défault dans le controller
+
+
+RESUMÉ possibilités TWIG
+
+	Vos pages TWIG peuvent être dérivées d'une page de base
+
+	{# ce text est un commentaire #}
+
+	faire apparaitre la variable {{ var }} 
+
+	{%  qquChose  %}  ce bloc permet de gérer les emboitements de nos pages
+		- include
+		- substitution de bloc
+		- héritage de page
+
+
+
+
+
+RESUMÉ créer un formulaire
+
+	la data base doit être créee
+		php bin/console doctrine:database:create
+
+	creer une ENTITY 
+		php bin/console make:entity
+
+	reer la table associéé à l'ENTITY 
+		php bin/console doctrine:schema:update --dump-sql
+		php bin/console doctrine:schema:update --force
+
+
+	creer le formulaire 
+		php bin/console make:form
+
+	creer une route dans le fichier routes.yaml qui va aller sur la page du formulaire 
+		addBillet:
+		    path: /addBillet
+		    controller: App\Controller\TotoController::addBillet
+
+
+	creer dans le controleur la méthode pointée par la routes
+
+		- ajouter les fichiers USE de l'ENTITY et du FORM 
+
+		    public function addBillet(Request $request): Response
+		    {
+		    	// créer un billet vierge
+		        $billet = new Billet();
+
+		        // créer le formulaire et je l'associe avec le billet vierge
+		        $formulaire = $this->createForm(BilletType::class, $billet);
+
+		        // j'associe au formulaire un handle sur les données POST
+		        $formulaire->handleRequest($request);
+
+		        // je check si le request est un type post
+		        if ( $request->isMethod('POST')) 
+		        {
+
+		        	// check si le formulaire a été soumis  et si les champs sont valables
+		            if ( $formulaire->isSubmitted() && $formulaire->isValid()) 
+		            {
+		            	// je demande à doctrine un handle pour manager la BDD
+		                $entityManager = $this->getDoctrine()->getManager();
+
+		                // verification des champs qui contiennent de l'objet Billet 
+		                $entityManager->persist( $billet );
+
+		                // je descend toutes les donnée dans la base 
+		                $entityManager->flush();
+		            }
+		        }
+
+		        // affichage de la page par TWIG 
+		        return $this->render('toto/addBillet.html.twig', 
+		            [ 
+		                'formulaire' => $formulaire->createView()
+		            ]);
+		        //return new Response( "<h2>bienvenue</h2>" );
+		    }
+
+
+
+		creer le fichier TWIG
+			<H1>ajouter un billet</H1>
+
+			{{ form( formulaire ) }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
