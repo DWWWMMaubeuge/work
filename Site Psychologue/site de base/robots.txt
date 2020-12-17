@@ -1,0 +1,5 @@
+sitemap: https://www.odc-conseil.fr/sitemap.xml
+
+User-agent: *
+Disallow: /rappel-telephonique.php
+Disallow: /ressources/ajax*

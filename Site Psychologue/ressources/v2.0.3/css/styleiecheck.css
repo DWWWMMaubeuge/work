@@ -1,0 +1,23 @@
+/********************************************************** Mise en forme de la detection de IE7 et Alerte de mise a jour du Navigateur ***/
+div#notification_bg {width:100%; height:100%; background:url(/ressources/v2.0.3/img/iecheck/popupiebg.png); position:fixed; top:0; left:0; z-index:200}
+div#notification {width:750px; height:500px; position:fixed; top:50%; left:50%; margin-left:-385px; margin-top:-260px; background:#fff; padding-bottom:20px; z-index:999; padding: 20px;font-family: Verdana, Geneva, sans-serif;}
+div#notification h2 {display: block;color: #349CCE;font-size: 24px;margin-bottom: 15px;border-bottom: 1px solid #349CCE;padding-bottom: 5px}
+div#notification p {font-size:16px; line-height:22px}
+div#notification strong{display: block;margin-bottom: 10px;font-weight: normal;color: #cc0000}
+div#notification #on_ie{display: block;width: auto;margin: 20px auto;background: url(/ressources/v2.0.3/img/iecheck/logo_ie.jpg) left center no-repeat;min-height: 150px;padding-left: 180px;overflow: hidden}
+div#notification #on_ie span{display: block;position: relative;margin:40px 0 0;float:left;width: 285px;}
+div#notification a.Navbutton {display:block; padding:5px 2%; float:left; margin: 10px 0 10px; position: relative}
+div#notification a.IE {background:#349CCE; color:#FFF; text-decoration:none}
+div#notification a.IE:hover {background:#247fab}
+div#notification #else{display: block;position: relative;width: 100%;font-size: 18px;color: #3e3e3e;border-bottom: 1px dashed #3e3e3e;padding-bottom: 3px;margin-bottom: 20px}
+div#notification #autres{display: block;position: relative;width: 100%;}
+div#notification #autres span{display: block;width: 50%;float:left;clear: none;text-align: center;font-size: 16px;color: #3e3e3e;background: url(/ressources/v2.0.3/img/iecheck/logo_chrome.jpg) center top no-repeat;}
+div#notification #autres span+span{background: url(/ressources/v2.0.3/img/iecheck/logo_firefox.jpg) center top no-repeat}
+div#notification #autres a.Navbutton{float: none;margin-top: 60px;width:58%;font-size: 15px}
+div#notification a.GC {background:#4db849; color:#FFF; text-decoration:none}
+div#notification a.GC:hover {background:#389535}
+div#notification a.FF {background:#ed9912; color:#FFF; text-decoration:none}
+div#notification a.FF:hover {background:#d3570d}	
+div#notification span.popupie_close {display:block; position:absolute; bottom:10px; right:10px;font-weight:bold; font-size:12px; cursor:pointer; color: #3e3e3e}
+div#notification span.popupie_close:hover{color: #349CCE}
+#frame{position: relative;float:left;width: 705px;display: block;margin-top: 30px;}

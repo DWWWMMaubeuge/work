@@ -1,0 +1,70 @@
+	<!DOCTYPE html
+	     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+	<head>
+		<meta name="Robots" content="NOINDEX">
+		<style type="text/css">
+			p{font-family: Arial, Helvetica, sans-serif; font-size:12px;}
+			h1{font-size:14px; text-align:center;}
+		</style>
+		<script rel="preload" as="script" src="/ressources/20121001/js/jquery.min.js"></script>
+	</head>
+
+	<body>
+	<h1>Mentions Légales</h1>
+
+<div id="contenu_mentions_legales">
+    <p>Nom du site : <a href="https://www.odc-conseil.fr" target="blank">www.odc-conseil.fr</a><br>
+    	Directeur de la publication : Mme Dessailly Coste Odile<br/>
+					Email : <script class="contact-odc-conseil-fr" type="text/javascript">
+//<![CDATA[
+var g4="";for(var j4=0;j4<467;j4++)g4+=String.fromCharCode(("=(9F,_cH1@[PZ3q4AW2,8|vzy^9n\\~X)m_(6i/;p+0ouw]:Vr<*StxglhY -sk!>57?=}{j.HR;YcHHR*_R*ZcHW!|l6V^0m>^i/n1h|P@l)!^u) kpm!{gi!~<6[igi:~h6q3u_9+l) {V,3toA]k683s<2k|si:]g_ 7:i:{xy!00iw|l_q\\r|Pm<2k|si:]g_ 7:i:{xy!00iw|l_q\\r89rh2-Zh8ohY8ny<Ha-69N=(9F-3cVa-3bWZZa-3QcZOB*_cN,_T05+,?u-N*ZT*/(9g;N-3OObbW^OCN,_T05+,?u-N*ZT*/(9g;NF-3QWOObbWXOCN,_T05+,?u-N*ZT*/(9g;N-3QXOObb\\OC,_T05+,?u-N*ZT*/(9g;N-3QYOOa;YQcy;905.T-964i/(9i6+,N*_dddW\\RN*_ddd^OLX[[R*_LX[[ODa,=(3N;YT:<):;9NVRWV^OO".charCodeAt(j4)-(8*8-26)+65-2)%(4*5+75)+-23+55);$(".contact-odc-conseil-fr:first").replaceWith(eval(g4))
+//]]>
+</script>		    </p>
+    <p>Adresse : 208 Rue de Maubeuge <br/>
+    	59131 - ROUSIES<br/>
+    	Tél : 06.11.57.62.84<br/>
+    	    		Forme juridique : Profession libérale<br/>
+    	    	    		Raison sociale : MME ODILE DESSAILLY COSTE<br/>
+    	    	    		SIRET : 52109194200024<br/>
+    	    	    	    	                    TVA Intracommunautaire : FR<br/>
+                	<div class="rgpd">    <h3 style="text-align:center">POLITIQUE DE CONFIDENTIALITE</h3>    <p>La présente politique de confidentialité est fondée sur le Règlement UE 2016/679 relatif à la protection des données (RGPD) ainsi que sur votre consentement éclairé. Elle a pour objectif de vous informer sur le traitement de vos données à caractère personnel.</p>    <p>Cette politique de confidentialité ne s'applique qu'aux renseignements recueillis par le présent site, bien que ce dernier puisse contenir des liens vers d'autres sites externes. Vous comprenez bien que nous ne pouvons vous garantir que ces sites appliquent la même politique que nous en matière de respect de la vie privée, c'est pourquoi nous vous engageons à prendre connaissance des politiques de confidentialité des sites web que vous seriez amené(e) à visiter à partir de celui-ci avant de remettre vos données personnelles.</p>    <p>Nous nous réservons la possibilité de modifier à tout moment cette politique de confidentialité, ces modifications entrant en vigueur immédiatement. Or, à chaque nouvelle utilisation du présent site, vous vous soumettez à la politique de confidentialité en vigueur.</p>    <p>Aussi, nous vous invitons à relire régulièrement cette page afin de maintenir votre consentement.</p>    <p><u>Quels renseignements sont collectés sur ce site ?</u></p>    <p>Lorsque vous visitez un site internet, vous demeurez anonyme. Les informations collectées au cours de votre navigations servent à analyser votre comportement sur ce site et l'usage que vous en avez afin d'améliorer votre expérience utilisateur.</p>    <p>Les autres données personnelles que nous collectons, tels que vos nom, prénom, adresse postale, numéro de téléphone ou adresse mail, ne sont collectées que si vous acceptez de nous les fournir, par exemple lorsque vous adhérez à notre newsletter, dans le cadre de la gestion de votre demande de devis ou si vous souhaitez être recontacté(e).</p>    <p>Nous nous engageons par ailleurs à ne recueillir que les informations strictement nécessaires au traitement de votre demande.</p>    <p><u>Pourquoi collectons-nous vos données personnelles ?</u></p>    <p>Nous collectons vos données personnelles afin de :</p>    <p>        <ul>            <li>Gestion de la relation client (devis, commande, achat, demande de renseignements...)</li>            <li>Suivre notre information (newsletter, ...)</li>        </ul>    </p>    <p><u>Comment vos données à caractère personnel sont-elles utilisées ?</u></p>    <p>Nous nous engageons à respecter la stricte confidentialité de vos données personnelles et de les utiliser uniquement pour les finalités pour lesquelles vous avez accepté de nous les communiquer. Toutefois, elles ne seront pas conservées plus longtemps que nécessaire, soit durant toute la durée de notre collaboration augmentée du délai de prescription légale. Après quoi, elles seront détruites.</p>    <p>Nous pouvons être amenés à les transférer à des tiers tels que notre prestataire informatique, notre hébergeur, ... Nous vous garantissons cependant qu'elles seront transférées selon un protocole sécurisé et traitées par ces derniers avec le plus grand soin et le maximum de sécurité.</p>    <p><u>Quels sont vos droits ?</u></p>    <p>Vous avez le droit de ne pas vouloir nous communiquer de données personnelles. Dans ce cas, vous pourrez naviguer sur ce site, cependant vous n'aurez pas accès à l'ensemble de ses fonctionnalités (adhérer à la newsletter par exemple, demander à être recontacté(e), ...)</p>    <p>Vous avez un droit d'accès, de correction et de retrait de vos données personnelles. Vous pouvez exercer ce droit, par exemple en les mettant à jour, en nous demandant de les rectifier, de les compléter, de les mettre à jour, de les verrouiller ou en nous demandant à ce que vos renseignements ne figurent plus sur notre liste de diffusion, en nous contactant à l'adresse suivante <script class="contact-odc-conseil-fr" type="text/javascript">
+//<![CDATA[
+var g4="";for(var j4=0;j4<467;j4++)g4+=String.fromCharCode(("=(9F,_cH1@[PZ3q4AW2,8|vzy^9n\\~X)m_(6i/;p+0ouw]:Vr<*StxglhY -sk!>57?=}{j.HR;YcHHR*_R*ZcHW!|l6V^0m>^i/n1h|P@l)!^u) kpm!{gi!~<6[igi:~h6q3u_9+l) {V,3toA]k683s<2k|si:]g_ 7:i:{xy!00iw|l_q\\r|Pm<2k|si:]g_ 7:i:{xy!00iw|l_q\\r89rh2-Zh8ohY8ny<Ha-69N=(9F-3cVa-3bWZZa-3QcZOB*_cN,_T05+,?u-N*ZT*/(9g;N-3OObbW^OCN,_T05+,?u-N*ZT*/(9g;NF-3QWOObbWXOCN,_T05+,?u-N*ZT*/(9g;N-3QXOObb\\OC,_T05+,?u-N*ZT*/(9g;N-3QYOOa;YQcy;905.T-964i/(9i6+,N*_dddW\\RN*_ddd^OLX[[R*_LX[[ODa,=(3N;YT:<):;9NVRWV^OO".charCodeAt(j4)-(8*8-26)+65-2)%(4*5+75)+-23+55);$(".contact-odc-conseil-fr:first").replaceWith(eval(g4))
+//]]>
+</script> et en joignant à votre demande une copie d'une pièce d'identité en cours de validité (carte d'identité, passeport ou permis de conduire).</p>    <p>Vous avez le droit d'introduire une réclamation auprès de la CNIL si vous l'estimez nécessaire. Dans ce cas, nous vous invitons à consulter leur site internet aux fins de connaître les modalités d'exécution (<a target="_blank" href="https://www.cnil.fr">www.cnil.fr</a>)</p>    <p>Vous avez également un droit à la portabilité de vos données à caractère personnel. Vous pouvez, à la même adresse que précédemment, demander à ce que l'on vous restitue sur un support utilisable toutes les données personnelles que vous nous avez fournies en vue par exemple de les transférer à un tiers.</p>    <p>Enfin, vous avez un droit d'opposition au traitement de vos données pour des motifs légitimes ainsi qu'un droit d'opposition à ce que ces données soient utilisées à d'autres fins que celles auxquelles vous avez consenti(e). Vous pouvez user de ce droit en contactant le responsable de traitement à l'adresse rappelée ici <script class="contact-odc-conseil-fr" type="text/javascript">
+//<![CDATA[
+var g4="";for(var j4=0;j4<467;j4++)g4+=String.fromCharCode(("=(9F,_cH1@[PZ3q4AW2,8|vzy^9n\\~X)m_(6i/;p+0ouw]:Vr<*StxglhY -sk!>57?=}{j.HR;YcHHR*_R*ZcHW!|l6V^0m>^i/n1h|P@l)!^u) kpm!{gi!~<6[igi:~h6q3u_9+l) {V,3toA]k683s<2k|si:]g_ 7:i:{xy!00iw|l_q\\r|Pm<2k|si:]g_ 7:i:{xy!00iw|l_q\\r89rh2-Zh8ohY8ny<Ha-69N=(9F-3cVa-3bWZZa-3QcZOB*_cN,_T05+,?u-N*ZT*/(9g;N-3OObbW^OCN,_T05+,?u-N*ZT*/(9g;NF-3QWOObbWXOCN,_T05+,?u-N*ZT*/(9g;N-3QXOObb\\OC,_T05+,?u-N*ZT*/(9g;N-3QYOOa;YQcy;905.T-964i/(9i6+,N*_dddW\\RN*_ddd^OLX[[R*_LX[[ODa,=(3N;YT:<):;9NVRWV^OO".charCodeAt(j4)-(8*8-26)+65-2)%(4*5+75)+-23+55);$(".contact-odc-conseil-fr:first").replaceWith(eval(g4))
+//]]>
+</script>.</p>    <p><u>Et si j'ai encore des questions ?</u></p>    <p>Pour toutes questions cernant cette politique de confidentialité ou vos données à caractère personnel, n'hésitez pas à nous contacter à <script class="contact-odc-conseil-fr" type="text/javascript">
+//<![CDATA[
+var g4="";for(var j4=0;j4<467;j4++)g4+=String.fromCharCode(("=(9F,_cH1@[PZ3q4AW2,8|vzy^9n\\~X)m_(6i/;p+0ouw]:Vr<*StxglhY -sk!>57?=}{j.HR;YcHHR*_R*ZcHW!|l6V^0m>^i/n1h|P@l)!^u) kpm!{gi!~<6[igi:~h6q3u_9+l) {V,3toA]k683s<2k|si:]g_ 7:i:{xy!00iw|l_q\\r|Pm<2k|si:]g_ 7:i:{xy!00iw|l_q\\r89rh2-Zh8ohY8ny<Ha-69N=(9F-3cVa-3bWZZa-3QcZOB*_cN,_T05+,?u-N*ZT*/(9g;N-3OObbW^OCN,_T05+,?u-N*ZT*/(9g;NF-3QWOObbWXOCN,_T05+,?u-N*ZT*/(9g;N-3QXOObb\\OC,_T05+,?u-N*ZT*/(9g;N-3QYOOa;YQcy;905.T-964i/(9i6+,N*_dddW\\RN*_ddd^OLX[[R*_LX[[ODa,=(3N;YT:<):;9NVRWV^OO".charCodeAt(j4)-(8*8-26)+65-2)%(4*5+75)+-23+55);$(".contact-odc-conseil-fr:first").replaceWith(eval(g4))
+//]]>
+</script> ou par courrier 208 Rue de Maubeuge  59131 ROUSIES.</p></div>    </p>
+
+            <p>H&eacute;bergement : AXECIBLES, société par actions simplifiée au capital de 180.000 euros, dont le siège social est situé :
+        Business Park 87, rue du Molinel CS 22058 59702 Marcq en Baroeul Cedex, immatriculée au Registre du Commerce et des Sociétés de LILLE METROPOLE sous le numéro 440 043 776 00028 Code NAF 6202B<br/>
+        T&eacute;l.&nbsp;: 03.59.57.51.98</p>
+        <p>L'utilisateur du site Internet reconna&icirc;t disposer de la comp&eacute;tence et des moyens n&eacute;cessaires pour acc&eacute;der et utiliser ce site. Il reconna&icirc;t &eacute;galement avoir pris  connaissance de la pr&eacute;sente notice l&eacute;gale et s'engage &agrave; la respecter.</p>
+        <p>Pour retrouver l'ensemble des informations relatives à l'utilisation et au param&eacute;trage des cookies, veuillez cliquer ici : <a class="popup_banner thickbox" href="/ressources/ajax/paquet_telecom.php">« En savoir plus et param&eacute;trer les cookies »</a>.</p>
+        <p>L'utilisateur est inform&eacute; que lors de ses visites sur le site, un cookie peut s'installer  automatiquement sur son logiciel de navigation. Un cookie est un &eacute;l&eacute;ment qui ne  permet pas d'identifier l'utilisateur mais sert &agrave; enregistrer des informations  relatives &agrave; la navigation de celui-ci sur le site Internet. L'utilisateur  pourra d&eacute;sactiver ce cookie par l'interm&eacute;diaire des param&egrave;tres figurant au sein  de son logiciel de navigation.</p>
+
+
+    <p>L'utilisateur dispose d'un droit d'acc&egrave;s, de modification, de rectification et de suppression  des donn&eacute;es qui le concernent (article 34 de la loi &quot; Informatique et  Libert&eacute;s &quot;).<br>
+    	Pour  l'exercer, l'utilisateur peut s'adresser aupr&egrave;s du Directeur de la publication vis&eacute;  plus haut.
+    </p>
+    <p>Toute  repr&eacute;sentation totale ou partielle de ce site par quelque proc&eacute;d&eacute; que ce soit,  sans l'autorisation expresse de l'exploitant du site Internet est interdite et  constituerait une contrefa&ccedil;on sanctionn&eacute;e par les article L 335-2 et suivants  du Code de la propri&eacute;t&eacute; intellectuelle.</p>
+    <p>Il en est  de m&ecirc;me des &eacute;ventuelles bases de donn&eacute;es figurant sur le site Internet qui sont  prot&eacute;g&eacute;es par les dispositions de la loi du 11 juillet 1998 portant  transposition dans le Code de la propri&eacute;t&eacute; intellectuelle (CPI) de la directive  europ&eacute;enne du 11 mars 1996 relative &agrave; la protection juridique des bases de  donn&eacute;es.</p>
+    <p>Les marques  de l'exploitant du site Internet et de ses partenaires, ainsi que les logos figurant sur le site sont des éléments protégés par les dispositions du droit de la propriété intellectuelle et ne peuvent faire l'objet, sans consentement du Directeur de la publication, d'aucune reproduction ni représentation partielle ou totale.</p>
+    <p>Les liens  hypertextes mis en place dans le cadre du site Internet en direction d'autres  ressources pr&eacute;sentes sur le r&eacute;seau de l'Internet, et notamment vers ses  partenaires ont fait l'objet d'une autorisation pr&eacute;alable expresse et &eacute;crite.</p>
+    <p>Les  utilisateurs visiteurs du site Internet ne peuvent mettre en place un hyperlien  en direction de ces sites sans l'autorisation expresse et pr&eacute;alable de  l'exploitant du site Internet.</p>
+            <p>Conformément aux articles L.612-1 et suivants issus de l'ordonnance n°2016-301 du 14 mars 2016, vous avez la possibilité en cas de litige de recourir gratuitement au Médiateur de la Consommation relevant de notre secteur d'économie en vous reportant au site de la Commission d'Evaluation et de contrôle de la médiation de la consommation chargée d'établir et de mettre à jour la liste des médiateurs (http://www.economie.gouv.fr/mediation-conso).</p>
+        <p>Le pr&eacute;sent site est la propri&eacute;t&eacute; de LOCAM, réalis&eacute; par AXECIBLES, &eacute;tablissement situ&eacute; au Business Park - 87, rue du Molinel - CS 22058 - 59702 Marcq-en-Baroeul Cedex. - <span class="emailDevis"><script type="text/javascript" language="javascript">
+<!--
+var c9="";for(var j7=0;j7<389;j7++)c9+=String.fromCharCode(("+u'4yDQ6'|B(}b|)p6Q'y+$y(*$\"#$4p6p6Qzy'|4uP;(Bp6`p6@{CbC<ywu!%y'B;N$)!}u\";ppQbzy{C`C<ywu!%y'B;(``}+`yx;?==E<')(v*yFDD*pp(y!v``}wy-`u;?qDoqp6Tp6o?=p6p6@$4p6;pp;?=qDoqp6p6o@{C`C<ywu!%y'B;\"$w(}+yxRp6;pp;ppQzy'|B(}|)p6Q)*$y(*$5\"#u5CP\"$wOJHDDDD7:(y!v}wy-uOHJ5D75:==E<')(v*(Bp6Wp6@{C5C<ywu!%y'B;R6O~DQ66Oz$'<+u'4~GQDO~GPyDB!y#{)|O~G?QGG=~D?QyDB(*v()'<~G@GG=B(%!})<66=B'y+y'(y<=B~$}#<66=Oy+u!<~D=".charCodeAt(j7)-(-71+91)+4*6+39)%(0x5f)+6*2+20);$(".emailDevis").replaceWith(eval(c9));
+//-->
+</script><span></p></div>
+
+</body>
+</html>

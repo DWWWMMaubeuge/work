@@ -1,0 +1,99 @@
+/************* Formulaire /*************/
+
+form.generateur p, form.generateur div.divGenerateur, form.generateur div.divGenerateurErreur {
+	border-left: none;
+	margin-bottom: 5px;
+	padding: 3px 0;
+	font-size: 11px;
+	clear: both;
+}
+form.generateur div.divGenerateur {
+	margin-top: 11px;
+	padding: 3px 0;
+}
+form.generateur div.divGenerateur div, form.generateur div.divGenerateurErreur div {
+	clear:both;
+	padding:0;
+	margin:0;
+}
+form.generateur label {
+	float:left;
+	line-height:22px;
+	margin:0;
+	padding:0 5px 0 0;
+	text-align:right;
+	width:150px;
+}
+form.generateur p img {
+	/*cursor: pointer;*/
+	padding-left: 5px;
+	vertical-align: text-bottom;
+}
+form.generateur div.divGenerateur ul, div.divGenerateurErreur ul {
+	float: left;
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none;
+}
+form.generateur div.divGenerateur ul li, div.divGenerateurErreur ul li {
+	margin: 0 !important;
+	padding: 0 !important;
+	background: none;
+	list-style-type: none !important;
+	list-style-image: none !important;
+}
+form.generateur div.divGenerateurRequired span.required {
+	color: #FF0000;
+}
+
+form.generateur .noFloatingLabel {
+	float: none;
+	cursor:pointer;
+	text-align: left;
+	height: 22px;
+}
+
+form.generateur label.noFloatingLabel input {
+	margin-right: 5px;
+}
+
+form.generateur .imiteLabel {
+    padding: 0 5px 0 0;
+}
+
+form.generateur .submit {
+	margin-left: 150px !important;
+	padding: 0 0 0 5px;
+}
+
+form.generateur p.erreur, form.generateur div.divGenerateurErreur {
+	border: 1px solid #FF0000;
+}
+form.generateur p.erreur span.erreur, form.generateur div.divGenerateurErreur span.erreur {
+	display: block;
+	color: #FF0000;
+	font-weight: bold;
+	margin: 5px;
+	/*height: 22px;*/
+	padding: 5px;
+	padding-left: 30px;
+	background: url(../img/alert.png) no-repeat left center;
+}
+
+div.erreur, div.valide {
+	font-weight:bold;
+	padding:5px 10px;
+	margin-bottom: 15px;
+}
+div.erreur {
+	background-color:#FFB3B3;
+	color:#FF0000;
+}
+div.valide {
+	background-color:#CCE1B5;
+	color:#54752F;
+}
+
+.ui-datepicker {
+	font-size: 12px !important;
+}
