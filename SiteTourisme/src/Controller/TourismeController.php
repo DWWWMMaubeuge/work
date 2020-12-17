@@ -78,4 +78,5 @@ class TourismeController extends AbstractController
     }
 }
 
-// Juste un commentaire pour le push journalier c:    
+// Juste un commentaire pour le push journalier c:
+// Sorry mais j'ai vraiment la flemme de bosser sur du symfony...
