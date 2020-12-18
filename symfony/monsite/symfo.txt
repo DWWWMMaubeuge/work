@@ -1,7 +1,5 @@
 https://www.kaherecode.com/tutorials
 https://www.kaherecode.com/tutorial/le-guide-du-debutant-sur-symfony4
-
-
 https://getcomposer.org/
 https://getcomposer.org/download/
 	php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
