@@ -88,14 +88,12 @@ function ballMovements() {
     // console.log('position raquette: ' + raquetteLeftPos);
     // console.log('hauteur balle: ' + balleTopPos);
     // console.log('indice collision: ' + collision);
-    // collision fenetre à gauche
+    // collision fenetre à gauche et à droite
     if(leftAngle == true && balleLeftPos == parseFloat(-7)) {
         leftAngle = false;
         rightAngle = true;
         wallHitSound.play();
-    }
-    // collision fenetre à droite
-    if(rightAngle == true && balleLeftPos == 65) {
+    } else if(rightAngle == true && balleLeftPos == 65) {
         rightAngle = false;
         leftAngle = true;
         wallHitSound.play();
