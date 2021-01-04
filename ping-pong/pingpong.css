@@ -84,16 +84,16 @@ button {
     margin-bottom: 10vh;
 }
 
-#startButton, #raquette, #balle, #gameOver {
+#startContainer, #raquette, #balle, #gameOver {
     position: relative;
 }
 
-#startButton {
-    left: 33.5vw;
+#startContainer {
+    position: relative;
+    left: 18.7vw;
     top: 27vh;
-    width: 11%;
-    max-width: 11%;
-    min-width: 11%;
+    width: 50%;
+    max-width: 50%;
     text-align: center;
 }
 #raquette {

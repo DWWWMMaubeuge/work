@@ -9,7 +9,7 @@ verticalUnit = "vh";
 horizontalUnit = "vw";
 score = 0;
 record = 0;
-cash = 0;
+cash = 10000;
 scoreNumber.innerHTML = score;
 recordNumber.innerHTML = record;
 cashNumber.innerHTML = cash;
@@ -28,11 +28,14 @@ notEnoughCashSound = new Audio('assets/soundeffects/notenoughcash.wav');
 
 // Création du bouton Start
 function createStartButton() {
+    startContainer = document.createElement('DIV');
+    startContainer.id = "startContainer";
     startButton = document.createElement('button');
     startButton.id = "startButton";
     startButton.innerHTML = "Démarrer le jeu";
     startButton.onclick = "startGame()";
-    game.appendChild(startButton);
+    startContainer.appendChild(startButton);
+    game.appendChild(startContainer);
     startButton.onclick = function() {startGame();}
 }
 
@@ -243,9 +246,9 @@ function startGame() {
     // Si le bouton start existe on le retire, sinon on retire l'écran de game over
     createRaquette(raquetteImage);
     createBall();
-    if(typeof(startButton) !== "undefined") {
-        game.removeChild(startButton);
-        delete startButton;
+    if(typeof(startContainer) !== "undefined") {
+        game.removeChild(startContainer);
+        delete startContainer;
     } else {
         // remise à zéro du score lors du relancement d'une partie
         score = 0;
