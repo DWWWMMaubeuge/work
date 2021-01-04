@@ -5,32 +5,26 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-class BlogController extends AbstractController
+class PortfolioController extends AbstractController
 {
     public function index()
     {
-        return $this->render('blog/index.html.twig');
+        return new Response('<h1>Page d\'accueil</h1>');
     }
 
     public function add()
     {
-    	return $this->render('blog/add.html.twig');
+    	return new Response('<h1>Ajouter un article</h1>');
     }
 
-  
     public function show($url)
     {
-    	return $this->render('blog/show.html.twig', [
-            'slug' => $url
-    ]);
-    
+    	return new Response('<h1>Lire l\'article ' .$url. '</h1>');
     }
 
     public function edit($id)
     {
-    	return $this->render('blog/edit.html.twig', [
-            'slug' => $id
-        ]);
+    	return new Response('<h1>Modifier l\'article ' .$id. '</h1>');
     }
 
     public function remove($id)
