@@ -48,7 +48,7 @@ function createRaquette(asset) {
     raquette.style.top = "50" + verticalUnit;
     raquette.style.left = raquetteLeftPos + horizontalUnit;
     game.appendChild(raquette);
-    if(typeof(startButton) !== "undefined") {
+    if(typeof(startContainer) !== "undefined") {
         body.addEventListener('keydown', e=>raquetteMouvements(e));
     }
 }
