@@ -277,7 +277,7 @@ function startGame() {
     rightAngle = false;
     leftAngle = false;
     falling = true;
-    // Création de la balle et de la balle et de la raquette
+    // Création de la raquette et de la balle
     createRaquette(raquetteImage);
     createBall();
     // Si le bouton start existe on le retire, sinon on retire l'écran de game over
