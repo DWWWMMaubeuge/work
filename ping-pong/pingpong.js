@@ -277,9 +277,10 @@ function startGame() {
     rightAngle = false;
     leftAngle = false;
     falling = true;
-    // Si le bouton start existe on le retire, sinon on retire l'écran de game over
+    // Création de la balle et de la balle et de la raquette
     createRaquette(raquetteImage);
     createBall();
+    // Si le bouton start existe on le retire, sinon on retire l'écran de game over
     if(typeof(startContainer) !== "undefined") {
         game.removeChild(startContainer);
         delete startContainer;
