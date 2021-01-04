@@ -1,0 +1,4 @@
+battle1 = 8-Bit Boss Battle 4 - By EliteFerrex
+battle2 = electro-house-2012-by-k-391
+battle3 = electro-house-virtual-riot-energy-drink
+battle4 = tobu-hope-ncs-release

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://kit.fontawesome.com/747acc35b5.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="spaceshooter.css">
+    <title>Space Shooter</title>
+</head>
+<body>
+    <div id="groupOptions">
+        <button id="themeMode" onclick="darkMode(this)"><i class='fas fa-sun'></i></button>
+        <button id="musiqueMode" onclick="disableMusic()"><i class="fas fa-music"></i> <i class='fas fa-volume-up'></i></button>
+        <button id="effectsMode" onclick="disableEffects()"><i class="fas fa-headphones"></i> <i class="fas fa-volume-up"></i></button>
+    </div>
+    <h1 id="titre">Space Shooter</h1>
+    <div id="infos">
+        <div id="level">
+            Niveau: <span id="levelNumber">1</span>
+        </div>
+        <div id="score">
+            Score: <span id="scoreNumber">0</span>
+        </div>
+    </div>
+    <div id="fenetre">
+        <div id="jeu">
+            <button id="buttonStart" onclick="gameStart(this)">Demarrer le jeu</button>
+        </div>
+    </div>
+    <script src="spaceshooter.js"></script>
+</body>
+</html>

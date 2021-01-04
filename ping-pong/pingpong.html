@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://kit.fontawesome.com/747acc35b5.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="pingpong.css">
+    <title>Ping-Pong</title>
+</head>
+<body>
+    <div id="infos">
+        <div id="score">
+            Score actuel: <span id="scoreNumber"></span>
+        </div>
+        <div id="record">
+            Record: <span id="recordNumber"></span>
+        </div>
+        <div id="cash">
+            Cash: <span id="cashNumber"></span> <i class="fas fa-dollar-sign"></i>
+        </div>
+        <button id="shopButton" onclick="openShop()"><i class="fas fa-shopping-cart"></i> SHOP</button>
+    </div>
+    <div id="shop">
+        SHOP
+        <div class="shopRaquettes">
+            <div class="item">
+                <img src="assets/raquettes/raquette1.png">
+                <span id="prixRaquette1">1000$</span>
+                <button id="raquette1" onclick="buyItem(1000, 'raquette1', 'prixRaquette1')">Acheter</button>
+            </div>
+            <div class="item">
+                <img src="assets/raquettes/raquette2.png">
+                <span id="prixRaquette2">1000$</span>
+                <button id="raquette2" onclick="buyItem(1000, 'raquette2', 'prixRaquette2')">Acheter</button>
+            </div>
+        </div>
+        <div class="shopRaquettes">
+            <div class="item">
+                <img src="assets/raquettes/raquette3.png">
+                <span id="prixRaquette3">1000$</span>
+                <button id="raquette3" onclick="buyItem(1000, 'raquette3', 'prixRaquette3')">Acheter</button>
+            </div>
+            <div class="item">
+                <img src="assets/raquettes/raquette4.png">
+                <span id="prixRaquette4">1000$</span>
+                <button id="raquette4" onclick="buyItem(1000, 'raquette4', 'prixRaquette4')">Acheter</button>
+            </div>
+        </div>
+        <div class="shopRaquettes">
+            <div class="item">
+                <img src="assets/raquettes/raquette5.png">
+                <span id="prixRaquette5">1000$</span>
+                <button id="raquette5" onclick="buyItem(1000, 'raquette5', 'prixRaquette5')">Acheter</button>
+            </div>
+            <div class="item">
+                <img src="assets/raquettes/raquette6.png">
+                <span id="prixRaquette6">1000$</span>
+                <button id="raquette6" onclick="buyItem(1000, 'raquette6', 'prixRaquette6')">Acheter</button>
+            </div>
+        </div>
+        <div class="shopRaquettes">
+            <div class="item">
+                <img src="assets/raquettes/raquette7.png">
+                <span id="prixRaquette7">1000$</span>
+                <button id="raquette7" onclick="buyItem(1000, 'raquette7', 'prixRaquette7')">Acheter</button>
+            </div>
+            <div class="item">
+                <img src="assets/raquettes/raquette8.png">
+                <span id="prixRaquette8">1000$</span>
+                <button id="raquette8" onclick="buyItem(1000, 'raquette8', 'prixRaquette8')">Acheter</button>
+            </div>
+        </div>
+    </div>
+    <div id="jeu">
+        
+    </div>
+    <script src="pingpong.js"></script>
+</body>
+</html>

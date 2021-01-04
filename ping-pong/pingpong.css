@@ -1,0 +1,113 @@
+body {
+    color: white;
+    background-color: #272A30;
+}
+
+#infos {
+    text-align: center;
+    margin-top: 10vh;
+}
+
+#score, #record, #cash {
+    margin: 1vh;
+}
+
+button {
+    outline: none;
+    border: none;
+    color: white;
+    background-color: #686868;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#shopButton {
+    margin-top: 2vh;
+}
+
+.fa-dollar-sign {
+    color: green;
+}
+
+#shop {
+    height: 60vh;
+    width: 73vw;
+    left: 11.5vw;
+    margin-top: 2rem;
+    padding: 3vh;
+    background-color: grey;
+    position: absolute;
+    z-index: 1000000;
+    display: none;
+    overflow: auto;
+    text-align: center;
+}
+
+.shopRaquettes{
+    display: flex;
+    flex-direction: row;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 20%;
+}
+
+.item img {
+    max-width: 70%;
+    position: relative;
+    margin-bottom: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item span {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#jeu {
+    height: 60vh;
+    width: 75vw;
+    min-height: 100%;
+    max-height: 100%;
+    min-width: 75vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    background-color: #2D3649;
+    margin-bottom: 10vh;
+}
+
+#startButton, #raquette, #balle, #gameOver {
+    position: relative;
+}
+
+#startButton {
+    left: 33.5vw;
+    top: 27vh;
+    width: 11%;
+    max-width: 11%;
+    min-width: 11%;
+    text-align: center;
+}
+#raquette {
+    max-width: 10%;
+}
+
+#balle {
+    max-width: 4%;
+}
+
+#gameOver {
+    left: 19.5vw;
+    top: 22vh;
+    width: 50%;
+    max-width: 50%;
+    text-align: center;
+}
