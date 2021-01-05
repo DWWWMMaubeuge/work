@@ -91,19 +91,18 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
         <div class="container">
 
-            <h2 class="section-title big-text scrollimation fade-up">CONSULTER UN PSYCHOLOGUE CLINICIEN</h2>
+            <h2 class="section-title big-text scrollimation fade-up">ODC Conseil, votre cabinet de psychologie à Maubeuge, région des Hauts de France (ex Nord-Pas-de-Calais - Picardie)</h2>
 
             <div class="row">
 
                 <div class="col-sm-12 text-center">
 
                     <p>
-                    <p>La démarche d'aller rencontrer pour une première fois un psychologue clinicien-psychothérapeute n'est pas une démarche simple, elle peut faire objet de mouvements internes conflictuels.&nbsp;</p>
-                    <p><b>Un travail de psychothérapie vise à essayer de comprendre ensemble un mal-être, un malaise, c'est-à-dire d'une souffrance ressentie et qui est propre à chacun. Le but du travail thérapeutique est celui de surmonter les difficultés et les problématiques qui entravent la vie d’une personne. &nbsp;&nbsp;</b></p>
-                    <p>Explorer en thérapie son vécu affectif peut aider à acquérir une plus grande liberté interne. <br>Rencontrer un psychologue peut contribuer à mettre en oeuvre <b>un parcours d'élaboration et de transformation, allant dans le sens de ce gain de liberté. </b><br></p>
-                    </p>
-
-
+                    <p>ODC Conseil est un cabinet de psychologie près de Maubeuge ayant pour vocation d'<b>accompagner les personnes dans leur quête de bien-être&nbsp;</b> &nbsp;<br></p>
+                    <p>ainsi que les entreprises dans leur <b>démarche d'amélioration de la qualité de vie au travail.&nbsp;</b><br></p>
+                    <p><b>Spécialisée en Psychologie du travail et en Thérapies comportementales et cognitives</b>, Odile Dessailly-Coste répond aux&nbsp;<br></p>
+                    <p><b>attentes individuelles et collectives</b> sur des problématiques aussi bien personnelles que professionnelles.</p>
+                    &nbsp;
                 </div>
 
             </div>
@@ -129,11 +128,11 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
                 <div class="col-sm-6 scrollimation fade-left d3">
 
-                    <h2 class="big-text">Veronica Olivieri-Daniel</h2>
+                    <h2 class="big-text">Odile Dessailly-Coste</h2>
 
                     <p class="lead">
                     <p><b><i><u>Parcours Académique</u></i><br></b></p>
-                    <p><b>Odile Dessailly-Coste </b>est <b>Psychologue clinicienne et Psychothérapeute</b><br><br>• Diplômée d’État de l’Université Paris V René Descartes, titulaire d'un Master II professionnel avec une spécialisation en Psychologie clinique et psychopathologie.<br>• Diplômée de Université Paris V René Descartes, titulaire d’une Licence en Psychologie<br>• Diplômée de l’ « Università Statale » de Milan (Italie), titulaire d’un Master et d’une Licence en Lettres et Philosophie<br><br><br><b>Spécialisation en psychopathologie de l’adolescent et de l’adulte</b><br>• Diplôme Universitaire de Psychologie Projective : Adolescents et jeunes Adultes, Institut de Psychologie, Paris V René Descartes<br> <br>Veronica OLIVIERI-DANIEL exerce une activité libérale depuis plusieurs années auprès d’enfants (dès la rentrée au Collège), d’adolescents, d’adultes et des couples. <br><br>Elle exerce parallèlement dans une Clinique Médicale et Pédagogique pour Adolescents (Fondation Santé des étudiants de France) ainsi qu’au sein de l’Association de Santé Mentale du 13è arrondissement de Paris. <br></p>
+                    <p><b>Odile Dessailly-Coste </b>est <b>Psychologue clinicienne et Psychothérapeute</b><br><br>• Diplômée d’État de l’Université Paris V René Descartes, titulaire d'un Master II professionnel avec une spécialisation en Psychologie clinique et psychopathologie.<br>• Diplômée de Université Paris V René Descartes, titulaire d’une Licence en Psychologie<br>• Diplômée de l’ « Università Statale » de Milan (Italie), titulaire d’un Master et d’une Licence en Lettres et Philosophie<br><br><br><b>Spécialisation en psychopathologie de l’adolescent et de l’adulte</b><br>• Diplôme Universitaire de Psychologie Projective : Adolescents et jeunes Adultes, Institut de Psychologie, Paris V René Descartes<br> <br>Odile Dessailly-Coste exerce une activité libérale depuis plusieurs années auprès d’enfants (dès la rentrée au Collège), d’adolescents, d’adultes et des couples. <br><br>Elle exerce parallèlement dans une Clinique Médicale et Pédagogique pour Adolescents (Fondation Santé des étudiants de France) ainsi qu’au sein de l’Association de Santé Mentale du 13è arrondissement de Paris. <br></p>
                     </p>
 
                 </div>
@@ -228,7 +227,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
                 <div class="col-sm-12 text-center">
 
                     <p>
-                    <p><b>« Rendre la vie supportable est le premier devoir du vivant. »<br><br></b>Veronica OLIVIERI-DANIEL reçoit sur rendez-vous à son cabinet où elle propose :<br><br>- des <b>psychothérapies psychanalytiques individuelles</b> en face à face<br>- des <b>consultations (individuelles, en couple ou familiales) </b>de soutien et d’accompagnement psychologiques<br>- des <b>bilans psychologiques</b> (WISC – Wechsler Intelligence Scale for Children- WAIS - Wechsler Adults Intelligence Scale- comme épreuves de niveau intellectuel ainsi que des épreuves projectives de personnalité). <br><br>Le premier rendez-vous permet d'évaluer le motif de la consultation, la demande de prise en charge et ainsi de décider du type de suivi.<b> Les entretiens se font en face à face et durent environ 45 minutes.</b> Le rythme des séances se discute entre le psychologue clinicien et le patient. Un cadre thérapeutique est ainsi mis en place. <b><br></b></p>
+                    <p><b>« Rendre la vie supportable est le premier devoir du vivant. »<br><br></b>Odile Dessailly-Coste reçoit sur rendez-vous à son cabinet où elle propose :<br><br>- des <b>psychothérapies psychanalytiques individuelles</b> en face à face<br>- des <b>consultations (individuelles, en couple ou familiales) </b>de soutien et d’accompagnement psychologiques<br>- des <b>bilans psychologiques</b> (WISC – Wechsler Intelligence Scale for Children- WAIS - Wechsler Adults Intelligence Scale- comme épreuves de niveau intellectuel ainsi que des épreuves projectives de personnalité). <br><br>Le premier rendez-vous permet d'évaluer le motif de la consultation, la demande de prise en charge et ainsi de décider du type de suivi.<b> Les entretiens se font en face à face et durent environ 45 minutes.</b> Le rythme des séances se discute entre le psychologue clinicien et le patient. Un cadre thérapeutique est ainsi mis en place. <b><br></b></p>
                     <p><b>Les honoraires sont à discuter selon le cadre thérapeutique établi ensemble. Les consultations sont remboursées par certaines mutuelles. </b>De plus, depuis le 1 Janvier 2017, les consultations pour les jeunes âgés entre 6 et 21 ans peuvent être remboursées par la sécurité sociale lorsqu'il y a une prescription médicale de suivi psychothérapique qui est établie par un médecin généraliste, un psychiatre ou un pediatre.<b></b></p>De manière générale, les honoraires pour les <b>consultations individuelles</b> et les séances de psychothérapie s’élèvent à <b>70 euros </b>(consultation de couple ou familiale : 90 euros).<br>
                     <p></p>
                     </p>
@@ -258,15 +257,15 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
                     <h2 class="big-text">contacts</h2>
 
                     <p class="lead">
-                    <p>Le cabinet de&nbsp;Veronica OLIVIERI-DANIEL est situé au <br><b>1 Avenue Alphonse XIII, 75116 Paris&nbsp;</b></p>
+                    <p>Le cabinet de&nbsp;Odile Dessailly-Coste est situé au <br><b>1 Avenue Alphonse XIII, 75116 Paris&nbsp;</b></p>
                     <p>- Métro: Passy (ligne 6), rue de la Pompe (ligne 9), <br>La muette (ligne 9)<br>- Bus: 22, 52, 32<br>- RER C: Boulainvilliers Gare<br></p>
                     <p>Email : <br>
                         <br>
-                        veronica.olivieri.bc@gmail.com<br>
+                        @gmail.com<br>
                         <br>
                         <br>
                     </p>
-                    <p><b></b>Consultations sur rendez-vous en Français, Italien et Anglais<b></b><br></p>
+                    <p><b></b>Consultations sur rendez-vous en Français<b></b><br></p>
                     <p><b><br></b></p>
                     <p></p>
                     </p>
@@ -321,7 +320,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
                 <li><a href="https://plus.google.com/118416677873362998638"><i class="fa fa-google-plus fa-fw"></i></a></li>
             </ul>
 
-            <p class="text-center">&copy; 2016 - Veronica Olivieri-Daniel, Psychologue clinicienne et Psychothérapeute à Paris 16 - Tous droits réservés</p>
+            <p class="text-center">&copy; 2016 - Odile Dessailly-Coste, Psychologue clinicienne et Psychothérapeute à Paris 16 - Tous droits réservés</p>
             <p class="text-center">Adresse : 1 Avenue Alphonse XIII, 75116 Paris</p>
             <p>
                 <center>
@@ -348,7 +347,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
                     "@type": "ContactPoint",
                     "telephone": "+33-017-935-0543",
                     "contactType": "Customer Service",
-                    "email": "mailto:veronica.olivieri.bc@gmail.com",
+                    "email": "@gmail.com",
                     "contactOption": "",
                     "areaServed": "Paris",
                     "availableLanguage": "French"

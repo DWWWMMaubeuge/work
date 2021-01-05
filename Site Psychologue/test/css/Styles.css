@@ -10,6 +10,10 @@ body{
 	overflow-x:hidden;
 }
 
+b{
+    font-weight: bold !important;
+}
+
 a{
 	color:#236D61;
 	text-decoration:none
