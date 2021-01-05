@@ -1,10 +1,7 @@
 <?php
 function accueilbody()
 { 
-
-
 $str = <<<RTY
-
     <div class="container">
     <div class="row m-4">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6"><img src="img/cv.jpg" width=100%; ><p class="text-center">Mon cv</p></div>
@@ -14,25 +11,11 @@ $str = <<<RTY
     </div>
 </div>
 RTY;
-
 return $str;
 }
 
-/* function bordereau()
-    {
-    $str= <<<AZE
-    
-        <div class="">
-        <img src="img/bg3.jpg">
-        </div>
-    
-    AZE;
-    return $str;
-    }
- */
 function carousel()
 {
-
     $str   = <<< RTY
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -51,38 +34,34 @@ function carousel()
                 <img class=" d-block w-75 img-fluid" src="img/test03.jpg"  alt="Third slide">
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-        </a>
-    </div>
-    RTY;
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+            </a>
+        </div>
+RTY;
     return $str;
-    }
-
-
+    }   
+    
     function langues()
     {
         $str= <<< AZE
         <div class="langue">
-        <div class="container">
-    <div class="row">
-        <div class="col-sm "><img src="img/html.jpg"width=50%;></div>
-        <div class="col-sm "><img src="img/css3.jpg"width=50%;></div>
-        <div class="col-sm "><img src="img/html.jpg"width=50%;></div>
-        <div class="col-sm "><img src="img/html.jpg"width=50%;></div>
-        <div class="col-sm "><img src="img/html.jpg"width=50%;></div>
-    </div>
-    </div>
-    </div>
-    AZE;
-    return $str;
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm "><img src="img/html.jpg"width=50%;></div>
+                    <div class="col-sm "><img src="img/css3.jpg"width=50%;></div>
+                    <div class="col-sm "><img src="img/html.jpg"width=50%;></div>
+                    <div class="col-sm "><img src="img/html.jpg"width=50%;></div>
+                    <div class="col-sm "><img src="img/html.jpg"width=50%;></div>
+                </div>
+            </div>
+        </div>
+AZE;
+return $str;
     }
- 
-
-
-?>
+    ?>

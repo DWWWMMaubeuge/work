@@ -1,0 +1,23 @@
+.pro{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color:#1f2129;
+  }
+  p{
+    font-size:20px;
+    color: rgb(179, 179, 185);
+  }
+  h1{
+    font-size:20px;
+    color: rgb(179, 179, 185);
+  }
+  label{
+    color: rgb(179, 179, 185);
+} 
+.file{
+    padding-top: 20px;
+    padding-bottom:20px;
+}
+body{
+    color:rgb(179, 179, 185);
+} 
