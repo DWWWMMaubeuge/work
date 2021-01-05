@@ -385,8 +385,8 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
     <script>
         var mapPoint = {
-            'lat': 48.8562646,
-            'lng': 2.281449000000066,
+            'lat': 50.270094,
+            'lng': 3.992351,
             'zoom': 15,
             'infoText': '<p>1 Avenue Alphonse XIII\
 								<br/>75116\
