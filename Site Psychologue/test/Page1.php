@@ -385,14 +385,14 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
     <script>
         var mapPoint = {
-            'lat': 50.270094,
-            'lng': 3.992351,
+            'lat': 50.268406,
+            'lng': 3.981879,
             'zoom': 15,
-            'infoText': '<p>1 Avenue Alphonse XIII\
-								<br/>75116\
-								<br/>Paris</p>',
+            'infoText': '<p>208 Rue De Maubeuge\
+								<br/>59131\
+								<br/>ROUSIES</p>',
             'linkText': 'Voir sur Google Maps',
-            'mapAddress': '1 Avenue Alphonse XIII, 75116 Paris',
+            'mapAddress': '208 Rue de Maubeuge, 59131 Rousies',
             'icon': 'images/pin-dark.png'
         };
 
