@@ -75,7 +75,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
             <br>
             <p>
                 <center>
-                    <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="tel:01 79 35 05 43"><i class="fa fa-phone"></i> 01 79 35 05 43</a></div>
+                    <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="tel:0611576284"><i class="fa fa-phone"></i> 06 11 57 62 84</a></div>
                 </center>
             </p>
 
@@ -316,18 +316,17 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
         <div class="container">
 
             <ul class="social-links text-center">
-                <li><a href="#link"><i class="fa fa-facebook fa-fw"></i></a></li>
-                <li><a href="https://plus.google.com/118416677873362998638"><i class="fa fa-google-plus fa-fw"></i></a></li>
+                <li><a href="https://www.facebook.com/psychologuemaubeuge/"><i class="fab fa-facebook fa-fw"></i></a></li>
             </ul>
 
-            <p class="text-center">&copy; 2016 - Odile Dessailly-Coste, Psychologue clinicienne et Psychothérapeute à Paris 16 - Tous droits réservés</p>
-            <p class="text-center">Adresse : 1 Avenue Alphonse XIII, 75116 Paris</p>
+            <p class="text-center">&copy; 2021 - Odile Dessailly-Coste, Psychologue et Consultante en organisation sur Maubeuge et en Région Hauts de France - Tous droits réservés</p>
+            <p class="text-center">Adresse : 208 Rue de Maubeuge 59131 ROUSIES</p>
             <p>
                 <center>
-                    <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="tel:0179350543"><i class="fa fa-phone"></i> 01 79 35 05 43</a></div>
+                    <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="tel:0611576284"><i class="fa fa-phone"></i> 06 11 57 62 84</a></div>
                 </center>
             </p>
-            <p class="text-center"><a href="https://fr.wikipedia.org/wiki/Psychologie_clinique" target="_blank">Psychologue clinicien sur Wikipedia</a></p>
+           
 
         </div>
 
@@ -345,19 +344,19 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
                 ],
                 "contactPoint": {
                     "@type": "ContactPoint",
-                    "telephone": "+33-017-935-0543",
+                    "telephone": "06 11 57 62 84",
                     "contactType": "Customer Service",
-                    "email": "@gmail.com",
+                    "email": "contact@odc-conseil.fr",
                     "contactOption": "",
-                    "areaServed": "Paris",
+                    "areaServed": "Rousies",
                     "availableLanguage": "French"
                 },
                 "address": {
                     "@type": "PostalAddress",
                     "addressCountry": "France",
-                    "addressLocality": "Paris",
-                    "postalCode": "75116",
-                    "streetAddress": "1 Avenue Alphonse XIII"
+                    "addressLocality": "Rousies",
+                    "postalCode": "59131",
+                    "streetAddress": "208 Rue de Maubeuge"
                 }
             }
         </script>
