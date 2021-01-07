@@ -16,11 +16,11 @@
 	    	<div class="container">
 	    		<a href="{{ path('homepage') }}" class="brand-logo">Fortunato Flavia</a>
 			      	<ul id="nav-mobile" class="right hide-on-med-and-down">
-			        <li><a href="{{ path('homepage') }}">Accueil</a></li>
-					 <li><a href="{{ path('portfolio') }}">Portfolio</a></li>
+			        <li><a href="{{ path('homepage') }}">Portfolio</a></li>
+					 <li><a href="{{ path('register') }}">S'enregistrer</a></li>
 			        {% if app.user %}
 			        	{% if is_granted('ROLE_ADMIN') %}
-							<li><a href="/admin">Admin.</a></li>
+							<li><a href="/admin">Modification</a></li>
 						{% endif %}
 						<li><a href="/logout">Logout</a></li>
 					{% else %}
@@ -44,5 +44,13 @@
 			$('select').formSelect();
 		</script>
 	{% endblock %}
+
+    <footer class="fixed-bottom">
+      <p>Site web 2021 @Fortunato Flavia</p>
+    </footer>
+
+  </body>
+</html>
+</footer>
 </body>
 </html>

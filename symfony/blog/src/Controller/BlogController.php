@@ -22,6 +22,7 @@ class BlogController extends AbstractController
         return $this->render('blog/index.html.twig', ['articles' => $articles]);
     }
 
+ 
     public function add(Request $request)
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');

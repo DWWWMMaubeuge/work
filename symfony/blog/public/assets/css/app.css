@@ -54,3 +54,12 @@ body {
 	color: #fff;
 }
 
+/* FOOTER */
+footer {
+	background-color:black;
+	color:white;
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
+}
