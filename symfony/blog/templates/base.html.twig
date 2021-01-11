@@ -14,15 +14,16 @@
 	<nav>
 	    <div class="nav-wrapper">
 	    	<div class="container">
-	    		<a href="{{ path('homepage') }}" class="brand-logo">Fortunato Flavia</a>
+	    		<a href="{{ path('homepage') }}" class="brand-logo"><img src="/uploads/logowhite.png"</a>
+				<img src="logowhite.png" alt=""/>
 			      	<ul id="nav-mobile" class="right hide-on-med-and-down">
 			        <li><a href="{{ path('homepage') }}">Portfolio</a></li>
 					 <li><a href="{{ path('register') }}">S'enregistrer</a></li>
 			        {% if app.user %}
 			        	{% if is_granted('ROLE_ADMIN') %}
-							<li><a href="/admin">Modification</a></li>
+							<li><a href="/admin">Modifier</a></li>
 						{% endif %}
-						<li><a href="/logout">Logout</a></li>
+						<li><a href="/logout">Deconnexion</a></li>
 					{% else %}
 						<li><a href="/login">Login</a></li>
 			        {% endif %}
