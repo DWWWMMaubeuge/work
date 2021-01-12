@@ -1,51 +1,287 @@
+/* Lien police 'Architects Daughter' */
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+html {
+    height: 100%;
+}
+
 body {
+    font-family: 'Architects Daughter', cursive;
     color: white;
     background-color: #272A30;
 }
 
+/* CSS couleurs icones */
+
+.fa-dollar-sign {
+    color: green;
+}
+
+.fa-save {
+    color: cornflowerblue;
+}
+
+.fa-eraser {
+    color: firebrick;
+}
+
+#gameContainer {
+    position: relative;
+}
+
+#soundSettings {
+    flex-direction: column;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+}
+
+#soundSettings button {
+    margin: 1vh 3vw 1vh 0;
+}
+
+#musicsSettings, #effectsSettings {
+    display: flex;
+    flex-direction: row;
+    padding: 2vh 1vw;
+}
+
 #infos {
     text-align: center;
-    margin-top: 10vh;
+    margin-top: 5vh;
+    font-size: 3vh;
 }
 
 #score, #record, #cash {
     margin: 1vh;
 }
 
+/* CSS Boutons */
+
 button {
     outline: none;
-    border: none;
-    color: white;
-    background-color: #686868;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
     cursor: pointer;
     padding: 5px;
+    font-family: inherit;
 }
 
-#shopButton {
-    margin-top: 2vh;
+#gameButtons button, #startContainer button, #gameOver button {
+    display: inline-block;
+    position: relative;
+    padding: 0.25em 1em;
+    text-decoration: none;
+    font-weight: bold;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    background-color: black;
+    color: white;
+    user-select: none;
 }
 
-.fa-dollar-sign {
-    color: green;
+#gameButtons button:before, #startContainer button:before, #gameOver button:before, #gameButtons button:after, #startContainer button:after, #gameOver button:after {
+    content: '';
+    position: absolute;
+    top: -7px;
+    width: 2px;
+    height: -webkit-calc(100% + 14px);
+    height: calc(100% + 14px);
+    background-color: white;
+    transition: .3s;
+}
+#gameButtons button:before, #startContainer button:before, #gameOver button:before {
+    left: 7px;
 }
 
-#shop {
-    height: 60vh;
-    width: 73vw;
+#gameButtons button:after, #startContainer button:after, #gameOver button:after {
+    right: 7px;
+}
+
+#gameButtons button:hover:before, #startContainer button:hover:before, #gameOver button:hover:before {
+    top: 0px;
+    left: -1px;
+    height: 100%;
+}
+
+#gameButtons button:hover:after, #startContainer button:hover:after, #gameOver button:hover:after {
+    top: 0px;
+    right: -1px;
+    height: 100%;
+}
+
+#categories button {
+    border: none;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    padding: 0 30px;
+    font-size: 19px;
+    height: 40px;
+    line-height: 40px!;
+    vertical-align: middle;
+    background: #51587b;
+    font-size: 20px;
+    color: white;
+    transition: .4s;
+}
+
+#categories button:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 21px black;
+    border-bottom: solid 41px transparent;
+    z-index: 1;
+    transition: .4s;
+}
+
+#categories button:after {
+    position: absolute;
+    content: '';
+    right: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 21px transparent;
+    border-bottom: solid 41px black;
+    z-index: 1;
+    transition: .4s;
+}
+
+#categories button:hover:before, #categories button:hover:after{
+    border-left-width: 25px;
+}
+
+#gameButtons {
+    text-align: center;
+    margin-top: 3vh;
+}
+
+#shopButton, #optionsButton {
+    margin: 0 0.3vw;
+    font-size: 2.5vh; 
+}
+
+.item button {
+    width: fit-content;
+    margin: 0 auto;
+    font-size: 2.5vh;
+}
+
+.item button:hover {
+    background-color: rgb(255, 116, 0);
+    color: white;
+    border: 2px solid white;
+    -webkit-transition: background-color 0.4s ease-out;
+    -moz-transition: background-color 0.4s ease-out;
+    -o-transition: background-color 0.4s ease-out;
+    transition: background-color 0.4s ease-out;
+}
+
+#shop, #options, #jeu {
     left: 11.5vw;
+    height: 59vh;
+    min-height: 59vh;
+    max-height: 59vh;
+    width: 73vw;
+    max-width: 73vw;
+    min-width: 73vw;
     margin-top: 2rem;
     padding: 3vh;
-    background-color: grey;
     position: absolute;
+    user-select: none;
+}
+
+#jeu {
+    -webkit-box-shadow: 0px 0px 3vh 2vh rgba(0,0,0,0.8);
+    box-shadow: 0px 0px 3vh 2vh rgba(0,0,0,0.8);
+}
+
+#shop, #options {
     z-index: 1000000;
     display: none;
     overflow: auto;
     text-align: center;
+
 }
 
-.shopRaquettes{
+#shop {
+    background: url('assets/shop.jpg');
+    background-size: 100% 100%;
+}
+
+#options {
+    flex-direction: column;
+    background: rgb(81, 88, 123);
+    background: -moz-radial-gradient(circle, rgb(81, 88, 123) 0%, rgba(0,0,0,1) 75%);
+    background: -webkit-radial-gradient(circle,rgb(81, 88, 123) 0%, rgba(0,0,0,1) 75%);
+    background: radial-gradient(circle, rgb(81, 88, 123) 0%, rgba(0,0,0,1) 75%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#51587b",endColorstr="#000000",GradientType=1);
+}
+
+#optionsTitle {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#dataOptions {
     display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+#dataOptions button {
+    font-size: 2.5vh;
+    margin-top: 5%;
+}
+
+#shopTitle, #optionsTitle {
+    background-color: black;
+    padding: 1vh 3vw;
+    color: darkgoldenrod;
+    font-size: 5vh;
+    border-radius: 50%;
+}
+
+#shop span, #optionsTitle, #infos {
+    user-select: none;
+}
+
+#shopCross {
+    position: fixed;
+    right: 13%;
+    width: 5vh;
+    max-width: 5vh;
+    min-width: 5vh;
+}
+
+#categories {
+    -webkit-box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.8); 
+    box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.8);
+    margin: 2.5vh;
+    background-color: black;
+    height: auto;
+    padding: 5vh;
+}
+
+#categories button {
+    margin: 0 2vw;
+    min-width: 20%;
+    font-size: 2.5vh;
+}
+
+.shopRaquettes, .shopBalles, .shopTerrains{
+    display: none;
     flex-direction: row;
+    min-width: 100%;
 }
 
 .item {
@@ -55,11 +291,15 @@ button {
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    width: 20%;
+    width: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5vh;
 }
 
 .item img {
-    max-width: 70%;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
     position: relative;
     margin-bottom: 0.5rem;
     margin-left: auto;
@@ -71,17 +311,22 @@ button {
     margin-bottom: 0.5rem;
 }
 
-#jeu {
-    height: 60vh;
-    width: 75vw;
-    min-height: 100%;
-    max-height: 100%;
-    min-width: 75vw;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2rem;
-    background-color: #2D3649;
-    margin-bottom: 10vh;
+.item .defaultspan {
+    visibility: hidden;
+}
+
+.lastItemAlone {
+    width: 50%;
+}
+
+.lastItemAlone img {
+    width: 100%;
+    min-width: 100%;
+}
+
+.shopTerrains .item {
+    width: 30%;
+    max-width: 30%;
 }
 
 #startContainer, #raquette, #balle, #gameOver {
@@ -89,13 +334,14 @@ button {
 }
 
 #startContainer {
-    position: relative;
-    left: 18.7vw;
     top: 27vh;
-    width: 50%;
-    max-width: 50%;
     text-align: center;
 }
+
+#startButton, #gameOver, #gameOver button {
+    font-size: 3vh;
+}
+
 #raquette {
     max-width: 10%;
 }
@@ -105,9 +351,84 @@ button {
 }
 
 #gameOver {
-    left: 19.5vw;
     top: 22vh;
-    width: 50%;
-    max-width: 50%;
     text-align: center;
+}
+
+/* Message erreur */
+#errorMessageContainer {
+    display: block;
+    margin: 0 10vw;
+    position: fixed;
+    top: 14%;
+    background-color: #A62323;
+    color: white;
+    text-align: center;
+    padding: 5vh 0;
+}
+
+/* Scrollbar personnalisée du Shop */
+
+#shop::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+#shop::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+#shop::-webkit-scrollbar-thumb {
+    background: #4d4d4d;
+    border: 1px solid #ff7b00;
+    border-radius: 50px;
+}
+
+#shop::-webkit-scrollbar-thumb:hover {
+    background: #4d4d4d;
+}
+
+#shop::-webkit-scrollbar-thumb:active {
+    background: #4d4d4d;
+}
+
+#shop::-webkit-scrollbar-track {
+    background: #000000;
+    border: 0px solid #4d4d4d;
+    border-radius: 0px;
+}
+
+#shop::-webkit-scrollbar-track:hover {
+    background: #000000;
+}
+
+#shop::-webkit-scrollbar-track:active {
+    background: #000000;
+}
+
+#shop::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Forçage du responsive sur la div des catégories du shop */
+@media screen and (max-width: 450px) {
+    #categories {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #categories button {
+        margin: 2vh;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #gameButtons {
+        display: flex;
+        flex-direction: column;
+    }
+    #shopButton, #optionsButton {
+        margin: 1vh auto;
+    }
 }

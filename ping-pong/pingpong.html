@@ -3,77 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
     <script src='https://kit.fontawesome.com/747acc35b5.js' crossorigin='anonymous'></script>
     <link rel="stylesheet" href="pingpong.css">
     <title>Ping-Pong</title>
 </head>
 <body>
-    <div id="infos">
-        <div id="score">
-            Score actuel: <span id="scoreNumber"></span>
-        </div>
-        <div id="record">
-            Record: <span id="recordNumber"></span>
-        </div>
-        <div id="cash">
-            Cash: <span id="cashNumber"></span> <i class="fas fa-dollar-sign"></i>
-        </div>
-        <button id="shopButton" onclick="openShop()"><i class="fas fa-shopping-cart"></i> SHOP</button>
-    </div>
-    <div id="shop">
-        SHOP
-        <div class="shopRaquettes">
-            <div class="item">
-                <img src="assets/raquettes/raquette1.png">
-                <span id="prixRaquette1">1000$</span>
-                <button id="raquette1" onclick="buyItem(1000, 'raquette1', 'prixRaquette1')">Acheter</button>
+    <div id="gameContainer">
+        <div id="infos">
+            <div id="score">
+                Score actuel: <span id="scoreNumber"></span>
             </div>
-            <div class="item">
-                <img src="assets/raquettes/raquette2.png">
-                <span id="prixRaquette2">1000$</span>
-                <button id="raquette2" onclick="buyItem(1000, 'raquette2', 'prixRaquette2')">Acheter</button>
+            <div id="record">
+                Record: <span id="recordNumber"></span>
+            </div>
+            <div id="cash">
+                Cash: <span id="cashNumber"></span> <i class="fas fa-dollar-sign"></i>
             </div>
         </div>
-        <div class="shopRaquettes">
-            <div class="item">
-                <img src="assets/raquettes/raquette3.png">
-                <span id="prixRaquette3">1000$</span>
-                <button id="raquette3" onclick="buyItem(1000, 'raquette3', 'prixRaquette3')">Acheter</button>
-            </div>
-            <div class="item">
-                <img src="assets/raquettes/raquette4.png">
-                <span id="prixRaquette4">1000$</span>
-                <button id="raquette4" onclick="buyItem(1000, 'raquette4', 'prixRaquette4')">Acheter</button>
+        <div id="gameButtons">
+            <button id="shopButton" onclick="openShop(this)"><i class='fas fa-shopping-cart'></i> Ouvrir le Shop</button>
+            <button id="optionsButton" onclick="showOptions(this)"><i class='fas fa-cog fa-spin'></i> Ouvrir les options</button>
+        </div>
+        <div id="options">
+            <div id="optionsTitle">Options</div>
+            <div id="soundSettings">
+                <div id="musicsSettings">
+                    <button id="musicsMode" onclick="disableMusics()"></button>
+                    <input id="musicsVolumeRange" type="range" min="0" max="1" step="0.1" onchange="changeMusicVolume('musicsMode', this.value)">
+                </div>
+                <div id="effectsSettings">
+                    <button id="effectsMode" onclick="disableEffects()"></button>
+                    <input id="effectsVolumeRange" type="range" min="0" max="1" step="0.1" onchange="changeEffectsVolume('effectsMode', this.value)">
+                </div>
             </div>
         </div>
-        <div class="shopRaquettes">
-            <div class="item">
-                <img src="assets/raquettes/raquette5.png">
-                <span id="prixRaquette5">1000$</span>
-                <button id="raquette5" onclick="buyItem(1000, 'raquette5', 'prixRaquette5')">Acheter</button>
+        <div id="shop">
+            <span id="shopTitle">Shop</span>
+            <div id="categories">
+                <button id="boutonCategorieRaquettes" onclick="showItems(this, 'Raquettes')">Raquettes</button>
+                <button id="boutonCategorieBalles" onclick="showItems(this, 'Balles')">Balles</button>
+                <button id="boutonCategorieTerrains" onclick="showItems(this, 'Terrains')">Terrains</button>
             </div>
-            <div class="item">
-                <img src="assets/raquettes/raquette6.png">
-                <span id="prixRaquette6">1000$</span>
-                <button id="raquette6" onclick="buyItem(1000, 'raquette6', 'prixRaquette6')">Acheter</button>
-            </div>
-        </div>
-        <div class="shopRaquettes">
-            <div class="item">
-                <img src="assets/raquettes/raquette7.png">
-                <span id="prixRaquette7">1000$</span>
-                <button id="raquette7" onclick="buyItem(1000, 'raquette7', 'prixRaquette7')">Acheter</button>
-            </div>
-            <div class="item">
-                <img src="assets/raquettes/raquette8.png">
-                <span id="prixRaquette8">1000$</span>
-                <button id="raquette8" onclick="buyItem(1000, 'raquette8', 'prixRaquette8')">Acheter</button>
+            <div id="shopItemsContainer">
+                
             </div>
         </div>
-    </div>
-    <div id="jeu">
-        
+        <div id="jeu">
+            
+        </div>
     </div>
     <script src="pingpong.js"></script>
+    <script src="shopBuild.js"></script>
+    <noscript>Votre navigateur ne supporte malheureusement pas Javascript !</noscript>
 </body>
 </html>
