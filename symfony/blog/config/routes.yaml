@@ -2,6 +2,7 @@ homepage:
   path: /
   controller: App\Controller\BlogController::index
 
+
 register:
   path: /register
   controller: App\Controller\BlogController::index
