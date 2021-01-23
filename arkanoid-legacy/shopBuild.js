@@ -11,7 +11,7 @@ function createContainer(classe) {
 }
 
 // Création du premier item d'un conteneur primaire
-function createItem1(img, price, item, type) {
+function createItem1(img, price, item, type, basicItem) {
     // Création du conteneur de l'item qui contiendra tout les elements qui lui sont relatif
     item1 = document.createElement('DIV');
     // on lui attribut la classe item pour le style
@@ -24,7 +24,7 @@ function createItem1(img, price, item, type) {
     priceSpan1.innerHTML = price + "$";
     /* Si l'item créé est un item disponible par défaut, on donne à son span une classe spéciale qui fais que le prix de l'objet
        n'apparaitra pas dans le jeu */
-    if(item == "default") {
+    if(basicItem == true) {
         priceSpan1.className = "defaultspan";
     }
     // On crée ensuite le bouton de l'item
@@ -32,23 +32,52 @@ function createItem1(img, price, item, type) {
     // Attribution de l'id du bouton qui est égale au nom de l'item
     item1Button.id = item;
     // Si l'item créé est un item disponible par défaut, le bouton permettra directement de l'équiper
-    if(item == "default") {
-        item1Button.onclick = function() { equipItem(type, this.id); };
-        item1Button.innerHTML = "Equiper";
+    if(basicItem == true) {
+        if(type == "Raquette") {
+            if(item == raquetteImage) {
+                item1Button.innerHTML = "Equipé <i class='fas fa-check-circle'></i>";
+            } else {
+                item1Button.innerHTML = "Utiliser";
+                item1Button.className = "itemButtonWithEffect";
+            }
+            item1Button.onclick = function() { equipItem(type, this.id); };
+        } else if(type == "Balle") {
+            if(item == ballImage) {
+                item1Button.innerHTML = "Equipé <i class='fas fa-check-circle'></i>";
+            } else {
+                item1Button.innerHTML = "Utiliser";
+                item1Button.className = "itemButtonWithEffect";
+            }
+            item1Button.onclick = function() { equipItem(type, this.id); };
+        } else if(type == "Terrain") {
+            if(item == terrainImage) {
+                item1Button.innerHTML = "Equipé <i class='fas fa-check-circle'></i>";
+            } else {
+                item1Button.innerHTML = "Utiliser";
+                item1Button.className = "itemButtonWithEffect";
+            }
+            item1Button.onclick = function() { equipItem(type, this.id); };
+        }
         return;
     }
     // Si l'item a déjà été acheté par l'utilisateur dans sa sauvegarde alors on lui crée le bouton qui permettra directement de l'équiper
     if(localStorage.getItem(item) !== null) {
         priceSpan1.style.visibility = "hidden";
+        if(item == raquetteImage || item == ballImage || item == terrainImage) {
+            item1Button.innerHTML = "Equipé <i class='fas fa-check-circle'></i>";
+        } else {
+            item1Button.innerHTML = "Utiliser";
+            item1Button.className = "itemButtonWithEffect";
+        }
         item1Button.onclick = function() { equipItem(type, this.id); };
-        item1Button.innerHTML = "Equiper";
     // Sinon on lui crée le bouton d'achat
     } else {
         item1Button.onclick = function() { buyItem(type, price, this.id, 'prix'+item); };
+        item1Button.className = "itemButtonWithEffect";
         item1Button.innerHTML = "Acheter";
     }
     // Si l'item n'est pas un item acheté par défaut:
-    if(item !== "default") {
+    if(basicItem !== true) {
         /* Insertion du nom de l'item dans l'array des items qui peuvent être sauvegardé après leur achat,
            pour faciliter la suppression de sauvegarde */
         itemsCookies.push(item);
@@ -60,7 +89,7 @@ function createItem1(img, price, item, type) {
 }
 
 // Création du second item d'un conteneur primaire
-function createItem2(img, price, item, type) {
+function createItem2(img, price, item, type, basicItem) {
     // Création du conteneur de l'item qui contiendra tout les elements qui lui sont relatif
     item2 = document.createElement('DIV');
     // on lui attribut la classe item pour le style
@@ -73,29 +102,58 @@ function createItem2(img, price, item, type) {
     priceSpan2.innerHTML = price + "$";
     /* Si l'item créé est un item disponible par défaut, on donne à son span une classe spéciale qui fais que le prix de l'objet
        n'apparaitra pas dans le jeu */
-       if(item == "default") {
+       if(basicItem == true) {
         priceSpan2.className = "defaultspan";
     }
     item2Button = document.createElement('BUTTON');
     item2Button.id = item;
     // Si l'item créé est un item disponible par défaut, le bouton permettra directement de l'équiper
-    if(item == "default") {
-        item2Button.onclick = function() { equipItem(type, this.id); };
-        item2Button.innerHTML = "Equiper";
+    if(basicItem == true) {
+        if(type == "Raquette") {
+            if(item == raquetteImage) {
+                item2Button.innerHTML = "Equipé <i class='fas fa-check-circle'></i>";
+            } else {
+                item2Button.innerHTML = "Utiliser";
+                item2Button.className = "itemButtonWithEffect";
+            }
+            item2Button.onclick = function() { equipItem(type, this.id); };
+        } else if(type == "Balle") {
+            if(item == ballImage) {
+                item2Button.innerHTML = "Equipé <i class='fas fa-check-circle'></i>";
+            } else {
+                item2Button.innerHTML = "Utiliser";
+                item2Button.className = "itemButtonWithEffect";
+            }
+            item2Button.onclick = function() { equipItem(type, this.id); };
+        } else if(type == "Terrain") {
+            if(item == terrainImage) {
+                item2Button.innerHTML = "Equipé <i class='fas fa-check-circle'></i>";
+            } else {
+                item2Button.innerHTML = "Utiliser";
+                item2Button.className = "itemButtonWithEffect";
+            }
+            item2Button.onclick = function() { equipItem(type, this.id); };
+        }
         return;
     }
     // Si l'item a déjà été acheté par l'utilisateur dans sa sauvegarde alors on lui crée le bouton qui permettra directement de l'équiper
     if(localStorage.getItem(item) !== null) {
         priceSpan2.style.visibility = "hidden";
+        if(item == raquetteImage || item == ballImage || item == terrainImage) {
+            item2Button.innerHTML = "Equipé <i class='fas fa-check-circle'></i>";
+        } else {
+            item2Button.innerHTML = "Utiliser";
+            item2Button.className = "itemButtonWithEffect";
+        }
         item2Button.onclick = function() { equipItem(type, this.id); };
-        item2Button.innerHTML = "Equiper";
     // Sinon on lui crée le bouton d'achat
     } else {
         item2Button.onclick = function() { buyItem(type, price, this.id, 'prix'+item); };
+        item2Button.className = "itemButtonWithEffect";
         item2Button.innerHTML = "Acheter";
     }
     // Si l'item n'est pas un item acheté par défaut:
-    if(item !== "default") {
+    if(basicItem !== true) {
         /* Insertion du nom de l'item dans l'array des items qui peuvent être sauvegardé après leur achat,
            pour faciliter la suppression de sauvegarde */
         itemsCookies.push(item);
@@ -135,32 +193,32 @@ function createShopItems() {
     // Création des raquettes du shop
     // Ensemble raquettes numéro 1
     createContainer('shopRaquettes');
-    createItem1("assets/raquettes/default.png", 1000, "default", "Raquette");
-    createItem2("assets/raquettes/raquetteclearblue.png", 1000, "raquetteclearblue", "Raquette");
+    createItem1("assets/raquettes/raquettecleargreen.png", 1000, "raquettecleargreen", "Raquette", true);
+    createItem2("assets/raquettes/raquetteclearblue.png", 1000, "raquetteclearblue", "Raquette", false);
     insertFirstItem();
     insertSecondItem();
     insertIntoDOM();
 
     // Ensemble raquettes numéro 2
     createContainer('shopRaquettes');
-    createItem1("assets/raquettes/raquettedarkblue.png", 1000, "raquettedarkblue", "Raquette");
-    createItem2("assets/raquettes/raquettegreen.png", 1000, "raquettegreen", "Raquette");
+    createItem1("assets/raquettes/raquettedarkblue.png", 1000, "raquettedarkblue", "Raquette", false);
+    createItem2("assets/raquettes/raquettegreen.png", 1000, "raquettegreen", "Raquette", false);
     insertFirstItem();
     insertSecondItem();
     insertIntoDOM();
 
     // Ensemble raquettes numéro 3
     createContainer('shopRaquettes');
-    createItem1("assets/raquettes/raquettegrey.png", 1000, "raquettegrey", "Raquette");
-    createItem2("assets/raquettes/raquetteorange.png", 1000, "raquetteorange", "Raquette");
+    createItem1("assets/raquettes/raquettegrey.png", 1000, "raquettegrey", "Raquette", false);
+    createItem2("assets/raquettes/raquetteorange.png", 1000, "raquetteorange", "Raquette", false);
     insertFirstItem();
     insertSecondItem();
     insertIntoDOM();
 
     // Ensemble raquettes numéro 4
     createContainer('shopRaquettes');
-    createItem1("assets/raquettes/raquettepurple.png", 1000, "raquettepurple", "Raquette");
-    createItem2("assets/raquettes/raquettered.png", 1000, "raquettered", "Raquette");
+    createItem1("assets/raquettes/raquettepurple.png", 1000, "raquettepurple", "Raquette", false);
+    createItem2("assets/raquettes/raquettered.png", 1000, "raquettered", "Raquette", false);
     insertFirstItem();
     insertSecondItem();
     insertIntoDOM();
@@ -168,7 +226,7 @@ function createShopItems() {
     // Ensemble raquettes numéro 5
     // Ici le conteneur parent ne contient qu'un seul item
     createContainer('shopRaquettes');
-    createItem1("assets/raquettes/raquetteyellow.png", 1000, "raquetteyellow", "Raquette");
+    createItem1("assets/raquettes/raquetteyellow.png", 1000, "raquetteyellow", "Raquette", false);
     insertFirstItem();
     insertIntoDOM();
 
@@ -176,15 +234,15 @@ function createShopItems() {
     // Créations des balles du shop
     // Ensemble balles numéro 1
     createContainer('shopBalles');
-    createItem1("assets/balles/default.png", 2500, "default", "Balle");
-    createItem2("assets/balles/ballgreen.png", 2500, "ballgreen", "Balle");
+    createItem1("assets/balles/soccerball.png", 2500, "soccerball", "Balle", true);
+    createItem2("assets/balles/ballgreen.png", 2500, "ballgreen", "Balle", false);
     insertFirstItem();
     insertSecondItem();
     insertIntoDOM();
     // Ensemble balles numéro 2
     createContainer('shopBalles');
-    createItem1("assets/balles/ballpurple.png", 2500, "ballpurple", "Balle");
-    createItem2("assets/balles/ballred.png", 2500, "ballred", "Balle");
+    createItem1("assets/balles/ballpurple.png", 2500, "ballpurple", "Balle", false);
+    createItem2("assets/balles/ballred.png", 2500, "ballred", "Balle", false);
     insertFirstItem();
     insertSecondItem();
     insertIntoDOM();
@@ -192,7 +250,7 @@ function createShopItems() {
     // Ensemble balles numéro 3
     // Ici le conteneur parent ne contient qu'un seul item
     createContainer('shopBalles');
-    createItem1("assets/balles/ballblue.png", 2500, "ballblue", "Balle");
+    createItem1("assets/balles/ballblue.png", 2500, "ballblue", "Balle", false);
     insertFirstItem();
     insertIntoDOM();
 
@@ -200,16 +258,16 @@ function createShopItems() {
     // Créations des terrains du shop
     // Ensemble terrains numéro 1
     createContainer('shopTerrains');
-    createItem1("assets/terrains/default.jpg", 5000, "default", "Terrain");
-    createItem2("assets/terrains/terrain1.jpg", 5000, "terrain1", "Terrain");
+    createItem1("assets/terrains/brickwall.jpg", 5000, "brickwall", "Terrain", true);
+    createItem2("assets/terrains/terrain1.jpg", 5000, "terrain1", "Terrain", false);
     insertFirstItem();
     insertSecondItem();
     insertIntoDOM();
 
     // Ensemble terrains numéro 2
     createContainer('shopTerrains');
-    createItem1("assets/terrains/terrain2.jpg", 5000, "terrain2", "Terrain");
-    createItem2("assets/terrains/terrain3.jpg", 5000, "terrain3", "Terrain");
+    createItem1("assets/terrains/terrain2.jpg", 5000, "terrain2", "Terrain", false);
+    createItem2("assets/terrains/terrain3.jpg", 5000, "terrain3", "Terrain", false);
     insertFirstItem();
     insertSecondItem();
     insertIntoDOM();
@@ -217,7 +275,7 @@ function createShopItems() {
     // Ensemble terrains numéro 3
     // Ici le conteneur parent ne contient qu'un seul item
     createContainer('shopTerrains');
-    createItem1("assets/terrains/terrain4.jpg", 5000, "terrain4", "Terrain");
+    createItem1("assets/terrains/terrain4.jpg", 5000, "terrain4", "Terrain", false);
     insertFirstItem();
     insertIntoDOM();
 }

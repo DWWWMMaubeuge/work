@@ -1,19 +1,50 @@
 /* Lien police 'Architects Daughter' */
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 
-html {
+html, body, #gameContainer {
     height: 100%;
+    width: 100%;
+    min-height: 100%;
+    min-width: 100%;
 }
 
 body {
     font-family: 'Architects Daughter', cursive;
     color: white;
-    background-color: #272A30;
+    background-color: black;
+    margin: 0 0;
+}
+
+/* Loading screen */
+
+#loadingContainer {
+    z-index: 10000000000000;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    user-select: none;
+}
+
+#loadingText {
+    text-align: center;
+    font-size: 6vh;
+}
+
+#loadingGif {
+    display: block;
+    margin-top: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+    min-width: 15%;
+    max-width: 15%;
 }
 
 /* CSS couleurs icones */
 
-.fa-dollar-sign {
+.fa-dollar-sign, .fa-check-circle {
     color: green;
 }
 
@@ -39,6 +70,7 @@ body {
 
 #soundSettings button {
     margin: 1vh 3vw 1vh 0;
+    
 }
 
 #musicsSettings, #effectsSettings {
@@ -48,13 +80,23 @@ body {
 }
 
 #infos {
+    position: fixed;
+    top: 0%;
     text-align: center;
     margin-top: 5vh;
-    font-size: 3vh;
+    z-index: 1000000;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    word-break: break-word;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #score, #record, #cash {
-    margin: 1vh;
+    margin: 0 auto;
+    font-size: 2.5vh;
+    padding: 0.2% 0.5%;
 }
 
 /* CSS Boutons */
@@ -69,47 +111,17 @@ button {
     font-family: inherit;
 }
 
-#gameButtons button, #startContainer button, #gameOver button {
+#gameButtons button, #gameButtonsResponsive button, #titleScreen button, #restartButton, #mainMenuButton {
     display: inline-block;
     position: relative;
     padding: 0.25em 1em;
     text-decoration: none;
     font-weight: bold;
-    border-top: 2px solid white;
-    border-bottom: 2px solid white;
     background-color: black;
     color: white;
     user-select: none;
-}
-
-#gameButtons button:before, #startContainer button:before, #gameOver button:before, #gameButtons button:after, #startContainer button:after, #gameOver button:after {
-    content: '';
-    position: absolute;
-    top: -7px;
-    width: 2px;
-    height: -webkit-calc(100% + 14px);
-    height: calc(100% + 14px);
-    background-color: white;
-    transition: .3s;
-}
-#gameButtons button:before, #startContainer button:before, #gameOver button:before {
-    left: 7px;
-}
-
-#gameButtons button:after, #startContainer button:after, #gameOver button:after {
-    right: 7px;
-}
-
-#gameButtons button:hover:before, #startContainer button:hover:before, #gameOver button:hover:before {
-    top: 0px;
-    left: -1px;
-    height: 100%;
-}
-
-#gameButtons button:hover:after, #startContainer button:hover:after, #gameOver button:hover:after {
-    top: 0px;
-    right: -1px;
-    height: 100%;
+    border-radius: 30px;
+    border: 2px solid white;
 }
 
 #categories button {
@@ -119,55 +131,46 @@ button {
     text-decoration: none;
     padding: 0 30px;
     font-size: 19px;
-    height: 40px;
+    height: 6vh;
     line-height: 40px!;
     vertical-align: middle;
     background: #51587b;
     font-size: 20px;
-    color: white;
-    transition: .4s;
+    color: grey;
+    transition: 0.4s ease !important;
+    -webkit-transition: 0.4s ease !important;
+    -moz-transition: 0.4s ease !important;
+    -o-transition: 0.4s ease !important;
 }
 
-#categories button:before {
-    position: absolute;
-    content: '';
-    left: 0;
-    top: 0;
-    width: 0;
-    height: 0;
-    border: none;
-    border-left: solid 21px black;
-    border-bottom: solid 41px transparent;
-    z-index: 1;
-    transition: .4s;
+#shopButton, #shopButtonResponsive, #optionsButton, #optionsButtonResponsive {
+    z-index: 100000000000;
+    position: fixed;
+    bottom: 0.5%;
+    width: auto;
 }
 
-#categories button:after {
-    position: absolute;
-    content: '';
-    right: 0;
-    top: 0;
-    width: 0;
-    height: 0;
-    border: none;
-    border-left: solid 21px transparent;
-    border-bottom: solid 41px black;
-    z-index: 1;
-    transition: .4s;
+#shopButton, #shopButtonResponsive {
+    left: 1%;
+    margin-left: 2.5% !important;
 }
 
-#categories button:hover:before, #categories button:hover:after{
-    border-left-width: 25px;
+#optionsButtonResponsive, #optionsButton {
+    right: 1%;
+    margin-right: 2.5% !important;
 }
 
-#gameButtons {
-    text-align: center;
-    margin-top: 3vh;
+#shopButtonResponsive, #optionsButtonResponsive {
+    display: none;
 }
 
-#shopButton, #optionsButton {
+#shopButton, #shopButtonResponsive, #optionsButton, #optionsButtonResponsive {
     margin: 0 0.3vw;
-    font-size: 2.5vh; 
+    font-size: 2.5vh;
+    border: 2px solid white;
+    border-radius: 25px;
+    color: white;
+    background-color: black;
 }
 
 .item button {
@@ -176,26 +179,23 @@ button {
     font-size: 2.5vh;
 }
 
-.item button:hover {
-    background-color: rgb(255, 116, 0);
-    color: white;
-    border: 2px solid white;
-    -webkit-transition: background-color 0.4s ease-out;
-    -moz-transition: background-color 0.4s ease-out;
-    -o-transition: background-color 0.4s ease-out;
-    transition: background-color 0.4s ease-out;
+.itemButtonWithEffect:hover, #shopButton:hover, #optionsButton:hover, #shopButtonResponsive:hover, #optionsButtonResponsive:hover, #startButton:hover, #restartButton:hover, #mainMenuButton:hover{
+    background-color: rgb(255, 116, 0) !important;
+    color: white !important;
+    border: 2px solid white !important;
+    -webkit-transition: background-color 0.4s ease-out !important;
+    -moz-transition: background-color 0.4s ease-out !important;
+    -o-transition: background-color 0.4s ease-out !important;
+    transition: background-color 0.4s ease-out !important;
 }
 
 #shop, #options, #jeu {
-    left: 11.5vw;
-    height: 59vh;
-    min-height: 59vh;
-    max-height: 59vh;
-    width: 73vw;
-    max-width: 73vw;
-    min-width: 73vw;
-    margin-top: 2rem;
-    padding: 3vh;
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
     position: absolute;
     user-select: none;
 }
@@ -238,9 +238,8 @@ button {
     margin: auto;
 }
 
-#dataOptions button {
+#options button {
     font-size: 2.5vh;
-    margin-top: 5%;
 }
 
 #shopTitle, #optionsTitle {
@@ -249,6 +248,11 @@ button {
     color: darkgoldenrod;
     font-size: 5vh;
     border-radius: 50%;
+    margin-top: 2%;
+    display: block;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #shop span, #optionsTitle, #infos {
@@ -264,12 +268,12 @@ button {
 }
 
 #categories {
-    -webkit-box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.8); 
+    -webkit-box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.8);
     box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.8);
-    margin: 2.5vh;
+    margin: 2% 0;
     background-color: black;
-    height: auto;
-    padding: 5vh;
+    width: 100%;
+    padding: 1% 0;
 }
 
 #categories button {
@@ -281,7 +285,8 @@ button {
 .shopRaquettes, .shopBalles, .shopTerrains{
     display: none;
     flex-direction: row;
-    min-width: 100%;
+    width: 75%;
+    margin: 0 auto;
 }
 
 .item {
@@ -329,35 +334,70 @@ button {
     max-width: 30%;
 }
 
-#startContainer, #raquette, #balle, #gameOver {
+#titleScreen, #gameOver {
     position: relative;
 }
 
-#startContainer {
-    top: 27vh;
-    text-align: center;
+#raquette, #balle {
+    position: absolute;
 }
 
-#startButton, #gameOver, #gameOver button {
+#titleScreen {
+    top: 25%;
+    text-align: center;
+    word-break: break-word;
+    background: rgba(0,0,0,0.5);
+    padding: 5% 0;
+}
+
+#titleScreen h1 {
+    font-size: 6vh;
+}
+
+#startButton, #gameOver, #restartButton, #mainMenuButton {
     font-size: 3vh;
 }
 
 #raquette {
-    max-width: 10%;
+    max-width: 7%;
+    width: 7%;
+    min-width: 7%;
 }
 
 #balle {
     max-width: 4%;
+    width: 4%;
+    min-width: 4%;
 }
 
 #gameOver {
-    top: 22vh;
+    top: 29%;
+    background: rgba(0,0,0,0.5);
     text-align: center;
+    padding: 2% 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.gameOverText {
+    display: block;
+    margin: 1% 0;
+}
+
+#restartButton {
+    margin-top: 1%;
+}
+
+#restartButton, #mainMenuButton {
+    margin-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Message erreur */
 #errorMessageContainer {
     display: block;
+    position: absolute;
     margin: 0 10vw;
     position: fixed;
     top: 14%;
@@ -365,6 +405,8 @@ button {
     color: white;
     text-align: center;
     padding: 5vh 0;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 /* Scrollbar personnalisée du Shop */
@@ -412,7 +454,13 @@ button {
 }
 
 /* Forçage du responsive sur la div des catégories du shop */
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 700px) {
+    .shopRaquettes, .shopBalles, .shopTerrains {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 485px) {
     #categories {
         display: flex;
         flex-direction: column;
@@ -423,12 +471,32 @@ button {
     }
 }
 
-@media screen and (max-width: 500px) {
-    #gameButtons {
-        display: flex;
-        flex-direction: column;
-    }
+@media screen and (max-width: 425px) {
+
     #shopButton, #optionsButton {
-        margin: 1vh auto;
+        display: none;
+    }
+
+    #shopButtonResponsive, #optionsButtonResponsive {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    #infos {
+        flex-direction: column;
+        width: 100%;
+        top: 0%;
+    }
+
+    #score, #record, #cash {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 275px) {
+    .item {
+        width: 30%;
     }
 }

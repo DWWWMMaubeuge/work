@@ -5,26 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
     <script src='https://kit.fontawesome.com/747acc35b5.js' crossorigin='anonymous'></script>
-    <link rel="stylesheet" href="pingpong.css">
-    <title>Ping-Pong</title>
+    <link rel="stylesheet" href="arkanoidLegacy.css">
+    <link rel="icon" href="favicon.ico">
+    <title>Arkanoid legacy</title>
 </head>
 <body>
     <div id="gameContainer">
         <div id="infos">
-            <div id="score">
-                Score actuel: <span id="scoreNumber"></span>
-            </div>
             <div id="record">
                 Record: <span id="recordNumber"></span>
             </div>
             <div id="cash">
-                Cash: <span id="cashNumber"></span> <i class="fas fa-dollar-sign"></i>
+                <span id="cashNumber"></span> <i class="fas fa-dollar-sign"></i>
             </div>
         </div>
-        <div id="gameButtons">
-            <button id="shopButton" onclick="openShop(this)"><i class='fas fa-shopping-cart'></i> Ouvrir le Shop</button>
-            <button id="optionsButton" onclick="showOptions(this)"><i class='fas fa-cog fa-spin'></i> Ouvrir les options</button>
-        </div>
+        <button id="shopButton" onclick="openShop(this)"><i class='fas fa-shopping-cart'></i> Shop</button>
+        <button id="optionsButton" onclick="showOptions(this)"><i class='fas fa-cog fa-spin'></i> Options</button>
+        <button id="shopButtonResponsive" onclick="openShop(this)"><i class='fas fa-shopping-cart'></i></button>
+        <button id="optionsButtonResponsive" onclick="showOptions(this)"><i class='fas fa-cog fa-spin'></i></button>
         <div id="options">
             <div id="optionsTitle">Options</div>
             <div id="soundSettings">
@@ -53,7 +51,7 @@
             
         </div>
     </div>
-    <script src="pingpong.js"></script>
+    <script src="arkanoidLegacy.js"></script>
     <script src="shopBuild.js"></script>
     <noscript>Votre navigateur ne supporte malheureusement pas Javascript !</noscript>
 </body>

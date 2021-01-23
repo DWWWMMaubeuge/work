@@ -1,23 +1,81 @@
 // Initialisation des variables des elements du DOM
 body = document.body;
-options = document.getElementById('options');
 gameContainer = document.getElementById('gameContainer');
 game = document.getElementById('jeu');
-scoreNumber = document.getElementById('scoreNumber');
+userInterface = document.getElementById('infos');
 recordNumber = document.getElementById('recordNumber');
 cashNumber = document.getElementById('cashNumber');
-shop = document.getElementById('shop');
+optionsWindow = document.getElementById('options');
+optionsButtons = [
+    document.getElementById('optionsButton'),
+    document.getElementById('optionsButtonResponsive')
+]
+shopWindow = document.getElementById('shop');
+shopButtons = [
+    document.getElementById('shopButton'),
+    document.getElementById('shopButtonResponsive')
+]
 shopItemsContainer = document.getElementById('shopItemsContainer');
 musicsMutedButton = document.getElementById('musicsMode');
 effectsMutedButton = document.getElementById('effectsMode');
 musiqueVolumeSlider = document.getElementById('musicsVolumeRange');
 effectsVolumeSlider = document.getElementById('effectsVolumeRange');
 
+/* Creation d'un mini écran de chargement pour être sur que le navigateur de l'utilisateur ait le temps de
+   charger touts les élements */
+function createLoadingGif() {
+    gameContainer.style.visibility = "hidden";
+    loadingContainer = document.createElement('DIV');
+    loadingText = document.createElement('DIV');
+    loadingGif = document.createElement('IMG');
+
+    loadingContainer.id = "loadingContainer";
+
+    loadingText.id = "loadingText";
+    loadingText.innerHTML = "Chargement";
+
+    spanDots = document.createElement('SPAN');
+
+    loadingGif.id = "loadingGif";
+    loadingGif.src = "assets/loading.gif";
+
+    loadingContainer.appendChild(loadingGif);
+    loadingText.appendChild(spanDots);
+    loadingContainer.appendChild(loadingText);
+    body.insertBefore(loadingContainer, gameContainer);
+
+    x = 0;
+    animateDots = setInterval(() => {
+        dot = ".";
+        spanDots.innerHTML += dot;
+        x++;
+        if(x == 4) {
+            spanDots.innerHTML = "";
+            x = 0;
+        }
+    }, 250);
+
+    setTimeout(function() {
+        clearInterval(animateDots);
+        body.removeChild(loadingContainer);
+        gameContainer.style.visibility = "visible";
+        startButton.focus();
+    }, 2500)
+}
+
+// Lancement de l'écran de chargement
+createLoadingGif();
+
 // Initialisation des variables du jeu
 
-verticalUnit = "vh";
-horizontalUnit = "vw";
+verticalUnit = "%";
+horizontalUnit = "%";
 score = 0;
+
+// Asset par défaut de la raquette, balle et du terrain
+defaultRaquetteImage = "raquettecleargreen";
+defaultBallImage = "soccerball";
+defaultTerrainImage = "brickwall"
 
 // check si l'utilisateur a accepter les cookies
 if(localStorage.getItem("cookieConsent") !== null) {
@@ -43,19 +101,19 @@ if(localStorage.getItem('cash') !== null) {
 if(localStorage.getItem('raquette') !== null) {
     raquetteImage = localStorage.getItem('raquette');
 } else {
-    raquetteImage = "default";
+    raquetteImage = defaultRaquetteImage;
 }
 
 if(localStorage.getItem('balle') !== null) {
     ballImage = localStorage.getItem('balle');
 } else {
-    ballImage = "default";
+    ballImage = defaultBallImage;
 }
 
 if(localStorage.getItem('terrain') !== null) {
     terrainImage = localStorage.getItem('terrain');
 } else {
-    terrainImage = "default";
+    terrainImage = defaultTerrainImage;
 }
 
 game.style.background = "url('assets/terrains/"+terrainImage+".jpg')";
@@ -307,7 +365,6 @@ function changeEffectsVolume(effectsButton, newEffectsVolume) {
 
 // Affichage des statistiques du joueur
 function setStats() {
-    scoreNumber.innerHTML = score;
     recordNumber.innerHTML = record;
     cashNumber.innerHTML = cash;
 }
@@ -363,20 +420,43 @@ function cookieAccept() {
     createSaveOptions();
 }
 
+shortcutsControls = (e) => {
+    if(e.keyCode !== 37 && e.keyCode !== 81 && e.keyCode !== 39 && e.keyCode !== 68) {
+        if(e.keyCode === 111) {
+            showOptions();
+        }
+        if(e.keyCode === 109) {
+            openShop();
+        }
+    }
+}
+
 // Création du bouton Start
-function createStartButton() {
+function createTitleScreen() {
+    if(typeof(gameOverScreen) !== "undefined") {
+        game.removeChild(gameOverScreen);
+        delete gameOverScreen;
+        // Si l'effet sonore du game over est en cours de lecture, on le remet à zéro et on l'arrête
+        if(gameOverSound.currentTime != 0) {
+            gameOverSound.pause();
+            gameOverSound.currentTime = 0;
+        }
+    }
     // Creation du container du bouton
-    startContainer = document.createElement('DIV');
-    startContainer.id = "startContainer";
+    titleScreen = document.createElement('DIV');
+    titleScreen.id = "titleScreen";
+    // Création du h1 contenant le nom du jeu
+    gameTitle = document.createElement('H1');
+    gameTitle.innerHTML = "<h1>ARKANOID LEGACY</h1>";
+    titleScreen.appendChild(gameTitle);
     // Création du bouton start
     startButton = document.createElement('BUTTON');
     startButton.id = "startButton";
     startButton.innerHTML = "<i class='fas fa-play-circle'></i> Démarrer le jeu";
-    startButton.onclick = "startGame()";
     // Insertion du bouton dans son container
-    startContainer.appendChild(startButton);
+    titleScreen.appendChild(startButton);
     // Insertion du container dans le jeu
-    game.appendChild(startContainer);
+    game.appendChild(titleScreen);
     // Attribution du onclick au bouton
     startButton.onclick = function() { startGame(); };
 }
@@ -390,7 +470,7 @@ function createSaveOptions() {
         deleteSaveButton.innerHTML = "<i class='fas fa-eraser'></i> Supprimer ma progression";
         deleteSaveButton.onclick = function() { deleteSave(); };
         dataOptions.appendChild(deleteSaveButton);
-        options.appendChild(dataOptions);
+        optionsWindow.appendChild(dataOptions);
     }
 }
 
@@ -400,33 +480,38 @@ function createRaquette(asset) {
     raquette.src = "assets/raquettes/"+asset+".png";
     raquette.id = "raquette";
     // On définit la position initiale de la raquette pour la centrer
-    raquetteLeftPos = 33;
+    raquetteLeftPos = 46.5;
+    raquetteTopPos = 75;
     raquette.style.left = raquetteLeftPos + horizontalUnit;
-    raquette.style.top = "45" + verticalUnit;
+    raquette.style.top = raquetteTopPos + verticalUnit;
     // Insertion de la raquette dans le jeu
     game.appendChild(raquette);
     // On ajoute l'écouteur à la fenetre que si le container du bouton start existe
-    if(typeof(startContainer) !== "undefined") {
-        body.addEventListener('keydown', e=>raquetteMouvements(e));
-    }
 }
 
-function raquetteMouvements(e) {
-    // On récupére le code de la touche pressée
-    keyPressed = e.key;
+function addControls() {
+    document.addEventListener('keydown', raquetteMouvements);
+}
+
+function removeControls() {
+    document.removeEventListener('keydown', raquetteMouvements);
+}
+
+raquetteMouvements = (e) => {
+    console.log(e.keyCode );
     // Si la touche pressé correspond à la fleche droite ou la touche d du clavier
-    if(keyPressed == "ArrowRight" || keyPressed == "d") {
+    if(e.keyCode  === 39 || e.keyCode  === 68 ) {
         // Si la nouvelle position de la raquette ne dépasse pas la bordure droite du jeu
-        if((raquetteLeftPos +3) <= 67) {
+        if((raquetteLeftPos + 3) <= 90) {
             // On change la position de la raquette 
             raquetteLeftPos = raquetteLeftPos + 3;
             // On fais bouger l'image de la raquette
             raquette.style.left = raquetteLeftPos + horizontalUnit;
         }
     // Si la touche pressé correspond à la fleche gauche ou la touche q du clavier
-    } else if(keyPressed == "ArrowLeft" || keyPressed == "q") {
+    } else if(e.keyCode  === 37  || e.keyCode  === 81 ) {
         // Si la nouvelle position de la raquette ne dépasse pas la bordure gauche du jeu
-        if((raquetteLeftPos -3) >= 0) {
+        if((raquetteLeftPos - 3) >= 3) {
             // On change la position de la raquette 
             raquetteLeftPos = raquetteLeftPos - 3;
             // On fais bouger l'image de la raquette
@@ -440,8 +525,8 @@ function createBall() {
     balle = document.createElement('IMG');
     balle.src = "assets/balles/"+ballImage+".png";
     balle.id = "balle";
-    balleLeftPos = 27.6;
-    balleTopPos = 17;
+    balleLeftPos = 48;
+    balleTopPos = 25;
     // On définit la position initiale de la balle pour la centrer
     balle.style.left = balleLeftPos + horizontalUnit;
     balle.style.top = balleTopPos + verticalUnit;
@@ -452,13 +537,14 @@ function createBall() {
 // Moteur du jeu
 function ballMovements() {
     // Initialisation de la variable d'indice de collision
-    collision = (raquetteLeftPos - balleLeftPos);
+    collisionX = (raquetteLeftPos - balleLeftPos);
+    collisionY = (raquetteTopPos - balleTopPos);
     // collision fenetre gauche et à droite
-    if(leftAngle == true && balleLeftPos <= -9) {
+    if(leftAngle == true && balleLeftPos <= 0) {
         leftAngle = false;
         rightAngle = true;
         wallHitSound.play();
-    } else if(rightAngle == true && balleLeftPos >= 64) {
+    } else if(rightAngle == true && balleLeftPos >= 96) {
         rightAngle = false;
         leftAngle = true;
         wallHitSound.play();
@@ -474,37 +560,38 @@ function ballMovements() {
     if(falling == true) {
         balleTopPos = balleTopPos+1;
         balle.style.top = balleTopPos + verticalUnit;
-        /* Si la balle est à une hauteur suffisante pour rebondir sur la raquette, et que l'indice de collision
+        /* Si la balle est à une hauteur suffisante pour rebondir sur la raquette, et que l'indice de collision horizontal
            permet un rebond sur celle ci */
-        if(balleTopPos >= 41 && balleTopPos <= 55 && (collision < 11 && collision > 0) && balleTopPos < 48) {
+        if(collisionY <= 8 && balleTopPos > -5 && (collisionX <= 4.5 && collisionX >= -7.5)) {
             // Pour le débug des collisions
-            console.log('(1) position balle: ' + balleLeftPos);
-            console.log('(2) position raquette: ' + raquetteLeftPos);
-            console.log('(3) hauteur balle: ' + balleTopPos);
-            console.log('(4) indice collision: ' + collision);
+            // console.log('(1) position balle: ' + balleLeftPos);
+            // console.log('(2) position raquette: ' + raquetteLeftPos);
+            // console.log('(3) hauteur balle: ' + balleTopPos);
+            // console.log('(4) indice collision horizontale: ' + collisionX);
+            // console.log('(5) indice collision verticale: ' + collisionY);
             /* On check en premier si la balle rebondit sur le bas droit de la raquette */
-            if(balleTopPos >= 44 && collision > 0 && collision < 1) {
+            if(collisionY <= 4 && collisionX >= -7.5 && collisionX <= -3.5) {
                 leftAngle = false;
                 rightAngle = true;
                 ballHitSound.play();
-                console.log('La balle a rebondit sur le coté droit de la raquette mais pas assez haut pour remonter');
+                // console.log('La balle a rebondit sur le coté droit de la raquette mais pas assez haut pour remonter');
             // Sinon on check si la balle rebondit sur le bas gauche de la raquette
-            } else if(balleTopPos >= 44 && collision > 10 && collision < 11) {
+            } else if(collisionY <= 4 && collisionX >= -1.5  && collisionX < 4.5) {
                 leftAngle = true;
                 rightAngle = false;
                 ballHitSound.play();
-                console.log('La balle a rebondit sur le coté gauche de la raquette mais pas assez haut pour remonter');
+                // console.log('La balle a rebondit sur le coté gauche de la raquette mais pas assez haut pour remonter');
             // Sinon c'est qu'elle est à hauteur suffisante pour rebondir sur la raquette et repartir en l'air
-            } else if(balleTopPos < 44) {
+            } else if(collisionY <= 8 && collisionY >= 5 && collisionX > -7.5 && collisionX < 2.5) {
                 // On fais remonter la balle en l'air
                 falling = false;
                 refreshScore();
                 // On check de quelle coté de la raquette elle rebondit et on change l'angle de la balle
-                if(balleTopPos >= 41 && balleTopPos <= 43 && collision > 4 && collision < 11) {
+                if(collisionX >= -1.5  && collisionX < 2.5) {
                     leftAngle = true;
                     rightAngle = false;
                     ballHitSound.play();
-                } else if(balleTopPos >= 41 && balleTopPos <= 43 && collision > 0 && collision < 5) {
+                } else if(collisionX >= -7.5 && collisionX < -1.5) {
                     rightAngle = true;
                     leftAngle = false;
                     ballHitSound.play();
@@ -516,7 +603,7 @@ function ballMovements() {
     else if(falling == false) {
         balleTopPos = balleTopPos-1;
         balle.style.top = balleTopPos + verticalUnit;
-        if(balleTopPos == -2) {
+        if(balleTopPos == 4) {
             falling = true;
             roofHitSound.play();
         }
@@ -529,8 +616,8 @@ function ballMovements() {
 function checkBallOut() {
     /* Si la valeur top de la balle est supérieure ou égale à 53 alors on déclenche le game over, on retire l'écouteur
        des controles de la raquette, on supprime la raquette et la balle, on arrête le jeu et on déclenche le game over*/
-    if(balleTopPos >= 55) {
-        body.removeEventListener('keydown', raquetteMouvements);
+    if(balleTopPos >= 92) {
+        removeControls();
         game.removeChild(raquette);
         game.removeChild(balle);
         clearInterval(gamePlaying);
@@ -564,18 +651,20 @@ function gameOver() {
     gameOverSound.play();
     // On crée un écran de game over dans une div qui contiendra un bouton pour relancer le jeu
     gameOverScreen = document.createElement('DIV');
-    gameOverContent = "Vous avez perdu !<br><br><button onclick='startGame()'><i class='fas fa-play-circle'></i> Rejouer</button>";
+    gameOverContent = "<span class='gameOverText'>Game over !</span><span class='gameOverText'>Score: " + score + "</span><button id='restartButton' onclick='startGame()'><i class='fas fa-redo-alt'></i> Rejouer</button><button id='mainMenuButton' onclick='createTitleScreen()'><i class='fas fa-times'></i> Menu principal</button>";
     gameOverScreen.innerHTML = gameOverContent;
+    userInterface.removeChild(scoreContainer);
     gameOverScreen.id = "gameOver";
     game.appendChild(gameOverScreen);
+    document.getElementById('restartButton').focus();
 }
 
 // Ouverture du shop
-function openShop(shopButton) {
+function openShop() {
     // On vérifie que la fenetre des options n'est pas ouverte, si elle l'est on ne fais rien
-    if(options.style.display !== "flex") {
+    if(optionsWindow.style.display !== "flex") {
         // Si lorsque l'utilisateur clique sur le bouton shop, la fenetre du shop n'est pas ouverte:
-        if(shop.style.display !== "block") {
+        if(shopWindow.style.display !== "block") {
             // On vérifie qu'une partie n'est pas lancée, si c'est le cas on la met en pause
             pauseGame();
             /* On vérifie que l'effet sonore de fermeture de la fenetre du shop n'est pas en cours de lecture
@@ -593,12 +682,15 @@ function openShop(shopButton) {
             menuOpened.play();
             // On démarre la musique du shop
             shopMusic.play();
-            // On affiche la fenêtre du shop et on change le contenu du bouton
-            shop.style.display = "block";
-            shopButton.innerHTML = "<i class='fas fa-shopping-cart'></i> Fermer le Shop";
-
+            // On affiche la fenêtre du shop
+            shopWindow.style.display = "block";
+            shopButtons.forEach(function(button) {
+                button.style.color = "black";
+                button.style.backgroundColor = "white";
+                button.style.border = "2px solid black";
+            })
         // Sinon c'est que le shop est ouvert alors on le ferme
-        } else if(shop.style.display == "block") {
+        } else if(shopWindow.style.display == "block") {
             // On vérifie qu'une partie n'est pas lancée, si c'est le cas on enleve la pause
             cancelPause();
             // On arrête la musique du shop
@@ -617,20 +709,24 @@ function openShop(shopButton) {
             }
             // On joue l'effet sonore de la fermeture de la fenetre du shop
             menuClosed.play();
-            // On ferme la fenetre du shop et on change le contenu du bouton
-            shop.style.display = "none";
-            shopButton.innerHTML = "<i class='fas fa-shopping-cart'></i> Ouvrir le Shop";
+            // On ferme la fenetre du shop
+            shopWindow.style.display = "none";
+            shopButtons.forEach(function(button) {
+                button.style.color = "white";
+                button.style.backgroundColor = "black";
+                button.style.border = "2px solid white";
+            })
         }
     }
 }
 
 // Affiche ou cache le menu des options
-function showOptions(optionsButton) {
+function showOptions() {
     // On vérifie que le shop n'est pas ouvert, si il l'est on ne fais rien
-    if(shop.style.display !== "block") {
+    if(shopWindow.style.display !== "block") {
         // On vérifie si la fenetre des options est déjà ouverte, si elle l'est on la ferme et on enleve la pause
-        if(options.style.display == "flex") {
-            options.style.display = "none";
+        if(optionsWindow.style.display == "flex") {
+            optionsWindow.style.display = "none";
             // On vérifie qu'une partie n'est pas lancée, si c'est le cas on enleve la pause
             cancelPause();
             if(menuOpened.paused != true) {
@@ -640,7 +736,11 @@ function showOptions(optionsButton) {
             menuClosed.play();
             pauseMusic.pause();
             pauseMusic.currentTime = 0;
-            optionsButton.innerHTML = "<i class='fas fa-cog fa-spin'></i> Ouvrir les options";
+            optionsButtons.forEach(function(button) {
+                button.style.color = "white";
+                button.style.backgroundColor = "black";
+                button.style.border = "2px solid white";
+            });
         } else {
             if(menuClosed.paused != true) {
                 menuClosed.pause();
@@ -648,10 +748,14 @@ function showOptions(optionsButton) {
             }
             menuOpened.play();
             pauseMusic.play();
-            options.style.display = "flex";
+            optionsWindow.style.display = "flex";
             // On vérifie qu'une partie n'est pas lancée, si c'est le cas on la met en pause
             pauseGame();
-            optionsButton.innerHTML = "<i class='fas fa-cog fa-spin'></i> Fermer les options";
+            optionsButtons.forEach(function(button) {
+                button.style.color = "black";
+                button.style.backgroundColor = "white";
+                button.style.border = "2px solid black";
+            });
         }
     }
 }
@@ -662,6 +766,8 @@ function showItems(button, categorie) {
     if(categorie !== "Raquettes") {
         categorie2 = document.getElementsByClassName('shopRaquettes');
         document.getElementById('boutonCategorieRaquettes').style.backgroundColor = "#51587b";
+        document.getElementById('boutonCategorieRaquettes').style.color = "grey";
+        document.getElementById('boutonCategorieRaquettes').style.boxShadow = "none";
         if(categorie2[0].style.display == "flex") {
             for (var i = 0; i < categorie2.length; i++ ) {
                 categorie2[i].style.display = "none";
@@ -671,6 +777,8 @@ function showItems(button, categorie) {
     if(categorie !== "Balles") {
         categorie2 = document.getElementsByClassName('shopBalles');
         document.getElementById('boutonCategorieBalles').style.backgroundColor = "#51587b";
+        document.getElementById('boutonCategorieBalles').style.color = "grey";
+        document.getElementById('boutonCategorieBalles').style.boxShadow = "none";
         if(categorie2[0].style.display == "flex") {
             for (var i = 0; i < categorie2.length; i++ ) {
                 categorie2[i].style.display = "none";
@@ -680,22 +788,28 @@ function showItems(button, categorie) {
     if(categorie !== "Terrains") {
         categorie2 = document.getElementsByClassName('shopTerrains');
         document.getElementById('boutonCategorieTerrains').style.backgroundColor = "#51587b";
+        document.getElementById('boutonCategorieTerrains').style.color = "grey";
+        document.getElementById('boutonCategorieTerrains').style.boxShadow = "none";
         if(categorie2[0].style.display == "flex") {
             for (var i = 0; i < categorie2.length; i++ ) {
                 categorie2[i].style.display = "none";
             }
         }
     }
-    // Affichage des items de la catégories qui a été cliquée si ils ne sont pas affichés
+    // Disparition des items de la catégories qui a été cliquée si ils sont déjà affichés
     if(elements[0].style.display == "flex") {
         button.style.backgroundColor = "#51587b";
+        button.style.color = "grey";
+        button.style.boxShadow = "none";
         for (var i = 0; i < elements.length; i++ ) {
             elements[i].style.display = "none";
 
         }
-    // Disparition des items de la catégories qui a été cliquée si ils sont déjà affichés
+    // Affichage des items de la catégories qui a été cliquée si ils ne sont pas affichés
     } else {
-        button.style.backgroundColor = "#FF7400";
+        button.style.backgroundColor = "#4A79FF";
+        button.style.color = "white";
+        button.style.boxShadow = "0px 0px 17px 3px #00BFFF";
         for (var i = 0; i < elements.length; i++ ) {
             elements[i].style.display = "flex";
         }
@@ -723,7 +837,7 @@ function buyItem(type, price, buttonId, priceSpanId) {
         // Suppression du span contenant le prix de l'item
         document.getElementById(priceSpanId).style.visibility = "hidden";
         // Remplacement du contenu du bouton pour le faire passer de "acheter" à "équiper"
-        document.getElementById(buttonId).innerHTML = "Equiper";
+        document.getElementById(buttonId).innerHTML = "Utiliser";
         // Changement du onclick du bouton pour lui attraper la fonction equipItem avec en parametre l'id du bouton
         document.getElementById(buttonId).onclick = function() { equipItem(type, buttonId) };
         if(cookieConsent == true) {
@@ -743,10 +857,14 @@ function buyItem(type, price, buttonId, priceSpanId) {
 
 // Changement de raquette par le joueur
 function equipItem(type, asset) {
+    console.log('HELLO');
+    console.log(type);
+    console.log(asset);
     if(type == "Raquette") {
         if(raquetteImage !== asset) {
-            // Changement de la variable de l'image de la raquette avec celle que l'utilisateur a équiper
-            raquetteImage = asset;
+            // Changement du texte du bouton pour informer le joueur que l'item est maintenant équipé
+            document.getElementById(asset).innerHTML = "Equipé <i class='fas fa-check-circle'></i>";
+            document.getElementById(asset).className = "";
             // Si le bruitage est déjà en cours de lecture alors on l'arrête
             if(itemEquippedSound.paused != true) {
                 itemEquippedSound.currentTime = 0;
@@ -754,34 +872,56 @@ function equipItem(type, asset) {
             // Lecture du bruitage
             itemEquippedSound.play();
             // Si le jeu est déjà lancé, on remplace directement l'image de la raquette
-            if(typeof(startButton) == "undefined") {
-                raquette.src = "";
-                raquette.src = "assets/raquettes/"+asset+".png";
+            if(typeof(startButton) == "undefined" && typeof(gameOverScreen) == "undefined") {
+                document.getElementById('raquette').src = "";
+                document.getElementById('raquette').src = "assets/raquettes/"+asset+".png";
             }
+            /* Si l'utilisateur accepte les cookies on sauvegarde l'item qu'il a équipé dans un cookie pour
+               l'équiper directement à sa prochaine connexion */
             if(cookieConsent == true) {
                 localStorage.setItem('raquette', asset);
             }
+            // Changement du texte du bouton de l'item qui était précédement équippé
+            document.getElementById(raquetteImage).innerHTML = "Utiliser";
+            document.getElementById(raquetteImage).className = "itemButtonWithEffect";
+            // Changement de la variable de l'image de la raquette avec celle que l'utilisateur a équiper
+            raquetteImage = asset;
+            return;
         }
     } else if(type == "Balle") {
         if(ballImage !== asset) {
-            ballImage = asset;
+            // Changement du texte du bouton pour informer le joueur que l'item est maintenant équipé
+            document.getElementById(asset).innerHTML = "Equipé <i class='fas fa-check-circle'></i>";
+            document.getElementById(asset).className = "";
+            // Si le bruitage est déjà en cours de lecture alors on l'arrête
             if(itemEquippedSound.paused != true) {
                 itemEquippedSound.currentTime = 0;
             }
             // Lecture du bruitage
             itemEquippedSound.play();
             // Si le jeu est déjà lancé, on remplace directement l'image de la balle
-            if(typeof(startButton) == "undefined") {
-                balle.src = "";
-                balle.src = "assets/balles/"+asset+".png";
+            if(typeof(startButton) == "undefined" && typeof(gameOverScreen) == "undefined") {
+                document.getElementById('balle').src = "";
+                document.getElementById('balle').src = "assets/balles/"+asset+".png";
             }
+            /* Si l'utilisateur accepte les cookies on sauvegarde l'item qu'il a équipé dans un cookie pour
+               l'équiper directement à sa prochaine connexion */
             if(cookieConsent == true) {
                 localStorage.setItem('balle', asset);
             }
+            // Changement du texte du bouton de l'item qui était précédement équippé
+            document.getElementById(ballImage).innerHTML = "Utiliser";
+            document.getElementById(ballImage).className = "itemButtonWithEffect";
+            // Changement de la variable de l'image de la balle avec celle que l'utilisateur a équiper
+            ballImage = asset;
+            return;
         }
     } else {
         if(terrainImage !== asset) {
-            terrainImage = asset;
+            // Changement du texte du bouton pour informer le joueur que l'item est maintenant équipé
+            document.getElementById(asset).innerHTML = "Equipé <i class='fas fa-check-circle'></i>";
+            document.getElementById(asset).className = "";
+            // Si le bruitage est déjà en cours de lecture alors on l'arrête
             if(itemEquippedSound.paused != true) {
                 itemEquippedSound.currentTime = 0;
             }
@@ -789,14 +929,30 @@ function equipItem(type, asset) {
             itemEquippedSound.play();
             // Changement du terrain
             game.style.background = "";
-            game.style.background = "url('assets/terrains/"+terrainImage+".jpg')";
+            game.style.background = "url('assets/terrains/"+asset+".jpg')";
             game.style.backgroundSize = "100% 100%";
             game.style.backgroundRepeat = "no-repeat";
+            /* Si l'utilisateur accepte les cookies on sauvegarde l'item qu'il a équipé dans un cookie pour
+               l'équiper directement à sa prochaine connexion */
             if(cookieConsent == true) {
                 localStorage.setItem('terrain', asset);
             }
+            // Changement du texte du bouton de l'item qui était précédement équippé
+            document.getElementById(terrainImage).innerHTML = "Utiliser";
+            document.getElementById(terrainImage).className = "itemButtonWithEffect";
+            // Changement de la variable de l'image du terrain avec celle que l'utilisateur a équiper
+            terrainImage = asset;
+            return;
         }
     }
+}
+
+function createScoreInterface() {
+    scoreContainer = document.createElement('DIV');
+    scoreContainer.id = "score";
+    scoreContainer.innerHTML = "Score actuel: <span id='scoreNumber'></span>";
+    userInterface.insertBefore(scoreContainer, userInterface.children[1]);
+    scoreNumber.innerHTML = score;
 }
 
 // Démarrage du jeu
@@ -804,13 +960,15 @@ function startGame() {
     rightAngle = false;
     leftAngle = false;
     falling = true;
-    // Création de la raquette et de la balle
-    createRaquette(raquetteImage);
+    // Création de la balle et de la raquette
     createBall();
+    createRaquette(raquetteImage);
+    addControls();
+    createScoreInterface();
     // Si le bouton start existe on le retire
-    if(typeof(startContainer) !== "undefined") {
-        game.removeChild(startContainer);
-        delete startContainer;
+    if(typeof(titleScreen) !== "undefined") {
+        game.removeChild(titleScreen);
+        delete titleScreen;
         delete startButton;
     // Sinon on retire l'écran de game over et tout ce qui lui est associé
     } else {
@@ -834,18 +992,20 @@ function startGame() {
 // Mise en pause du jeu si il est lancé
 function pauseGame() {
     if(typeof(gamePlaying) !== "undefined") {
+        removeControls();
         clearInterval(gamePlaying);
     }
 }
 
 // Relancement du jeu si il était lancé mais en pause
 function cancelPause() {
-    if(typeof(gamePlaying) !== "undefined" && typeof(gameOverScreen) == "undefined") {
+    if(typeof(gamePlaying) !== "undefined" && typeof(gameOverScreen) == "undefined" && typeof(titleScreen) == "undefined") {
         // On enleve la pause du jeu
         gamePlaying = setInterval(() => {
             ballMovements();
             checkBallOut();
         }, difficulty);
+        addControls();
     }
 }
 
@@ -861,12 +1021,30 @@ function saveGame() {
 function deleteSave() {
     localStorage.removeItem('record');
     localStorage.removeItem('cash');
+    localStorage.removeItem('raquette');
+    localStorage.removeItem('balle');
+    localStorage.removeItem('terrain');
     itemsCookies.forEach(function(item) {
         localStorage.removeItem(item);
     })
     record = 0;
     cash = 0;
     setStats();
+    // Reset des variables des images de la raquette, de la balle et du terrain
+    raquetteImage = defaultRaquetteImage;
+    ballImage = defaultBallImage;
+    terrainImage = defaultTerrainImage;
+    // Reset de l'image du terrain
+    game.style.background = "url('assets/terrains/"+terrainImage+".jpg')";
+    game.style.backgroundSize = "100% 100%";
+    game.style.backgroundRepeat = "no-repeat";
+    // Reset de l'image de la raquette et de la balle si une partie est en cours
+    if(typeof(gamePlaying) !== "undefined") {
+        document.getElementById('raquette').src = "";
+        document.getElementById('raquette').src = "assets/raquettes/"+raquetteImage+".png";
+        document.getElementById('balle').src = "";
+        document.getElementById('balle').src = "assets/balles/"+ballImage+".png";
+    }
     shopItemsContainer.innerHTML = "";
     createShopItems();
     // Si l'effet sonore de suppression de sauvegarde est déjà en cours de lecture on l'arrête
@@ -877,24 +1055,11 @@ function deleteSave() {
     deletedSave.play();
 }
 
-// On check la largeur de l'appareil de l'utilisateur en pixel
-if($(window).width() < 250) {
-    // Suppression du jeu dans sa totalité
-    body.removeChild(gameContainer);
-    // Création d'un message d'erreur
-    errorMessageContainer = document.createElement('DIV');
-    errorMessageContainer.id = "errorMessageContainer";
-    errorMessageContainer;
-    errorMessage = document.createElement('DIV');
-    errorMessage.innerHTML = "Désolé mais il semblerait que votre appareil ne posséde pas la configuration requise pour lancer le jeu";
-    errorMessage.id = "errorMessage";
-    errorMessageContainer.appendChild(errorMessage);
-    body.appendChild(errorMessageContainer);
-} else {
-    /* Sinon on affiche le bouton start, on initialise l'affichage et on check si les cookies 
-    sont autorisé ou non pour la sauvegarde des stats du joueur */
-    createSaveOptions();
-    createStartButton();
-    setStats();
-    checkCookieConsent();
-}
+/* On ajoute un ecouteur sur la page pour détecter si une touche raccourcie est pressée,
+   on affiche le bouton start, on initialise l'affichage et on check si les cookies 
+   sont autorisé ou non pour la sauvegarde des stats du joueur */
+document.addEventListener('keypress', shortcutsControls);
+createSaveOptions();
+createTitleScreen();
+setStats();
+checkCookieConsent();
