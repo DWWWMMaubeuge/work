@@ -28,7 +28,6 @@ body {
 }
 
 #loadingText {
-    text-align: center;
     font-size: 6vh;
 }
 
@@ -40,6 +39,10 @@ body {
     width: 15%;
     min-width: 15%;
     max-width: 15%;
+}
+
+#animatedDots {
+    position: fixed;
 }
 
 /* CSS couleurs icones */
@@ -58,25 +61,6 @@ body {
 
 #gameContainer {
     position: relative;
-}
-
-#soundSettings {
-    flex-direction: column;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5%;
-}
-
-#soundSettings button {
-    margin: 1vh 3vw 1vh 0;
-    
-}
-
-#musicsSettings, #effectsSettings {
-    display: flex;
-    flex-direction: row;
-    padding: 2vh 1vw;
 }
 
 #infos {
@@ -109,6 +93,7 @@ button {
     cursor: pointer;
     padding: 5px;
     font-family: inherit;
+    border-radius: 30px;
 }
 
 #gameButtons button, #gameButtonsResponsive button, #titleScreen button, #restartButton, #mainMenuButton {
@@ -120,7 +105,6 @@ button {
     background-color: black;
     color: white;
     user-select: none;
-    border-radius: 30px;
     border: 2px solid white;
 }
 
@@ -168,9 +152,14 @@ button {
     margin: 0 0.3vw;
     font-size: 2.5vh;
     border: 2px solid white;
-    border-radius: 25px;
     color: white;
     background-color: black;
+}
+
+#shopItemsContainer {
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 3vh;
 }
 
 .item button {
@@ -179,7 +168,7 @@ button {
     font-size: 2.5vh;
 }
 
-.itemButtonWithEffect:hover, #shopButton:hover, #optionsButton:hover, #shopButtonResponsive:hover, #optionsButtonResponsive:hover, #startButton:hover, #restartButton:hover, #mainMenuButton:hover{
+.itemButtonWithEffect:hover, #shopButton:hover, #optionsButton:hover, #shopButtonResponsive:hover, #optionsButtonResponsive:hover, #startButton:hover, #restartButton:hover, #mainMenuButton:hover {
     background-color: rgb(255, 116, 0) !important;
     color: white !important;
     border: 2px solid white !important;
@@ -216,10 +205,12 @@ button {
 #shop {
     background: url('assets/shop.jpg');
     background-size: 100% 100%;
+    flex-direction: column;
 }
 
 #options {
     flex-direction: column;
+    font-size: 2.5vh;
     background: rgb(81, 88, 123);
     background: -moz-radial-gradient(circle, rgb(81, 88, 123) 0%, rgba(0,0,0,1) 75%);
     background: -webkit-radial-gradient(circle,rgb(81, 88, 123) 0%, rgba(0,0,0,1) 75%);
@@ -227,19 +218,54 @@ button {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#51587b",endColorstr="#000000",GradientType=1);
 }
 
+#options button {
+    font-size: 2.5vh;
+}
+
 #optionsTitle {
     margin-left: auto;
     margin-right: auto;
 }
 
+#soundSettings {
+    flex-direction: column;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+}
+
+#soundSettings button {
+    margin: 1vh 3vw 1vh 0;
+    
+}
+
+#musicsSettings, #effectsSettings {
+    display: flex;
+    flex-direction: row;
+    padding: 2vh 1vw;
+}
+
 #dataOptions {
     display: flex;
     flex-direction: column;
+    margin: 8vh auto;
+}
+
+#dataOptions button {
     margin: auto;
 }
 
-#options button {
-    font-size: 2.5vh;
+#saveInfos {
+    display: flex;
+    flex-direction: column;
+    margin: 1vh auto 5vh auto;
+}
+
+#soundSettings, #dataOptions {
+    background: rgba(0,0,0,0.5);
+    padding: 3vh 3vw;
+    border-radius: 10px;
 }
 
 #shopTitle, #optionsTitle {
@@ -259,18 +285,10 @@ button {
     user-select: none;
 }
 
-#shopCross {
-    position: fixed;
-    right: 13%;
-    width: 5vh;
-    max-width: 5vh;
-    min-width: 5vh;
-}
-
 #categories {
     -webkit-box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.8);
     box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.8);
-    margin: 2% 0;
+    margin: 2% 0 0 0;
     background-color: black;
     width: 100%;
     padding: 1% 0;
@@ -286,7 +304,7 @@ button {
     display: none;
     flex-direction: row;
     width: 75%;
-    margin: 0 auto;
+    margin: 2% auto;
 }
 
 .item {
@@ -318,6 +336,10 @@ button {
 
 .item .defaultspan {
     visibility: hidden;
+}
+
+.item button {
+    border-radius: unset;
 }
 
 .lastItemAlone {
@@ -411,46 +433,71 @@ button {
 
 /* Scrollbar personnalisée du Shop */
 
-#shop::-webkit-scrollbar {
+#shopItemsContainer::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 
-#shop::-webkit-scrollbar-button {
+#shopItemsContainer::-webkit-scrollbar-button {
     width: 0px;
     height: 0px;
 }
 
-#shop::-webkit-scrollbar-thumb {
+#shopItemsContainer::-webkit-scrollbar-thumb {
     background: #4d4d4d;
     border: 1px solid #ff7b00;
-    border-radius: 50px;
 }
 
-#shop::-webkit-scrollbar-thumb:hover {
+#shopItemsContainer::-webkit-scrollbar-thumb:hover {
     background: #4d4d4d;
 }
 
-#shop::-webkit-scrollbar-thumb:active {
+#shopItemsContainer::-webkit-scrollbar-thumb:active {
     background: #4d4d4d;
 }
 
-#shop::-webkit-scrollbar-track {
+#shopItemsContainer::-webkit-scrollbar-track {
     background: #000000;
     border: 0px solid #4d4d4d;
     border-radius: 0px;
 }
 
-#shop::-webkit-scrollbar-track:hover {
+#shopItemsContainer::-webkit-scrollbar-track:hover {
     background: #000000;
 }
 
-#shop::-webkit-scrollbar-track:active {
+#shopItemsContainer::-webkit-scrollbar-track:active {
     background: #000000;
 }
 
-#shop::-webkit-scrollbar-corner {
+#shopItemsContainer::-webkit-scrollbar-corner {
     background: transparent;
+}
+
+#AlertBox {
+    display: none;
+    position: fixed;
+    bottom: 0.5%;
+    left: 50%;
+    transform: translate(-50%);
+    border: 2px solid orange;
+    z-index: 100000000000;
+    background: rgba(0,0,0,1);
+}
+
+#closeIcon {
+    position: absolute;
+    cursor: pointer;
+    top: -2px;
+    right: 5px;
+}
+
+#AlertBoxText {
+    text-align: center;
+    padding: 2vh 2vw;
+    font-size: 2.5vh;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 /* Forçage du responsive sur la div des catégories du shop */

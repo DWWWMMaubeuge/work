@@ -21,7 +21,7 @@ effectsMutedButton = document.getElementById('effectsMode');
 musiqueVolumeSlider = document.getElementById('musicsVolumeRange');
 effectsVolumeSlider = document.getElementById('effectsVolumeRange');
 
-/* Creation d'un mini écran de chargement pour être sur que le navigateur de l'utilisateur ait le temps de
+/* Creation d'un écran de chargement pour être sur que le navigateur de l'utilisateur ait le temps de
    charger touts les élements */
 function createLoadingGif() {
     gameContainer.style.visibility = "hidden";
@@ -35,6 +35,7 @@ function createLoadingGif() {
     loadingText.innerHTML = "Chargement";
 
     spanDots = document.createElement('SPAN');
+    spanDots.id = "animatedDots";
 
     loadingGif.id = "loadingGif";
     loadingGif.src = "assets/loading.gif";
@@ -56,18 +57,25 @@ function createLoadingGif() {
     }, 250);
 
     setTimeout(function() {
+        // On stoppe l'animation de l'écran de chargement
         clearInterval(animateDots);
+        // On supprime totalement l'écran de chargement
         body.removeChild(loadingContainer);
+        // On rend le jeu visible
         gameContainer.style.visibility = "visible";
+        // On donne le focus au bouton start
         startButton.focus();
-    }, 2500)
+        // On ajoute un ecouteur sur la page pour détecter si une touche raccourcie est pressée
+        document.addEventListener('keydown', shortcutsControls);
+        // Si l'utilisateur n'a pas encore accepter les cookies on lui affiche la boite de dialogue
+        checkCookieConsent();
+    }, 3000)
 }
 
 // Lancement de l'écran de chargement
 createLoadingGif();
 
 // Initialisation des variables du jeu
-
 verticalUnit = "%";
 horizontalUnit = "%";
 score = 0;
@@ -271,7 +279,7 @@ function disableEffects() {
             audioFile.muted = true;
         });
         effectsVolumeSlider.value = 0;
-        // Sauvegarde des préférence du joueur si il autorise les cookies
+        // Sauvegarde des préférences du joueur si il autorise les cookies
         if(cookieConsent == true) {
             localStorage.setItem('mutedEffects', true);
         }
@@ -281,7 +289,7 @@ function disableEffects() {
         gameEffects.forEach(function(audioFile) {
             audioFile.muted = false;
         });
-        // Sauvegarde des préférence du joueur si il autorise les cookies
+        // Sauvegarde des préférences du joueur si il autorise les cookies
         if(cookieConsent == true) {
             localStorage.setItem('mutedEffects', false);
         }
@@ -300,13 +308,13 @@ function changeMusicVolume(musiqueButton, newMusicVolume) {
     gameMusiques.forEach(function(audioFile) {
         audioFile.volume = newMusicVolume;
     });
-    // Sauvegarde des préférence du joueur si il autorise les cookies
+    // Sauvegarde des préférences du joueur si il autorise les cookies
     if(cookieConsent == true) {
         localStorage.setItem("musicsVolume", newMusicVolume);
     }
     musicsVolume = newMusicVolume;
     if(newMusicVolume == 0) {
-        // Sauvegarde des préférence du joueur si il autorise les cookies
+        // Sauvegarde des préférences du joueur si il autorise les cookies
         if(cookieConsent == true) {
             localStorage.setItem("mutedMusiques", true);
         }
@@ -316,7 +324,7 @@ function changeMusicVolume(musiqueButton, newMusicVolume) {
         });
         musicsMutedButton.innerHTML = "<i class='fas fa-music'></i> <i class='fas fa-volume-mute'></i>";
     } else {
-        // Sauvegarde des préférence du joueur si il autorise les cookies
+        // Sauvegarde des préférences du joueur si il autorise les cookies
         if(cookieConsent == true) {
             localStorage.setItem("mutedMusiques", false);
             localStorage.setItem("musicsVolume", newMusicVolume);
@@ -334,7 +342,7 @@ function changeEffectsVolume(effectsButton, newEffectsVolume) {
     gameEffects.forEach(function(audioFile) {
         audioFile.volume = newEffectsVolume;
     });
-    // Sauvegarde des préférence du joueur si il autorise les cookies
+    // Sauvegarde des préférences du joueur si il autorise les cookies
     if(cookieConsent == true) {
         localStorage.setItem("effectsVolume", newEffectsVolume);
     }
@@ -344,14 +352,14 @@ function changeEffectsVolume(effectsButton, newEffectsVolume) {
             audioFile.muted = true;
         });
         mutedEffects = true;
-        // Sauvegarde des préférence du joueur si il autorise les cookies
+        // Sauvegarde des préférences du joueur si il autorise les cookies
         if(cookieConsent == true) {
             localStorage.setItem("mutedEffects", true);
         }
         effectsMutedButton.innerHTML = "<i class='fas fa-headphones'></i> <i class='fas fa-volume-mute'></i>";
     } else {
         mutedEffects = false;
-        // Sauvegarde des préférence du joueur si il autorise les cookies
+        // Sauvegarde des préférences du joueur si il autorise les cookies
         if(cookieConsent == true) {
             localStorage.setItem("effectsVolume", newEffectsVolume);
             localStorage.setItem("mutedEffects", false);
@@ -369,8 +377,8 @@ function setStats() {
     cashNumber.innerHTML = cash;
 }
 
-/* Demande la permission de stocker les cookies à l'utilisateur si ce n'est pas déjà fait
-   Si l'utilisateur n'accepte pas il ne pourra pas sauvegarder sa progression */
+/* Demande la permission de stocker les cookies à l'utilisateur si ce n'est pas déjà fait.
+   Si l'utilisateur n'accepte pas les cookies, il ne pourra pas sauvegarder sa progression */
 function checkCookieConsent() {
     if(cookieConsent == false) {
         bannerContainer = document.createElement('DIV');
@@ -412,7 +420,8 @@ function checkCookieConsent() {
     }
 }
 
-// Création d'un cookie sur le navigateur de l'utilisateur si il les accepte, il pour autoriser la sauvegarde de ses données
+/* Création d'un cookie sur le navigateur de l'utilisateur si il les acceptes, pour autoriser la sauvegarde
+   de sa progression sur son navigateur */
 function cookieAccept() {
     localStorage.setItem("cookieConsent", "Consentement de l'utilisateur acquis pour le stockage de cookies !");
     cookieConsent = true;
@@ -420,14 +429,30 @@ function cookieAccept() {
     createSaveOptions();
 }
 
+// Définition des touches raccourcies pour clavier azerty
 shortcutsControls = (e) => {
-    if(e.keyCode !== 37 && e.keyCode !== 81 && e.keyCode !== 39 && e.keyCode !== 68) {
-        if(e.keyCode === 111) {
+    keyPressed = e.which || e.keyCode;
+    if(keyPressed !== 37 && keyPressed !== 81 && keyPressed !== 39 && keyPressed !== 68) {
+
+        // Pour obtenir le code d'une touche il suffit de décommenter ce console log
+        // console.log(keyPressed);
+
+        // Touche "o" ==> Ouvre les options
+        if(keyPressed === 79) {
             showOptions();
         }
-        if(e.keyCode === 109) {
+
+        // Touche "m" ==> Ouvre le shop
+        if(keyPressed === 77) {
             openShop();
         }
+
+        // Touche "s" et "majuscule" pressée en même temps
+        if(keyPressed === 83 && e.shiftKey == true) {
+            // Sauvegarde manuelle de la progression
+            saveGame();
+        }
+        
     }
 }
 
@@ -464,13 +489,33 @@ function createTitleScreen() {
 // Création des options liées aux sauvegarde si le joueur a accepter les cookies
 function createSaveOptions() {
     if(cookieConsent == true) {
+        // Creation des options liées aux sauvegarde dans le menu des options
+        // Bouton de sauvegarde manuel
+        saveButton = document.createElement('BUTTON');
+        saveButton.id = "saveButton";
+        saveButton.innerHTML = "<i class='fas fa-save'></i> Sauvegarder";
+        // Div sur les explications du systeme de sauvegarde
+        saveInfos = document.createElement('DIV');
+        saveInfos.id = "saveInfos";
+        saveDescription1 = document.createElement('SPAN');
+        saveDescription1.id = "saveDescription1";
+        saveDescription1.innerHTML = "Sauvegarde manuelle.";
+        saveDescription2 = document.createElement('SPAN');
+        saveDescription2.id = "saveDescription2";
+        saveDescription2.innerHTML = "(Le jeu sauvegarde automatiquement toutes les minutes; Raccourci : MAJ+S)";
+        saveInfos.appendChild(saveDescription1);
+        saveInfos.appendChild(saveDescription2);
+        // Bouton suppression de sauvegardes
         dataOptions = document.createElement('DIV');
         dataOptions.id = "dataOptions";
         deleteSaveButton = document.createElement('BUTTON');
         deleteSaveButton.innerHTML = "<i class='fas fa-eraser'></i> Supprimer ma progression";
         deleteSaveButton.onclick = function() { deleteSave(); };
+        dataOptions.appendChild(saveButton);
+        dataOptions.appendChild(saveInfos);
         dataOptions.appendChild(deleteSaveButton);
         optionsWindow.appendChild(dataOptions);
+        saveButton.onclick = function() { saveGame(); };
     }
 }
 
@@ -498,9 +543,9 @@ function removeControls() {
 }
 
 raquetteMouvements = (e) => {
-    console.log(e.keyCode );
     // Si la touche pressé correspond à la fleche droite ou la touche d du clavier
-    if(e.keyCode  === 39 || e.keyCode  === 68 ) {
+    keyPressed = e.which || e.keyCode;
+    if(keyPressed  === 39 || keyPressed  === 68 ) {
         // Si la nouvelle position de la raquette ne dépasse pas la bordure droite du jeu
         if((raquetteLeftPos + 3) <= 90) {
             // On change la position de la raquette 
@@ -509,7 +554,7 @@ raquetteMouvements = (e) => {
             raquette.style.left = raquetteLeftPos + horizontalUnit;
         }
     // Si la touche pressé correspond à la fleche gauche ou la touche q du clavier
-    } else if(e.keyCode  === 37  || e.keyCode  === 81 ) {
+    } else if(keyPressed  === 37  || keyPressed  === 81 ) {
         // Si la nouvelle position de la raquette ne dépasse pas la bordure gauche du jeu
         if((raquetteLeftPos - 3) >= 3) {
             // On change la position de la raquette 
@@ -562,7 +607,7 @@ function ballMovements() {
         balle.style.top = balleTopPos + verticalUnit;
         /* Si la balle est à une hauteur suffisante pour rebondir sur la raquette, et que l'indice de collision horizontal
            permet un rebond sur celle ci */
-        if(collisionY <= 8 && balleTopPos > -5 && (collisionX <= 4.5 && collisionX >= -7.5)) {
+        if(collisionY <= 8 && (collisionX <= 4.5 && collisionX >= -7.5)) {
             // Pour le débug des collisions
             // console.log('(1) position balle: ' + balleLeftPos);
             // console.log('(2) position raquette: ' + raquetteLeftPos);
@@ -570,13 +615,13 @@ function ballMovements() {
             // console.log('(4) indice collision horizontale: ' + collisionX);
             // console.log('(5) indice collision verticale: ' + collisionY);
             /* On check en premier si la balle rebondit sur le bas droit de la raquette */
-            if(collisionY <= 4 && collisionX >= -7.5 && collisionX <= -3.5) {
+            if(balleTopPos >= 72 && balleTopPos <= 76 && collisionY <= 4 && collisionX >= -7.5 && collisionX <= -3.5) {
                 leftAngle = false;
                 rightAngle = true;
                 ballHitSound.play();
                 // console.log('La balle a rebondit sur le coté droit de la raquette mais pas assez haut pour remonter');
             // Sinon on check si la balle rebondit sur le bas gauche de la raquette
-            } else if(collisionY <= 4 && collisionX >= -1.5  && collisionX < 4.5) {
+            } else if(balleTopPos >= 72 && balleTopPos <= 76 &&  collisionY <= 4 && collisionX >= -1.5  && collisionX < 4.5) {
                 leftAngle = true;
                 rightAngle = false;
                 ballHitSound.play();
@@ -608,8 +653,6 @@ function ballMovements() {
             roofHitSound.play();
         }
     }
-    // Sauvegarde locale de la progression du joueur sur son navigateur (record actuelle, cash, ...)
-    saveGame();
 }
 
 // Verification si la balle est en dessous de la raquette
@@ -636,7 +679,7 @@ function refreshScore() {
         // On affiche le nouveau record
         recordNumber.innerHTML = score;
     }
-    // Si le score est un multiple de score
+    // Si le score est un multiple de 5
     if(score % 5 == 0) {
         // On ajoute 100 à la valeur actuelle de la variable cash, on affiche le nouveau montant et on joue un effet sonore
         cash = cash + 100;
@@ -651,7 +694,7 @@ function gameOver() {
     gameOverSound.play();
     // On crée un écran de game over dans une div qui contiendra un bouton pour relancer le jeu
     gameOverScreen = document.createElement('DIV');
-    gameOverContent = "<span class='gameOverText'>Game over !</span><span class='gameOverText'>Score: " + score + "</span><button id='restartButton' onclick='startGame()'><i class='fas fa-redo-alt'></i> Rejouer</button><button id='mainMenuButton' onclick='createTitleScreen()'><i class='fas fa-times'></i> Menu principal</button>";
+    gameOverContent = "<span class='gameOverText'>Game over !</span><span class='gameOverText'>Score: " + score + "</span><button id='restartButton' onclick='startGame()'><i class='fas fa-redo-alt'></i> Rejouer</button><button id='mainMenuButton' onclick='createTitleScreen()'>Menu principal</button>";
     gameOverScreen.innerHTML = gameOverContent;
     userInterface.removeChild(scoreContainer);
     gameOverScreen.id = "gameOver";
@@ -664,7 +707,7 @@ function openShop() {
     // On vérifie que la fenetre des options n'est pas ouverte, si elle l'est on ne fais rien
     if(optionsWindow.style.display !== "flex") {
         // Si lorsque l'utilisateur clique sur le bouton shop, la fenetre du shop n'est pas ouverte:
-        if(shopWindow.style.display !== "block") {
+        if(shopWindow.style.display !== "flex") {
             // On vérifie qu'une partie n'est pas lancée, si c'est le cas on la met en pause
             pauseGame();
             /* On vérifie que l'effet sonore de fermeture de la fenetre du shop n'est pas en cours de lecture
@@ -683,14 +726,14 @@ function openShop() {
             // On démarre la musique du shop
             shopMusic.play();
             // On affiche la fenêtre du shop
-            shopWindow.style.display = "block";
+            shopWindow.style.display = "flex";
             shopButtons.forEach(function(button) {
                 button.style.color = "black";
                 button.style.backgroundColor = "white";
                 button.style.border = "2px solid black";
             })
         // Sinon c'est que le shop est ouvert alors on le ferme
-        } else if(shopWindow.style.display == "block") {
+        } else if(shopWindow.style.display == "flex") {
             // On vérifie qu'une partie n'est pas lancée, si c'est le cas on enleve la pause
             cancelPause();
             // On arrête la musique du shop
@@ -723,7 +766,7 @@ function openShop() {
 // Affiche ou cache le menu des options
 function showOptions() {
     // On vérifie que le shop n'est pas ouvert, si il l'est on ne fais rien
-    if(shopWindow.style.display !== "block") {
+    if(shopWindow.style.display !== "flex") {
         // On vérifie si la fenetre des options est déjà ouverte, si elle l'est on la ferme et on enleve la pause
         if(optionsWindow.style.display == "flex") {
             optionsWindow.style.display = "none";
@@ -857,9 +900,6 @@ function buyItem(type, price, buttonId, priceSpanId) {
 
 // Changement de raquette par le joueur
 function equipItem(type, asset) {
-    console.log('HELLO');
-    console.log(type);
-    console.log(asset);
     if(type == "Raquette") {
         if(raquetteImage !== asset) {
             // Changement du texte du bouton pour informer le joueur que l'item est maintenant équipé
@@ -989,15 +1029,16 @@ function startGame() {
     }, difficulty);
 }
 
-// Mise en pause du jeu si il est lancé
+// Mise en pause du jeu si il est lancé et que l'écran titre et le game over n'existe pas
 function pauseGame() {
-    if(typeof(gamePlaying) !== "undefined") {
+    if(typeof(gamePlaying) !== "undefined" && typeof(gameOverScreen) == "undefined" && typeof(titleScreen) == "undefined") {
         removeControls();
         clearInterval(gamePlaying);
+        console.log('Jeu mis en pause.');
     }
 }
 
-// Relancement du jeu si il était lancé mais en pause
+// Relancement du jeu si il était lancé mais en pause et que l'écran titre et le game over n'existe pas
 function cancelPause() {
     if(typeof(gamePlaying) !== "undefined" && typeof(gameOverScreen) == "undefined" && typeof(titleScreen) == "undefined") {
         // On enleve la pause du jeu
@@ -1006,16 +1047,24 @@ function cancelPause() {
             checkBallOut();
         }, difficulty);
         addControls();
+        console.log('Reprise du jeu.');
     }
 }
 
-// Sauvegarde de la progression du joueur
+// Sauvegarde de la progression du joueur si il accepte les cookies
 function saveGame() {
     if(cookieConsent == true) {
         localStorage.setItem('record', record);
         localStorage.setItem('cash', cash);
+        console.log('Sauvegarde effectuée !');
     }
+    displayNotification("<i class='fas fa-check-circle'></i>", "Sauvegarde effectuée");
 }
+
+// Tente une sauvegarde automatique une fois par minute
+autoSave = setInterval(() => {
+    saveGame();
+}, 60000);
 
 // Suppression de la sauvearde du joueur et réinitialisation de ses stats
 function deleteSave() {
@@ -1055,11 +1104,49 @@ function deleteSave() {
     deletedSave.play();
 }
 
-/* On ajoute un ecouteur sur la page pour détecter si une touche raccourcie est pressée,
-   on affiche le bouton start, on initialise l'affichage et on check si les cookies 
+function displayNotification(icon, text) {
+    // Création d'une mini boite d'alerte et affichage de celle ci
+    if(typeof(AlertBox) == "undefined") {
+        AlertBox = document.createElement('DIV');
+        AlertBox.id = "AlertBox";
+        AlertBox.className = "notification";
+        closebutton = document.createElement('DIV');
+        closebutton.innerHTML = "X";
+        closebutton.id = "closeIcon";
+        AlertBox.appendChild(closebutton);
+        AlertBoxText = document.createElement('DIV');
+        AlertBoxText.innerHTML = icon + " " + text;
+        AlertBoxText.id = "AlertBoxText";
+        AlertBox.appendChild(AlertBoxText);
+        game.appendChild(AlertBox);
+        AlertBox.style.display = "flex";
+        closebutton.onclick = function() { closeNotificationManually(); };
+        deleteAlertBox = setTimeout(() => {
+            console.log('notification removed');
+            removeNotification();
+        }, 2500);
+    } else {
+        clearTimeout(deleteAlertBox);
+        deleteAlertBox = setTimeout(() => {
+            console.log('notification removed');
+            removeNotification();
+        }, 2500);
+    }
+}
+
+function removeNotification() {
+    AlertBox.style.display = "none";
+    game.removeChild(AlertBox);
+    delete AlertBox;
+}
+
+function closeNotificationManually() {
+    clearTimeout(deleteAlertBox);
+    removeNotification();
+}
+
+/* On affiche le bouton start, on initialise l'affichage et on check si les cookies 
    sont autorisé ou non pour la sauvegarde des stats du joueur */
-document.addEventListener('keypress', shortcutsControls);
 createSaveOptions();
 createTitleScreen();
 setStats();
-checkCookieConsent();
