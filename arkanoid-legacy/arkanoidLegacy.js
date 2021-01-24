@@ -1051,6 +1051,18 @@ function cancelPause() {
     }
 }
 
+function windowFocus() {
+    if(shopWindow.style.display !== "flex" && optionsWindow.style.display !== "flex") {
+        cancelPause();
+    }
+}
+
+function windowBlur() {
+    if(shopWindow.style.display !== "flex" && optionsWindow.style.display !== "flex") {
+        pauseGame();
+    }
+}
+
 // Sauvegarde de la progression du joueur si il accepte les cookies
 function saveGame() {
     if(cookieConsent == true) {
@@ -1122,13 +1134,13 @@ function displayNotification(icon, text) {
         AlertBox.style.display = "flex";
         closebutton.onclick = function() { closeNotificationManually(); };
         deleteAlertBox = setTimeout(() => {
-            console.log('notification removed');
+            console.log('notification effacée.');
             removeNotification();
         }, 2500);
     } else {
         clearTimeout(deleteAlertBox);
         deleteAlertBox = setTimeout(() => {
-            console.log('notification removed');
+            console.log('notification effacée.');
             removeNotification();
         }, 2500);
     }
