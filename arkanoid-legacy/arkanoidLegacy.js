@@ -450,7 +450,7 @@ shortcutsControls = (e) => {
         // Touche "s" et "majuscule" pressée en même temps
         if(keyPressed === 83 && e.shiftKey == true) {
             // Sauvegarde manuelle de la progression
-            saveGame();
+            saveGame(false);
         }
         
     }
@@ -515,11 +515,11 @@ function createSaveOptions() {
         dataOptions.appendChild(saveInfos);
         dataOptions.appendChild(deleteSaveButton);
         optionsWindow.appendChild(dataOptions);
-        saveButton.onclick = function() { saveGame(); };
+        saveButton.onclick = function() { saveGame(false); };
     }
 }
 
-// Création de la raquette et ajout d'un écouteur sur la page pour les mouvements
+// Création de la raquette et définission des fonctions d'ajout et de retrait des écouteur de mouvements sur la page
 function createRaquette(asset) {
     raquette = document.createElement('IMG');
     raquette.src = "assets/raquettes/"+asset+".png";
@@ -534,35 +534,39 @@ function createRaquette(asset) {
     // On ajoute l'écouteur à la fenetre que si le container du bouton start existe
 }
 
+raquetteMouvements = (e) => {
+    // Si la touche pressé correspond à la fleche droite ou la touche d du clavier
+    keyPressed = e.which || e.keyCode;
+    if(keyPressed === 39 || keyPressed === 68 ) {
+        // Si la nouvelle position de la raquette ne dépasse pas la bordure droite du jeu
+        if((raquetteLeftPos + 3) <= 90) {
+            // On fais bouger l'image de la raquette
+            raquette.style.left = (raquetteLeftPos+3) + horizontalUnit;
+            console.log('position de la raquette changée');
+            // On change la variable de position de la raquette 
+            raquetteLeftPos = raquetteLeftPos + 3;
+            console.log('variable changée');
+        }
+    // Si la touche pressé correspond à la fleche gauche ou la touche q du clavier
+    } else if(keyPressed === 37  || keyPressed === 81 ) {
+        // Si la nouvelle position de la raquette ne dépasse pas la bordure gauche du jeu
+        if((raquetteLeftPos - 3) >= 3) {
+            // On fais bouger l'image de la raquette
+            raquette.style.left = (raquetteLeftPos-3)+ horizontalUnit;
+            console.log('position de la raquette changée');
+            // On change la variable de position de la raquette 
+            raquetteLeftPos = raquetteLeftPos - 3;
+            console.log('variable changée');
+        }
+    }
+}
+
 function addControls() {
     document.addEventListener('keydown', raquetteMouvements);
 }
 
 function removeControls() {
     document.removeEventListener('keydown', raquetteMouvements);
-}
-
-raquetteMouvements = (e) => {
-    // Si la touche pressé correspond à la fleche droite ou la touche d du clavier
-    keyPressed = e.which || e.keyCode;
-    if(keyPressed  === 39 || keyPressed  === 68 ) {
-        // Si la nouvelle position de la raquette ne dépasse pas la bordure droite du jeu
-        if((raquetteLeftPos + 3) <= 90) {
-            // On change la position de la raquette 
-            raquetteLeftPos = raquetteLeftPos + 3;
-            // On fais bouger l'image de la raquette
-            raquette.style.left = raquetteLeftPos + horizontalUnit;
-        }
-    // Si la touche pressé correspond à la fleche gauche ou la touche q du clavier
-    } else if(keyPressed  === 37  || keyPressed  === 81 ) {
-        // Si la nouvelle position de la raquette ne dépasse pas la bordure gauche du jeu
-        if((raquetteLeftPos - 3) >= 3) {
-            // On change la position de la raquette 
-            raquetteLeftPos = raquetteLeftPos - 3;
-            // On fais bouger l'image de la raquette
-            raquette.style.left = raquetteLeftPos + horizontalUnit;
-        }
-    }
 }
 
 // Creation de la balle
@@ -705,101 +709,103 @@ function gameOver() {
 // Ouverture du shop
 function openShop() {
     // On vérifie que la fenetre des options n'est pas ouverte, si elle l'est on ne fais rien
-    if(optionsWindow.style.display !== "flex") {
-        // Si lorsque l'utilisateur clique sur le bouton shop, la fenetre du shop n'est pas ouverte:
-        if(shopWindow.style.display !== "flex") {
-            // On vérifie qu'une partie n'est pas lancée, si c'est le cas on la met en pause
-            pauseGame();
-            /* On vérifie que l'effet sonore de fermeture de la fenetre du shop n'est pas en cours de lecture
-            Si c'est le cas on l'arrête et on le remet à zéro */
-            if(menuClosed.paused != true) {
-                menuClosed.pause();
-                menuClosed.currentTime = 0;
-            }
-            /* On vérifie que l'effet sonore du game over n'est pas en cours de lecture
-            Si c'est le cas on le met juste en pause */
-            if(gameOverSound.paused != true) {
-                gameOverSound.pause();
-            }
-            // On joue l'effet sonore de l'ouverture de la fenetre du shop
-            menuOpened.play();
-            // On démarre la musique du shop
-            shopMusic.play();
-            // On affiche la fenêtre du shop
-            shopWindow.style.display = "flex";
-            shopButtons.forEach(function(button) {
-                button.style.color = "black";
-                button.style.backgroundColor = "white";
-                button.style.border = "2px solid black";
-            })
-        // Sinon c'est que le shop est ouvert alors on le ferme
-        } else if(shopWindow.style.display == "flex") {
-            // On vérifie qu'une partie n'est pas lancée, si c'est le cas on enleve la pause
-            cancelPause();
-            // On arrête la musique du shop
-            shopMusic.pause();
-            shopMusic.currentTime = 0;
-            /* On vérifie que l'effet sonore d'ouverture de la fenetre du shop n'est pas en cours de lecture
-            Si c'est le cas on l'arrête et on le remet à zéro */
-            if(menuOpened.paused != true) {
-                menuOpened.pause();
-                menuOpened.currentTime = 0;
-            }
-            /* On vérifie que l'effet sonore du game over n'était pas en pause, qu'il n'était pas non plus terminé et 
-            qu'il n'était pas non plus à sa position initiale. Si c'est le cas on lui enleve sa pause en le lançant */
-            if(gameOverSound.currentTime != 0 && gameOverSound.currentTime < 1.6 && gameOverSound.paused == true) {
-                gameOverSound.play();
-            }
-            // On joue l'effet sonore de la fermeture de la fenetre du shop
-            menuClosed.play();
-            // On ferme la fenetre du shop
-            shopWindow.style.display = "none";
-            shopButtons.forEach(function(button) {
-                button.style.color = "white";
-                button.style.backgroundColor = "black";
-                button.style.border = "2px solid white";
-            })
+    if(optionsWindow.style.display == "flex") {
+        return;
+    }
+    // Si lorsque l'utilisateur clique sur le bouton shop, la fenetre du shop n'est pas ouverte:
+    if(shopWindow.style.display !== "flex") {
+        // On vérifie qu'une partie n'est pas lancée, si c'est le cas on la met en pause
+        pauseGame();
+        /* On vérifie que l'effet sonore de fermeture de la fenetre du shop n'est pas en cours de lecture
+        Si c'est le cas on l'arrête et on le remet à zéro */
+        if(menuClosed.paused != true) {
+            menuClosed.pause();
+            menuClosed.currentTime = 0;
         }
+        /* On vérifie que l'effet sonore du game over n'est pas en cours de lecture
+        Si c'est le cas on le met juste en pause */
+        if(gameOverSound.paused != true) {
+            gameOverSound.pause();
+        }
+        // On joue l'effet sonore de l'ouverture de la fenetre du shop
+        menuOpened.play();
+        // On démarre la musique du shop
+        shopMusic.play();
+        // On affiche la fenêtre du shop
+        shopWindow.style.display = "flex";
+        shopButtons.forEach(function(button) {
+            button.style.color = "black";
+            button.style.backgroundColor = "white";
+            button.style.border = "2px solid black";
+        })
+    // Sinon c'est que le shop est ouvert alors on le ferme
+    } else if(shopWindow.style.display == "flex") {
+        // On vérifie qu'une partie n'est pas lancée, si c'est le cas on enleve la pause
+        cancelPause();
+        // On arrête la musique du shop
+        shopMusic.pause();
+        shopMusic.currentTime = 0;
+        /* On vérifie que l'effet sonore d'ouverture de la fenetre du shop n'est pas en cours de lecture
+        Si c'est le cas on l'arrête et on le remet à zéro */
+        if(menuOpened.paused != true) {
+            menuOpened.pause();
+            menuOpened.currentTime = 0;
+        }
+        /* On vérifie que l'effet sonore du game over n'était pas en pause, qu'il n'était pas non plus terminé et 
+        qu'il n'était pas non plus à sa position initiale. Si c'est le cas on lui enleve sa pause en le lançant */
+        if(gameOverSound.currentTime != 0 && gameOverSound.currentTime < 1.6 && gameOverSound.paused == true) {
+            gameOverSound.play();
+        }
+        // On joue l'effet sonore de la fermeture de la fenetre du shop
+        menuClosed.play();
+        // On ferme la fenetre du shop
+        shopWindow.style.display = "none";
+        shopButtons.forEach(function(button) {
+            button.style.color = "white";
+            button.style.backgroundColor = "black";
+            button.style.border = "2px solid white";
+        })
     }
 }
 
 // Affiche ou cache le menu des options
 function showOptions() {
     // On vérifie que le shop n'est pas ouvert, si il l'est on ne fais rien
-    if(shopWindow.style.display !== "flex") {
-        // On vérifie si la fenetre des options est déjà ouverte, si elle l'est on la ferme et on enleve la pause
-        if(optionsWindow.style.display == "flex") {
-            optionsWindow.style.display = "none";
-            // On vérifie qu'une partie n'est pas lancée, si c'est le cas on enleve la pause
-            cancelPause();
-            if(menuOpened.paused != true) {
-                menuOpened.pause();
-                menuOpened.currentTime = 0;
-            }
-            menuClosed.play();
-            pauseMusic.pause();
-            pauseMusic.currentTime = 0;
-            optionsButtons.forEach(function(button) {
-                button.style.color = "white";
-                button.style.backgroundColor = "black";
-                button.style.border = "2px solid white";
-            });
-        } else {
-            if(menuClosed.paused != true) {
-                menuClosed.pause();
-                menuClosed.currentTime = 0;
-            }
-            menuOpened.play();
-            pauseMusic.play();
-            optionsWindow.style.display = "flex";
-            // On vérifie qu'une partie n'est pas lancée, si c'est le cas on la met en pause
-            pauseGame();
-            optionsButtons.forEach(function(button) {
-                button.style.color = "black";
-                button.style.backgroundColor = "white";
-                button.style.border = "2px solid black";
-            });
+    if(shopWindow.style.display == "flex") {
+        return;
+    }
+    // On vérifie si la fenetre des options est déjà ouverte, si elle l'est on la ferme et on enleve la pause
+    if(optionsWindow.style.display == "flex") {
+        optionsWindow.style.display = "none";
+        // On vérifie qu'une partie n'est pas lancée, si c'est le cas on enleve la pause
+        cancelPause();
+        if(menuOpened.paused != true) {
+            menuOpened.pause();
+            menuOpened.currentTime = 0;
         }
+        menuClosed.play();
+        pauseMusic.pause();
+        pauseMusic.currentTime = 0;
+        optionsButtons.forEach(function(button) {
+            button.style.color = "white";
+            button.style.backgroundColor = "black";
+            button.style.border = "2px solid white";
+        });
+    } else {
+        if(menuClosed.paused != true) {
+            menuClosed.pause();
+            menuClosed.currentTime = 0;
+        }
+        menuOpened.play();
+        pauseMusic.play();
+        optionsWindow.style.display = "flex";
+        // On vérifie qu'une partie n'est pas lancée, si c'est le cas on la met en pause
+        pauseGame();
+        optionsButtons.forEach(function(button) {
+            button.style.color = "black";
+            button.style.backgroundColor = "white";
+            button.style.border = "2px solid black";
+        });
     }
 }
 
@@ -1064,18 +1070,20 @@ function windowBlur() {
 }
 
 // Sauvegarde de la progression du joueur si il accepte les cookies
-function saveGame() {
+function saveGame(AutoSaving) {
     if(cookieConsent == true) {
         localStorage.setItem('record', record);
         localStorage.setItem('cash', cash);
         console.log('Sauvegarde effectuée !');
     }
-    displayNotification("<i class='fas fa-check-circle'></i>", "Sauvegarde effectuée");
+    if(AutoSaving == false) {
+        displayNotification("<i class='fas fa-check-circle'></i>", "Sauvegarde effectuée");
+    }
 }
 
 // Tente une sauvegarde automatique une fois par minute
 autoSave = setInterval(() => {
-    saveGame();
+    saveGame(true);
 }, 60000);
 
 // Suppression de la sauvearde du joueur et réinitialisation de ses stats
@@ -1134,13 +1142,13 @@ function displayNotification(icon, text) {
         AlertBox.style.display = "flex";
         closebutton.onclick = function() { closeNotificationManually(); };
         deleteAlertBox = setTimeout(() => {
-            console.log('notification effacée.');
+            console.log('Notification effacée automatiquement.');
             removeNotification();
         }, 2500);
     } else {
         clearTimeout(deleteAlertBox);
         deleteAlertBox = setTimeout(() => {
-            console.log('notification effacée.');
+            console.log('Notification effacée automatiquement.');
             removeNotification();
         }, 2500);
     }
@@ -1154,6 +1162,7 @@ function removeNotification() {
 
 function closeNotificationManually() {
     clearTimeout(deleteAlertBox);
+    console.log('Notification effacée manuellement.');
     removeNotification();
 }
 

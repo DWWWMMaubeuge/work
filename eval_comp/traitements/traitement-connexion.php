@@ -26,10 +26,13 @@ if(isset($_POST['email'])) {
                 $infos = $account->fetch();
                 $_SESSION = [];
                 $_SESSION['id'] = $infos['ID'];
+                
+                // Decommenter ces lignes pour activer la securisation par IP et OS
+                
                 // Stockage de l'adresse ip qui se connecte sur le compte de l'utilisateur
-                $_SESSION['ip'] = get_ip();
-                $_SESSION['os'] = detect_os();
-                $_SESSION['browser'] = detect_browser();
+                // $_SESSION['ip'] = get_ip();
+                // $_SESSION['os'] = detect_os();
+                // $_SESSION['browser'] = detect_browser();
 
             } else {
                 

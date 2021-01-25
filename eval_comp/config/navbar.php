@@ -1,6 +1,9 @@
 <?php if(!isset($_SESSION['id'])) { ?>
     <!-- Si l'utilisateur n'est pas connecté, cette navbar sera affichée -->
   <nav class='navbar fixed-top navbar-expand-lg navbar-light bg-light' id="navbar">
+       <a class="navbar-brand" href="index.php">
+          <img src="../images/logoAFPA.png">
+        </a>
       <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
           <span class='navbar-toggler-icon'></span>
       </button>
@@ -53,6 +56,9 @@
 ?>
   <!-- Début de l'affichage de la navbar du membre connecté -->
   <nav class='navbar fixed-top navbar-expand-lg navbar-light bg-light' id="navbar">
+      <a class="navbar-brand" href="index.php">
+          <img src="../images/logoAFPA.png">
+        </a>
       <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
           <span class='navbar-toggler-icon'></span>
       </button>
