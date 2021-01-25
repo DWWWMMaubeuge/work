@@ -159,7 +159,7 @@ button {
 #shopItemsContainer {
     overflow-y: auto;
     overflow-x: hidden;
-    margin-top: 3vh;
+    padding-top: 3vh;
 }
 
 .item button {
