@@ -12,19 +12,26 @@
               <!-- Bouton de connexion -->
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sign-in-alt"></i> Connexion</a>
               <!-- Dropdown de la navbar -->
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="dropdown-menu justify-content-between" aria-labelledby="navbarDropdown">
                   <!-- Formulaire de connexion -->
-                  <form class="mx-2 pt-2 form-inline d-flex" method="POST" id="connexion">
-                    <div class="form-group d-flex-text-center mx-3">
-                      <label class="mr-2" for="connexionemail">Email</label>
-                      <input type="email" name="connexionemail" id="connexionemail" class="form-control" placeholder="Adresse e-mail" aria-describedby="helpId" required>
-                    </div>
-                    <div class="form-group d-flex-text-center mx-3">
-                      <label class="mr-2" for="password">Mot de passe</label>
-                      <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe" aria-describedby="helpId" required>
-                    </div>
-                    <button class="btn btn-primary m-auto">Login</button>
-                  </form>
+                   <li class="px-3 py-2">
+                       <form class="form" role="form" method="POST" id="connexion">
+                            <div class="form-group">
+                                <label class="mr-2" for="connexionemail">Email</label>
+                                <input type="email" name="connexionemail" id="connexionemail" class="form-control form-control-sm" placeholder="Adresse e-mail" aria-describedby="helpId" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="mr-2" for="password">Mot de passe</label>
+                                <input type="password" name="password" id="password" class="form-control form-control-sm" placeholder="Mot de passe" aria-describedby="helpId" required>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-block">Login</button>
+                            </div>
+                            <div class="form-group text-center">
+                                <small><a onclick="forgotPassword()" href="#" data-toggle="modal" data-target="#modalPassword">Mot de passe oublié ?</a></small>
+                            </div>
+                        </form>
+                    </li>
              </div>
           </ul>
       </div>

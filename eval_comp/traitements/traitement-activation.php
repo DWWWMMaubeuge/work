@@ -48,28 +48,34 @@ if(isset($_POST['Pseudo']) && isset($_POST['Password']) && isset($_POST['Email']
                         // Si aucun membre n'utilise ce pseudo, la fonction continue de s'exécuter
                         if($verif2 == 0) {
                             
-                            // Si le role récupéré est égale à 0, on définit la variable admin à 0 (false)
+                            // Si le role récupéré est égale à 0, on définit la variable $formateur à 0 (false)
                             if($_POST['Role'] == 0) {
                                 
-                                $admin = 0;
+                                $formateur = 0;
                                 
                             } else {
                                 
-                                // Sinon on définit la variable admin à 1 (true)
-                                $admin = 1;
+                                // Sinon on définit la variable $formateur à 1 (true)
+                                $formateur = 1;
                                 
                             }
                             
                             // On définit une variable superadmin à 0 (false)
-                            $superadmin = 0;
+                            $admin = 0;
+                            
+                            $getSecureKey = $bdd->prepare('SELECT SECURE_KEY FROM Inscriptions WHERE EMAIL = :email');
+                            $getSecureKey->bindParam(':email', $email, PDO::PARAM_STR);
+                            $getSecureKey->execute();
+                            $secureKey = $getSecureKey->fetch();
                             
                             // On insert le nouveau membre dans la table membres avec touts ses paramètres récupérés
-                            $insertmembre = $bdd->prepare('INSERT INTO Membres(Pseudo, Email, MDP, Admin, SuperAdmin) VALUES(:pseudo, :email, :mdp, :admin, :superadmin)');
+                            $insertmembre = $bdd->prepare('INSERT INTO Membres(Pseudo, Email, MDP, Administrateur, Formateur, Secure_key) VALUES(:pseudo, :email, :mdp, :admin, :formateur, :key)');
                             $insertmembre->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
                             $insertmembre->bindParam(':email', $email, PDO::PARAM_STR);
                             $insertmembre->bindParam(':mdp', $password, PDO::PARAM_STR);
                             $insertmembre->bindParam(':admin', $admin, PDO::PARAM_BOOL);
-                            $insertmembre->bindParam(':superadmin', $superadmin, PDO::PARAM_BOOL);
+                            $insertmembre->bindParam(':formateur', $formateur, PDO::PARAM_BOOL);
+                            $insertmembre->bindParam(':key', $secureKey['SECURE_KEY'], PDO::PARAM_INT);
                             $insertmembre->execute();
                             
                             // On récupère l'id du membre ajouté pour le réutiliser avec la table options plus bas

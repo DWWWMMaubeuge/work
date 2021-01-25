@@ -66,18 +66,24 @@ function userIsAdminOrSuperAdmin() {
     
 }
 
-// Vérification des paramètres passées dans l'url pour la page activation.php
-function checkActivationParams() {
-
-  GLOBAL $bdd;
-  
-  // Si le paramètre est vide ou si il est absent, l'utilisateur est redirigé vers l'accueil
-  if(!isset($_GET['account']) or empty($_GET['account'])) {
+function checkSecureKeyGetParam() {
+    
+    if(!isset($_GET['account']) or empty($_GET['account'])) {
 
     header('location: ../index.php');
     exit();
 
   }
+  
+}
+
+// Vérification des paramètres passées dans l'url pour la page activation.php
+function checkActivationParams() {
+
+  GLOBAL $bdd;
+  
+  // Si le paramètre secureKey est vide ou si il est absent, l'utilisateur est redirigé vers l'accueil
+  checkSecureKeyGetParam();
   
   // On stocke la valeur du paramètre passé dans une variable
   $secure_key = $_GET['account'];

@@ -1,12 +1,11 @@
-// Envoi du formulaire de connexion lorsque l'utilisateur appuie sur le bouton d'envoi qui appelle ce script
-$('#connexion').submit(function(e) {
+// Envoi du formulaire d'activation de compte lorsque l'utilisateur appuie sur le bouton d'envoi qui appelle ce script
+$('#passwordReset').submit(function(e) {
     
     // Annulation de l'action de base du formulaire
     e.preventDefault();
-    
     /* Fonction de hachage javascript
        La ressource original peut être trouvée ici:
-       https://geraintluff.github.io/sha256/ */ 
+       https://geraintluff.github.io/sha256/ */
     var sha256 = function sha256(ascii) {
         
         function rightRotate(value, amount) {
@@ -124,16 +123,32 @@ $('#connexion').submit(function(e) {
         
     };
     
-    // Création d'une variable password
-    let password;
+    // Création d'une variable password qui contient de base l'input de l'utilisateur dans le champ du mot de passe
+    let newpassword;
     // Remplacement de la valeur de la variable avec le hashage en sha256 du mot de passe de l'utilisateur
-    password = sha256(document.getElementById( "password" ).value);
+    newpassword = sha256(document.getElementById( "newpassword" ).value);
+    
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+    
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+    
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
+    
+    var key = getUrlParameter('account');
     
     // Envoi des données via Ajax sur une page de traitement php
     $.ajax({
-    
         type: 'POST',
-        url: '../traitements/traitement-connexion.php',
+        url: '../traitements/new-password.php',
         /* Les données envoyés correspondent aux données que l'utilisateur a entrer dans le formulaire
            SAUF la données 'Password' qui contient la version hachée du mot de passe de l'utilisateur 
            De ce fait, le mot de passe de l'utilisateur en version texte plein n'est jamais utilisé lors 
@@ -141,64 +156,46 @@ $('#connexion').submit(function(e) {
            
         // Préparation des données à envoyés => $_POST[variable] = value
         data: {
-            'email': $('#connexionemail').val(),
-            'mdp': password
+            'newpassword': newpassword,
+            'email': $('#email').val(),
+            'key': key,
+            'Captcha': $('#captcha').val()
         },
         // Envoi et réception des données au format html
         dataType: 'html',
         // En cas de succès:
         success: function(data) {
-          
-          // Si la page de traitement ne renvoie pas de message d'erreur:
-          if(data == "") {
-             
-            // Redirection de l'utilisateur vers sa page de profil
-            window.location.replace('../profil.php');
-          
-          // Sinon c'est que la page de traitement a renvoyé une erreur:
-          } else {
-              
-            // Affichage de l'erreur dans une boite d'alerte
-            alert(data);
-    
-          }
-    
+            
+            // Insertion de la réponse de la page de traitement dans une div qui sert de message d'alerte à l'utilisateur
+            $('#notification').html(data);
+            // Changement de la classe de la div pour la faire apparaitre
+            $("#notification").removeClass("alert alert-light my-5 d-none text-center").addClass("alert alert-light my-5 text-center");
+            // Replacement automatique du scroll de l'utilisateur pour le placer sur le haut de la page où se trouve l'alerte
+            $('html, body').animate({
+                
+                scrollTop: $("body").offset().top
+                
+            }, 0);
+            
+            // Si le traitement des données est réussie et que la page de traitement retourne le message de confirmation:
+            if(data == "Opération réussie ! Vous allez être redirigé vers votre profil !") {
+                
+                setTimeout(() => {
+                    
+                    // Redirection de l'utilisateur vers le profil de son compte créé au bout de 2,5 secondes.
+                    window.location.replace('../profil.php');
+        
+                }, 2500);
+            
+            // Si une faille de sécurité est detecté par la verification du traitement php, on abandonne l'opération et on renvoie l'utilisateur vers l'index
+            } else if(data == "Faille de sécurité détecté, abandon de l'opération !") {
+                
+                window.location.replace('../index.php');
+                
+            }
+            
         }
         
     });
     
 });
-
-// Si l'utilisateur a oublier son mot de passe
-function forgotPassword() {
-    var email = prompt('Entrez votre adresse e-mail');
-    if(email !== "") {
-        $.ajax({
-            type: 'POST',
-            url: '../traitements/password-reset.php',
-            data: {
-                'email': email
-            },
-            // Envoi et réception des données au format html
-            dataType: 'html',
-            // En cas de succès:
-            success: function(data) {
-              
-              // Si la page de traitement ne renvoie pas de message d'erreur:
-              if(data == "") {
-                 
-                alert('Un email pour réinitialiser votre mot de passe vous a été envoyé !');
-              
-              } else {
-                  
-                  alert(data);
-                  
-              }
-        
-            }
-            
-        });
-    } else {
-        alert('Veuillez inserer une adresse e-mail ');
-    }
-}
