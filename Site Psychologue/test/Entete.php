@@ -15,10 +15,10 @@ function Entete($titre)
             <meta name="description" content="Veronica Olivieri-Daniel, Psychologue à Paris 16. Spécialisée dans la prise en charge des enfants, adolescents ainsi que la thérapie de l'adulte et du couple.">		
             <meta name="Keywords" CONTENT="Psychologue Paris 16">
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta https-equiv="X-UA-Compatible" content="IE=edge">
             <meta property="og:title" content="Psychologue Paris 16 I Veronica Olivieri-Daniel" />
             <meta property="og:type" content="website" />
-            <meta property="og:url" content="http://www..com" />
+            <meta property="og:url" content="https://www..com" />
             <meta property="og:image" content="" />
             
             <!-- ==============================================
@@ -41,7 +41,7 @@ function Entete($titre)
             <!-- ==============================================
             Fonts
             =============================================== -->
-            <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,200,500,600,700' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,200,500,600,700' rel='stylesheet' type='text/css'>
             <!-- ==============================================
             JS
             =============================================== -->

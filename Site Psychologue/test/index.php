@@ -23,7 +23,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
                 </button>
 
                 <!-- ======= LOGO ========-->
-                <a class="navbar-brand scrollto" href="#home"><img src="images/logos/logo_8.png" alt="Psychologue" />ODC Conseil</a>
+                <a class="navbar-brand scrollto" href="#home"><img src="images/logos/logo.png" alt="Psychologue" />ODC Conseil</a>
 
             </div>
 
@@ -122,7 +122,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
                 <div class="col-sm-6 scrollimation fade-right d1">
 
-                    <img class="img-responsive polaroid" src="http://www.psychologue-paris16.com/uploads/veronica-olivieri-psy.jpg" alt="Cabinet psychologue Veronica Olivieri daniel" title="Cabinet psychologue Veronica Olivieri daniel" />
+                    <img class="img-responsive polaroid" src="" alt="Cabinet psychologue Veronica Olivieri daniel" title="Cabinet psychologue Veronica Olivieri daniel" />
 
                 </div>
 
@@ -173,7 +173,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
                     <h3><strong>Adolescents et Jeunes adultes</strong></h3>
 
-                    <p><i><u><br>« Il n’y a pas d’adolescence sans crise d’adolescence ». </u></i><br><br>Troubles de l’alimentation, consommations de produits toxiques, fréquentations douteuses, fugues du domicile ou de l’école, repli sur soi, fléchissement scolaire... Ce sont tous des signes à prendre en considération parce qu’ils expriment la souffrance de l’adolescent. <br><b>Pour les adolescents, des consultations en face à face permettent de proposer un espace où le jeune peut exprimer de ce qu'il ressent, chercher à comprendre ce qui lui arrive pour ainsi interrompre un processus pathologique. </b><br><br><a href="http://www.psychologue-paris16.com/post/psychologue-pour-adolescents-paris">Lire la suite</a>...</p>
+                    <p><i><u><br>« Il n’y a pas d’adolescence sans crise d’adolescence ». </u></i><br><br>Troubles de l’alimentation, consommations de produits toxiques, fréquentations douteuses, fugues du domicile ou de l’école, repli sur soi, fléchissement scolaire... Ce sont tous des signes à prendre en considération parce qu’ils expriment la souffrance de l’adolescent. <br><b>Pour les adolescents, des consultations en face à face permettent de proposer un espace où le jeune peut exprimer de ce qu'il ressent, chercher à comprendre ce qui lui arrive pour ainsi interrompre un processus pathologique. </b><br><br><a href="https://www.psychologue-paris16.com/post/psychologue-pour-adolescents-paris">Lire la suite</a>...</p>
 
 
                 </div>
@@ -278,7 +278,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
                     <p>
                         <center>
-                            <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="http://zenrdv.com/fr_FR/d/veronica-olivieri-daniel-psychologue-paris-olivieri-daniel/" target="_blank">RDV en ligne</a></div>
+                            <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="https://zenrdv.com/fr_FR/d/veronica-olivieri-daniel-psychologue-paris-olivieri-daniel/" target="_blank">RDV en ligne</a></div>
                         </center>
                     </p>
 
@@ -316,7 +316,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
         <div class="container">
 
             <ul class="social-links text-center">
-                <li><a href="https://www.facebook.com/psychologuemaubeuge/"><i class="fab fa-facebook fa-fw"></i></a></li>
+                <li><a href="https://www.facebook.com/psychologuemaubeuge/"><i class="fa fa-facebook fa-fw"></i></a></li>
             </ul>
 
             <p class="text-center">&copy; 2021 - Odile Dessailly-Coste, Psychologue et Consultante en organisation sur Maubeuge et en Région Hauts de France - Tous droits réservés</p>
@@ -326,19 +326,19 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
                     <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="tel:0611576284"><i class="fa fa-phone"></i> 06 11 57 62 84</a></div>
                 </center>
             </p>
-           
+
 
         </div>
 
         <script type="application/ld+json">
             {
-                "@context": "http://schema.org",
+                "@context": "https://schema.org",
                 "@type": "MedicalOrganization",
-                "image": "http://www.psychologue-paris16.com/uploads/veronica-olivieri-daniel.jpg",
+                "image": "",
                 "name": "Véronica Olivieri Daniel",
-                "logo": "http://www.psychologue-paris16.com/images/logos/logo_8.png",
+                "logo": "https://www.psychologue-paris16.com/images/logos/logo_8.png",
                 "description": "Veronica Olivieri-Daniel, Psychologue à Paris 16. Spécialisée dans la prise en charge des enfants, adolescents ainsi que la thérapie de l'adulte et du couple.",
-                "url": "http://www.psychologue-paris16.com/",
+                "url": "https://www.psychologue-paris16.com/",
                 "sameAs": [
                     "https://plus.google.com/118416677873362998638"
                 ],
@@ -366,7 +366,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
     <!-- ==============================================
 		SCRIPTS
 		=============================================== -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
         window.jQuery || document.write('<script src="js/libs/jquery-1.9.1.min.js">\x3C/script>')
     </script>
@@ -378,7 +378,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
     <script src="js/jquery.flexslider.min.js"></script>
     <script src="js/jquery.backstretch.min.js"></script>
     <script src="js/twitterFetcher_min.js"></script>
-    <script src="http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyC1RgA-ywO6EqRt4KbQ7rQA1WOgZ892hDw"></script>
+    <script src="https://maps.google.com/maps/api/js?sensor=true&key=AIzaSyC1RgA-ywO6EqRt4KbQ7rQA1WOgZ892hDw"></script>
     <script src="js/contact.js"></script>
     <script src="js/scripts.js"></script>
 
