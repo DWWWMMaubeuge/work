@@ -1,5 +1,6 @@
 <?php
 include "Entete.php";
+include "navbar.php";
 Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 ?>
 
@@ -9,56 +10,10 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
     <!--=== PAGE PRELOADER ===-->
     <div id="page-loader"><span class="page-loader-gif"></span></div>
 
-
-    <!-- ==============================================
-		MAIN NAV
-		=============================================== -->
-    <div id="main-nav" class="navbar navbar-fixed-top">
-        <div class="container">
-
-            <div class="navbar-header">
-
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-nav">
-                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                </button>
-
-                <!-- ======= LOGO ========-->
-                <a class="navbar-brand scrollto" href="#home"><img src="images/logos/logo.png" alt="Psychologue" />ODC Conseil</a>
-
-            </div>
-
-            <div id="site-nav" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="sr-only">
-                        <a href="#home" class="scrollto">Accueil</a>
-                    </li>
-                    <li>
-                        <a href="#votre-psy" class="scrollto">Psychologue</a>
-                    </li>
-                    <li>
-                        <a href="#psychologie" class="scrollto">Pour quoi ?</a>
-                    </li>
-                    <li>
-                        <a href="#patients" class="scrollto">Pour qui ?</a>
-                    </li>
-                    <li>
-                        <a href="#honoraires" class="scrollto">Consultations</a>
-                    </li>
-                    <li>
-                        <a href="#contact" class="scrollto">Contact</a>
-                    </li>
-                    <li>
-                        <a href="blog.php">Publications</a>
-                    </li>
-                </ul>
-            </div>
-            <!--End navbar-collapse -->
-
-        </div>
-        <!--End container -->
-
-    </div>
-    <!--End main-nav -->
+<?php
+NavBar();
+?>
+    
 
     <!-- ==============================================
 		HEADER
@@ -122,7 +77,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
                 <div class="col-sm-6 scrollimation fade-right d1">
 
-                    <img class="img-responsive polaroid" src="" alt="Cabinet psychologue Veronica Olivieri daniel" title="Cabinet psychologue Veronica Olivieri daniel" />
+                    <img class="img-responsive polaroid" src="images/dessailly_coste.png" alt="Cabinet psychologue Odile Dessailly-Coste ODC" title="Cabinet psychologue Odile Dessailly-Coste ODC" />
 
                 </div>
 
@@ -132,7 +87,51 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
                     <p class="lead">
                     <p><b><i><u>Parcours Académique</u></i><br></b></p>
-                    <p><b>Odile Dessailly-Coste </b>est <b>Psychologue clinicienne et Psychothérapeute</b><br><br>• Diplômée d’État de l’Université Paris V René Descartes, titulaire d'un Master II professionnel avec une spécialisation en Psychologie clinique et psychopathologie.<br>• Diplômée de Université Paris V René Descartes, titulaire d’une Licence en Psychologie<br>• Diplômée de l’ « Università Statale » de Milan (Italie), titulaire d’un Master et d’une Licence en Lettres et Philosophie<br><br><br><b>Spécialisation en psychopathologie de l’adolescent et de l’adulte</b><br>• Diplôme Universitaire de Psychologie Projective : Adolescents et jeunes Adultes, Institut de Psychologie, Paris V René Descartes<br> <br>Odile Dessailly-Coste exerce une activité libérale depuis plusieurs années auprès d’enfants (dès la rentrée au Collège), d’adolescents, d’adultes et des couples. <br><br>Elle exerce parallèlement dans une Clinique Médicale et Pédagogique pour Adolescents (Fondation Santé des étudiants de France) ainsi qu’au sein de l’Association de Santé Mentale du 13è arrondissement de Paris. <br></p>
+                    <p><b>Odile Dessailly-Coste </b>est <b>psychologue et consultante en organisation sur Maubeuge et en Région Hauts de France</b>
+                    <br>
+                    <br>• Diplômée d’un Master en Psychologie du travail et des organisations à l’Université Paul Valéry de Montpellier.
+                    <br><br><br>
+                    <b>Spécialisation en psychopathologie de l’adolescent et de l’adulte</b>
+                    <br>j’ai débuté en tant que psychologue par du <b>conseil en recrutement</b> et en <b>reclassement</b> auprès d’industries automobiles
+                    sur Maubeuge et Valenciennes. J’ai par la suite accompagné des adultes dans leurs <b>problématiques d’orientation et
+                    d’insertion professionnelle</b> en travaillant auprès d’un organisme de formation et en lien avec le service public de l’emploi.<br>
+                    <br>Etant régulièrement <b>confrontée aux difficultés individuelles du public</b> que je recevais en entretien, j’ai souhaité développer
+                    davantage de compétences en <b>psychologie clinique</b> afin de mieux répondre à leurs préoccupations. C’est ainsi que j’ai suivi  une
+                    <b>formation en Thérapies comportementales et Cognitives</b> (TCC) à l’AFTCC à Paris.<br>
+                    <br>Depuis, je pratique les <b>Thérapies Comportementales et Cognitives</b> au sein de mon cabinet où je reçois des personnes qui souffrent
+                    d’état dépressif, d’anxiété… Certains ne manifestent pas de trouble particulier mais me rencontrent suite à un événement
+                    particulier de leur vie (décès, grossesse, séparation…). Je leur apporte mon <b>écoute neutre</b> et bienveillante ainsi que
+                    des <b>repères qui leurs permettent de surmonter leurs difficultés</b>.
+                    <br>
+                    <br>
+                    </p>
+                    </p>
+
+                </div>
+
+                <div class="col-sm-25 scrollimation fade-left d3">
+
+                    <p class="lead">
+                    <p><br>Ces dernières années, mes interventions de conseil en entreprise se sont surtout orientées vers la prévention des risques psychosociaux
+                    et la gestion du stress avec la volonté d’<b>améliorer la qualité de vie au travail</b> des employés et la <b>performance</b>  de l’entreprise.
+                    <br>
+                    <br>Au cours de plusieurs années passées au sein d’un Service de santé au travail interentreprises, j’ai <b>accompagné des entreprises de
+                    différents secteurs d’activité</b> dans leur démarche de prévention.
+                    <br>
+                    <br>De par mes expériences en <b>psychologie du travail</b> et des organisations associées à mes <b>compétences cliniques d’orientation
+                    comportementale et cognitive</b>, je suis à même de répondre aussi bien aux <b>problématiques individuelles que collectives, personnelles que professionnelles</b>.
+                    <br>
+                    <br>Les consultations individuelles en psychologie ont lieu à mon cabinet situé à Rousies près de Maubeuge, en Sambre Avesnois.
+                    <br>
+                    <br>Je me déplace pour apporter mes conseils en organisation auprès des <b>entreprises sur l’ensemble de la Sambre Avesnois</b> (Maubeuge,
+                    Avesnes-sur-Helpe, Fourmies, Le Quesnoy) mais <b>également dans l’Aisne</b> (Hirson, La Capelle, St Quentin, Laon) et en <b>Région Hauts-de-France</b>.
+                    <br>
+                    <br>Membre actif <b>AFTCC</b>
+                    <br><img src="images/logos/logo-aftcc.jpg" alt="AFTCC Logo" title="AFTCC Logo" /><br>
+                    <br>Agréée IPRP Intervenant en Prévention des Risques psychosociaux par la DIRECCTE <b>iprp</b>
+                    <br><img src="images/logos/logo-iprp.jpg" alt="iprp Logo" title="iprp Logo" /><br>
+                    <br>N°</b>ADELI<b> délivré par l’ARS : 59 93 0706 3
+                    </p>
                     </p>
 
                 </div>
@@ -173,7 +172,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
                     <h3><strong>Adolescents et Jeunes adultes</strong></h3>
 
-                    <p><i><u><br>« Il n’y a pas d’adolescence sans crise d’adolescence ». </u></i><br><br>Troubles de l’alimentation, consommations de produits toxiques, fréquentations douteuses, fugues du domicile ou de l’école, repli sur soi, fléchissement scolaire... Ce sont tous des signes à prendre en considération parce qu’ils expriment la souffrance de l’adolescent. <br><b>Pour les adolescents, des consultations en face à face permettent de proposer un espace où le jeune peut exprimer de ce qu'il ressent, chercher à comprendre ce qui lui arrive pour ainsi interrompre un processus pathologique. </b><br><br><a href="https://www.psychologue-paris16.com/post/psychologue-pour-adolescents-paris">Lire la suite</a>...</p>
+                    <p><i><u><br>« Il n’y a pas d’adolescence sans crise d’adolescence ». </u></i><br><br>Troubles de l’alimentation, consommations de produits toxiques, fréquentations douteuses, fugues du domicile ou de l’école, repli sur soi, fléchissement scolaire... Ce sont tous des signes à prendre en considération parce qu’ils expriment la souffrance de l’adolescent. <br><b>Pour les adolescents, des consultations en face à face permettent de proposer un espace où le jeune peut exprimer de ce qu'il ressent, chercher à comprendre ce qui lui arrive pour ainsi interrompre un processus pathologique. </b><br><br><a href="adolescents_et_jeunes_adultes.php">Lire la suite</a>...</p>
 
 
                 </div>
@@ -257,11 +256,12 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
                     <h2 class="big-text">contacts</h2>
 
                     <p class="lead">
-                    <p>Le cabinet de&nbsp;Odile Dessailly-Coste est situé au <br><b>1 Avenue Alphonse XIII, 75116 Paris&nbsp;</b></p>
-                    <p>- Métro: Passy (ligne 6), rue de la Pompe (ligne 9), <br>La muette (ligne 9)<br>- Bus: 22, 52, 32<br>- RER C: Boulainvilliers Gare<br></p>
+                    <p>Le cabinet de&nbsp;Odile Dessailly-Coste est situé au <br><b>208 Rue de Maubeuge 59131 ROUSIES&nbsp;</b></p>
+                    <p>Infos Pratiques : <br>
+                    <p>- Bus: Lignes 55 et 64 : Arrêt Rue de Maubeuge<br>- Parking: Le cabinet dispose d'un parking visiteurs<br></p>
                     <p>Email : <br>
                         <br>
-                        @gmail.com<br>
+                        contact@odc-conseil.fr<br>
                         <br>
                         <br>
                     </p>
@@ -272,13 +272,13 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
                     <p>
                         <center>
-                            <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="tel:01 79 35 05 43"><i class="fa fa-phone"></i> 01 79 35 05 43</a></div>
+                            <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="tel:06 11 57 62 84"><i class="fa fa-phone"></i> 06 11 57 62 84</a></div>
                         </center>
                     </p>
 
                     <p>
                         <center>
-                            <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="https://zenrdv.com/fr_FR/d/veronica-olivieri-daniel-psychologue-paris-olivieri-daniel/" target="_blank">RDV en ligne</a></div>
+                            <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="https://" target="_blank">RDV en ligne</a></div>
                         </center>
                     </p>
 
@@ -288,7 +288,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
                 <div class="col-sm-6 col-md-offset-1 scrollimation fade-left d3">
 
-                    <img src="/uploads/cabinet-psychologieparis16.jpg" class="img-responsive polaroid" alt="Accès Psychologue Paris">
+                    <img src="" class="img-responsive polaroid" alt="Accès Stylisé">
 
                 </div>
 
@@ -335,10 +335,10 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
                 "@context": "https://schema.org",
                 "@type": "MedicalOrganization",
                 "image": "",
-                "name": "Véronica Olivieri Daniel",
-                "logo": "https://www.psychologue-paris16.com/images/logos/logo_8.png",
-                "description": "Veronica Olivieri-Daniel, Psychologue à Paris 16. Spécialisée dans la prise en charge des enfants, adolescents ainsi que la thérapie de l'adulte et du couple.",
-                "url": "https://www.psychologue-paris16.com/",
+                "name": "Odile Dessailly-Coste",
+                "logo": "images/logos/logo.png",
+                "description": "Odile Dessailly-Coste, votre psychologue et consultante en organisation sur Maubeuge et en Région Hauts de France.",
+                "url": "https:",
                 "sameAs": [
                     "https://plus.google.com/118416677873362998638"
                 ],

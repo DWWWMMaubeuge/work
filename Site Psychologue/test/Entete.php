@@ -12,11 +12,11 @@ function Entete($titre)
             =============================================== -->
             <meta charset="utf-8">
             <title>$titre</title>
-            <meta name="description" content="Veronica Olivieri-Daniel, Psychologue à Paris 16. Spécialisée dans la prise en charge des enfants, adolescents ainsi que la thérapie de l'adulte et du couple.">		
-            <meta name="Keywords" CONTENT="Psychologue Paris 16">
+            <meta name="description" content="Odile Dessailly-Coste ODC, Psychologue et Consultante en organisation sur Maubeuge et en Région Hauts de France.">		
+            <meta name="Keywords" CONTENT="Psychologue ROUSIES / MAUBEUGE Odile Dessailly-Coste ODC">
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
             <meta https-equiv="X-UA-Compatible" content="IE=edge">
-            <meta property="og:title" content="Psychologue Paris 16 I Veronica Olivieri-Daniel" />
+            <meta property="og:title" content="Psychologue ROUSIES / MAUBEUGE Odile Dessailly-Coste ODC" />
             <meta property="og:type" content="website" />
             <meta property="og:url" content="https://www..com" />
             <meta property="og:image" content="" />
@@ -31,8 +31,8 @@ function Entete($titre)
             <!-- ==============================================
             CSS
             =============================================== -->    
-            <!--<link rel="stylesheet" href="css/bootstrap.min.css"> -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+            <link rel="stylesheet" href="css/bootstrap.min.css">
+            <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">-->
             <link rel="stylesheet" href="css/font-awesome.min.css">
             <link rel="stylesheet" href="css/Flexslider.css">
                     <link rel="stylesheet" href="css/Styles.css">
