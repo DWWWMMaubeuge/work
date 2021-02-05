@@ -5,13 +5,14 @@ body{
 }
 
 header{
-    z-index: 1;
+    z-index: 3;
     position: fixed;
     background: white;
     padding: 20px;
     width: calc(100% - 0%);
     top: 0;
     height: 30px;
+    border-bottom: 1px solid black;
 }
 
 .left_area h3{
@@ -45,7 +46,7 @@ header{
 }
 
 .sidebar{
-    z-index: 1;
+    z-index: 2;
     top: 0;
     background: rgb(68,163,61);
     background: -moz-linear-gradient(309deg, rgba(68,163,61,1) 25%, rgba(135,187,52,1) 61%);
@@ -61,6 +62,7 @@ header{
     transition: 0.5s;
     transition-property: left;
     overflow-y: auto;
+    border-right: 1px solid black;
 }
 
 .profile_info{
@@ -106,7 +108,7 @@ header{
 }
 
 label #sidebar_btn{
-    z-index: 1;
+    z-index: 2;
     color: grey;
     position: fixed;
     cursor: pointer;
