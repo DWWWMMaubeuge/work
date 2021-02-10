@@ -1,6 +1,8 @@
 <?php
 include "Entete.php";
 include "navbar.php";
+include "Footer.php";
+include "Contact.php";
 Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 ?>
 
@@ -10,10 +12,10 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
     <!--=== PAGE PRELOADER ===-->
     <div id="page-loader"><span class="page-loader-gif"></span></div>
 
-<?php
-NavBar();
-?>
-    
+    <?php
+    NavBar();
+    ?>
+
 
     <!-- ==============================================
 		HEADER
@@ -66,81 +68,7 @@ NavBar();
 
     </section>
 
-    <!-- ==============================================
-		votre-osteo
-		=============================================== -->
-    <section id="votre-psy" class="add-padding bg-color2">
 
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-sm-6 scrollimation fade-right d1">
-
-                    <img class="img-responsive polaroid" src="images/dessailly_coste.png" alt="Cabinet psychologue Odile Dessailly-Coste ODC" title="Cabinet psychologue Odile Dessailly-Coste ODC" />
-
-                </div>
-
-                <div class="col-sm-6 scrollimation fade-left d3">
-
-                    <h2 class="big-text">Odile Dessailly-Coste</h2>
-
-                    <p class="lead">
-                    <p><b><i><u>Parcours Académique</u></i><br></b></p>
-                    <p><b>Odile Dessailly-Coste </b>est <b>psychologue et consultante en organisation sur Maubeuge et en Région Hauts de France</b>
-                    <br>
-                    <br>• Diplômée d’un Master en Psychologie du travail et des organisations à l’Université Paul Valéry de Montpellier.
-                    <br><br><br>
-                    <b>Spécialisation en psychopathologie de l’adolescent et de l’adulte</b>
-                    <br>j’ai débuté en tant que psychologue par du <b>conseil en recrutement</b> et en <b>reclassement</b> auprès d’industries automobiles
-                    sur Maubeuge et Valenciennes. J’ai par la suite accompagné des adultes dans leurs <b>problématiques d’orientation et
-                    d’insertion professionnelle</b> en travaillant auprès d’un organisme de formation et en lien avec le service public de l’emploi.<br>
-                    <br>Etant régulièrement <b>confrontée aux difficultés individuelles du public</b> que je recevais en entretien, j’ai souhaité développer
-                    davantage de compétences en <b>psychologie clinique</b> afin de mieux répondre à leurs préoccupations. C’est ainsi que j’ai suivi  une
-                    <b>formation en Thérapies comportementales et Cognitives</b> (TCC) à l’AFTCC à Paris.<br>
-                    <br>Depuis, je pratique les <b>Thérapies Comportementales et Cognitives</b> au sein de mon cabinet où je reçois des personnes qui souffrent
-                    d’état dépressif, d’anxiété… Certains ne manifestent pas de trouble particulier mais me rencontrent suite à un événement
-                    particulier de leur vie (décès, grossesse, séparation…). Je leur apporte mon <b>écoute neutre</b> et bienveillante ainsi que
-                    des <b>repères qui leurs permettent de surmonter leurs difficultés</b>.
-                    <br>
-                    <br>
-                    </p>
-                    </p>
-
-                </div>
-
-                <div class="col-sm-25 scrollimation fade-left d3">
-
-                    <p class="lead">
-                    <p><br>Ces dernières années, mes interventions de conseil en entreprise se sont surtout orientées vers la prévention des risques psychosociaux
-                    et la gestion du stress avec la volonté d’<b>améliorer la qualité de vie au travail</b> des employés et la <b>performance</b>  de l’entreprise.
-                    <br>
-                    <br>Au cours de plusieurs années passées au sein d’un Service de santé au travail interentreprises, j’ai <b>accompagné des entreprises de
-                    différents secteurs d’activité</b> dans leur démarche de prévention.
-                    <br>
-                    <br>De par mes expériences en <b>psychologie du travail</b> et des organisations associées à mes <b>compétences cliniques d’orientation
-                    comportementale et cognitive</b>, je suis à même de répondre aussi bien aux <b>problématiques individuelles que collectives, personnelles que professionnelles</b>.
-                    <br>
-                    <br>Les consultations individuelles en psychologie ont lieu à mon cabinet situé à Rousies près de Maubeuge, en Sambre Avesnois.
-                    <br>
-                    <br>Je me déplace pour apporter mes conseils en organisation auprès des <b>entreprises sur l’ensemble de la Sambre Avesnois</b> (Maubeuge,
-                    Avesnes-sur-Helpe, Fourmies, Le Quesnoy) mais <b>également dans l’Aisne</b> (Hirson, La Capelle, St Quentin, Laon) et en <b>Région Hauts-de-France</b>.
-                    <br>
-                    <br>Membre actif <b>AFTCC</b>
-                    <br><img src="images/logos/logo-aftcc.jpg" alt="AFTCC Logo" title="AFTCC Logo" /><br>
-                    <br>Agréée IPRP Intervenant en Prévention des Risques psychosociaux par la DIRECCTE <b>iprp</b>
-                    <br><img src="images/logos/logo-iprp.jpg" alt="iprp Logo" title="iprp Logo" /><br>
-                    <br>N°</b>ADELI<b> délivré par l’ARS : 59 93 0706 3
-                    </p>
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
 
     <!-- ==============================================
 		osteopathie
@@ -242,182 +170,7 @@ NavBar();
     </section>
 
 
-    <!-- ==============================================
-		CONTACT
-		=============================================== -->
-    <section id="contact" class="add-padding">
-
-        <div class="container text-center">
-
-            <div class="row">
-
-                <div class="col-sm-6 col-md-5 text-center scrollimation fade-up d1">
-
-                    <h2 class="big-text">contacts</h2>
-
-                    <p class="lead">
-                    <p>Le cabinet de&nbsp;Odile Dessailly-Coste est situé au <br><b>208 Rue de Maubeuge 59131 ROUSIES&nbsp;</b></p>
-                    <p>Infos Pratiques : <br>
-                    <p>- Bus: Lignes 55 et 64 : Arrêt Rue de Maubeuge<br>- Parking: Le cabinet dispose d'un parking visiteurs<br></p>
-                    <p>Email : <br>
-                        <br>
-                        contact@odc-conseil.fr<br>
-                        <br>
-                        <br>
-                    </p>
-                    <p><b></b>Consultations sur rendez-vous en Français<b></b><br></p>
-                    <p><b><br></b></p>
-                    <p></p>
-                    </p>
-
-                    <p>
-                        <center>
-                            <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="tel:06 11 57 62 84"><i class="fa fa-phone"></i> 06 11 57 62 84</a></div>
-                        </center>
-                    </p>
-
-                    <p>
-                        <center>
-                            <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="https://" target="_blank">RDV en ligne</a></div>
-                        </center>
-                    </p>
-
-                    <p>&nbsp;</p>
-
-                </div>
-
-                <div class="col-sm-6 col-md-offset-1 scrollimation fade-left d3">
-
-                    <img src="" class="img-responsive polaroid" alt="Accès Stylisé">
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- ==============================================
-		MAP
-		=============================================== -->
-    <section id="map">
-
-        <div id="gmap"></div>
-
-    </section>
-
-    <!-- ==============================================
-		FOOTER
-		=============================================== -->
-
-    <footer id="main-footer" class="add-padding bg-color3 border-top-color2">
-
-        <div class="container">
-
-            <ul class="social-links text-center">
-                <li><a href="https://www.facebook.com/psychologuemaubeuge/"><i class="fa fa-facebook fa-fw"></i></a></li>
-            </ul>
-
-            <p class="text-center">&copy; 2021 - Odile Dessailly-Coste, Psychologue et Consultante en organisation sur Maubeuge et en Région Hauts de France - Tous droits réservés</p>
-            <p class="text-center">Adresse : 208 Rue de Maubeuge 59131 ROUSIES</p>
-            <p>
-                <center>
-                    <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="tel:0611576284"><i class="fa fa-phone"></i> 06 11 57 62 84</a></div>
-                </center>
-            </p>
-
-
-        </div>
-
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "MedicalOrganization",
-                "image": "",
-                "name": "Odile Dessailly-Coste",
-                "logo": "images/logos/logo.png",
-                "description": "Odile Dessailly-Coste, votre psychologue et consultante en organisation sur Maubeuge et en Région Hauts de France.",
-                "url": "https:",
-                "sameAs": [
-                    "https://plus.google.com/118416677873362998638"
-                ],
-                "contactPoint": {
-                    "@type": "ContactPoint",
-                    "telephone": "06 11 57 62 84",
-                    "contactType": "Customer Service",
-                    "email": "contact@odc-conseil.fr",
-                    "contactOption": "",
-                    "areaServed": "Rousies",
-                    "availableLanguage": "French"
-                },
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressCountry": "France",
-                    "addressLocality": "Rousies",
-                    "postalCode": "59131",
-                    "streetAddress": "208 Rue de Maubeuge"
-                }
-            }
-        </script>
-
-    </footer>
-
-    <!-- ==============================================
-		SCRIPTS
-		=============================================== -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>
-        window.jQuery || document.write('<script src="js/libs/jquery-1.9.1.min.js">\x3C/script>')
-    </script>
-
-    <script src="js/libs/bootstrap.min.js"></script>
-    <script src="js/jquery.scrollto.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/jquery.masonry.min.js"></script>
-    <script src="js/jquery.flexslider.min.js"></script>
-    <script src="js/jquery.backstretch.min.js"></script>
-    <script src="js/twitterFetcher_min.js"></script>
-    <script src="https://maps.google.com/maps/api/js?sensor=true&key=AIzaSyC1RgA-ywO6EqRt4KbQ7rQA1WOgZ892hDw"></script>
-    <script src="js/contact.js"></script>
-    <script src="js/scripts.js"></script>
-
-    <script>
-        var mapPoint = {
-            'lat': 50.268406,
-            'lng': 3.981879,
-            'zoom': 15,
-            'infoText': '<p>208 Rue De Maubeuge\
-								<br/>59131\
-								<br/>ROUSIES</p>',
-            'linkText': 'Voir sur Google Maps',
-            'mapAddress': '208 Rue de Maubeuge, 59131 Rousies',
-            'icon': 'images/pin-dark.png'
-        };
-
-
-        if ($(window).scrollTop() < ($(window).height() - 50)) {
-            $('#main-nav').removeClass('scrolled');
-        } else {
-            $('#main-nav').addClass('scrolled');
-        }
-
-        $.backstretch([
-            "images/echanges-pratiques.jpg",
-        ], {
-            duration: 3000,
-            fade: 750
-        });
-
-        $(window).scroll(function() {
-            if ($(window).scrollTop() < ($(window).height() - 50)) {
-                $('#main-nav').removeClass('scrolled');
-            } else {
-                $('#main-nav').addClass('scrolled');
-            }
-        });
-    </script>
-
-</body>
-
-</html>
+    <?php
+    Contact();
+    Footer();
+    ?>

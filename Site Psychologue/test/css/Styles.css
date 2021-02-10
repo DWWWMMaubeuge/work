@@ -68,7 +68,7 @@ h6,
 -------------------------*/
 
 .add-padding {
-  padding-top: 120px;
+  padding-top: 180px;
   padding-bottom: 140px;
 }
 
@@ -306,6 +306,133 @@ h6,
 #main-nav.scrolled .nav li.active a,
 #main-nav.scrolled .nav a:hover {
   color: #bca3d6;
+}
+
+#main-nav2 .container {
+  padding: 0 0 20px;
+}
+
+#main-nav2 .navbar-brand img {
+  margin-right: 15px;
+  max-width: 60px;
+}
+
+#main-nav2 .navbar-brand {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #293133;
+}
+
+.navbar-brand,
+.navbar-brand:hover,
+.navbar-brand:active,
+.navbar-brand:focus {
+  padding: 0 10px;
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: normal;
+  color: #293133;
+}
+
+.navbar-brand img {
+  display: inline;
+}
+
+.navbar-brand span {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+#main-nav2.scrolled .navbar-brand {
+  color: #6d6d6d;
+}
+
+#main-nav2 {
+  background: #fff;
+  color: #293133;
+  box-shadow: 0 0 0px transparent;
+  -webkit-transition: background 0.3s ease-out;
+  transition: background 0.3s ease-out;
+}
+
+#main-nav2.scrolled {
+  background: #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+#main-nav2.scrolled .navbar-toggle {
+  color: #74c7d5;
+  border-color: #74c7d5;
+}
+
+#main-nav.scrolled2 .navbar-toggle .icon-bar {
+  background: #74c7d5;
+}
+
+#main-nav2 .container {
+  padding: 30px 20px;
+  -webkit-transition: padding 0.5s ease-out;
+  transition: padding 0.5s ease-out;
+}
+
+#main-nav2.scrolled .container {
+  padding: 10px 20px;
+}
+
+#main-nav2 .nav a,
+#main-nav2 .nav a:active,
+#main-nav2 .nav a:hover {
+  padding: 0px 5px;
+  font-size: 18px;
+  line-height: 54px;
+  font-weight: 500;
+  background: transparent;
+  color: #293133;
+  transition: color 0.2s ease-in;
+}
+
+#main-nav2.scrolled .nav a,
+#main-nav2.scrolled .nav a:active,
+#main-nav2.scrolled .nav a:hover {
+  color: #6d6d6d;
+}
+
+#main-nav2 li {
+  background: transparent;
+  margin: 0 10px;
+  border: 2px solid transparent;
+}
+
+#main-nav2.scrolled .nav li.active a,
+#main-nav2.scrolled .nav a:hover {
+  color: #bca3d6;
+}
+
+
+
+.links-breadcrumb {
+  font-size: 11px;
+  color: #6d6d6d;
+  list-style: none;
+  margin: 0;
+  padding: 10px 3px;
+}
+
+.links-breadcrumb li {
+  display: inline-block;
+}
+
+.links-breadcrumb a {
+  font-size: 11px;
+  color: #6d6d6d;
+  text-decoration: underline;
+}
+
+.links-breadcrumb li:after {
+  content: ' > ';
+  color: #6d6d6d;
+  margin: 0px 5px;
 }
 
 /*-----------------------
@@ -1312,6 +1439,16 @@ h6,
     margin: 0 5px;
   }
 
+  #main-nav2 .nav a,
+  #main-nav2 .nav a:active,
+  #main-nav2 .nav a:hover {
+    font-size: 16px;
+  }
+
+  #main-nav2 li {
+    margin: 0 5px;
+  }
+
   .percent {
     top: -60px;
     font-size: 42px;
@@ -1404,6 +1541,58 @@ h6,
   }
 
   #main-nav .navbar-brand img {
+    margin-right: 10px;
+    max-width: 40px;
+  }
+  
+  #main-nav2 {
+    background: #fff;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  }
+
+  #main-nav2 .navbar-toggle {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    color: #6d6d6d;
+    border-color: transparent !important;
+  }
+
+  #main-nav2 .navbar-toggle .icon-bar {
+    width: 28px;
+    height: 4px;
+    margin-top: 0;
+    background: #6d6d6d !important;
+  }
+
+  #main-nav2 .navbar-toggle .icon-bar + .icon-bar {
+    margin-top: 4px;
+  }
+
+  #main-nav2 .container,
+  #main-nav2.scrolled .container {
+    padding: 5px 20px;
+  }
+
+  #main-nav2 .nav a,
+  #main-nav2 .nav a:active,
+  #main-nav2 .nav a:hover {
+    line-height: 42px;
+    text-align: center;
+    color: #6d6d6d;
+  }
+
+  #main-nav2 .nav li.active a,
+  #main-nav2 .nav a:hover {
+    color: #bca3d6;
+  }
+
+  #main-nav2 .navbar-brand {
+    padding-top: 5px;
+    font-size: 16px;
+    color: #6d6d6d;
+  }
+
+  #main-nav2 .navbar-brand img {
     margin-right: 10px;
     max-width: 40px;
   }

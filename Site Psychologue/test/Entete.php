@@ -3,7 +3,6 @@
 function Entete($titre)
 {
     echo $str = <<<ENT
-    
     <!DOCTYPE html>
     <html lang="fr-FR" class="no-js">
         <head>
@@ -35,7 +34,8 @@ function Entete($titre)
             <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">-->
             <link rel="stylesheet" href="css/font-awesome.min.css">
             <link rel="stylesheet" href="css/Flexslider.css">
-                    <link rel="stylesheet" href="css/Styles.css">
+            <link rel="stylesheet" href="css/Styles.css">
+            <link rel="stylesheet" href="css/style2.css">
             <link rel="shortcut icon" href="images/logos/logo_8.png">
             
             <!-- ==============================================
@@ -55,5 +55,6 @@ function Entete($titre)
             <link href="https://plus.google.com/118416677873362998638" rel="publisher" />		
             
         </head>
+
     ENT;
 }
