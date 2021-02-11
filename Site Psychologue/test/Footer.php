@@ -72,9 +72,9 @@ function Footer()
     SCRIPTS
     =============================================== -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>
+<!--<script>
     window.jQuery || document.write('<script src="js/libs/jquery-1.9.1.min.js">\x3C/script>')
-</script>
+</script>-->
 
 <script src="js/libs/bootstrap.min.js"></script>
 <script src="js/jquery.scrollto.js"></script>
@@ -97,7 +97,7 @@ function Footer()
                             <br/>ROUSIES</p>',
         'linkText': 'Voir sur Google Maps',
         'mapAddress': '208 Rue de Maubeuge, 59131 Rousies',
-        'icon': 'images/pin-dark.png'
+        'icon': 'images/pin-red.png' <!--from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com-->
     };
 
 
@@ -116,9 +116,9 @@ function Footer()
 
     $(window).scroll(function() {
         if ($(window).scrollTop() < ($(window).height() - 50)) {
-            $('#main-nav').removeClass('scrolled');
+            $('#main-nav4').removeClass('scrolled');
         } else {
-            $('#main-nav').addClass('scrolled');
+            $('#main-nav4').addClass('scrolled');
         }
     });
 </script>

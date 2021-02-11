@@ -16,6 +16,10 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
     NavBar2();
     ?>
     <?php
+    NavBar5();
+    ?>
+    <span class='nav3'></span>
+    <?php
     NavBar3();
     ?>
     <!-- ==============================================
@@ -24,7 +28,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
     <section id="article" class="add-padding" style="padding-bottom:20px;">
         <div class="container">
             <ul class="links-breadcrumb">
-                <li><a href="/">Accueil</a></li>
+                <li><a href="index.php">Accueil</a></li>
                 <li>Publications</li>
             </ul>
             <div class="blog-post">

@@ -1,2 +1,15 @@
 
 https://testalexk.000webhostapp.com/
+
+LINK breadcrumb:
+
+    <section id="article" class="add-padding" style="padding-bottom:20px;">
+        <div class="container">
+            <ul class="links-breadcrumb">
+                <li><a href="index.php">Accueil</a></li>
+                <li>Publications</li>
+            </ul>
+
+Fil d'ariane:
+
+ <nav id="fil_ariane"><strong>Vous &ecirc;tes ici :</strong> <a href="index.php">Accueil</a> &gt; <a href="psychologue-maubeuge.php">Psychologie </a> &gt; À quoi sert un psychologue ? </nav>
