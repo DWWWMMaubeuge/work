@@ -95,7 +95,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
                 <div class="col-sm-6 service-item color1 scrollimation scale-in">
 
-                    <div class="service-icon"><i class="fa fa-child"></i></div>
+                    <div class="service-icon"><img src="images/logos/icon-diplome.png"></img></i></div>
 
                     <h3>Le stress <strong>au travail</strong></h3>
 
@@ -108,7 +108,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
                 <div class="col-sm-6 service-item color1 scrollimation scale-in d1">
 
-                    <div class="service-icon"><i class="fa fa-users"></i></div>
+                    <div class="service-icon"><img src="images/logos/icon-diplome.png"></img></div>
 
                     <h3>Le <strong>burn-out</strong></h3>
                     <p>
@@ -122,7 +122,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
                 <div class="col-sm-6 service-item color1 scrollimation scale-in d2">
 
-                    <div class="service-icon"><i class="fa fa-users"></i></div>
+                    <div class="service-icon"><img src="images/logos/icon-diplome.png"></img></div>
 
                     <h3>&Eacute;changes <strong>de pratiques</strong></h3>
 

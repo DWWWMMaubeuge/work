@@ -39,9 +39,9 @@ function Contact()
                     </p>
 
                     <p>
-                        <center>
+                        <!--<center>
                             <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="https://" target="_blank">RDV en ligne</a></div>
-                        </center>
+                        </center>-->
                     </p>
 
                     <p>&nbsp;</p>
@@ -50,7 +50,7 @@ function Contact()
 
                 <div class="col-sm-6 col-md-offset-1 scrollimation fade-left d3">
 
-                    <img src="" class="img-responsive polaroid" alt="Accès Stylisé">
+                    <img src="images/acces-stylise.png" class="img-responsive polaroid" alt="Accès Stylisé">
 
                 </div>
 

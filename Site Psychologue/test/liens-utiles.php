@@ -29,7 +29,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
             </nav>
             <h1>Liens utiles sur la psychologie et le stress au travail</h1>
             <div>
-                <p>ODC Conseil, <a href="cabinet-psychologue-maubeuge.php"><strong>cabinet de psychologie et de conseil en entreprise à Maubeuge</strong></a> et intervenant en <strong>Région des Hauts de France</strong>, vous suggère de consulter certains liens
+                <p>ODC Conseil, <a href="Parcours.php"><strong>cabinet de psychologie et de conseil en entreprise à Maubeuge</strong></a> et intervenant en <strong>Région des Hauts de France</strong>, vous suggère de consulter certains liens
                     pouvant être utiles dans votre <strong>démarche de développement</strong> individuel ou collectif.</p>
                 <h2>Liens utiles sur le stress au travail</h2>
                 <h3>Ministère du travail, de l’emploi et de la formation professionnelle</h3>

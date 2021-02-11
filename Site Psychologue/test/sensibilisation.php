@@ -29,7 +29,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
             <h1>Psychologue du travail et sensibilisation aux risques psychosociaux à Maubeuge<br></h1>
             <div>
                 <p>ODC Conseil, situé à Maubeuge en Sambre Avesnois, intervient auprès des établissements et entreprises de la Région Hauts-de-France. Votre<strong><a href="Parcours.php"> psychologue à Maubeuge</a></strong> vous propose
-                    des <strong>actions de sensibilisation</strong> <strong>adaptées à vos besoins</strong> sur les thèmes des risques psychosociaux, la qualité de vie au travail, le<a href="stress-au-travail.php" target="_blank"><strong> stress au travail</strong>.</a>
+                    des <strong>actions de sensibilisation</strong> <strong>adaptées à vos besoins</strong> sur les thèmes des risques psychosociaux, la qualité de vie au travail, le<a href="stress-au-travail.php"><strong> stress au travail</strong>.</a>
                 </p>
                 <p>Vous êtes dirigeant, responsable des ressources humaines ou membre du CHSCT et êtes à la recherche d’<strong>actions de prévention</strong> visant à <strong>réduire l’impact des risques psychosociaux </strong>sur la santé
                     physique et mentale des employés. Faites appel à <strong>ODC Conseil</strong>, <strong>psychologue d'entreprise à Rousies, Hautmont et en Sambre Avesnois.</strong>
