@@ -6,11 +6,11 @@
 </label>
 <div class="left_area">
     <h3><a class="navbar-brand" href="<?= $_SERVER['PHP_SELF']; ?>" title="logo AFPA">
-        <img src="logoAFPA.png" alt="Logo AFPA">
+        <img src="assets/logoAFPA.png" alt="Logo AFPA">
     </a></h3>
 </div>
 <div class="right_area">
-    <a href="#" class="logout_btn">Deconnexion</a>
+    <a href="logout.php" class="logout_btn">Deconnexion</a>
 </div>
 </header>
 <!--header area end-->

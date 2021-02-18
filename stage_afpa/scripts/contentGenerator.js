@@ -1,17 +1,14 @@
 function showContent(category, isResponsive) {
     
-    // Si la page est prête à executer du code javascript:
     $(document).ready(function() {
 
-        // Création d'une variable qui cible la fenetre qui affiche le contenu des catégories
         let contentWindow = document.getElementById('content');
-        // Envoie d'une requête ajax qui recevra en réponse le contenu de la catégorie cliqué
         $.ajax({
 
             type: 'POST',
-            url: 'test_ajax.php',
+            url: 'traitements/contentGenerator.php',
             data: category,
-            dataType: 'html',
+            dataType: 'text',
             success: function(data) {
 
                 if(isResponsive == false) {
@@ -34,6 +31,9 @@ function showContent(category, isResponsive) {
 
                 }
 
+            },
+            error: function(xhr, textStatus, error){
+                alert(error);
             }
 
         });

@@ -144,7 +144,6 @@ label #sidebar_btn:hover{
     margin-left: 250px;
     background-position: center;
     background-size: cover;
-    height: 100vh;
     transition: 0.5s;
     color: white;
 }
@@ -172,6 +171,107 @@ label #sidebar_btn:hover{
     font-size: 14px;
     opacity: 0.8;
     border-radius: 25px;
+}
+
+#avatar:hover, #avatarResponsive:hover {
+    opacity: 0.5;
+    transition: 0.3s linear;
+    cursor: pointer;
+}
+
+.avatar-form {
+    display: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+#autoEvaluation {
+    background: rgb(18,171,0);
+    background: -moz-radial-gradient(circle, rgba(18,171,0,0.7) 20%, rgba(95,255,0,0.7) 100%);
+    background: -webkit-radial-gradient(circle, rgba(18,171,0,0.7) 20%, rgba(95,255,0,0.7) 100%);
+    background: radial-gradient(circle, rgba(18,171,0,0.7) 20%, rgba(95,255,0,0.7) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#12ab00",endColorstr="#5fff00",GradientType=1);
+    padding: 5%;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+}
+
+#autoEvaluation label {
+    margin:3.5% auto;
+    display: block;
+}
+
+#autoEvaluation .inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+#autoEvaluation .checkbox {
+    margin: 1.5% auto;
+}
+
+#autoEvaluation h3, #autoEvaluation .answer{
+    user-select: none;
+}
+
+.form-part {
+    display: none;
+}
+
+#question1 {
+    display: block;
+}
+
+.form-buttons {
+    margin-top: 3%;
+}
+
+.button-next, .button-previous {
+    background: white;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    font-family: Brush Script MT;
+    -webkit-box-shadow: 1px 1px 20px 0 #000000;
+    -moz-box-shadow: 1px 1px 20px 0 #000000;
+    box-shadow: 1px 1px 20px 0 #000000;
+    text-shadow: 1px 1px 20px #000000;
+    border: solid #000000 1px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    color: black;
+    outline: none;
+}
+
+.button-send {
+    display: block;
+    margin: 5% auto;
+}
+ 
+.button-next:hover, .button-previous:hover {
+    border: solid #337FED 1px;
+    background: #00FFFF;
+    background-image: -webkit-linear-gradient(top, #00FFFF, #FFFFFF);
+    background-image: -moz-linear-gradient(top, #00FFFF, #FFFFFF);
+    background-image: -ms-linear-gradient(top, #00FFFF, #FFFFFF);
+    background-image: -o-linear-gradient(top, #00FFFF, #FFFFFF);
+    background-image: -webkit-gradient(to bottom, #00FFFF, #FFFFFF);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+#message {
+    color: #FF781B;
+    margin: 10% auto;
+    white-space: break-spaces;
 }
 
 /* Responsive CSS */
