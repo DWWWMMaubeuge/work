@@ -1,6 +1,9 @@
 /*-----------------------
 ----- Basic Styles -----
 -------------------------*/
+.fleche {
+  max-width: 25%;
+}
 
 body {
   font-family: Raleway, Arial, sans-serif;
@@ -417,7 +420,7 @@ h6,
 
 #main-nav4 .navbar-brand img {
   margin-right: 15px;
-  max-width: 60px;
+  max-width: 100px;
 }
 
 #main-nav4 .navbar-brand {
@@ -499,7 +502,7 @@ h6,
 
 #main-nav5 .navbar-brand img {
   margin-right: 15px;
-  max-width: 60px;
+  max-width: 100px;
 }
 
 #main-nav5 .navbar-brand {

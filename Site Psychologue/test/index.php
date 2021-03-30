@@ -55,23 +55,26 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
         <div class="container">
 
-            <h2 class="section-title big-text scrollimation fade-up">ODC Conseil, votre cabinet de psychologie à Maubeuge, région des Hauts de France (ex Nord-Pas-de-Calais - Picardie)</h2>
+            <h2 class="section-title big-text scrollimation fade-up">Consultation psychologue Maubeuge - Pour qui ?</h2>
 
             <div class="row">
 
                 <div class="col-sm-12 text-center">
 
-                    <p>
-                    <p>ODC Conseil est un cabinet de psychologie près de Maubeuge ayant pour vocation d'<b>accompagner les personnes dans leur quête de bien-être&nbsp;</b> &nbsp;<br></p>
-                    <p class="intro">ODC Conseil est un <strong><a href="Parcours.php">cabinet de psychologie près de Maubeuge</a></strong> ayant pour vocation d’<strong>accompagner les personnes dans leur quête de bien-être</strong> ainsi que les entreprises dans leur <strong>démarche d'amélioration de la qualité de vie au travail.</strong></p>
-                    <p><strong>Spécialisée en Psychologie du travail et en Thérapies comportementales et cognitives</strong>, Odile Dessailly-Coste répond aux <strong>attentes individuelles et collectives</strong> sur des problématiques aussi bien personnelles que professionnelles.</p>
-                    <p class="reassurance-index">Diplômée en <span>psychologie du travail</span> par l’Université de Montpellier</p>
-                    <h2>Faites appel à ODC Conseil, cabinet de psychologie</h2>
-                    <h3>Les consultations individuelles</h3>
-                    <p>Votre <a href="psychologue-maubeuge.php">psychologue</a> vous aide à <strong>surmonter les difficultés de la vie, à gérer vos émotions</strong>, en vous apportant son écoute bienveillante. <strong>Spécialisée en <a href="therapie-comportementale-cognitive.php">thérapies comportementales et cognitives</a></strong>, Odile Dessailly-Coste vous apporte des repères et des techniques afin de réduire vos symptômes et <strong>retrouver un équilibre de vie</strong>. Les entretiens ont lieu au cabinet. Certaines prestations peuvent se dérouler en extérieur.</p>
-
-                    <h3>Le conseil en entreprise</h3>
-                    <p>ODC conseil, cabinet spécialisé dans le domaine des <strong><a href="psychologue-travail-maubeuge.php">Risques psychosociaux RPS</a></strong>, la <strong><a href="stress-au-travail.php">gestion du stress </a>, le <a href="burn-out-maubeuge.php">burn-out</a> et l’amélioration de la qualité de vie au travail QVT</strong>, accompagne les dirigeants d'entreprise et les membres du CHSCT dans la mise en oeuvre d'une <strong><a href="sensibilisation.php">démarche globale de prévention</a></strong> et propose également des <strong><a href="echanges-de-pratiques.php">actions spécifiques</a></strong>.</p>
+                    <h2>Votre psychologue vous accompagne à chaque période de votre vie</h2>
+                    <p>Votre psychologue, Odile Dessailly-Coste, située à Rousies près de Maubeuge, vous aide non seulement à <strong>réduire la souffrance</strong> liée à des <strong><a href="troubles-psychiques.php">troubles psychiques</a></strong> tels que l’anxiété,
+                        la dépression, mais également à<strong> faire face à certaines difficultés</strong> qui perturbent votre équilibre émotionnel, et ce, quelle que soit la période de votre vie.</p>
+                    <a class="lightbox" href="https://www.odc-conseil.fr/photos/pourqui.jpg"><img class="imgRight" src="https://www.odc-conseil.fr/photos/400x267/pourqui.jpg" title="Psychologue Maubeuge" alt="Psychologue Maubeuge" loading="lazy" width="400" height="267" /></a>
+                    <h2>La psychothérapie pour qui et pour quoi ? <br>
+                    </h2>
+                    <p>Ainsi, votre psychologue accompagne:</p>
+                    <p>Les <strong>enfants </strong>qui rencontrent des difficultés scolaires, subissent du harcèlement, expriment un besoin de repères dans une famille recomposée ou suite à la séparation des parents, manifestent des difficultés à
+                        gérer leurs émotions telles que la colère, la frustration, …</p>
+                    <p>Les <strong>adolescents </strong>qui manifestent une anxiété liée aux examens, un manque de confiance en soi, un déficit d’affirmation de soi, une dépendance aux jeux vidéos, des difficultés relationnelles avec leurs parents,…
+                    </p>
+                    <p>Les <strong>adultes </strong>qui souhaitent mieux gérer leurs émotions (colère, jalousie), qui souffrent de troubles du sommeil, de dépendances (alcool, jeux, cannabis…), qui rencontrent des problématiques professionnelles ou relationnelles,
+                        qui souhaitent se libérer de blessures ou traumatismes liés à l’enfance (victimes d’abus sexuels, de violence parentale, d’absence d’affection),…</p>
+                    <p>Les <strong>seniors</strong> qui rencontrent un sentiment de vide lors du passage à la retraite, qui doivent faire face à la maladie, à la perte d’autonomie, au décès d’un proche,…</p>
                 </div>
 
             </div>

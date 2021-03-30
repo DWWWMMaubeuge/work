@@ -43,11 +43,11 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
                     <h2 class="big-text">Odile Dessailly-Coste</h2>
 
                     <p class="lead">
-                    <p><b><i><u>Parcours Académique</u></i><br></b></p>
-                    <p><b>Odile Dessailly-Coste </b>est <b>psychologue et consultante en organisation sur Maubeuge et en Région Hauts de France</b>
+                        <!--<p><b><i><u>Parcours Académique</u></i><br></b></p>
+                        <p><b>Odile Dessailly-Coste </b>est <b>psychologue et consultante en organisation sur Maubeuge et en Région Hauts de France</b>
                         <br>
                         <br>• Diplômée d’un Master en Psychologie du travail et des organisations à l’Université Paul Valéry de Montpellier.
-                        <br><br><br>
+                        <br><br><br>-->
                         <b>Spécialisation en psychopathologie de l’adolescent et de l’adulte</b>
                         <br>j’ai débuté en tant que psychologue par du <b>conseil en recrutement</b> et en <b>reclassement</b> auprès d’industries automobiles
                         sur Maubeuge et Valenciennes. J’ai par la suite accompagné des adultes dans leurs <b>problématiques d’orientation et

@@ -17,7 +17,7 @@ function NavBar()
             </button>
 
             <!-- ======= LOGO ========-->
-            <a class="navbar-brand scrollto" href="index.php"><img src="images/logos/logo.png" alt="Psychologue" />ODC Conseil</a>
+            <a class="navbar-brand scrollto" href="index.php"><img src="images/logos/logo.png" alt="Psychologue"/></a>
 
         </div>
 
@@ -27,10 +27,10 @@ function NavBar()
                     <a href="index.php" class="scrollto">Accueil</a>
                 </li>
                 <li>
-                    <a href="Parcours.php">Psychologue</a>
+                    <a href="Parcours.php">Votre psychologue</a>
                 </li>
                 <li>
-                    <a href="#psychologie" class="scrollto">Pour quoi ?</a>
+                    <a href="#psychologie" class="scrollto">pour qui ?</a>
                 </li>
                 <li>
                     <a href="#patients" class="scrollto">Mes compétences</a>
@@ -106,7 +106,7 @@ function NavBar2()
             </button>
 
             <!-- ======= LOGO ========-->
-            <a class="navbar-brand" href="index.php"><img src="images/logos/logo.png" alt="Psychologue" />ODC Conseil</a>
+            <a class="navbar-brand" href="index.php"><img src="images/logos/logo.png" alt="Psychologue" /></a>
 
         </div>
 
@@ -116,10 +116,10 @@ function NavBar2()
                     <a href="index.php" class="">Accueil</a>
                 </li>
                 <li>
-                    <a href="Parcours.php">Psychologue</a>
+                    <a href="Parcours.php">Votre psychologue</a>
                 </li>
                 <li>
-                    <a href="index.php#psychologie" class="">Pour quoi ?</a>
+                    <a href="index.php#psychologie" class="">pour qui ?</a>
                 </li>
                 <li>
                     <a href="index.php#patients" class="">Mes compétences</a>
@@ -221,7 +221,7 @@ function NavBar4()
             </button>
 
             <!-- ======= LOGO ========-->
-            <a class="navbar-brand scrollto" href="index.php"><img src="images/logos/logo.png" alt="Psychologue" />ODC Conseil</a>
+            <a class="navbar-brand scrollto" href="index.php"><img src="images/logos/logo.png" alt="Psychologue" /></a>
 
         </div>
 
@@ -231,10 +231,10 @@ function NavBar4()
                     <a href="index.php" class="scrollto">Accueil</a>
                 </li>
                 <li>
-                    <a href="Parcours.php">Psychologue</a>
+                    <a href="Parcours.php">Votre psychologue</a>
                 </li>
                 <li>
-                    <a href="#psychologie" class="scrollto">Pour quoi ?</a>
+                    <a href="#psychologie" class="scrollto">pour qui ?</a>
                 </li>
                 <li>
                     <a href="#patients" class="scrollto">Mes compétences</a>
@@ -281,7 +281,7 @@ function NavBar5()
             </button>
 
             <!-- ======= LOGO ========-->
-            <a class="navbar-brand" href="index.php"><img src="images/logos/logo.png" alt="Psychologue" />ODC Conseil</a>
+            <a class="navbar-brand" href="index.php"><img src="images/logos/logo.png" alt="Psychologue" /></a>
 
         </div>
 
@@ -291,10 +291,10 @@ function NavBar5()
                     <a href="index.php" class="">Accueil</a>
                 </li>
                 <li>
-                    <a href="Parcours.php">Psychologue</a>
+                    <a href="Parcours.php">Votre psychologue</a>
                 </li>
                 <li>
-                    <a href="index.php#psychologie" class="">Pour quoi ?</a>
+                    <a href="index.php#psychologie" class="">pour qui ?</a>
                 </li>
                 <li>
                     <a href="index.php#patients" class="">Mes compétences</a>

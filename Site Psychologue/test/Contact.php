@@ -26,16 +26,20 @@ function Contact()
                         contact@odc-conseil.fr<br>
                         <br>
                         <br>
-                    </p>
-                    <p><b></b>Consultations sur rendez-vous en Français<b></b><br></p>
-                    <p><b><br></b></p>
-                    <p></p>
-                    </p>
 
                     <p>
                         <center>
                             <div class="btn btn-color3"><a style="text-decoration: none; color: white;" href="tel:06 11 57 62 84"><i class="fa fa-phone"></i> 06 11 57 62 84</a></div>
                         </center>
+                    </p>
+
+                    <br>
+                    <br>
+
+                    <p>
+                    <center>
+                    <img src="images/fleche-bas.png" class="fleche" alt="fleche-bas">
+                    </center>
                     </p>
 
                     <p>
