@@ -55,7 +55,7 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
         <div class="container">
 
-            <h2 class="section-title big-text scrollimation fade-up">Consultation psychologue Maubeuge - Pour qui ?</h2>
+            <h2 class="section-title big-text scrollimation fade-up">Consultation psychologue Maubeuge - pour quoi ?</h2>
 
             <div class="row">
 
@@ -135,7 +135,33 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
                 </div>
 
-                <!--<div class="col-sm-6 service-item color1 scrollimation scale-in d2">
+                <div class="col-sm-6 service-item color1 scrollimation scale-in d2">
+
+                    <div class="service-icon"><img src="images/logos/icon-diplome.png"></img></div>
+
+                    <h3>Pleine <strong>Conscience</strong></h3>
+
+                    <p>
+                    <p>Odile Dessailly-Coste, psychologue près de Maubeuge, vous guide dans la compréhension et la pratique de la méditation pleine conscience.<br><br><a href="pleine-conscience.php"><strong>EN SAVOIR PLUS</strong></a></p>
+                    </p>
+
+                </div>
+
+                <div class="row align-items-center">
+
+                    <div class="col-sm-6 service-item color1 scrollimation scale-in d2">
+
+                        <div class="service-icon"><img src="images/logos/icon-diplome.png"></img></div>
+
+                        <h3>Thérapie <strong>cognitive</strong></h3>
+
+                        <p>
+                        <p>Psychologue praticienne en thérapie comportementale et cognitive à Maubeuge, région des Hauts de France, Odile Dessailly-Coste vous aide à surmonter vos difficultés et à retrouver le bien-être.<br><br><a href="therapie-comportementale-cognitive.php"><strong>EN SAVOIR PLUS</strong></a></p>
+                        </p>
+
+                    </div>
+
+                    <!--<div class="col-sm-6 service-item color1 scrollimation scale-in d2">
 
                     <div class="service-icon"><i class="fa fa-venus-mars"></i></div>
 
@@ -147,9 +173,9 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
 
                 </div> -->
 
-            </div>
+                </div>
 
-        </div>
+            </div>
 
     </section>
 

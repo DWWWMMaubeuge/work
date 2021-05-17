@@ -30,7 +30,7 @@ function NavBar()
                     <a href="Parcours.php">Votre psychologue</a>
                 </li>
                 <li>
-                    <a href="#psychologie" class="scrollto">pour qui ?</a>
+                    <a href="#psychologie" class="scrollto">pour quoi ?</a>
                 </li>
                 <li>
                     <a href="#patients" class="scrollto">Mes compétences</a>
@@ -119,7 +119,7 @@ function NavBar2()
                     <a href="Parcours.php">Votre psychologue</a>
                 </li>
                 <li>
-                    <a href="index.php#psychologie" class="">pour qui ?</a>
+                    <a href="index.php#psychologie" class="">pour quoi ?</a>
                 </li>
                 <li>
                     <a href="index.php#patients" class="">Mes compétences</a>
@@ -189,7 +189,7 @@ function NavBar3()
                 <li class="sousLi"><a href="aide-psychologique-maubeuge.php">À quoi sert un psychologue ? </a></li>
                 <li class="sousLi"><a href="troubles-psychiques.php">Les troubles</a></li>
                 <li class="sousLi"><a href="therapie-comportementale-cognitive.php">Les thérapies comportementales et cognitives </a></li>
-                <!--<li class="sousLi"><a href="consultation-psychologue-maubeuge.php">Pour qui ? </a></li>-->
+                <!--<li class="sousLi"><a href="consultation-psychologue-maubeuge.php">pour quoi ? </a></li>-->
             </ul>
             <li class="firstLi"><a href="pleine-conscience.php">Pleine Conscience</a></li>
         <li class="firstLi sous_menu"><a href="psychologue-travail-maubeuge.php">Le conseil en entreprise </a>
@@ -234,7 +234,7 @@ function NavBar4()
                     <a href="Parcours.php">Votre psychologue</a>
                 </li>
                 <li>
-                    <a href="#psychologie" class="scrollto">pour qui ?</a>
+                    <a href="#psychologie" class="scrollto">pour quoi ?</a>
                 </li>
                 <li>
                     <a href="#patients" class="scrollto">Mes compétences</a>
@@ -294,7 +294,7 @@ function NavBar5()
                     <a href="Parcours.php">Votre psychologue</a>
                 </li>
                 <li>
-                    <a href="index.php#psychologie" class="">pour qui ?</a>
+                    <a href="index.php#psychologie" class="">pour quoi ?</a>
                 </li>
                 <li>
                     <a href="index.php#patients" class="">Mes compétences</a>
