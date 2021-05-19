@@ -56,6 +56,9 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
                 </p>
                 <p><strong><a href="http://christopheandre.com/WP/wp-content/uploads/Bonheur-et-malheur.-CP-03-2014.pdf">http://christopheandre.com/WP/wp-content/uploads/Bonheur-et-malheur.-CP-03-2014.pdf</a></strong>
                 </p>
+                <h3>Autres</h3>
+                <p><strong><a href="mentions-legales.php">Mentions Légales</a></strong>
+                </p>
             </div>
             <div class="share">
                 <ul>

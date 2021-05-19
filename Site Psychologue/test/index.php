@@ -62,9 +62,14 @@ Entete("Psychologue Maubeuge – Cabinet de psychologie ODC Conseil Hautmont");
                 <div class="col-sm-12 text-center">
 
                     <h2>Votre psychologue vous accompagne à chaque période de votre vie</h2>
-                    <p>Votre psychologue, Odile Dessailly-Coste, située à Rousies près de Maubeuge, vous aide non seulement à <strong>réduire la souffrance</strong> liée à des <strong><a href="troubles-psychiques.php">troubles psychiques</a></strong> tels que l’anxiété,
-                        la dépression, mais également à<strong> faire face à certaines difficultés</strong> qui perturbent votre équilibre émotionnel, et ce, quelle que soit la période de votre vie.</p>
-                    <a class="lightbox" href="https://www.odc-conseil.fr/photos/pourqui.jpg"><img class="imgRight" src="https://www.odc-conseil.fr/photos/400x267/pourqui.jpg" title="Psychologue Maubeuge" alt="Psychologue Maubeuge" loading="lazy" width="400" height="267" /></a>
+                    <p>Votre psychologue, Odile Dessailly-Coste, située à Rousies près de Maubeuge, vous aide non seulement à 
+                        <strong>réduire la souffrance</strong> liée à des <strong><a href="troubles-psychiques.php">troubles psychiques</a>
+                    </strong> tels que l’anxiété,
+                        la dépression, mais également à<strong> faire face à certaines difficultés</strong> qui perturbent votre équilibre 
+                        émotionnel, et ce, quelle que soit la période de votre vie.</p>
+                    <a class="lightbox" href="https://www.odc-conseil.fr/photos/pourqui.jpg"><img class="imgRight" 
+                    src="https://www.odc-conseil.fr/photos/400x267/pourqui.jpg" title="Psychologue Maubeuge" alt="Psychologue Maubeuge" 
+                    loading="lazy" width="400" height="267" /></a>
                     <h2>La psychothérapie pour qui et pour quoi ? <br>
                     </h2>
                     <p>Ainsi, votre psychologue accompagne:</p>
